@@ -1,4 +1,4 @@
-![Rafa Mori Banner]([https://rafa-mori.dev/assets/banners/name-top_banner_a.png](https://github.com/rafa-mori/.github/blob/661f6f130131342296429af51d15f5eb6b98679e/assets/banners/name-top_banner_a.png))
+![Rafa Mori Banner](https://github.com/rafa-mori/.github/blob/661f6f130131342296429af51d15f5eb6b98679e/assets/banners/name-top_banner_a.png)
 
 # Hi there! 👋
 
