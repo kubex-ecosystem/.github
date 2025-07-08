@@ -106,6 +106,25 @@ Some of them are not in the list, some i'm not using anymore, but I have some kn
 
 ---
 
+## 🚀 Quick Deploy to GitHub Pages
+
+This portfolio includes an automated deployment system similar to MkDocs:
+
+```bash
+npm run deploy
+```
+
+**What it does:**
+- ✅ Builds the project locally
+- ✅ Creates/uses a dedicated `gh-pages` branch  
+- ✅ Deploys to GitHub Pages automatically
+- ✅ Returns to your original branch
+- ✅ Keeps everything organized and clean
+
+See [DEPLOY.md](./DEPLOY.md) for detailed instructions.
+
+---
+
 ## Connect with Me
 - 📫 **Reach me at**:
    - [Gmail](mailto:faelmori@gmail.com) ✉️
