@@ -5,6 +5,7 @@ Este portfólio contém uma coleção integrada de projetos que demonstram difer
 ## 🚀 Projetos Embarcados
 
 ### 1. 🎮 Mini Games Canvas
+
 - **Localização**: `/tools/mini_games/`
 - **Tecnologia**: HTML5 Canvas + JavaScript puro
 - **URL**: `/projects/mini-games`
@@ -12,6 +13,7 @@ Este portfólio contém uma coleção integrada de projetos que demonstram difer
 - **Status**: ✅ Funcionando - arquivos estáticos copiados para `/public/tools/mini_games/`
 
 ### 2. ⚡ Grompt
+
 - **Localização**: `/tools/grompt/`
 - **Tecnologia**: React embarcado em Go
 - **URL**: `/projects/grompt`
@@ -19,6 +21,7 @@ Este portfólio contém uma coleção integrada de projetos que demonstram difer
 - **Status**: ✅ Funcionando - build copiado para `/public/tools/grompt/`
 
 ### 3. 🤖 Gemini Image Processor
+
 - **Localização**: `/tools/gemini-image/`
 - **Tecnologia**: React + Node.js + Google Gemini API
 - **URL**: `/projects/gemini-image`
@@ -28,6 +31,7 @@ Este portfólio contém uma coleção integrada de projetos que demonstram difer
 ## 🛠️ Scripts de Build
 
 ### Desenvolvimento
+
 ```bash
 # Inicia o portfólio principal
 npm run dev
@@ -37,6 +41,7 @@ npm run dev:grompt
 ```
 
 ### Produção
+
 ```bash
 # Build completo (inclui todos os sub-projetos)
 npm run build
@@ -50,7 +55,7 @@ npm run build:grompt
 
 ## 📁 Estrutura do Projeto
 
-```
+```plaintext
 rafa-mori/
 ├── src/
 │   ├── app/
@@ -78,15 +83,18 @@ rafa-mori/
 ## 🔧 Configurações
 
 ### Next.js
+
 - **Output**: Export estático
 - **Rewrites**: Configurados para `/tools/*`
 - **Exclusões**: Diretório `tools/` excluído do build Next.js
 
 ### ESLint
+
 - **Grompt**: ESLint desabilitado durante build para evitar conflitos
 - **Principal**: Configuração Next.js padrão
 
 ### Dependências
+
 - **Isolamento**: Cada sub-projeto mantém suas próprias dependências
 - **Build**: Dependências instaladas durante o processo de build
 - **Conflitos**: Resolvidos com `--legacy-peer-deps` quando necessário
@@ -136,4 +144,4 @@ Cada projeto mantém sua própria licença e diretrizes de contribuição. Verif
 
 ---
 
-**Desenvolvido com ❤️ por Rafa Mori**
+***Desenvolvido com ❤️ por Rafa Mori***

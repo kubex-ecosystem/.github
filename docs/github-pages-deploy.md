@@ -5,11 +5,13 @@ Este projeto inclui um sistema automatizado de deploy para GitHub Pages, similar
 ## 🚀 Como Usar
 
 ### Método 1: Comando npm (Recomendado)
+
 ```bash
 npm run deploy
 ```
 
 ### Método 2: Script direto
+
 ```bash
 ./scripts/deploy-gh-pages.sh
 ```
@@ -17,7 +19,7 @@ npm run deploy
 ## 📋 O que o Script Faz
 
 1. **Verifica o ambiente** - Git repository, mudanças não commitadas
-2. **Faz o build local** - `npm run build` 
+2. **Faz o build local** - `npm run build`
 3. **Cria/muda para branch gh-pages** - Branch dedicada para GitHub Pages
 4. **Copia arquivos do build** - Move tudo de `/out` para a raiz da branch
 5. **Adiciona arquivos especiais** - `.nojekyll`, `CNAME` se existir
@@ -28,19 +30,23 @@ npm run deploy
 ## ⚙️ Configuração Inicial
 
 ### 1. Primeira execução
+
 ```bash
 npm run deploy
 ```
 
 ### 2. Configurar no GitHub
+
 1. Vá nas **Settings** do seu repositório
-2. Navegue para **Pages** 
+2. Navegue para **Pages**
 3. Em **Source**, selecione **Deploy from a branch**
 4. Escolha a branch **gh-pages** e pasta **/ (root)**
 5. Clique em **Save**
 
 ### 3. (Opcional) Domínio customizado
+
 Se você tem um domínio próprio, adicione um arquivo `CNAME` na raiz do projeto:
+
 ```bash
 echo "seu-dominio.com" > CNAME
 ```
@@ -48,12 +54,15 @@ echo "seu-dominio.com" > CNAME
 ## 🔧 Personalização
 
 ### Configurações avançadas
+
 Copie o arquivo de exemplo e personalize:
+
 ```bash
 cp .env.deploy.example .env.local
 ```
 
 Variáveis disponíveis:
+
 - `GH_PAGES_BRANCH`: Nome da branch (padrão: gh-pages)
 - `BUILD_DIR`: Diretório do build (padrão: out)
 - `AUTO_CLEAN`: Auto-limpeza do build (true/false/prompt)
@@ -63,6 +72,7 @@ Variáveis disponíveis:
 ## 🛡️ Segurança e Validações
 
 O script inclui várias verificações:
+
 - ✅ Verifica se está em um repositório Git
 - ✅ Avisa sobre mudanças não commitadas
 - ✅ Valida se o build foi bem-sucedido
@@ -97,6 +107,7 @@ npm run deploy
 ## 🆘 Solução de Problemas
 
 ### Build falha
+
 ```bash
 # Verifique os logs de erro
 npm run build
@@ -106,12 +117,14 @@ npm run serve:static
 ```
 
 ### Problemas de permissão
+
 ```bash
 # Torne o script executável
 chmod +x scripts/deploy-gh-pages.sh
 ```
 
 ### Conflitos de branch
+
 ```bash
 # Se a branch gh-pages tiver conflitos
 git checkout main
@@ -120,6 +133,7 @@ npm run deploy  # Recria a branch
 ```
 
 ### Site não aparece
+
 1. Verifique as configurações do GitHub Pages
 2. Aguarde alguns minutos (pode demorar até 10 min)
 3. Verifique se há erros no Actions do GitHub
@@ -135,4 +149,11 @@ npm run deploy  # Recria a branch
 
 ---
 
-**Pronto!** Agora você tem um sistema de deploy tão elegante quanto o MkDocs! 🎉
+## 🛠️ Contribuindo  
+
+Se você quiser contribuir com melhorias, correções ou novas  
+funcionalidades, fique à vontade para abrir um Pull Request!
+
+## 📝 Licença
+
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.

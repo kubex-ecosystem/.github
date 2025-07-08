@@ -456,22 +456,9 @@ p {
 ::-webkit-scrollbar-track {
   background: #f0f0f0;
 }
+
 /* Scrollbar styles for Firefox */
-@-moz-document url-prefix() {
-  ::-moz-scrollbar {
-    width: 12px;
-  }
-  ::-moz-scrollbar-thumb {
-    background: #007bff;
-    border-radius: 6px;
-  }
-  ::-moz-scrollbar-thumb:hover {
-    background: #0056b3;
-  }
-  ::-moz-scrollbar-track {
-    background: #f0f0f0;
-  }
-}
+/* Removed @-moz-document block as it is not supported by other browsers */
 /* Scrollbar styles for Edge and IE */
 @supports (-ms-ime-align: auto) {
   ::-ms-scrollbar {
@@ -497,4 +484,27 @@ p {
 */
 .additional-styles {
   /* Placeholder for additional styles */
+  display: none; /* Esconde por padrão */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* Coloca acima dos outros elementos */
+  display: flex; /* Usa flexbox para centralizar o conteúdo */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  text-align: center; /* Centraliza o texto */
+  font-family: 'Arial', sans-serif; /* Fonte do texto */
+  font-weight: bold; /* Texto em negrito */
+  font-size: 24px; /* Tamanho do texto */
+  color: white; /* Cor do texto */
+  border-radius: var(--border-radius); /* Borda arredondada */
+  box-shadow: var(--box-shadow); /* Sombra para destaque */
+  transition: ease var(--transition-duration) 1s;
+  opacity: 0.8; /* Opacidade para suavizar o visual */
+  background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para destaque */
+  pointer-events: none; /* Desabilita interações com o fundo */
+  z-index: 1000; /* Coloca acima dos outros elementos */
 }

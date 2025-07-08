@@ -7,18 +7,21 @@ Portfólio pessoal desenvolvido com Next.js 15, React 19 e Tailwind CSS, integra
 Este portfólio inclui demonstrações funcionais dos seguintes projetos:
 
 ### 1. 🎮 Mini Games Canvas
+
 - **Localização**: `/projects/mini-games`
 - **Tecnologia**: HTML5 Canvas + JavaScript puro
 - **Jogos**: Pong, Snake, Tic-Tac-Toe
 - **Status**: ✅ Totalmente funcional
 
 ### 2. ⚡ Grompt
+
 - **Localização**: `/projects/grompt`
 - **Tecnologia**: React integrado ao Next.js
 - **Funcionalidade**: Gerador de prompts profissionais para IA
 - **Status**: ✅ Demo interativo (sem backend Go)
 
 ### 3. 🤖 Gemini Image Processor
+
 - **Localização**: `/projects/gemini-image`
 - **Tecnologia**: React com interface mock
 - **Funcionalidade**: Simulação de análise de imagens com IA
@@ -27,12 +30,14 @@ Este portfólio inclui demonstrações funcionais dos seguintes projetos:
 ## 🛠️ Tecnologias Utilizadas
 
 ### Core
+
 - **Next.js 15** - Framework React com App Router
 - **React 19** - Biblioteca de interface de usuário
 - **TypeScript** - Tipagem estática
 - **Tailwind CSS 4** - Framework de estilos
 
 ### Bibliotecas Adicionais
+
 - **Framer Motion** - Animações
 - **Lucide React** - Ícones
 - **React Toastify** - Notificações
@@ -42,6 +47,7 @@ Este portfólio inclui demonstrações funcionais dos seguintes projetos:
 ## 🚀 Como Executar
 
 ### Desenvolvimento
+
 ```bash
 # Instalar dependências
 npm install
@@ -53,6 +59,7 @@ npm run dev
 ```
 
 ### Build de Produção
+
 ```bash
 # Build para produção
 npm run build
@@ -63,6 +70,7 @@ npm run build
 ## 🎯 Arquitetura da Integração
 
 ### Estratégia Adotada
+
 Em vez de executar os projetos como aplicações separadas (que causaria conflitos de porta e incompatibilidade com GitHub Pages), foi adotada a estratégia de:
 
 1. **Extração da lógica React**: Componentes puros sem dependências externas
@@ -71,6 +79,7 @@ Em vez de executar os projetos como aplicações separadas (que causaria conflit
 4. **Assets estáticos**: Mini games mantidos como HTML/CSS/JS puro
 
 ### Benefícios
+
 - ✅ **Sem conflitos de porta**: Tudo roda no mesmo servidor Next.js
 - ✅ **GitHub Pages compatível**: Build estático sem backends
 - ✅ **Performance otimizada**: Bundle único e otimizado

@@ -19,8 +19,10 @@ readonly BOLD='\033[1m'
 readonly NC='\033[0m' # No Color
 
 # 📁 Configuration
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly SCRIPT_DIR="$SCRIPT_DIR"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+readonly PROJECT_ROOT="$PROJECT_ROOT"
 readonly BUILD_DIR="out"
 readonly GH_PAGES_BRANCH="gh-pages"
 readonly APP_NAME="rafa-mori-deploy"
@@ -36,7 +38,8 @@ DRY_RUN="${DRY_RUN:-false}"
 print_log() {
     local log_type="${1:-INFO}"
     local message="${2:-}"
-    local timestamp="$(date '+%H:%M:%S')"
+    local timestamp=""
+    timestamp="$(date '+%H:%M:%S')"
     
     case "$log_type" in
         "SUCCESS") echo -e "${GREEN}[✅ $timestamp]${NC} $message" ;;

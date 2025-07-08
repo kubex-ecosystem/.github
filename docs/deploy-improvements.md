@@ -1,6 +1,7 @@
 # Melhorias sugeridas para o script de deploy
 
 ## 1. **Otimização do ZIP**
+
 ```bash
 # Use store (sem compressão) + exclude patterns
 zip -0 -r -q "$TEMP_ARCHIVE" . \
@@ -13,6 +14,7 @@ zip -0 -r -q "$TEMP_ARCHIVE" . \
 ```
 
 ## 2. **Trap mais robusto**
+
 ```bash
 cleanup() {
     local exit_code=$?
@@ -38,6 +40,7 @@ trap cleanup EXIT INT TERM
 ```
 
 ## 3. **Verificação de integridade**
+
 ```bash
 # Antes de descompactar, verificar se ZIP está íntegro
 if ! unzip -t "$TEMP_ARCHIVE" >/dev/null 2>&1; then
@@ -46,6 +49,7 @@ fi
 ```
 
 ## 4. **Progress feedback**
+
 ```bash
 # Mostrar progresso das operações demoradas
 print_log "STATUS" "Creating archive... (this may take a moment)"
@@ -57,6 +61,7 @@ echo " ✅"
 ```
 
 ## 5. **Validação do ambiente temp**
+
 ```bash
 # Garantir que o ambiente temp tem tudo necessário
 validate_temp_env() {

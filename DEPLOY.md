@@ -36,16 +36,18 @@ npm run deploy -- --dry-run
 ## 🎮 Primeira vez? Configure no GitHub
 
 1. Após o primeiro deploy, vá em: **Settings → Pages**
-2. Selecione: **Deploy from branch** 
+2. Selecione: **Deploy from branch**
 3. Escolha: **gh-pages branch** + **/ (root)**
 4. Salve e aguarde alguns minutos
 
 ## 🌐 Seu site estará em
+
 `https://rafa-mori.github.io/rafa-mori/`
 
 ## 🔧 Personalização
 
 Edite `.deployignore` para controlar o que vai no deploy:
+
 ```bash
 # Exemplo: excluir arquivos grandes desnecessários
 *.mp4
@@ -54,6 +56,4 @@ docs/assets/
 
 ---
 
-**🎉 É isso!** Enterprise-grade deployment com a simplicidade do MkDocs! 
-
-**Agora com ZERO side-effects garantidos!** 🛡️✨
+**🎉 É isso!** Enterprise-grade deployment com a simplicidade do MkDocs!
