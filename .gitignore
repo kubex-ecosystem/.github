@@ -49,12 +49,15 @@ yarn-error.log*
 next-env.d.ts
 
 # Sub-projects dependencies and builds
-tools/*/node_modules/
-tools/*/*/node_modules/
-tools/*/build/
-tools/*/dist/
-tools/*/.next/
-tools/*/.env*
+tools/**/node_modules/
+tools/**/*/node_modules/
+tools/**/*/*/node_modules/
+tools/**/coverage/
+tools/**/out/
+tools/**/build/
+tools/**/dist/
+tools/**/.next/
+tools/**/.env*
 
 # Logs
 logs/
