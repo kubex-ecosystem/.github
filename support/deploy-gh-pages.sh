@@ -216,7 +216,7 @@ create_project_archive() {
     # Create ZIP with no compression for maximum speed
     # Exclude patterns to avoid including unnecessary files
     if ! zip -0 -r -q "$_TEMP_ARCHIVE" . \
-        -x "node_modules/.cache/*" \
+        -x "node_modules/*" \
         -x ".git/objects/pack/*" \
         -x "*.log" \
         -x ".next/*" \
@@ -225,7 +225,9 @@ create_project_archive() {
         -x ".DS_Store" \
         -x "*.swp" \
         -x "*.swo" \
-        -x "thumbs.db"; then
+        -x "thumbs.db" \
+        -x "coverage/*" \
+        -x ".nyc_output/*"; then
         print_log "FATAL" "Failed to create project archive"
     fi
     
