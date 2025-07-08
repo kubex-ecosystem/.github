@@ -70,7 +70,7 @@ export function Contact() {
       icon: MapPin,
       label: 'Location',
       value: personalInfo.location,
-      href: `https://maps.google.com/?q=${encodeURIComponent(personalInfo.location)}`,
+      href: `https://maps.google.com/?q=${encodeURIComponent(personalInfo.location || '')}`,
     },
     {
       icon: Mail,
@@ -133,8 +133,8 @@ export function Contact() {
                     <motion.a
                       key={index}
                       href={info.href}
-                      target={info.href.startsWith('http') ? '_blank' : undefined}
-                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      target={info.href?.startsWith('http') ? '_blank' : undefined}
+                      rel={info.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="flex items-center gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-200 group"
                       whileHover={{ scale: 1.02 }}
                     >

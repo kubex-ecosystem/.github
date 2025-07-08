@@ -1,0 +1,5 @@
+{
+  "extends": [],
+  "rules": {},
+  "ignorePatterns": ["build/", "node_modules/"]
+}

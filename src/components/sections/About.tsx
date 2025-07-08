@@ -223,7 +223,7 @@ export function About() {
                                   <div
                                     key={i}
                                     className={`w-2 h-2 rounded-full ${
-                                      i < skill.level
+                                      i < (skill.level || 0)
                                         ? 'bg-gradient-to-r from-blue-500 to-purple-600'
                                         : 'bg-gray-300 dark:bg-gray-600'
                                     }`}
