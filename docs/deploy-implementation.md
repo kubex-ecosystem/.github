@@ -115,7 +115,7 @@ npm run deploy -- --dry-run
 - 💎 **É mais robusto** que qualquer script básico
 - ✨ **É mais elegante** que MkDocs (seu benchmark!)
 
-**🎉 PARABÉNS!** Você tem agora uma solução que grandes empresas pagariam milhares de dólares para ter! 
+**🎉 PARABÉNS!** Você tem agora uma solução que grandes empresas pagariam milhares de dólares para ter!
 
 ---
 
