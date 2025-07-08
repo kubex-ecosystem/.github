@@ -2,7 +2,7 @@
 
 ## 📁 Estrutura de Pastas
 
-```
+```plaintext
 rafa-mori-portfolio/
 ├── 📁 src/
 │   ├── 📁 app/
@@ -63,6 +63,7 @@ rafa-mori-portfolio/
 ## 🔧 Configuração Inicial
 
 ### package.json
+
 ```json
 {
   "name": "rafa-mori-portfolio",
@@ -99,6 +100,7 @@ rafa-mori-portfolio/
 ```
 
 ### next.config.js
+
 ```javascript
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -115,6 +117,7 @@ module.exports = nextConfig
 ```
 
 ### tailwind.config.js
+
 ```javascript
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -161,6 +164,7 @@ module.exports = {
 ```
 
 ### tsconfig.json
+
 ```json
 {
   "compilerOptions": {
@@ -197,6 +201,7 @@ module.exports = {
 ```
 
 ### .env.local
+
 ```bash
 # EmailJS Configuration
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
@@ -211,6 +216,7 @@ NEXT_PUBLIC_SITE_NAME="Rafa Mori - Full Cycle Developer"
 ## 🎯 Scripts de Deploy
 
 ### Script de Build e Deploy
+
 ```bash
 #!/bin/bash
 # deploy.sh
@@ -229,6 +235,7 @@ echo "🌐 Ready to deploy to Vercel, Netlify, or GitHub Pages"
 ```
 
 ### Vercel Deployment
+
 ```json
 // vercel.json
 {
@@ -241,6 +248,7 @@ echo "🌐 Ready to deploy to Vercel, Netlify, or GitHub Pages"
 ## 📊 Performance Checklist
 
 ### ✅ Otimizações Implementadas
+
 - [x] **Static Site Generation (SSG)** - Build completamente estático
 - [x] **Image Optimization** - Next.js Image component otimizado
 - [x] **Code Splitting** - Componentes carregados sob demanda
@@ -250,6 +258,7 @@ echo "🌐 Ready to deploy to Vercel, Netlify, or GitHub Pages"
 - [x] **Bundle Analysis** - Análise de tamanho dos bundles
 
 ### 🔍 SEO & Meta Tags
+
 ```typescript
 // src/app/layout.tsx
 export const metadata = {
@@ -302,13 +311,15 @@ npm run start
 
 ## 📈 Métricas de Performance Esperadas
 
-### Lighthouse Scores Alvo:
+### Lighthouse Scores Alvo
+
 - **Performance**: 95+ 🟢
 - **Accessibility**: 100 🟢  
 - **Best Practices**: 100 🟢
 - **SEO**: 100 🟢
 
-### Bundle Size:
+### Bundle Size
+
 - **Initial JS**: < 100KB
 - **Total JS**: < 250KB
 - **CSS**: < 50KB
@@ -323,4 +334,5 @@ npm run start
 3. **Personalizar cores** no Tailwind config
 4. **Configurar domínio** personalizado
 5. **Implementar Analytics** (Google Analytics/Vercel Analytics)
-
+6. **Otimizar SEO** com meta tags e sitemap
+7. **Implementar animações** com Framer Motion  

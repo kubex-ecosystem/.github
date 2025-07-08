@@ -3,6 +3,7 @@
 ## 📋 Checklist de Setup
 
 ### 1. Instalação Inicial
+
 ```bash
 # Clonar ou criar o projeto
 npx create-next-app@latest rafa-mori-portfolio --typescript --tailwind --eslint --app
@@ -20,6 +21,7 @@ npm install framer-motion @emailjs/browser lucide-react clsx tailwind-merge
 ### 2. Configuração de Ambiente
 
 #### Arquivo .env.local
+
 ```bash
 # EmailJS - Obter em https://www.emailjs.com/
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxxxxxx
@@ -33,9 +35,10 @@ NEXT_PUBLIC_SITE_NAME="Rafa Mori - Full Cycle Developer"
 
 #### Configuração do EmailJS
 
-1. **Criar conta no EmailJS**: https://www.emailjs.com/
+1. **Criar conta no EmailJS**: <https://www.emailjs.com/>
 2. **Criar Service** (Gmail/Outlook/etc)
 3. **Criar Template**:
+
 ```html
 <!-- EmailJS Template HTML -->
 <div>
@@ -50,7 +53,7 @@ NEXT_PUBLIC_SITE_NAME="Rafa Mori - Full Cycle Developer"
 
 ### 3. Estrutura de Imagens
 
-```
+```plaintext
 public/
 ├── images/
 │   ├── profile.png                 # Sua foto de perfil
@@ -70,6 +73,7 @@ public/
 ### 4. Personalização dos Dados
 
 #### src/data/projects.ts
+
 ```typescript
 // Substitua pelos seus projetos reais
 export const projects: Project[] = [
@@ -90,6 +94,7 @@ export const projects: Project[] = [
 ```
 
 #### src/data/personal.ts
+
 ```typescript
 // Atualizar com suas informações
 export const personalInfo: PersonalInfo = {
@@ -109,6 +114,7 @@ export const personalInfo: PersonalInfo = {
 ## 🎨 Customização Visual
 
 ### Cores Personalizadas (tailwind.config.js)
+
 ```javascript
 theme: {
   extend: {
@@ -130,6 +136,7 @@ theme: {
 ```
 
 ### CSS Customizado (src/styles/components.css)
+
 ```css
 /* Animações personalizadas */
 @keyframes blob {
@@ -184,6 +191,7 @@ vercel --prod
 ```
 
 #### Configuração Vercel (vercel.json)
+
 ```json
 {
   "buildCommand": "npm run build",
@@ -210,7 +218,8 @@ npm run build
 ```
 
 #### Configuração Netlify (_redirects)
-```
+
+```plaintext
 /*    /index.html   200
 ```
 
@@ -233,6 +242,7 @@ npm run deploy
 ## 🔍 SEO e Performance
 
 ### Meta Tags (src/app/layout.tsx)
+
 ```typescript
 export const metadata: Metadata = {
   title: 'Seu Nome - Full Cycle Developer',
@@ -244,6 +254,7 @@ export const metadata: Metadata = {
 ```
 
 ### Performance Checklist
+
 - ✅ **Imagens otimizadas** (WebP, tamanhos corretos)
 - ✅ **Lazy loading** implementado
 - ✅ **Bundle size** otimizado
@@ -251,6 +262,7 @@ export const metadata: Metadata = {
 - ✅ **Fontes** otimizadas (Google Fonts)
 
 ### Lighthouse Score Alvo
+
 - **Performance**: 95+ 🟢
 - **Accessibility**: 100 🟢
 - **Best Practices**: 100 🟢
@@ -259,6 +271,7 @@ export const metadata: Metadata = {
 ## 📊 Analytics
 
 ### Google Analytics 4
+
 ```typescript
 // src/lib/gtag.ts
 export const GA_TRACKING_ID = 'G-XXXXXXXXXX';
@@ -269,6 +282,7 @@ export const gtag = (...args: any[]) => {
 ```
 
 ### Vercel Analytics
+
 ```bash
 npm install @vercel/analytics
 
@@ -290,11 +304,13 @@ export default function RootLayout({ children }) {
 ## 🧪 Testes
 
 ### Setup de Testes
+
 ```bash
 npm install --save-dev @testing-library/react @testing-library/jest-dom jest-environment-jsdom
 ```
 
 ### Exemplo de Teste
+
 ```typescript
 // __tests__/components/Button.test.tsx
 import { render, screen } from '@testing-library/react';
@@ -310,6 +326,7 @@ test('renders button with text', () => {
 ## 🔧 Scripts Úteis
 
 ### package.json scripts
+
 ```json
 {
   "scripts": {
@@ -328,6 +345,7 @@ test('renders button with text', () => {
 ```
 
 ### Pre-commit Hook (package.json)
+
 ```json
 {
   "husky": {
@@ -347,6 +365,7 @@ test('renders button with text', () => {
 ## 🎯 Checklist Final de Launch
 
 ### Pré-Launch
+
 - [ ] **Dados pessoais** atualizados
 - [ ] **Projetos reais** adicionados
 - [ ] **Imagens** otimizadas e carregadas
@@ -357,6 +376,7 @@ test('renders button with text', () => {
 - [ ] **Domínio** personalizado configurado
 
 ### Pós-Launch
+
 - [ ] **Google Search Console** configurado
 - [ ] **Sitemap** submetido
 - [ ] **Social media** atualizada
@@ -388,18 +408,20 @@ test('renders button with text', () => {
    - Code splitting
 
 ### Suporte
-- **Next.js Docs**: https://nextjs.org/docs
-- **Framer Motion**: https://www.framer.com/motion/
-- **TailwindCSS**: https://tailwindcss.com/docs
-- **EmailJS**: https://www.emailjs.com/docs/
+
+- **Next.js Docs**: <https://nextjs.org/docs>
+- **Framer Motion**: <https://www.framer.com/motion/>
+- **TailwindCSS**: <https://tailwindcss.com/docs>
+- **EmailJS**: <https://www.emailjs.com/docs/>
 
 ---
 
 ## 🎉 Conclusão
 
-Seu portfólio está pronto para impressionar! 
+Seu portfólio está pronto para impressionar!
 
 **Principais funcionalidades implementadas:**
+
 - ✅ Design moderno e responsivo
 - ✅ Dark/Light mode
 - ✅ Filtros de projetos interativos
@@ -410,6 +432,7 @@ Seu portfólio está pronto para impressionar!
 - ✅ Build estático
 
 **Próximos passos:**
+
 1. Personalizar com seus dados
 2. Adicionar seus projetos reais
 3. Fazer deploy
@@ -417,3 +440,66 @@ Seu portfólio está pronto para impressionar!
 5. Iterar baseado em feedback
 
 **Sucesso garantido!** 🚀🎯
+
+## 🛠️ Configuração Final do Projeto
+
+### Estrutura Final do Projeto
+
+```plaintextrafa-mori-portfolio/
+├── src/
+│   ├── app/
+│   │   ├── projects/
+│   │   │   ├── mini-games/ 
+│   │   │   │   └── page.tsx      # Página do Mini Games
+│   │   │   ├── grompt/
+│   │   │   │   └── page.tsx      # Página do Grompt
+│   │   │   └── gemini-image/
+│   │   │       └── page.tsx      # Página do Gemini Image
+│   │   └── page.tsx              # Homepage principal
+│   └── data/
+│       └── projects.ts           # Dados dos projetos
+├── tools/
+│   ├── mini_games/               # Projeto original Mini Games
+│   ├── grompt/                   # Projeto original Grompt (frontend)
+│   └── gemini-image/             # Projeto original Gemini Image
+├── public/
+│   └── tools/                    # Builds e assets dos projetos
+│       ├── mini_games/           # Assets copiados
+│       └── grompt/               # Build do React
+├── package.json                  # Scripts de build integrados
+└── README.md                     # Documentação do projeto
+```
+
+### Configuração do Next.js  
+
+```javascript
+// next.config.js
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['example.com'],
+  },
+};
+
+module.exports = nextConfig;
+
+// next.config.js (com rewrites)
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['example.com'],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/projects/:path*',
+        destination: '/projects/:path*',
+      },
+    ];
+  },
+};
+
+export default nextConfig;
+```
