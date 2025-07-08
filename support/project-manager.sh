@@ -14,8 +14,11 @@ readonly COLOR_BLUE='\033[34m'
 readonly COLOR_RESET='\033[0m'
 
 # 📁 Configuration
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly SCRIPT_DIR=${SCRIPT_DIR%/}  # Remove trailing slash if exists
+PROJECT_ROOT="${SCRIPT_DIR%/*}"
+readonly PROJECT_ROOT="$PROJECT_ROOT"
 readonly ENTERPRISE_DEPLOY="$PROJECT_ROOT/support/deploy-gh-pages.sh"
 
 # 🎯 Logging functions (exactly matching Makefile)
