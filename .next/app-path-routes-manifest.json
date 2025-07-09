@@ -3,6 +3,6 @@
   "/_not-found/page": "/_not-found",
   "/page": "/",
   "/projects/gemini-image/page": "/projects/gemini-image",
-  "/projects/grompt/page": "/projects/grompt",
-  "/projects/mini-games/page": "/projects/mini-games"
+  "/projects/mini-games/page": "/projects/mini-games",
+  "/projects/grompt/page": "/projects/grompt"
 }

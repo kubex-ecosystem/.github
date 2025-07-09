@@ -52,6 +52,14 @@
       "static/chunks/918-cbf044dc49c94da8.js",
       "static/chunks/app/projects/gemini-image/page-f2ad682347d374dd.js"
     ],
+    "/projects/mini-games/page": [
+      "static/chunks/webpack-175e19c7d30480ae.js",
+      "static/chunks/4bd1b696-e76b9f291755390b.js",
+      "static/chunks/684-f61e242bc4bf21b6.js",
+      "static/chunks/main-app-a18f6ef8f7795fe6.js",
+      "static/chunks/408-4ed040f64887f044.js",
+      "static/chunks/app/projects/mini-games/page-ecf2c3119d976976.js"
+    ],
     "/projects/grompt/page": [
       "static/chunks/webpack-175e19c7d30480ae.js",
       "static/chunks/4bd1b696-e76b9f291755390b.js",
@@ -63,14 +71,6 @@
       "static/chunks/918-cbf044dc49c94da8.js",
       "static/chunks/478-6c5056d5cea0629b.js",
       "static/chunks/app/projects/grompt/page-ded4f218888f810f.js"
-    ],
-    "/projects/mini-games/page": [
-      "static/chunks/webpack-175e19c7d30480ae.js",
-      "static/chunks/4bd1b696-e76b9f291755390b.js",
-      "static/chunks/684-f61e242bc4bf21b6.js",
-      "static/chunks/main-app-a18f6ef8f7795fe6.js",
-      "static/chunks/408-4ed040f64887f044.js",
-      "static/chunks/app/projects/mini-games/page-ecf2c3119d976976.js"
     ]
   }
 }

@@ -1,6 +1,30 @@
 {
   "version": 4,
   "routes": {
+    "/": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/favicon.ico": {
       "initialHeaders": {
         "cache-control": "public, max-age=0, must-revalidate",
@@ -54,7 +78,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/": {
+    "/projects/grompt": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -67,8 +91,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
+      "srcRoute": "/projects/grompt",
+      "dataRoute": "/projects/grompt.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -101,37 +125,13 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
-    },
-    "/projects/grompt": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/projects/grompt",
-      "dataRoute": "/projects/grompt.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
     }
   },
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "6e7eafadfdbda60136523525bf64f7eb",
-    "previewModeSigningKey": "8387dab3a7f48ab81a06c97d846d290647df4503f05ed3cedf34973753ff7857",
-    "previewModeEncryptionKey": "e6bfe11dd654054cc7412167d9a41dc50bfca3b290c10c44be65d4ea7bd6e0ed"
+    "previewModeId": "52aaf5ab10d86df017b08cc2e8ca631a",
+    "previewModeSigningKey": "772d0fd64e1065fb09c10c62a0b98e8d97e8e45bca34731aea05db6f4b973f6a",
+    "previewModeEncryptionKey": "9a19481327918c1083ce71d033392b8fd756fe75d9dd6339a785f1d104baea45"
   }
 }
