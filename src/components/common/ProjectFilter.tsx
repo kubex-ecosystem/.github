@@ -3,7 +3,21 @@
 import { motion } from 'framer-motion';
 import { ProjectCategory } from '../../types';
 import { projectCategories } from '../../data/projects';
-import { Code, Database, Smartphone, Globe, Server, Wrench } from 'lucide-react';
+import { 
+  Code, 
+  Database, 
+  Smartphone, 
+  Globe, 
+  Server, 
+  Wrench, 
+  BarChart3, 
+  Terminal, 
+  Gamepad2, 
+  Brain, 
+  Package, 
+  Star,
+  FolderOpen 
+} from 'lucide-react';
 
 interface ProjectFilterProps {
   activeFilter: ProjectCategory;
@@ -17,6 +31,13 @@ const categoryIcons = {
   mobile: Smartphone,
   backend: Server,
   devops: Wrench,
+  'data-science': BarChart3,
+  devtools: Terminal,
+  'game-development': Gamepad2,
+  'ai-ml': Brain,
+  'tools-libraries': Package,
+  featured: Star,
+  other: FolderOpen,
 };
 
 export function ProjectFilter({ activeFilter, onFilterChange }: ProjectFilterProps) {
@@ -28,7 +49,8 @@ export function ProjectFilter({ activeFilter, onFilterChange }: ProjectFilterPro
       transition={{ duration: 0.6 }}
     >
       {projectCategories.map((category) => {
-        const Icon = categoryIcons[category.id as keyof typeof categoryIcons];
+        // Fallback para ícones não encontrados
+        const IconComponent = categoryIcons[category.id as keyof typeof categoryIcons] || FolderOpen;
         const isActive = activeFilter === category.id;
 
         return (
@@ -43,7 +65,7 @@ export function ProjectFilter({ activeFilter, onFilterChange }: ProjectFilterPro
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon size={16} />
+            <IconComponent size={16} />
             <span>{category.label}</span>
             {category.count > 0 && (
               <span className={`text-xs px-2 py-1 rounded-full ${

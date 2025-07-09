@@ -1,39 +1,97 @@
 import { Skill } from '../types';
+import {
+  siJavascript,
+  siTypescript,
+  siPython,
+  siGo,
+  siOpenjdk,
+  siDart,
+  siPhp,
+  siSharp,
+  siReact,
+  siNextdotjs,
+  siNodedotjs,
+  siExpress,
+  siFlutter,
+  siDjango,
+  siFlask,
+  siVuedotjs,
+  siAngular,
+  siDocker,
+  siKubernetes,
+  siTerraform,
+  siPostgresql,
+  siMysql,
+  siSqlite,
+  siMongodb,
+  siRedis,
+  siGit,
+  siGithub,
+  siPostman,
+  siFigma
+} from 'simple-icons';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
+import StarIcon from '@mui/icons-material/Star';
+import SelectAllIcon from '@mui/icons-material/SelectAll';
+import CodeIcon from '@mui/icons-material/Code';
+import BuildIcon from '@mui/icons-material/Build';
+import CloudIcon from '@mui/icons-material/Cloud';
+import StorageIcon from '@mui/icons-material/Storage';
+// Ícones específicos para tecnologias que não têm no simple-icons
+import AccountTreeIcon from '@mui/icons-material/AccountTree'; // Para Oracle
+import SecurityIcon from '@mui/icons-material/Security'; // Para SQL Server
+import PublicIcon from '@mui/icons-material/Public'; // Para AWS/Azure alternativo
+
+// Mapeamento dos ícones Material-UI para uso nos componentes
+export const materialIcons = {
+  StarBorderIcon,
+  StarHalfIcon,
+  StarIcon,
+  SelectAllIcon,
+  CodeIcon,
+  BuildIcon,
+  CloudIcon,
+  StorageIcon,
+  AccountTreeIcon,
+  SecurityIcon,
+  PublicIcon,
+};
 
 export const skillIcons = {
-  js: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/javascript.svg',
-  ts: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/typescript.svg',
-  python: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/python.svg',
-  go: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/go.svg',
-  java: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/java.svg',
-  dart: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/dart.svg',
-  php: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/php.svg',
-  cs: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/csharp.svg',
-  react: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/react.svg',
-  nextjs: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/nextdotjs.svg',
-  nodejs: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/node-dot-js.svg',
-  express: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/express.svg',
-  flutter: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/flutter.svg',
-  django: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/django.svg',
-  flask: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/flask.svg',
-  vue: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/vue-dot-js.svg',
-  angular: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/angular.svg',
-  aws: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/amazonaws.svg',
-  azure: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/microsoftazure.svg',
-  docker: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/docker.svg',
-  kubernetes: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/kubernetes.svg',
-  terraform: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/terraform.svg',
-  postgresql: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/postgresql.svg',
-  oracle: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/oracle.svg',
-  sqlserver: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/microsoftsqlserver.svg',
-  mongodb: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/mongodb.svg',
-  redis: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/redis.svg',
-  mysql: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/mysql.svg',
-  sqlite: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/sqlite.svg',
-  git: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/git.svg',
-  github: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/github.svg',
-  postman: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/postman.svg',
-  figma: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/figma.svg',
+  js: siJavascript,
+  ts: siTypescript,
+  python: siPython,
+  go: siGo,
+  java: siOpenjdk,
+  dart: siDart,
+  php: siPhp,
+  cs: siSharp,
+  react: siReact,
+  nextjs: siNextdotjs,
+  nodejs: siNodedotjs,
+  express: siExpress,
+  flutter: siFlutter,
+  django: siDjango,
+  flask: siFlask,
+  vue: siVuedotjs,
+  angular: siAngular,
+  aws: 'PublicIcon', // String para identificar o ícone Material-UI
+  azure: 'CloudIcon', // String para identificar o ícone Material-UI  
+  docker: siDocker,
+  kubernetes: siKubernetes,
+  terraform: siTerraform,
+  postgresql: siPostgresql,
+  oracle: 'AccountTreeIcon', // String para identificar o ícone Material-UI
+  sqlserver: 'SecurityIcon', // String para identificar o ícone Material-UI
+  mongodb: siMongodb,
+  redis: siRedis,
+  mysql: siMysql,
+  sqlite: siSqlite,
+  git: siGit,
+  github: siGithub,
+  postman: siPostman,
+  figma: siFigma,
 };
 
 export const skillDescriptions: Record<string, string> = {
@@ -54,18 +112,8 @@ export const skillDescriptions: Record<string, string> = {
   flask: "Flask is a lightweight WSGI web application framework in Python, designed to make getting started quick and easy.",
   vue: "Vue.js is a progressive JavaScript framework for building user interfaces and single-page applications.",
   angular: "Angular is a platform for building mobile and desktop web applications using TypeScript.",
-  aws: "Amazon Web Services (AWS) provides on-demand cloud computing platforms and APIs to individuals, companies, and governments.",
-  azure: "Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications through Microsoft-managed data centers.",
   docker: "Docker is an open platform for developing, shipping, and running applications in containers.",
   kubernetes: "Kubernetes is an open-source system for automating the deployment, scaling, and management of containerized applications.",
-  terraform: "Terraform is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services.",
-  postgresql: "PostgreSQL is an open-source relational database management system emphasizing extensibility and SQL compliance.",
-  oracle: "Oracle Database is a multimodel database management system produced and marketed by Oracle Corporation.",
-  sqlserver: "Microsoft SQL Server is a relational database management system developed by Microsoft.",
-  mongodb: "MongoDB is a source-available cross-platform document-oriented database program, classified as a NoSQL database.",
-  redis: "Redis is an open-source, in-memory data structure store, used as a database, cache, and message broker.",
-  mysql: "MySQL is an open-source relational database management system based on SQL (Structured Query Language).",
-  sqlite: "SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.",
   git: "Git is a distributed version control system for tracking changes in source code during software development.",
   github: "GitHub is a web-based platform used for version control and collaboration, allowing multiple people to work on projects at once.",
   postman: "Postman is a collaboration platform for API development, providing tools for building, testing, and documenting APIs.",
@@ -73,12 +121,12 @@ export const skillDescriptions: Record<string, string> = {
 };
 
 export const skillCategoryIcons: Record<string, string> = {
-  all: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/all.svg',
-  language: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/language.svg',
-  framework: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/framework.svg',
-  tool: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/tool.svg',
-  cloud: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/cloud.svg',
-  database: 'https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/database.svg',
+  all: 'SelectAllIcon',
+  language: 'CodeIcon',
+  framework: 'BuildIcon',
+  tool: 'BuildIcon',
+  cloud: 'CloudIcon',
+  database: 'StorageIcon',
 };
 
 export const skillLevels = {
@@ -98,11 +146,11 @@ export const skillLevelDescriptions: Record<number, string> = {
 };
 
 export const skillLevelIcons: Record<number, string> = {
-  1: "https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/level-1.svg",
-  2: "https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/level-2.svg",
-  3: "https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/level-3.svg",
-  4: "https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/level-4.svg",
-  5: "https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/level-5.svg",
+  1: 'StarBorderIcon',
+  2: 'StarHalfIcon',
+  3: 'StarIcon',
+  4: 'StarIcon',
+  5: 'StarIcon',
 };
 
 export const skillLevelColors: Record<number, string> = {
@@ -134,21 +182,16 @@ export const skills: Skill[] = [
 
   // Frameworks
   { name: "React", level: 5, category: "framework", icon: "react" },
-  { name: "Next.js", level: 5, category: "framework", icon: "nextjs" },
   { name: "Node.js", level: 5, category: "framework", icon: "nodejs" },
   { name: "Express", level: 5, category: "framework", icon: "express" },
   { name: "Flutter", level: 4, category: "framework", icon: "flutter" },
   { name: "Django", level: 3, category: "framework", icon: "django" },
   { name: "Flask", level: 4, category: "framework", icon: "flask" },
-  { name: "Vue.js", level: 3, category: "framework", icon: "vue" },
   { name: "Angular", level: 3, category: "framework", icon: "angular" },
 
   // Cloud & DevOps
-  { name: "AWS", level: 4, category: "cloud", icon: "aws" },
-  { name: "Azure", level: 3, category: "cloud", icon: "azure" },
   { name: "Docker", level: 5, category: "tool", icon: "docker" },
   { name: "Kubernetes", level: 4, category: "tool", icon: "kubernetes" },
-  { name: "Terraform", level: 3, category: "tool", icon: "terraform" },
 
   // Databases
   { name: "PostgreSQL", level: 5, category: "database", icon: "postgresql" },

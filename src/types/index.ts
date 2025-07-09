@@ -10,16 +10,18 @@ export interface Project {
   github?: string;
   demo?: string;
   featured?: boolean;
-  status: 'completed' | 'in-progress' | 'planned' | 'archived';
+  status: ProjectStatus;
   startDate?: string; // ISO date string
 }
 
-export type ProjectCategory = 'all' | 'frontend' | 'fullstack' | 'mobile' | 'devops' | 'backend';
+export type ProjectStatus = 'completed' | 'in-progress' | 'planned' | 'archived';
+
+export type ProjectCategory = 'all' | 'frontend' | 'fullstack' | 'mobile' | 'devops' | 'backend' | 'data-science' | 'devtools' | 'game-development' | 'ai-ml' | 'tools-libraries' | 'other' | 'featured';
 
 export interface ProjectFilter {
   category: ProjectCategory;
   searchTerm?: string;
-  sortBy?: 'title' | 'date' | 'popularity';
+  sortBy?: 'title' | 'date'/*  | 'popularity' */;
   order?: 'asc' | 'desc';
 }
 
