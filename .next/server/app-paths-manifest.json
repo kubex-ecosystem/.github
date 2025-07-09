@@ -1,0 +1,8 @@
+{
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/projects/gemini-image/page": "app/projects/gemini-image/page.js",
+  "/projects/grompt/page": "app/projects/grompt/page.js",
+  "/projects/mini-games/page": "app/projects/mini-games/page.js"
+}

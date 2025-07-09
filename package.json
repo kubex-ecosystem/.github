@@ -22,12 +22,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "build:static": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "serve:static": "npx serve out",
-    "deploy": "./scripts/deploy-gh-pages.sh",
-    "deploy:gh-pages": "./scripts/deploy-gh-pages.sh"
+    "lint": "next lint"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.4",
