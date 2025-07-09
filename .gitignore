@@ -90,3 +90,4 @@ tools/**/.env*
 # Logs
 logs/
 *.log
+yarn.lock
