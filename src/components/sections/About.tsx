@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Code, Database, Cloud, Wrench, Award, Users, Coffee, Zap } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui';
 import { skills } from '../../data/skills';
+import { personalInfo } from '../../data/personal';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../../lib/animations';
 
 const skillCategories = [
@@ -16,10 +17,10 @@ const skillCategories = [
 ];
 
 const stats = [
-  { icon: Award, label: 'Years Experience', value: '5+' },
-  { icon: Code, label: 'Projects Completed', value: '50+' },
-  { icon: Users, label: 'Happy Clients', value: '30+' },
-  { icon: Coffee, label: 'Coffee Consumed', value: '∞' },
+  { icon: Award, label: 'Years Experience', value: `${((personalInfo.statistics || {}).yearsOfExperience || '0')}+` },
+  { icon: Code, label: 'Projects Completed', value: `${((personalInfo.statistics || {}).projectsCompleted || '0')}+` },
+  { icon: Users, label: 'Happy Clients', value: `${((personalInfo.statistics || {}).happyClients || '0')}+` },
+  { icon: Coffee, label: 'Coffee Consumed', value: `${((personalInfo.statistics || {}).coffeeConsumed || '0')}` },
 ];
 
 export function About() {
@@ -95,21 +96,11 @@ export function About() {
               My Journey
             </h3>
             <div className="space-y-4 text-gray-600 dark:text-gray-300">
-              <p>
-                I started my journey in technology at a young age, developing a passion for 
-                programming and problem-solving. Over the years, I have honed my skills in 
-                various programming languages and frameworks.
-              </p>
-              <p>
-                My expertise spans across full-stack development, cloud architecture, and 
-                DevOps practices. I enjoy working on all aspects of the software development 
-                lifecycle, from planning and design to deployment and maintenance.
-              </p>
-              <p>
-                I believe in continuous learning and staying up-to-date with the latest 
-                technologies. My goal is to create efficient, user-friendly applications 
-                that make a positive impact.
-              </p>
+              {personalInfo.journey?.map((item, index) => (
+                <p key={index}>
+                  {item}
+                </p>
+              ))}
             </div>
           </motion.div>
 

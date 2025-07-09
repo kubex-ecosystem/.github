@@ -11,7 +11,6 @@ export const projects: Project[] = [
     image: "https://raw.githubusercontent.com/rafa-mori/timecraft/refs/heads/main/docs/assets/timecraft_banner_c.png",
     images: [],
     github: "https://github.com/rafa-mori/timecraft",
-    featured: true,
     status: "in-progress"
   },
   {
@@ -24,7 +23,6 @@ export const projects: Project[] = [
     image: "https://raw.githubusercontent.com/rafa-mori/gobe/refs/heads/main/docs/assets/top_banner.png",
     images: [],
     github: "https://github.com/rafa-mori/gobe",
-    featured: true,
     status: "in-progress"
   },
   {
@@ -37,7 +35,6 @@ export const projects: Project[] = [
     image: "https://raw.githubusercontent.com/rafa-mori/gdbase/refs/heads/main/docs/assets/top_banner.png",
     images: [],
     github: "https://github.com/rafa-mori/gdbase",
-    featured: true,
     status: "in-progress"
   },
   {
@@ -51,7 +48,6 @@ export const projects: Project[] = [
     images: [],
     github: "https://github.com/rafa-mori/grompt",
     demo: "/projects/grompt",
-    featured: true,
     status: "completed"
   },
   {
@@ -65,7 +61,6 @@ export const projects: Project[] = [
     images: [],
     github: "https://github.com/rafa-mori/gemini-image-processor",
     demo: "/projects/gemini-image",
-    featured: true,
     status: "completed"
   },
   {
@@ -77,7 +72,6 @@ export const projects: Project[] = [
     technologies: ["Go", "CLI", "Docker", "Git", "Makefile", "Cobra"],
     image: "https://raw.githubusercontent.com/rafa-mori/goforge/refs/heads/main/docs/assets/top_banner_m_a.png",
     github: "https://github.com/rafa-mori/goforge",
-    featured: true,
     status: "completed"
   },
   {
@@ -91,7 +85,6 @@ export const projects: Project[] = [
     images: [],
     github: "https://github.com/rafa-mori/mini-games",
     demo: "/projects/mini-games",
-    featured: false,
     status: "completed"
   }
 ];

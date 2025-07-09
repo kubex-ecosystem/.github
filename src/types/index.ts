@@ -40,6 +40,13 @@ export interface ContactForm {
   message: string;
 }
 
+export interface Statistics {
+  yearsOfExperience: number;
+  projectsCompleted: number;
+  happyClients: number;
+  coffeeConsumed: string; // e.g., "∞" or a number
+}
+
 export interface PersonalInfo {
   name: string;
   title: string;
@@ -69,6 +76,8 @@ export interface PersonalInfo {
     professional?: string;
     website?: string;
   };
+  statistics?: Statistics;
+  journey?: string[];
 }
 
 export interface Role {
