@@ -1,0 +1,3 @@
+[submodule "mini_games"]
+	path = tools/mini_games
+	url = git@github.com:rafa-mori/mini_games.git
