@@ -1,0 +1,76 @@
+{
+  "pages": {
+    "/not-found": [
+      "static/chunks/webpack-175e19c7d30480ae.js",
+      "static/chunks/4bd1b696-e76b9f291755390b.js",
+      "static/chunks/684-f61e242bc4bf21b6.js",
+      "static/chunks/main-app-a18f6ef8f7795fe6.js",
+      "static/chunks/408-4ed040f64887f044.js",
+      "static/chunks/598-046f42c808606a78.js",
+      "static/chunks/app/not-found-c822c3ac17ed40a5.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack-175e19c7d30480ae.js",
+      "static/chunks/4bd1b696-e76b9f291755390b.js",
+      "static/chunks/684-f61e242bc4bf21b6.js",
+      "static/chunks/main-app-a18f6ef8f7795fe6.js",
+      "static/chunks/app/_not-found/page-b72775331b0d468e.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-175e19c7d30480ae.js",
+      "static/chunks/4bd1b696-e76b9f291755390b.js",
+      "static/chunks/684-f61e242bc4bf21b6.js",
+      "static/chunks/main-app-a18f6ef8f7795fe6.js",
+      "static/css/5ca287542711005e.css",
+      "static/chunks/app/layout-7e824d244a2977f3.js"
+    ],
+    "/loading": [
+      "static/chunks/webpack-175e19c7d30480ae.js",
+      "static/chunks/4bd1b696-e76b9f291755390b.js",
+      "static/chunks/684-f61e242bc4bf21b6.js",
+      "static/chunks/main-app-a18f6ef8f7795fe6.js",
+      "static/chunks/408-4ed040f64887f044.js",
+      "static/chunks/app/loading-706d49a3ea3a33f2.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-175e19c7d30480ae.js",
+      "static/chunks/4bd1b696-e76b9f291755390b.js",
+      "static/chunks/684-f61e242bc4bf21b6.js",
+      "static/chunks/main-app-a18f6ef8f7795fe6.js",
+      "static/chunks/408-4ed040f64887f044.js",
+      "static/chunks/598-046f42c808606a78.js",
+      "static/chunks/18-81b1536b568a12bf.js",
+      "static/chunks/app/page-392384404fef728f.js"
+    ],
+    "/projects/gemini-image/page": [
+      "static/chunks/webpack-175e19c7d30480ae.js",
+      "static/chunks/4bd1b696-e76b9f291755390b.js",
+      "static/chunks/684-f61e242bc4bf21b6.js",
+      "static/chunks/main-app-a18f6ef8f7795fe6.js",
+      "static/css/715be398208dca58.css",
+      "static/chunks/408-4ed040f64887f044.js",
+      "static/chunks/918-cbf044dc49c94da8.js",
+      "static/chunks/app/projects/gemini-image/page-f2ad682347d374dd.js"
+    ],
+    "/projects/grompt/page": [
+      "static/chunks/webpack-175e19c7d30480ae.js",
+      "static/chunks/4bd1b696-e76b9f291755390b.js",
+      "static/chunks/684-f61e242bc4bf21b6.js",
+      "static/chunks/main-app-a18f6ef8f7795fe6.js",
+      "static/css/715be398208dca58.css",
+      "static/chunks/363642f4-4339de4e50bfa211.js",
+      "static/chunks/408-4ed040f64887f044.js",
+      "static/chunks/918-cbf044dc49c94da8.js",
+      "static/chunks/478-6c5056d5cea0629b.js",
+      "static/chunks/app/projects/grompt/page-ded4f218888f810f.js"
+    ],
+    "/projects/mini-games/page": [
+      "static/chunks/webpack-175e19c7d30480ae.js",
+      "static/chunks/4bd1b696-e76b9f291755390b.js",
+      "static/chunks/684-f61e242bc4bf21b6.js",
+      "static/chunks/main-app-a18f6ef8f7795fe6.js",
+      "static/chunks/408-4ed040f64887f044.js",
+      "static/chunks/app/projects/mini-games/page-ecf2c3119d976976.js"
+    ]
+  }
+}
