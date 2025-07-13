@@ -64,7 +64,7 @@ export default function GromptDemo() {
   const [showApiModal, setShowApiModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedTemplate, setSelectedTemplate] = useState(promptTemplates[0]);
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState<Record<string, string>>({});
   const [generatedPrompt, setGeneratedPrompt] = useState('');
   const [apiKeys, setApiKeys] = useState({
     openai: '',
@@ -94,7 +94,7 @@ export default function GromptDemo() {
   const generatePrompt = () => {
     let result = selectedTemplate.template;
     Object.entries(inputs).forEach(([key, value]) => {
-      result = result.replace(new RegExp(`{${key}}`, 'g'), value || `[${key}]`);
+      result = result.replace(new RegExp(`{${key}}`, 'g'), String(value) || `[${key}]`);
     });
     setGeneratedPrompt(result);
   };
@@ -233,7 +233,7 @@ export default function GromptDemo() {
                     </label>
                     <input
                       type="text"
-                      value={inputs[variable] || ''}
+                      value={(inputs || { [variable]: '' })[variable] || ''}
                       onChange={(e) => setInputs(prev => ({
                         ...prev,
                         [variable]: e.target.value
@@ -297,6 +297,9 @@ export default function GromptDemo() {
                 Configurar API Keys
               </h2>
               <button
+                type="button"
+                aria-label="Fechar modal"
+                name='api-modal-close'
                 onClick={() => setShowApiModal(false)}
                 className="p-1 hover:bg-slate-700/50 rounded text-slate-400 hover:text-white"
               >

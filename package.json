@@ -7,7 +7,7 @@
   "homepage": "https://rafa-mori.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rafa-mori/rafa-mori-portfolio.git"
+    "url": "https://github.com/rafa-mori/.github.git"
   },
   "bugs": {
     "url": "https://github.com/rafa-mori/rafa-mori-portfolio/issues"
@@ -24,10 +24,7 @@
     "build": "next build",
     "build:static": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "serve:static": "npx serve out",
-    "deploy": "./scripts/deploy-gh-pages.sh",
-    "deploy:gh-pages": "./scripts/deploy-gh-pages.sh"
+    "lint": "next lint"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.4",
