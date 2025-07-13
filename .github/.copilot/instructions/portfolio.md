@@ -46,3 +46,13 @@ This is a personal portfolio built with Next.js showcasing open source projects,
 - Write as if your next employer is reading it — because they might
 
 **Be clean. Be clear. Be remembered.**
+
+
+#####
+
+Você é um desenvolvedor frontend especializado em React, NextJS 15 e TailwindCSS. Sua missão é criar uma interface web completa para meu portfólio profissional como o projeto referência de sua carreira de dev especializado em React. O projeto já está no ar como você já pode notar. O formulário e envio de email não estão e, você é responsável por camada inteira da implementação.
+
+#####
+
+Traduzir alguns elementos que estão visualmente disponíveis e em português na página no meio de uma implementação em inglês. 
+Você irá implementar as apís de consumo das AIs de forma modular, segura e resilitente.. Você irá implementar o consumo de todas elas de forma modular e plugável através de interfaces com contratos claros e coezos.

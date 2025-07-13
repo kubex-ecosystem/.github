@@ -2,6 +2,30 @@ import { Project } from '../types';
 
 export const projects: Project[] = [
   {
+    id: 7,
+    title: "Mini Games Canvas",
+    description: "Coleção de jogos clássicos criados com HTML5 Canvas e JavaScript puro para relaxar e exercitar lógicas de programação.",
+    longDescription: "Uma coleção de mini jogos clássicos (Pong, Snake, Tic-Tac-Toe) desenvolvida com HTML5 Canvas e JavaScript vanilla. O projeto foi criado para descansar a cabeça com lógicas mais leves e divertidas, mas acabou ganhando robustez na implementação.",
+    category: "frontend",
+    technologies: ["HTML5", "CSS3", "JavaScript", "Canvas", "Game Development"],
+    image: "https://raw.githubusercontent.com/rafa-mori/mini-games/refs/heads/main/docs/assets/top_banner.png",
+    images: [],
+    github: "https://github.com/rafa-mori/mini-games",
+    demo: "/projects/mini-games",
+    status: "completed"
+  },
+  {
+    id: 6,
+    title: "GoForge",
+    description: "Ferramenta CLI para desenvolvimento em Go, focada em produtividade e simplicidade.",
+    longDescription: "GoForge é uma ferramenta de linha de comando (CLI) projetada para simplificar o processo de desenvolvimento em Go. Com uma abordagem centrada no desenvolvedor, o GoForge oferece uma experiência de construção e implantação mais suave, permitindo que você se concentre no que realmente importa: escrever código.",
+    category: "devtools",
+    technologies: ["Go", "CLI", "Docker", "Git", "Makefile", "Cobra"],
+    image: "https://raw.githubusercontent.com/rafa-mori/goforge/refs/heads/main/docs/assets/top_banner_m_a.png",
+    github: "https://github.com/rafa-mori/goforge",
+    status: "completed"
+  },
+  {
     id: 1,
     title: "Timecraft AI",
     description: "Complete e-commerce solution with payment integration, inventory management, and admin dashboard.",
@@ -63,30 +87,7 @@ export const projects: Project[] = [
     demo: "/projects/gemini-image",
     status: "completed"
   },
-  {
-    id: 6,
-    title: "GoForge",
-    description: "Ferramenta CLI para desenvolvimento em Go, focada em produtividade e simplicidade.",
-    longDescription: "GoForge é uma ferramenta de linha de comando (CLI) projetada para simplificar o processo de desenvolvimento em Go. Com uma abordagem centrada no desenvolvedor, o GoForge oferece uma experiência de construção e implantação mais suave, permitindo que você se concentre no que realmente importa: escrever código.",
-    category: "devtools",
-    technologies: ["Go", "CLI", "Docker", "Git", "Makefile", "Cobra"],
-    image: "https://raw.githubusercontent.com/rafa-mori/goforge/refs/heads/main/docs/assets/top_banner_m_a.png",
-    github: "https://github.com/rafa-mori/goforge",
-    status: "completed"
-  },
-  {
-    id: 7,
-    title: "Mini Games Canvas",
-    description: "Coleção de jogos clássicos criados com HTML5 Canvas e JavaScript puro para relaxar e exercitar lógicas de programação.",
-    longDescription: "Uma coleção de mini jogos clássicos (Pong, Snake, Tic-Tac-Toe) desenvolvida com HTML5 Canvas e JavaScript vanilla. O projeto foi criado para descansar a cabeça com lógicas mais leves e divertidas, mas acabou ganhando robustez na implementação.",
-    category: "frontend",
-    technologies: ["HTML5", "CSS3", "JavaScript", "Canvas", "Game Development"],
-    image: "https://raw.githubusercontent.com/rafa-mori/mini-games/refs/heads/main/docs/assets/top_banner.png",
-    images: [],
-    github: "https://github.com/rafa-mori/mini-games",
-    demo: "/projects/mini-games",
-    status: "completed"
-  }
+
 ];
 
 export const projectCategories = [
