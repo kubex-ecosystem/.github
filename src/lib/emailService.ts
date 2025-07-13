@@ -1,74 +1,58 @@
-import emailjs from '@emailjs/browser';
 import { ContactForm } from '../types';
-
-interface EmailConfig {
-  serviceId: string;
-  templateId: string;
-  publicKey: string;
-}
-
-const emailConfig: EmailConfig = {
-  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
-};
+import { translations } from './translations';
 
 export const emailService = {
-  async sendContactForm(formData: ContactForm): Promise<{ success: boolean; message: string }> {
+  async sendContactForm(formData: ContactForm, language: 'en' | 'pt' = 'en'): Promise<{ success: boolean; message: string }> {
     try {
-      if (!emailConfig.serviceId || !emailConfig.templateId || !emailConfig.publicKey) {
-        throw new Error('EmailJS configuration is missing');
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...formData, language }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Erro ao enviar mensagem');
       }
-
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        to_name: 'Rafael Mori',
-      };
-
-      await emailjs.send(
-        emailConfig.serviceId,
-        emailConfig.templateId,
-        templateParams,
-        emailConfig.publicKey
-      );
 
       return {
         success: true,
-        message: 'Message sent successfully! I\'ll get back to you soon.',
+        message: result.message || 'Mensagem enviada com sucesso!',
       };
     } catch (error) {
-      console.error('Email sending failed:', error);
+      console.error('Erro ao enviar email:', error);
       return {
         success: false,
-        message: 'Failed to send message. Please try again or contact me directly.',
+        message: error instanceof Error ? error.message : 'Erro ao enviar mensagem. Tente novamente.',
       };
     }
   },
 
-  validateForm(formData: ContactForm): { isValid: boolean; errors: Partial<ContactForm> } {
+  validateForm(formData: ContactForm, language: 'en' | 'pt' = 'en'): { isValid: boolean; errors: Partial<ContactForm> } {
     const errors: Partial<ContactForm> = {};
+    const t = translations[language].contact.validation;
 
     if (!formData.name.trim()) {
-      errors.name = 'Name is required';
+      errors.name = t.nameRequired;
     }
 
     if (!formData.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = t.emailRequired;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = 'Please enter a valid email address';
+      errors.email = t.emailInvalid;
     }
 
     if (!formData.subject.trim()) {
-      errors.subject = 'Subject is required';
+      errors.subject = t.subjectRequired;
     }
 
     if (!formData.message.trim()) {
-      errors.message = 'Message is required';
+      errors.message = t.messageRequired;
     } else if (formData.message.length < 10) {
-      errors.message = 'Message must be at least 10 characters long';
+      errors.message = t.messageMinLength;
     }
 
     return {

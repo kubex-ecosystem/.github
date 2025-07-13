@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { Button } from '../../components/ui';
+import { LanguageToggle } from '../common';
 
 const navigation = [
   { name: 'Home', href: '#home' },
@@ -73,8 +74,10 @@ export function Header() {
             </div>
           </div>
 
-          {/* Theme Toggle & Mobile Menu */}
+          {/* Theme Toggle, Language Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
+            <LanguageToggle />
+            
             <Button
               variant="ghost"
               size="sm"

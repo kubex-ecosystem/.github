@@ -8,8 +8,10 @@ import { ContactForm } from '../../types';
 import { emailService } from '../../lib/emailService';
 import { personalInfo } from '../../data/personal';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../../lib/animations';
+import { useLanguage } from '../../context/LanguageContext';
 
 export function Contact() {
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState<ContactForm>({
     name: '',
     email: '',
@@ -37,7 +39,7 @@ export function Contact() {
     e.preventDefault();
     
     // Validate form
-    const validation = emailService.validateForm(formData);
+    const validation = emailService.validateForm(formData, language);
     if (!validation.isValid) {
       setErrors(validation.errors);
       return;
@@ -47,7 +49,7 @@ export function Contact() {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      const result = await emailService.sendContactForm(formData);
+      const result = await emailService.sendContactForm(formData, language);
       
       if (result.success) {
         setSubmitStatus({ type: 'success', message: result.message });
@@ -68,7 +70,7 @@ export function Contact() {
   const contactInfo = [
     {
       icon: MapPin,
-      label: 'Location',
+      label: t('contact.location'),
       value: personalInfo.location,
       href: `https://maps.google.com/?q=${encodeURIComponent(personalInfo.location || '')}`,
     },
@@ -80,13 +82,13 @@ export function Contact() {
     },
     {
       icon: Github,
-      label: 'GitHub',
+      label: t('contact.github'),
       value: '@faelmori',
       href: personalInfo.social.github,
     },
     {
       icon: Linkedin,
-      label: 'LinkedIn',
+      label: t('contact.linkedin'),
       value: 'Rafael Mori',
       href: personalInfo.social.linkedin,
     },
@@ -103,10 +105,10 @@ export function Contact() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Let's Work Together
+            {t('contact.title')}
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Have a project in mind or just want to chat? I'd love to hear from you.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -120,12 +122,11 @@ export function Contact() {
           >
             <Card className="h-full">
               <CardHeader>
-                <CardTitle className="text-2xl">Get in Touch</CardTitle>
+                <CardTitle className="text-2xl">{t('contact.getInTouch')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <p className="text-gray-600 dark:text-gray-300">
-                  I'm always open to discussing new opportunities, interesting projects, 
-                  or just having a conversation about technology and development.
+                  {t('contact.description')}
                 </p>
 
                 <div className="space-y-4">
@@ -156,10 +157,10 @@ export function Contact() {
                 {/* CTA */}
                 <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg">
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                    Quick Response Guaranteed
+                    {t('contact.quickResponse')}
                   </h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300">
-                    I typically respond to all inquiries within 24 hours. Looking forward to hearing from you!
+                    {t('contact.quickResponseDesc')}
                   </p>
                 </div>
               </CardContent>
@@ -175,49 +176,49 @@ export function Contact() {
           >
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl">Send a Message</CardTitle>
+                <CardTitle className="text-2xl">{t('contact.sendMessage')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Input
-                      label="Name"
+                      label={t('contact.form.name')}
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       error={errors.name}
-                      placeholder="Your full name"
+                      placeholder={t('contact.form.namePlaceholder')}
                       required
                     />
                     <Input
-                      label="Email"
+                      label={t('contact.form.email')}
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       error={errors.email}
-                      placeholder="your@email.com"
+                      placeholder={t('contact.form.emailPlaceholder')}
                       required
                     />
                   </div>
 
                   <Input
-                    label="Subject"
+                    label={t('contact.form.subject')}
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
                     error={errors.subject}
-                    placeholder="What is this about?"
+                    placeholder={t('contact.form.subjectPlaceholder')}
                     required
                   />
 
                   <Textarea
-                    label="Message"
+                    label={t('contact.form.message')}
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     error={errors.message}
-                    placeholder="Tell me about your project or just say hello!"
+                    placeholder={t('contact.form.messagePlaceholder')}
                     rows={6}
                     required
                   />
@@ -251,12 +252,12 @@ export function Contact() {
                     {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                        Sending...
+                        {t('contact.form.sending')}
                       </>
                     ) : (
                       <>
                         <Send className="w-5 h-5 mr-2" />
-                        Send Message
+                        {t('contact.form.send')}
                       </>
                     )}
                   </Button>
