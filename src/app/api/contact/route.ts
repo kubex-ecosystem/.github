@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
     // Enviar email usando Resend
     const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <noreply@rafa-mori.dev>', // Substitua pelo seu domínio
-      to: ['rafa-mori@outlook.com'], // Seu email onde deseja receber as mensagens
+      to: ['@outlook.com'], // Seu email onde deseja receber as mensagens
       subject: `${t.emailSubjects.newContact} - ${body.subject}`,
       html: t.emailContent.newContactHtml(body),
       text: `

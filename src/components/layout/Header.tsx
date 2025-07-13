@@ -2,10 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import { useTheme } from '../../context/ThemeContext';
+import { Menu, X } from 'lucide-react';
 import { Button } from '../../components/ui';
-import { LanguageToggle } from '../common';
+import { LanguageToggle, ThemeToggle } from '../common';
 
 const navigation = [
   { name: 'Home', href: '#home' },
@@ -15,7 +14,6 @@ const navigation = [
 ];
 
 export function Header() {
-  const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -74,18 +72,10 @@ export function Header() {
             </div>
           </div>
 
-          {/* Theme Toggle, Language Toggle & Mobile Menu */}
+          {/* Language Toggle, Theme Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
             <LanguageToggle />
-            
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleTheme}
-              className="p-2"
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </Button>
+            <ThemeToggle />
 
             {/* Mobile menu button */}
             <div className="md:hidden">

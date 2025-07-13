@@ -12,7 +12,7 @@ interface ThemeContextType {
 const themeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -22,13 +22,21 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setTheme(stored);
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setTheme('dark');
+    } else {
+      setTheme('light');
     }
   }, []);
 
   useEffect(() => {
     if (mounted) {
       localStorage.setItem('theme', theme);
-      document.documentElement.className = theme;
+      const root = document.documentElement;
+      
+      // Remove both classes first
+      root.classList.remove('light', 'dark');
+      
+      // Add the current theme class
+      root.classList.add(theme);
     }
   }, [theme, mounted]);
 
@@ -36,8 +44,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
+  // Prevent flash of wrong theme
   if (!mounted) {
-    return null;
+    return (
+      <div suppressHydrationWarning>
+        {children}
+      </div>
+    );
   }
 
   return (
@@ -50,6 +63,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useTheme() {
   const context = useContext(themeContext);
   if (context === undefined) {
+    console.error('useTheme must be used within a ThemeProvider. Make sure your component is wrapped with ThemeProvider.');
     throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
