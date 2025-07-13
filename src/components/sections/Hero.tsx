@@ -5,8 +5,11 @@ import { Mail, Download, ExternalLink, Github, Linkedin } from 'lucide-react';
 import { Button } from '../ui';
 import { personalInfo } from '../../data/personal';
 import { fadeInUp, staggerContainer, scaleIn } from '../../lib/animations';
+import { useLanguage } from '../../context/LanguageContext';
 
 export function Hero() {
+  const { t, language } = useLanguage();
+
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -14,6 +17,8 @@ export function Hero() {
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -76,11 +81,11 @@ export function Hero() {
             variants={fadeInUp}
           >
             <Button size="lg" onClick={scrollToProjects} className="group text-lg px-8 py-4 min-w-[200px]">
-              Ver Meus Projetos
+              {t('hero.externalLink')}
               <ExternalLink className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button variant="outline" size="lg" onClick={scrollToContact} className="text-lg px-8 py-4 min-w-[200px]">
-              Entre em Contato
+              {t('hero.contactLinkButton')}
               <Mail className="ml-2 w-5 h-5" />
             </Button>
           </motion.div>

@@ -31,6 +31,12 @@ export const translations = {
       location: "Location",
       github: "GitHub",
       linkedin: "LinkedIn"
+    },
+    hero: {
+      externalLink: "View Projects",
+      externalLinkButton: "View Projects",
+      contactLink: "Get in Touch",
+      contactLinkButton: "Get in Touch",
     }
   },
   pt: {
@@ -65,6 +71,12 @@ export const translations = {
       location: "Localização",
       github: "GitHub",
       linkedin: "LinkedIn"
+    },
+    hero : {
+      externalLink: "Ver Projetos",
+      externalLinkButton: "Ver Projetos",
+      contactLink: "Entre em Contato",
+      contactLinkButton: "Entre em Contato",
     }
   }
 };
