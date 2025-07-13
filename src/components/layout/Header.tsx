@@ -47,7 +47,15 @@ export function Header() {
               Rafa Mori
             </a>
           </motion.div>
-
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-QK23V83HGE"></script>
+          <script>
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-QK23V83HGE');
+            `}
+          </script>
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">

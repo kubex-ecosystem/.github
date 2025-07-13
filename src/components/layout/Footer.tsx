@@ -93,16 +93,6 @@ export function Footer() {
           </p>
         </div>
       </div>
-      
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-QK23V83HGE"></script>
-      <script>
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-QK23V83HGE');
-        `}
-      </script>
     </footer>
   );
 }
