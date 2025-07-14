@@ -35,6 +35,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#ffffff" /> 
+        
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -58,6 +62,17 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} font-sans`}>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QK23V83HGE"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QK23V83HGE');
+          `
+          }}
+        />
         <LanguageProvider>
           <ThemeProvider>
             {children}

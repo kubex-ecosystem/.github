@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '../../components/ui';
 import { LanguageToggle, ThemeToggle } from '../common';
+import { Analytics } from "@vercel/analytics/next"
 
 const navigation = [
   { name: 'Home', href: '#home' },
@@ -46,15 +47,6 @@ export function Header() {
               Rafa Mori
             </a>
           </motion.div>
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-QK23V83HGE"></script>
-          <script>
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-QK23V83HGE');
-            `}
-          </script>
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
@@ -115,6 +107,8 @@ export function Header() {
           </div>
         </motion.div>
       </nav>
+      <Analytics />
     </motion.header>
+    
   );
 }
