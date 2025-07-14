@@ -99,11 +99,11 @@ export default function LookAtniShowcase() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-900 shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-white dark:bg-gray-900 shadow-sm border-b just">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
           <div className="py-8">
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-center"
             >
@@ -121,8 +121,8 @@ export default function LookAtniShowcase() {
             </motion.div>
 
             {/* Tabs */}
-            <div className="mt-8 flex justify-center">
-              <div className="bg-gray-100 dark:bg-gray-800 p-1 rounded-lg">
+            <div className="mt-5 ">
+              <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-lg">
                 <button
                   onClick={() => setActiveTab('projects')}
                   className={`flex items-center gap-2 px-6 py-3 rounded-md font-medium transition-all ${
