@@ -103,57 +103,6 @@ export default function ProjectExtractor({ projectFile, projectName, description
     return `${(bytes / (1024 * 1024)).toFixed(1)}MB`;
   };
 
-  const buildFileTree = (files: ProjectFile[]) => {
-    const tree: any = {};
-    
-    files.forEach(file => {
-      const parts = file.path.split('/');
-      let current = tree;
-      
-      parts.forEach((part, index) => {
-        if (!current[part]) {
-          current[part] = index === parts.length - 1 ? file : {};
-        }
-        current = current[part];
-      });
-    });
-    
-    return tree;
-  };
-
-  const renderFileTree = (tree: any, level = 0): React.ReactElement[] => {
-    return Object.entries(tree).map(([name, value]: [string, any]) => {
-      const isFile = value.path;
-      const key = `${level}-${name}`;
-      
-      return (
-        <motion.div
-          key={key}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: level * 0.1 }}
-          className={`ml-${level * 4}`}
-        >
-          <div
-            className={`flex items-center gap-2 p-2 rounded cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 ${
-              selectedFile?.path === value.path ? 'bg-blue-100 dark:bg-blue-900' : ''
-            }`}
-            onClick={() => isFile && setSelectedFile(value)}
-          >
-            {getFileIcon(name)}
-            <span className="text-sm">{name}</span>
-            {isFile && (
-              <span className="text-xs text-gray-500 ml-auto">
-                {formatFileSize(value.size)}
-              </span>
-            )}
-          </div>
-          {!isFile && renderFileTree(value, level + 1)}
-        </motion.div>
-      );
-    });
-  };
-
   return (
     <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-900">
       {/* Header */}
@@ -187,15 +136,15 @@ export default function ProjectExtractor({ projectFile, projectName, description
             <div className="grid grid-cols-3 gap-4 text-center">
               <div>
                 <div className="text-2xl font-bold text-blue-600">{projectData.stats.totalFiles}</div>
-                <div className="text-sm text-gray-600">Arquivos</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Arquivos</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-green-600">{formatFileSize(projectData.stats.totalBytes)}</div>
-                <div className="text-sm text-gray-600">Tamanho</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Tamanho</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-purple-600">{projectData.stats.totalMarkers}</div>
-                <div className="text-sm text-gray-600">Marcadores</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Marcadores</div>
               </div>
             </div>
           </motion.div>
@@ -225,7 +174,7 @@ export default function ProjectExtractor({ projectFile, projectName, description
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   extractionMode === 'preview' 
                     ? 'bg-blue-600 text-white' 
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    : 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500'
                 }`}
               >
                 <EyeIcon className="w-4 h-4" />
@@ -248,46 +197,146 @@ export default function ProjectExtractor({ projectFile, projectName, description
         </div>
       </div>
 
-      {/* Content */}
-      {projectData && (
-        <div className="grid grid-cols-1 md:grid-cols-3 h-96">
-          {/* File Tree */}
-          <div className="border-r bg-gray-50 dark:bg-gray-800 overflow-y-auto">
-            <div className="p-3 border-b bg-gray-100 dark:bg-gray-700">
-              <h4 className="font-semibold text-sm">Estrutura do Projeto</h4>
-            </div>
-            <div className="p-2">
-              {renderFileTree(buildFileTree(projectData.files))}
-            </div>
-          </div>
-
-          {/* File Content */}
-          <div className="col-span-2 flex flex-col">
-            {selectedFile ? (
-              <>
-                <div className="p-3 border-b bg-gray-100 dark:bg-gray-700 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    {getFileIcon(selectedFile.path)}
-                    <span className="font-mono text-sm">{selectedFile.path}</span>
-                  </div>
-                  <div className="text-xs text-gray-500">
-                    {selectedFile.lines} linhas • {formatFileSize(selectedFile.size)}
-                  </div>
-                </div>
-                <div className="flex-1 overflow-y-auto">
-                  <pre className="p-4 text-xs font-mono bg-gray-900 text-gray-100 h-full overflow-auto">
-                    <code>{selectedFile.content}</code>
-                  </pre>
-                </div>
-              </>
-            ) : (
-              <div className="flex-1 flex items-center justify-center text-gray-500">
-                <div className="text-center">
-                  <DocumentIcon className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                  <p>Selecione um arquivo para visualizar</p>
-                </div>
+      {/* Master-Detail Content */}
+      <AnimatePresence>
+        {projectData && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="grid grid-cols-12 h-[500px]"
+          >
+            {/* Master: File List (Left Panel - 4/12 columns) */}
+            <div className="col-span-4 border-r dark:border-gray-700 flex flex-col bg-gray-50 dark:bg-gray-800">
+              <div className="p-3 border-b dark:border-gray-700 bg-gray-100 dark:bg-gray-700">
+                <h4 className="font-semibold text-sm text-gray-900 dark:text-white flex items-center gap-2">
+                  <FolderIcon className="w-4 h-4 text-blue-500" />
+                  Arquivos ({projectData.files.length})
+                </h4>
               </div>
-            )}
+              <div className="flex-1 overflow-y-auto">
+                {projectData.files.map((file, index) => (
+                  <motion.div
+                    key={file.path}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.03 }}
+                    className={`p-3 border-b dark:border-gray-700 cursor-pointer transition-all hover:bg-gray-100 dark:hover:bg-gray-700 ${
+                      selectedFile?.path === file.path 
+                        ? 'bg-blue-100 dark:bg-blue-900/30 border-r-2 border-r-blue-500 shadow-sm' 
+                        : ''
+                    }`}
+                    onClick={() => setSelectedFile(file)}
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      {getFileIcon(file.path)}
+                      <span className={`text-sm font-medium truncate flex-1 ${
+                        selectedFile?.path === file.path 
+                          ? 'text-blue-700 dark:text-blue-300' 
+                          : 'text-gray-900 dark:text-white'
+                      }`}>
+                        {file.path.split('/').pop()}
+                      </span>
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">
+                      <span className="truncate block">{file.path}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                      <span className="bg-gray-200 dark:bg-gray-600 px-1.5 py-0.5 rounded">
+                        {formatFileSize(file.size)}
+                      </span>
+                      <span className="bg-gray-200 dark:bg-gray-600 px-1.5 py-0.5 rounded">
+                        {file.lines}L
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Detail: File Content (Right Panel - 8/12 columns) */}
+            <div className="col-span-8 flex flex-col bg-white dark:bg-gray-900">
+              {selectedFile ? (
+                <>
+                  {/* File Header */}
+                  <div className="p-3 border-b dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 min-w-0 flex-1">
+                        {getFileIcon(selectedFile.path)}
+                        <span className="font-mono text-sm text-gray-900 dark:text-white truncate">
+                          {selectedFile.path}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400 ml-4">
+                        <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
+                          {selectedFile.lines} linhas
+                        </span>
+                        <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded">
+                          {formatFileSize(selectedFile.size)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* File Content with Animation */}
+                  <div className="flex-1 overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={selectedFile.path}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.2 }}
+                        className="h-full"
+                      >
+                        <pre className="h-full p-4 text-sm font-mono bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 overflow-auto whitespace-pre-wrap leading-relaxed">
+                          {selectedFile.content}
+                        </pre>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </>
+              ) : (
+                /* Empty State */
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex-1 flex items-center justify-center text-gray-500 dark:text-gray-400"
+                >
+                  <div className="text-center">
+                    <DocumentIcon className="w-20 h-20 mx-auto mb-4 opacity-30" />
+                    <h3 className="text-lg font-medium mb-2 text-gray-700 dark:text-gray-300">
+                      Nenhum arquivo selecionado
+                    </h3>
+                    <p className="text-sm max-w-xs">
+                      Clique em um arquivo na lista à esquerda para visualizar seu conteúdo completo
+                    </p>
+                    <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs">
+                      💡 <strong>Novo layout:</strong> Lista à esquerda, conteúdo detalhado à direita para melhor navegação!
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Empty State - No Project Data */}
+      {!projectData && !isLoading && (
+        <div className="p-8 text-center">
+          <FolderIcon className="w-16 h-16 text-gray-400 mx-auto mb-4 opacity-50" />
+          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+            Projeto ainda não extraído
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            Clique em "Extrair Projeto" para visualizar os arquivos extraídos dos marcadores LookAtni
+          </p>
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 max-w-md mx-auto">
+            <p className="text-sm text-blue-800 dark:text-blue-200">
+              🎯 <strong>Novo design:</strong> Interface master-detail com lista de arquivos à esquerda 
+              e visualização completa do código à direita para melhor UX!
+            </p>
           </div>
         </div>
       )}
