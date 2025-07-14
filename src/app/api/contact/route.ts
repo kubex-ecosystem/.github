@@ -180,8 +180,8 @@ export async function POST(request: NextRequest) {
 
     // Enviar email usando Resend
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact <noreply@rafa-mori.dev>', // Substitua pelo seu domínio
-      to: ['@outlook.com'], // Seu email onde deseja receber as mensagens
+      from: 'Portfolio Contact <noreply@rafa-mori.dev>', 
+      to: ['faelmori@gmail.com'],
       subject: `${t.emailSubjects.newContact} - ${body.subject}`,
       html: t.emailContent.newContactHtml(body),
       text: `
@@ -206,7 +206,7 @@ export async function POST(request: NextRequest) {
 
     // Email de confirmação para o remetente
     await resend.emails.send({
-      from: 'Rafael Mori <noreply@rafa-mori.dev>', // Substitua pelo seu domínio
+      from: 'Rafael Mori <noreply@rafa-mori.dev>', 
       to: [body.email],
       subject: t.emailSubjects.thankYou,
       html: t.emailContent.thankYouHtml(body),
@@ -222,7 +222,7 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Erro na API de contato:', error);
-    const language = 'en'; // fallback
+    const language = 'en';
     return NextResponse.json(
       { success: false, message: messages[language].responses.serverError },
       { status: 500 }

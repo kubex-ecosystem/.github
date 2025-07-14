@@ -106,7 +106,7 @@ export default function ProjectExtractor({ projectFile, projectName, description
   return (
     <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-900">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4">
+      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4" style={{ maxHeight: '60vh' }}>
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-lg font-bold">{projectName}</h3>
@@ -202,7 +202,7 @@ export default function ProjectExtractor({ projectFile, projectName, description
         {projectData && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: '500px' }}
             exit={{ opacity: 0, height: 0 }}
             className="grid grid-cols-12 h-[500px]"
           >
@@ -287,9 +287,8 @@ export default function ProjectExtractor({ projectFile, projectName, description
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
                         transition={{ duration: 0.2 }}
-                        className="h-full"
                       >
-                        <pre className="h-full p-4 text-sm font-mono bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 overflow-auto whitespace-pre-wrap leading-relaxed">
+                        <pre className="p-4 text-sm font-mono bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 overflow-auto whitespace-pre-wrap leading-relaxed">
                           {selectedFile.content}
                         </pre>
                       </motion.div>
@@ -332,12 +331,6 @@ export default function ProjectExtractor({ projectFile, projectName, description
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             Clique em "Extrair Projeto" para visualizar os arquivos extraídos dos marcadores LookAtni
           </p>
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 max-w-md mx-auto">
-            <p className="text-sm text-blue-800 dark:text-blue-200">
-              🎯 <strong>Novo design:</strong> Interface master-detail com lista de arquivos à esquerda 
-              e visualização completa do código à direita para melhor UX!
-            </p>
-          </div>
         </div>
       )}
     </div>

@@ -53,6 +53,20 @@ export default function LookatniShowcase() {
         description: 'Framework web minimalista e eficiente desenvolvido em Go',
         language: 'Go',
         framework: 'Pure Go'
+      },
+      {
+        name: 'lookatni-xtui.txt',
+        displayName: 'XTUI - UI Framework',
+        description: 'Framework de interface de usuário para aplicações core/terminais/CLI, com conexão em DB, extração de dados e mais',
+        language: 'Go',
+        framework: 'Pure Go'
+      },
+      {
+        name: 'lookatni-gdbase.txt',
+        displayName: 'GDBase - Modular: DB, Models & Services',
+        description: 'Solução de gerenciamento de bancos, serviços e modelos de dados desenvolvida em Go, projetada para ser modular, escalável e automática. Permite configuração zero, mas suporta customizações avançadas via arquivos de configuração, CLI e SDK.',
+        language: 'Go',
+        framework: 'Gin + GORM'
       }
     ];
     
