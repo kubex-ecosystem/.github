@@ -11,6 +11,7 @@ const navigation = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Projects', href: '#projects' },
+  { name: 'LookAtni Showcase', href: '/lookatni-showcase' },
   { name: 'Contact', href: '#contact' },
 ];
 

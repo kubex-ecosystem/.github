@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import ProjectExtractor from '../../components/ProjectExtractor';
 import AICodePlayground from '../../components/AICodePlayground';
 import WasmPowerDemo from '../../components/WasmPowerDemo';
@@ -9,7 +10,8 @@ import {
   RocketLaunchIcon, 
   CodeBracketIcon, 
   SparklesIcon,
-  DocumentTextIcon 
+  DocumentTextIcon,
+  HomeIcon
 } from '@heroicons/react/24/outline';
 
 interface ProjectFile {
@@ -20,71 +22,11 @@ interface ProjectFile {
   framework: string;
 }
 
-export default function LookAtniShowcase() {
+export default function LookatniShowcase() {
   const [activeTab, setActiveTab] = useState<'projects' | 'playground' | 'wasm'>('projects');
   const [projects, setProjects] = useState<ProjectFile[]>([]);
+  const [selectedProject, setSelectedProject] = useState<ProjectFile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simular carregamento dos projetos
-    // Na prática, você pode fazer uma API call para listar os arquivos .txt
-    const mockProjects: ProjectFile[] = [
-      {
-        name: 'lookatni-gdbase.txt',
-        displayName: 'GDBase - Database System',
-        description: 'Sistema completo de banco de dados desenvolvido em Go com funcionalidades avançadas',
-        language: 'Go',
-        framework: 'Gin + GORM'
-      },
-      {
-        name: 'lookatni-gobe.txt',
-        displayName: 'Gobe - Web Framework',
-        description: 'Framework web minimalista e eficiente desenvolvido em Go',
-        language: 'Go',
-        framework: 'Pure Go'
-      },
-      {
-        name: 'lookatni-gocrafter.txt',
-        displayName: 'GoCrafter - Project Generator',
-        description: 'Gerador de projetos Go com templates e configurações automáticas',
-        language: 'Go',
-        framework: 'CLI'
-      },
-      {
-        name: 'lookatni-goforge.txt',
-        displayName: 'GoForge - Build System',
-        description: 'Sistema de build e deploy automatizado para aplicações Go',
-        language: 'Go',
-        framework: 'CI/CD'
-      },
-      {
-        name: 'lookatni-logz.txt',
-        displayName: 'Logz - Logging System',
-        description: 'Sistema de logging estruturado e escalável',
-        language: 'Go',
-        framework: 'Microservices'
-      },
-      {
-        name: 'lookatni-mini_games.txt',
-        displayName: 'Mini Games Collection',
-        description: 'Coleção de mini jogos desenvolvidos em diferentes linguagens',
-        language: 'Multiple',
-        framework: 'Game Engines'
-      },
-      {
-        name: 'lookatni-xtui.txt',
-        displayName: 'XTUI - Terminal UI',
-        description: 'Interface de usuário para terminal com componentes reutilizáveis',
-        language: 'Go',
-        framework: 'TUI'
-      }
-    ];
-    
-    setTimeout(() => {
-      setProjects(mockProjects);
-      setIsLoading(false);
-    }, 1000);
-  }, []);
 
   const getLanguageColor = (language: string) => {
     const colors: Record<string, string> = {
@@ -96,71 +38,89 @@ export default function LookAtniShowcase() {
     return colors[language] || 'bg-gray-100 text-gray-800';
   };
 
+  useEffect(() => {
+    const mockProjects: ProjectFile[] = [
+      {
+        name: 'lookatni-gdbase.txt',
+        displayName: 'GDBase - Database System',
+        description: 'Sistema completo de banco de dados desenvolvido em Go com funcionalidades avançadas',
+        language: 'Go',
+        framework: 'Gin + GORM'
+      },
+      {
+        name: 'lookatni-gobe.txt',
+        displayName: 'Gobe - Web Framework', 
+        description: 'Framework web minimalista e eficiente desenvolvido em Go',
+        language: 'Go',
+        framework: 'Pure Go'
+      }
+    ];
+    
+    setTimeout(() => {
+      setProjects(mockProjects);
+      setSelectedProject(mockProjects[0]);
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      {/* Header */}
-      <div className="bg-white dark:bg-gray-900 shadow-sm border-b just">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
-          <div className="py-8">
-            <motion.div
-              initial={{ opacity: 0, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center"
-            >
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <RocketLaunchIcon className="w-10 h-10 text-blue-600" />
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  LookAtni File Markers
-                </h1>
-                <RocketLaunchIcon className="w-10 h-10 text-blue-600" />
-              </div>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                O primeiro portfólio do mundo com <strong>extração interativa de projetos</strong>. 
-                Explore projetos reais, extraia código AI, e veja a revolução em ação!
-              </p>
-            </motion.div>
-
-            {/* Tabs */}
-            <div className="mt-5 ">
-              <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-lg">
-                <button
-                  onClick={() => setActiveTab('projects')}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-md font-medium transition-all ${
-                    activeTab === 'projects'
-                      ? 'bg-white dark:bg-gray-700 text-blue-600 shadow-sm'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
-                  }`}
-                >
-                  <DocumentTextIcon className="w-5 h-5" />
-                  Projetos Interativos
-                </button>
-                <button
-                  onClick={() => setActiveTab('playground')}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-md font-medium transition-all ${
-                    activeTab === 'playground'
-                      ? 'bg-white dark:bg-gray-700 text-purple-600 shadow-sm'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
-                  }`}
-                >
-                  <SparklesIcon className="w-5 h-5" />
-                  AI Code Playground
-                </button>
-                <button
-                  onClick={() => setActiveTab('wasm')}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-md font-medium transition-all ${
-                    activeTab === 'wasm'
-                      ? 'bg-white dark:bg-gray-700 text-orange-600 shadow-sm'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
-                  }`}
-                >
-                  <CodeBracketIcon className="w-5 h-5" />
-                  🦀 WASM Power
-                </button>
-              </div>
+      {/* Top Navigation Bar */}
+      <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-4">
+              <Link 
+                href="/" 
+                className="flex items-center space-x-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                <HomeIcon className="h-5 w-5" />
+                <span className="font-medium">Portfólio</span>
+              </Link>
+              <div className="h-6 w-px bg-gray-300 dark:bg-gray-600" />
+              <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
+                LookAtni Showcase
+              </h1>
             </div>
+
+            <nav className="flex items-center space-x-2">
+              <button
+                onClick={() => setActiveTab('projects')}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  activeTab === 'projects'
+                    ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 shadow-sm'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+              >
+                <DocumentTextIcon className="h-4 w-4" />
+                <span>Projetos Interativos</span>
+              </button>
+              <button
+                onClick={() => setActiveTab('playground')}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  activeTab === 'playground'
+                    ? 'bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 shadow-sm'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+              >
+                <SparklesIcon className="h-4 w-4" />
+                <span>AI Playground</span>
+              </button>
+              <button
+                onClick={() => setActiveTab('wasm')}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  activeTab === 'wasm'
+                    ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 shadow-sm'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+              >
+                <RocketLaunchIcon className="h-4 w-4" />
+                <span>WASM Power</span>
+              </button>
+            </nav>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -247,7 +207,7 @@ export default function LookAtniShowcase() {
               className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-lg p-8 text-center"
             >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                🌟 Primeira Demonstração Interativa do Mundo
+                🌟 Entre as Primeiras Demonstrações Interativas do Mundo
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                 <div className="text-center">
