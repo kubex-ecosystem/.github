@@ -47,14 +47,7 @@ export interface Statistics {
   coffeeConsumed: string; // e.g., "∞" or a number
 }
 
-export interface PersonalInfo {
-  name: string;
-  title: string;
-  bio?: string;
-  location?: string;
-  email?: string;
-  phone?: string;
-  social: {
+export interface SocialInfo {
     github?: string;
     linkedin?: string;
     twitter?: string;
@@ -75,7 +68,16 @@ export interface PersonalInfo {
     medium?: string;
     professional?: string;
     website?: string;
-  };
+  }
+
+export interface PersonalInfo {
+  name: string;
+  title: string;
+  bio?: string;
+  location?: string;
+  email?: string;
+  phone?: string;
+  social: SocialInfo;
   statistics?: Statistics;
   journey?: string[];
 }

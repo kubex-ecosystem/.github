@@ -104,7 +104,9 @@ export default function ProjectExtractor({ projectFile, projectName, description
   };
 
   return (
-    <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-900">
+    <div 
+      className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-900"
+    >
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4" style={{ maxHeight: '60vh' }}>
         <div className="flex items-center justify-between">
@@ -207,7 +209,10 @@ export default function ProjectExtractor({ projectFile, projectName, description
             className="grid grid-cols-12 h-[500px]"
           >
             {/* Master: File List (Left Panel - 4/12 columns) */}
-            <div className="col-span-4 border-r dark:border-gray-700 flex flex-col bg-gray-50 dark:bg-gray-800">
+            <div 
+              className="col-span-4 border-r dark:border-gray-700 flex flex-col bg-gray-50 dark:bg-gray-800"
+              style={{ overflowY: 'auto' }}
+            >
               <div className="p-3 border-b dark:border-gray-700 bg-gray-100 dark:bg-gray-700">
                 <h4 className="font-semibold text-sm text-gray-900 dark:text-white flex items-center gap-2">
                   <FolderIcon className="w-4 h-4 text-blue-500" />
@@ -255,7 +260,10 @@ export default function ProjectExtractor({ projectFile, projectName, description
             </div>
 
             {/* Detail: File Content (Right Panel - 8/12 columns) */}
-            <div className="col-span-8 flex flex-col bg-white dark:bg-gray-900">
+            <div 
+              className="col-span-8 flex flex-col bg-white dark:bg-gray-900"
+              style={{ overflowY: 'auto' }}
+            >
               {selectedFile ? (
                 <>
                   {/* File Header */}
@@ -279,7 +287,10 @@ export default function ProjectExtractor({ projectFile, projectName, description
                   </div>
                   
                   {/* File Content with Animation */}
-                  <div className="flex-1 overflow-hidden">
+                  <div 
+                    className="flex-1 overflow-hidden"
+                    style={{ overflowY: 'auto' }}
+                  >
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={selectedFile.path}
@@ -288,7 +299,10 @@ export default function ProjectExtractor({ projectFile, projectName, description
                         exit={{ opacity: 0, x: -20 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <pre className="p-4 text-sm font-mono bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 overflow-auto whitespace-pre-wrap leading-relaxed">
+                        <pre 
+                          className="p-4 text-sm font-mono bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 overflow-auto whitespace-pre-wrap leading-relaxed"
+                          style={{ overflowY: 'auto' }}
+                        >
                           {selectedFile.content}
                         </pre>
                       </motion.div>
