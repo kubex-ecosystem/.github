@@ -21,6 +21,7 @@ node_modules/
 /coverage
 
 # Next.js
+**/.next/
 /.next/
 /out/
 
@@ -40,6 +41,10 @@ yarn-error.log*
 
 # Environment files
 .env*
+package-lock.json
+yarn.lock
+**/*/package-lock.json
+**/*/yarn.lock
 
 # Vercel
 .vercel
