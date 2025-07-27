@@ -8,6 +8,8 @@ Welcome to my GitHub profile! I'm Rafael Mori, a software developer passionate a
 creating impactful solutions. Always looking to learn, grow, and share knowledge with the community. 🚀
 
 ---
+
+[![wakatime](https://wakatime.com/badge/user/04f6fe46-6782-45b3-a50a-604625b89d5b.svg)](https://wakatime.com/@04f6fe46-6782-45b3-a50a-604625b89d5b)
 ![![Rafa Mori's GitHub followers](https://img.shields.io/github/followers/faelmori?style=social)](https://github.com/rafa-mori)
 ![![Rafa Mori's GitHub stars](https://img.shields.io/github/stars/faelmori?style=social)](https://github.com/rafa-mori)
 ![![Rafa Mori's GitHub forks](https://img.shields.io/github/forks/faelmori?style=social)](https://github.com/rafa-mori)
