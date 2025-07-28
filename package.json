@@ -22,6 +22,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:static": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -45,6 +46,7 @@
     "jszip": "^3.10.1",
     "lookatni-file-markers": "^1.1.0",
     "lucide-react": "^0.525.0",
+    "next": "15.3.5",
     "next-font": "^1.0.1",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
@@ -111,9 +113,8 @@
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
     "lint-staged": "^16.1.2",
-    "next": "^15.3.5",
     "serve": "^14.0.1",
-    "typescript": "^5.8.3"
+    "multer": ">=2.0.2"
   },
   "keywords": [
     "nextjs",
