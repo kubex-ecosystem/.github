@@ -1,0 +1,26 @@
+(()=>{var e={};e.id=732,e.ids=[732],e.modules={3295:e=>{"use strict";e.exports=require("next/dist/server/app-render/after-task-async-storage.external.js")},10846:e=>{"use strict";e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},27910:e=>{"use strict";e.exports=require("stream")},28354:e=>{"use strict";e.exports=require("util")},29294:e=>{"use strict";e.exports=require("next/dist/server/app-render/work-async-storage.external.js")},44870:e=>{"use strict";e.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},59569:(e,t,r)=>{"use strict";r.r(t),r.d(t,{patchFetch:()=>h,routeModule:()=>m,serverHooks:()=>g,workAsyncStorage:()=>x,workUnitAsyncStorage:()=>f});var a={};r.r(a),r.d(a,{GET:()=>u,POST:()=>d});var o=r(96559),s=r(48088),n=r(37719),i=r(32190),l=r(83398),p=r.n(l);class c{FS_CHAR="\x1c";markerRegex=RegExp(`^\\/\\/${this.FS_CHAR.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}\\/ (.+?) \\/${this.FS_CHAR.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}\\/\\/$`);parseAICode(e){let t={totalMarkers:0,totalFiles:0,totalBytes:0,errors:[],markers:[]};try{let r=e.split("\n"),a=null,o=[];for(let e=0;e<r.length;e++){let s=r[e],n=e+1,i=s.match(this.markerRegex);if(i){if(a&&a.filename){let e={filename:a.filename,content:o.join("\n"),startLine:a.startLine||0,endLine:n-1};t.markers.push(e),t.totalBytes+=e.content.length}a={filename:i[1],startLine:n+1},o=[],t.totalMarkers++}else a&&o.push(s)}if(a&&a.filename){let e={filename:a.filename,content:o.join("\n"),startLine:a.startLine||0,endLine:r.length};t.markers.push(e),t.totalBytes+=e.content.length}t.totalFiles=t.markers.length}catch(e){t.errors.push({line:0,message:`Erro ao processar c\xf3digo AI: ${e}`})}return t}}async function d(e){try{let{code:t,format:r="json",projectName:a="ai-generated-project"}=await e.json();if(!t||"string"!=typeof t)return i.NextResponse.json({error:"Code content required"},{status:400});let o=new c().parseAICode(t);if(o.errors.length>0)return i.NextResponse.json({error:"Failed to parse AI code",details:o.errors},{status:400});if(0===o.markers.length)return i.NextResponse.json({error:"No valid markers found in code",hint:"Make sure your AI-generated code contains LookAtni invisible markers"},{status:400});if("zip"===r){let e=new(p());o.markers.forEach(t=>{e.file(t.filename,t.content)});let t=`# ${a}
+
+Este projeto foi extra\xeddo usando LookAtni File Markers a partir de c\xf3digo gerado por IA.
+
+## Estat\xedsticas da Extra\xe7\xe3o
+
+- **Total de Arquivos**: ${o.totalFiles}
+- **Total de Marcadores**: ${o.totalMarkers}
+- **Tamanho Total**: ${Math.round(o.totalBytes/1024)}KB
+- **Data da Extra\xe7\xe3o**: ${new Date().toLocaleString("pt-BR")}
+
+## Estrutura de Arquivos
+
+${o.markers.map(e=>`- \`${e.filename}\` (${e.content.split("\n").length} linhas)`).join("\n")}
+
+## Como Foi Extra\xeddo
+
+1. C\xf3digo AI foi colado no LookAtni Playground
+2. Marcadores invis\xedveis foram detectados automaticamente
+3. Estrutura de arquivos foi extra\xedda e empacotada
+4. ZIP foi gerado com todos os arquivos
+
+---
+
+*Gerado por [LookAtni File Markers](https://github.com/rafa-mori/lookatni-file-markers)*
+`;e.file("README_EXTRACTION.md",t);let r=await e.generateAsync({type:"uint8array"}),s=new ArrayBuffer(r.length);return new Uint8Array(s).set(r),new Response(s,{headers:{"Content-Type":"application/zip","Content-Disposition":`attachment; filename="${a.replace(/\s+/g,"-")}.zip"`}})}return i.NextResponse.json({success:!0,extracted:!0,projectName:a,stats:{totalFiles:o.totalFiles,totalMarkers:o.totalMarkers,totalBytes:o.totalBytes,extractedAt:new Date().toISOString()},files:o.markers.map(e=>({path:e.filename,content:e.content,size:e.content.length,lines:e.content.split("\n").length,preview:e.content.substring(0,200)+(e.content.length>200?"...":"")})),downloadUrl:`/api/extract-ai-project?code=${encodeURIComponent(t)}&format=zip&projectName=${encodeURIComponent(a)}`})}catch(e){return i.NextResponse.json({error:"Failed to extract AI project",details:e instanceof Error?e.message:"Unknown error"},{status:500})}}async function u(e){let{searchParams:t}=new URL(e.url),r=t.get("code"),a=t.get("format")||"json",o=t.get("projectName")||"ai-generated-project";return r?d(new i.NextRequest(e.url,{method:"POST",body:JSON.stringify({code:decodeURIComponent(r),format:a,projectName:o}),headers:{"Content-Type":"application/json"}})):i.NextResponse.json({error:"Code parameter required"},{status:400})}let m=new o.AppRouteRouteModule({definition:{kind:s.RouteKind.APP_ROUTE,page:"/api/extract-ai-project/route",pathname:"/api/extract-ai-project",filename:"route",bundlePath:"app/api/extract-ai-project/route"},resolvedPagePath:"/srv/apps/LIFE/RAFA-MORI/rafa-mori/src/app/api/extract-ai-project/route.ts",nextConfigOutput:"",userland:a}),{workAsyncStorage:x,workUnitAsyncStorage:f,serverHooks:g}=m;function h(){return(0,n.patchFetch)({workAsyncStorage:x,workUnitAsyncStorage:f})}},63033:e=>{"use strict";e.exports=require("next/dist/server/app-render/work-unit-async-storage.external.js")},78335:()=>{},79428:e=>{"use strict";e.exports=require("buffer")},94735:e=>{"use strict";e.exports=require("events")},96487:()=>{}};var t=require("../../../webpack-runtime.js");t.C(e);var r=e=>t(t.s=e),a=t.X(0,[447,580,398],()=>r(59569));module.exports=a})();
