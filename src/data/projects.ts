@@ -37,7 +37,8 @@ export const projects: Project[] = [
     image: "https://raw.githubusercontent.com/rafa-mori/timecraft/refs/heads/main/docs/assets/timecraft_banner_c.png",
     images: [],
     github: "https://github.com/rafa-mori/timecraft",
-    status: "in-progress"
+    status: "in-progress",
+    lookatniFile: "lookatni-timecraft.latx"
   },
   {
     id: 2,
@@ -76,6 +77,7 @@ export const projects: Project[] = [
     images: [],
     github: "https://github.com/rafa-mori/grompt",
     demo: "/projects/grompt",
+    lookatniFile: "lookatni-grompt.latx",
     status: "completed"
   },
   {
@@ -89,8 +91,22 @@ export const projects: Project[] = [
     images: [],
     github: "https://github.com/rafa-mori/gemini-image-processor",
     demo: "/projects/gemini-image",
+    lookatniFile: "lookatni-gemini-images.latx",
     status: "completed"
   },
+  {
+    id: 8,
+    title: "xTUI",
+    description: "Uma biblioteca de interface de usuário para aplicações CLI, com foco em simplicidade e flexibilidade.",
+    longDescription: "xTUI é uma biblioteca de interface de usuário para aplicações de linha de comando (CLI) que permite criar interfaces ricas e interativas. Com uma API simples e flexível, xTUI facilita a construção de aplicações CLI modernas e responsivas.",
+    category: "devtools",
+    technologies: ["Go", "CLI", "TUI", "Cobra", "Gocui"],
+    image: "https://raw.githubusercontent.com/rafa-mori/xtui/refs/heads/main/docs/assets/top_banner.png",
+    images: [],
+    github: "https://github.com/rafa-mori/xtui",
+    lookatniFile: "lookatni-xtui.latx",
+    status: "completed"
+  }
 
 ];
 
