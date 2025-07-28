@@ -1,12 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Hero } from '../components/sections/Hero';
-import { Projects } from '../components/sections/Projects';
-import { Contact } from '../components/sections/Contact';
+import { FloatingContact } from '../components/common/FloatingContact';
 import { Footer } from '../components/layout/Footer';
 import { Header } from '../components/layout/Header';
 import { About } from '../components/sections/About';
+import { Contact } from '../components/sections/Contact';
+import { Hero } from '../components/sections/Hero';
+import { Projects } from '../components/sections/Projects';
 import { staggerContainer } from '../lib/animations';
 
 // Main page component
@@ -30,6 +31,7 @@ export default function Home() {
       <Projects />
       <Contact />
       <Footer />
+      <FloatingContact />
     </motion.div>
   );
 }

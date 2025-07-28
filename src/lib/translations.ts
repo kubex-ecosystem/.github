@@ -8,6 +8,7 @@ export const translations = {
       quickResponse: "Quick Response Guaranteed",
       quickResponseDesc: "I typically respond to all inquiries within 24 hours. Looking forward to hearing from you!",
       sendMessage: "Send a Message",
+      quickContact: "Quick Contact",
       form: {
         name: "Name",
         namePlaceholder: "Your full name",
@@ -48,6 +49,7 @@ export const translations = {
       quickResponse: "Resposta Rápida Garantida",
       quickResponseDesc: "Eu respondo normalmente a todas as consultas em até 24 horas. Ansioso para ouvir de você!",
       sendMessage: "Enviar Mensagem",
+      quickContact: "Contato Rápido",
       form: {
         name: "Nome",
         namePlaceholder: "Seu nome completo",

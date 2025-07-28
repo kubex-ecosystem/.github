@@ -113,8 +113,8 @@
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
     "lint-staged": "^16.1.2",
-    "serve": "^14.0.1",
-    "multer": ">=2.0.2"
+    "multer": ">=2.0.2",
+    "serve": "^14.0.1"
   },
   "keywords": [
     "nextjs",
