@@ -1,0 +1,4102 @@
+# LookAtni Code - Gerado automaticamente
+# Data: 2025-07-28T13:33:31.336Z
+# Fonte: ./gemini-image
+# Total de arquivos: 19
+
+/// README.md ///
+# DeepLook
+
+API para processar imagens de produtos usando AIs e extrair informações estruturadas (nome, marca, preço).
+
+## 🚀 Características
+
+- ✅ Extração automática de nome, marca e preço de produtos
+- ✅ Suporte a múltiplos formatos de imagem (JPEG, PNG, WebP)
+- ✅ Validação robusta de entrada
+- ✅ Processamento inteligente de resposta do Gemini
+- ✅ Logs estruturados
+- ✅ Tratamento de erros abrangente
+- ✅ API RESTful com documentação
+
+## 📋 Pré-requisitos
+
+- Node.js 18 ou superior
+- Chave de API do Google Gemini
+- npm ou yarn
+
+## 🛠️ Instalação
+
+- Clone o repositório:
+
+  ```bash
+  git clone <repository-url>
+  cd gemini-image
+  ```
+
+- Instale as dependências:
+
+  ```bash
+  npm install
+  ```
+
+- Configure as variáveis de ambiente:
+
+  ```bash
+  cp .env.example .env
+  ```
+
+Edite o arquivo `.env` e adicione sua chave da API do Gemini:
+
+```env
+GEMINI_API_KEY=sua_chave_api_aqui
+PORT=3000
+NODE_ENV=development
+```
+
+## 🚀 Uso
+
+### Iniciar o servidor
+
+```bash
+# Desenvolvimento
+npm run dev
+
+# Produção
+npm start
+```
+
+### Fazer requisições
+
+**Extrair informações de produto:**
+
+```bash
+curl -X POST \
+  -F "image=@caminho/para/sua/imagem.jpg" \
+  http://localhost:3000/api/extract-product
+```
+
+**Com análise detalhada:**
+
+```bash
+curl -X POST \
+  -F "image=@produto.jpg" \
+  "http://localhost:3000/api/extract-product?detailed=true"
+```
+
+### Exemplo de resposta
+
+```json
+{
+  "status": "sucesso",
+  "mensagem": "Informações do produto extraídas com sucesso",
+  "dados": {
+    "nome": "Smartphone Galaxy S23",
+    "marca": "Samsung",
+    "preco": "R$ 2.499,00"
+  },
+  "processado_em": "2025-01-05T10:30:00.000Z"
+}
+```
+
+## 📚 Endpoints da API
+
+### `POST /api/extract-product`
+
+Extrai informações de um produto a partir de uma imagem.
+
+**Parâmetros:**
+
+- `image` (file): Arquivo de imagem (máx. 5MB)
+- `detailed` (query, optional): boolean para análise mais detalhada
+
+**Resposta de sucesso (200):**
+
+```json
+{
+  "status": "sucesso",
+  "mensagem": "Informações do produto extraídas com sucesso", 
+  "dados": {
+    "nome": "string",
+    "marca": "string",
+    "preco": "string"
+  },
+  "processado_em": "ISO date"
+}
+```
+
+### `GET /api/health`
+
+Verifica o status da API.
+
+### `GET /api/docs`
+
+Documentação interativa da API.
+
+## 🧪 Testando
+
+### Testando com diferentes tipos de imagem
+
+1. **Produtos com embalagem:** Funciona melhor com produtos que têm embalagens claras com texto visível
+2. **Etiquetas de preço:** Imagens com etiquetas de preço bem definidas
+3. **Produtos de marca:** Itens com logos e marcas visíveis
+
+### Exemplos de teste
+
+```bash
+# Teste básico
+curl -X POST -F "image=@produto_smartphone.jpg" http://localhost:3000/api/extract-product
+
+# Teste com análise detalhada  
+curl -X POST -F "image=@produto_notebook.jpg" "http://localhost:3000/api/extract-product?detailed=true"
+
+# Verificar saúde da API
+curl http://localhost:3000/api/health
+```
+
+## 🔧 Estrutura do Projeto
+
+```plaintext
+src/
+├── server.js              # Servidor principal
+├── gemini.service.js       # Integração com Gemini AI
+├── validation.js           # Validações de entrada
+├── middleware.js           # Middlewares customizados
+├── utils.js               # Utilitários gerais
+├── logger.js              # Configuração de logs
+└── routes/
+    └── api.js             # Rotas da API
+```
+
+## 🚨 Tratamento de Erros
+
+A aplicação trata diversos cenários de erro:
+
+- ❌ Arquivo não suportado
+- ❌ Arquivo muito grande (>5MB)
+- ❌ Falha na API do Gemini
+- ❌ JSON inválido na resposta
+- ❌ Erro de validação de dados
+
+## 📊 Logs
+
+Os logs são salvos em:
+
+- `logs/combined.log` - Todos os logs
+- `logs/error.log` - Apenas erros
+
+Em desenvolvimento, os logs também aparecem no console.
+
+## 🔐 Considerações de Segurança
+
+- Validação rigorosa de tipos de arquivo
+- Limite de tamanho de arquivo
+- Headers de segurança HTTP
+- Sanitização de dados de entrada
+- Logs estruturados para auditoria
+
+## 🚀 Deploy
+
+### Docker (Recomendado)
+
+```bash
+# Build da imagem
+docker build -t gemini-image-processor .
+
+# Executar container
+docker run -p 3000:3000 \
+  -e GEMINI_API_KEY=sua_chave \
+  gemini-image-processor
+```
+
+### Deploy tradicional
+
+1. Configure as variáveis de ambiente de produção
+2. Execute `npm start`
+3. Configure um proxy reverso (nginx, etc.)
+
+## 📝 Limitações Conhecidas
+
+- Funciona melhor com imagens de alta qualidade
+- Texto muito pequeno pode não ser detectado
+- Produtos sem texto visível podem retornar "N/A"
+- Dependente da qualidade da resposta do Gemini
+
+## 🤝 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abra um Pull Request
+
+## 📄 Licença
+
+MIT License - veja o arquivo LICENSE para detalhes.
+
+/// docker/docker-compose.yml ///
+name: deeplook
+
+services:
+  gemini-image-processor:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - NODE_ENV=production
+      - PORT=3000
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+/// docs/CATALOG-GUIDE.md ///
+# Guia Rápido: Modo Catálogo
+
+## 🚀 Como usar o novo modo catálogo
+
+### 1. Via Frontend (Mais Fácil)
+
+- Acesse: <http://localhost:3000>
+- Marque: "Modo catálogo (múltiplos produtos)"  
+- Upload da imagem
+- Veja os resultados organizados em cards
+
+### 2. Via API Direta
+
+**Endpoint dedicado:**
+
+```bash
+curl -X POST -F "image=@catalogo.jpg" http://localhost:3000/api/extract-catalog
+```
+
+**Endpoint unificado:**
+
+```bash
+curl -X POST -F "image=@catalogo.jpg" "http://localhost:3000/api/extract-product?catalog=true"
+```
+
+**Com análise detalhada:**
+
+```bash
+curl -X POST -F "image=@catalogo.jpg" "http://localhost:3000/api/extract-catalog?detailed=true"
+```
+
+### 3. Via Script de Teste
+
+```bash
+# Testar catálogo
+node test-api.js ./catalogo.jpg --catalog
+
+# Testar produto único  
+node test-api.js ./produto.jpg
+```
+
+## 🎯 Tipos de Imagem Ideais
+
+### ✅ Funciona bem
+
+- Panfletos de supermercado
+- Catálogos promocionais
+- Prateleiras organizadas
+- Folhetos com ofertas
+- Displays de produtos
+
+### ⚠️ Pode ter limitações
+
+- Mais de 15 produtos
+- Produtos muito pequenos
+- Texto ilegível
+- Qualidade muito baixa
+
+## 📊 Formato da Resposta
+
+```json
+{
+  "status": "sucesso",
+  "mensagem": "X produto(s) extraído(s) com sucesso",
+  "dados": {
+    "produtos": [
+      {
+        "nome": "Nome do Produto",
+        "marca": "Marca",
+        "preco": "R$ XX,XX"
+      }
+    ],
+    "total_produtos": X
+  },
+  "processado_em": "2025-01-05T15:30:45.123Z"
+}
+```
+
+## 🔧 Parâmetros Disponíveis
+
+- `catalog=true` - Ativa modo catálogo
+- `detailed=true` - Análise mais detalhada (mais lenta)
+- Ambos podem ser combinados
+
+## 🏁 Início Rápido
+
+1. **Configure a API**: Adicione `GEMINI_API_KEY` no `.env`
+2. **Inicie o servidor**: `npm run dev`  
+3. **Teste rapidamente**: Acesse <http://localhost:3000>
+4. **Marque "Modo catálogo"** e faça upload de uma imagem com múltiplos produtos
+
+Pronto! A API vai extrair todos os produtos automaticamente! 🎉
+
+/// docs/CONFIGURATION.md ///
+# Configurações do Projeto
+
+## Variáveis de Ambiente Obrigatórias
+
+### GEMINI_API_KEY
+
+Chave de API do Google Gemini AI.
+
+**Como obter:**
+
+1. Acesse [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Faça login com sua conta Google
+3. Clique em "Create API Key"
+4. Copie a chave gerada
+
+**Configuração:**
+
+```bash
+GEMINI_API_KEY=sua_chave_real_aqui
+```
+
+## Variáveis de Ambiente Opcionais
+
+### PORT
+
+Porta do servidor (padrão: 3000)
+
+```bash
+PORT=3000
+```
+
+### NODE_ENV
+
+Ambiente de execução (development/production)
+
+```bash
+NODE_ENV=development
+```
+
+### LOG_LEVEL
+
+Nível de log (error/warn/info/debug)
+
+```bash
+LOG_LEVEL=info
+```
+
+### MAX_FILE_SIZE
+
+Tamanho máximo de arquivo
+
+```bash
+MAX_FILE_SIZE=5MB
+```
+
+### ALLOWED_FILE_TYPES
+
+Tipos de arquivo permitidos
+
+```bash
+ALLOWED_FILE_TYPES=image/jpeg,image/jpg,image/png,image/webp
+```
+
+## Configurações de Produção
+
+Para produção, adicione também:
+
+```bash
+# Segurança
+NODE_ENV=production
+
+# CORS (domínios permitidos)
+ALLOWED_ORIGINS=https://seudominio.com,https://www.seudominio.com
+
+# Rate limiting
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX_REQUESTS=100
+
+# Logs
+LOG_LEVEL=warn
+LOG_FILE_PATH=/var/log/gemini-image-processor.log
+```
+
+/// docs/EXAMPLES.md ///
+# Exemplo de Uso da API Gemini Image Processor
+
+Este documento mostra exemplos práticos de como usar a API para extrair informações de produtos.
+
+## 🌐 Usando via Frontend Web
+
+1. Acesse <http://localhost:3000>
+2. Clique na área de upload ou arraste uma imagem
+3. Clique em "Processar Imagem"
+4. Veja os resultados na tela
+
+## 📡 Usando via cURL
+
+### Exemplo básico
+
+```bash
+curl -X POST \
+  -F "image=@produto.jpg" \
+  http://localhost:3000/api/extract-product
+```
+
+### Com análise detalhada
+
+```bash
+curl -X POST \
+  -F "image=@produto.jpg" \
+  "http://localhost:3000/api/extract-product?detailed=true"
+```
+
+### Resposta esperada
+
+```json
+{
+  "status": "sucesso",
+  "mensagem": "Informações do produto extraídas com sucesso",
+  "dados": {
+    "nome": "iPhone 15 Pro",
+    "marca": "Apple",
+    "preco": "R$ 8.299,00"
+  },
+  "processado_em": "2025-01-05T15:30:45.123Z"
+}
+```
+
+## 🐍 Usando via Python
+
+```python
+import requests
+
+def extrair_produto(caminho_imagem, detalhado=False):
+    url = "http://localhost:3000/api/extract-product"
+    
+    if detalhado:
+        url += "?detailed=true"
+    
+    with open(caminho_imagem, 'rb') as f:
+        files = {'image': f}
+        response = requests.post(url, files=files)
+    
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise Exception(f"Erro: {response.status_code} - {response.text}")
+
+# Uso
+resultado = extrair_produto("produto.jpg")
+print(f"Nome: {resultado['dados']['nome']}")
+print(f"Marca: {resultado['dados']['marca']}")
+print(f"Preço: {resultado['dados']['preco']}")
+```
+
+## 🟨 Usando via JavaScript/Node.js
+
+```javascript
+import FormData from 'form-data';
+import fs from 'fs';
+import fetch from 'node-fetch';
+
+async function extrairProduto(caminhoImagem, detalhado = false) {
+  const formData = new FormData();
+  formData.append('image', fs.createReadStream(caminhoImagem));
+  
+  const url = `http://localhost:3000/api/extract-product${detalhado ? '?detailed=true' : ''}`;
+  
+  const response = await fetch(url, {
+    method: 'POST',
+    body: formData
+  });
+  
+  if (!response.ok) {
+    throw new Error(`Erro: ${response.status} - ${await response.text()}`);
+  }
+  
+  return await response.json();
+}
+
+// Uso
+try {
+  const resultado = await extrairProduto('produto.jpg');
+  console.log('Nome:', resultado.dados.nome);
+  console.log('Marca:', resultado.dados.marca);
+  console.log('Preço:', resultado.dados.preco);
+} catch (error) {
+  console.error('Erro:', error.message);
+}
+```
+
+## 🆕 NOVO: Processamento de Múltiplos Produtos (Catálogos)
+
+A partir da versão 2.0, a API suporta extração de múltiplos produtos de uma única imagem, ideal para:
+
+### ✅ Tipos de imagem suportados para catálogos:
+- Panfletos de supermercado
+- Catálogos promocionais  
+- Prateleiras com vários produtos
+- Displays de lojas
+- Folhetos com ofertas
+- Páginas de e-commerce
+
+## 📡 Novos Endpoints para Catálogos
+
+### `POST /api/extract-catalog`
+
+Endpoint dedicado para extração de múltiplos produtos.
+
+**Parâmetros:**
+- `image` (file): Arquivo de imagem (máx. 5MB)
+- `detailed` (query, optional): boolean para análise mais detalhada
+
+### `POST /api/extract-product?catalog=true`
+
+Endpoint unificado com modo catálogo ativado.
+
+**Parâmetros:**
+- `image` (file): Arquivo de imagem (máx. 5MB)
+- `catalog=true` (query): ativa modo catálogo
+- `detailed` (query, optional): boolean para análise mais detalhada
+
+### Resposta para catálogos:
+
+```json
+{
+  "status": "sucesso",
+  "mensagem": "3 produto(s) extraído(s) com sucesso",
+  "dados": {
+    "produtos": [
+      {
+        "nome": "Arroz Integral 1kg",
+        "marca": "Tio João",
+        "preco": "R$ 4,99"
+      },
+      {
+        "nome": "Feijão Preto 500g", 
+        "marca": "Camil",
+        "preco": "R$ 3,49"
+      },
+      {
+        "nome": "Óleo de Soja 900ml",
+        "marca": "Soya",
+        "preco": "R$ 5,99"
+      }
+    ],
+    "total_produtos": 3
+  },
+  "processado_em": "2025-01-05T15:30:45.123Z"
+}
+```
+
+## 🧪 Exemplos de Uso para Catálogos
+
+### Via cURL
+
+```bash
+# Extração de catálogo básica
+curl -X POST -F "image=@catalogo-supermercado.jpg" \
+  http://localhost:3000/api/extract-catalog
+
+# Extração de catálogo detalhada
+curl -X POST -F "image=@panfleto-ofertas.jpg" \
+  "http://localhost:3000/api/extract-catalog?detailed=true"
+
+# Usando endpoint unificado
+curl -X POST -F "image=@prateleira-produtos.jpg" \
+  "http://localhost:3000/api/extract-product?catalog=true"
+```
+
+### Via Frontend Web
+
+1. Acesse http://localhost:3000
+2. Marque a opção "Modo catálogo (múltiplos produtos)"
+3. Faça o upload da imagem
+4. Veja todos os produtos extraídos em cards organizados
+
+### Via JavaScript/Node.js
+
+```javascript
+async function extrairCatalogo(caminhoImagem, detalhado = false) {
+  const formData = new FormData();
+  formData.append('image', fs.createReadStream(caminhoImagem));
+  
+  const url = `http://localhost:3000/api/extract-catalog${detalhado ? '?detailed=true' : ''}`;
+  
+  const response = await fetch(url, {
+    method: 'POST',
+    body: formData
+  });
+  
+  if (!response.ok) {
+    throw new Error(`Erro: ${response.status}`);
+  }
+  
+  const resultado = await response.json();
+  
+  console.log(`✅ ${resultado.dados.total_produtos} produtos encontrados:`);
+  resultado.dados.produtos.forEach((produto, index) => {
+    console.log(`${index + 1}. ${produto.nome} - ${produto.marca} - ${produto.preco}`);
+  });
+  
+  return resultado;
+}
+
+// Uso
+await extrairCatalogo('catalogo-supermercado.jpg', true);
+```
+
+### Via Python
+
+```python
+import requests
+
+def extrair_catalogo(caminho_imagem, detalhado=False):
+    url = "http://localhost:3000/api/extract-catalog"
+    
+    if detalhado:
+        url += "?detailed=true"
+    
+    with open(caminho_imagem, 'rb') as f:
+        files = {'image': f}
+        response = requests.post(url, files=files)
+    
+    if response.status_code == 200:
+        resultado = response.json()
+        produtos = resultado['dados']['produtos']
+        
+        print(f"✅ {len(produtos)} produtos encontrados:")
+        for i, produto in enumerate(produtos, 1):
+            print(f"{i}. {produto['nome']} - {produto['marca']} - {produto['preco']}")
+        
+        return resultado
+    else:
+        raise Exception(f"Erro: {response.status_code} - {response.text}")
+
+# Uso
+extrair_catalogo("catalogo.jpg", detalhado=True)
+```
+
+## 🔍 Tipos de Imagem que Funcionam Bem
+
+### ✅ Melhores resultados
+
+- Produtos com embalagens claras
+- Texto bem visível e legível
+- Etiquetas de preço nítidas
+- Boa iluminação
+- Resolução adequada (não muito baixa)
+
+### ⚠️ Resultados variáveis
+
+- Produtos sem embalagem
+- Texto muito pequeno ou borrado
+- Imagens muito escuras
+- Produtos artesanais sem marca definida
+
+### ❌ Não funcionam
+
+- Imagens completamente borradas
+- Produtos sem nenhum texto visível
+- Arquivos corrompidos
+- Formatos não suportados
+
+## 🎯 Dicas para Melhores Resultados
+
+1. **Qualidade da imagem**: Use imagens com resolução adequada (não muito baixa)
+
+2. **Enquadramento**: Foque no produto, evitando muito ruído visual
+
+3. **Iluminação**: Imagens bem iluminadas produzem melhores resultados
+
+4. **Texto visível**: Certifique-se de que rótulos e etiquetas estão legíveis
+
+5. **Formato**: JPEG e PNG geralmente produzem melhores resultados que WebP
+
+6. **Tamanho**: Imagens entre 500KB e 2MB costumam ter bom desempenho
+
+7. **Análise detalhada**: Use o parâmetro `detailed=true` para produtos difíceis
+
+## 🚨 Tratamento de Erros
+
+### Erros comuns e soluções
+
+```json
+{
+  "status": "erro",
+  "mensagem": "Nenhuma imagem foi enviada"
+}
+```
+
+**Solução**: Inclua o campo `image` no FormData
+
+```json
+{
+  "status": "erro", 
+  "mensagem": "Arquivo muito grande. Tamanho máximo: 5MB"
+}
+```
+
+**Solução**: Redimensione ou comprima a imagem
+
+```json
+{
+  "status": "erro",
+  "mensagem": "Tipo de arquivo não suportado. Use: JPEG, PNG ou WebP"
+}
+```
+
+**Solução**: Converta a imagem para um formato suportado
+
+```json
+{
+  "status": "erro",
+  "mensagem": "Erro no serviço de análise de imagem"
+}
+```
+
+**Solução**: Verifique a chave da API do Gemini e conexão com internet
+
+## 🧪 Script de Teste Atualizado
+
+```bash
+# Testar modo catálogo
+node test-api.js ./catalogo.jpg --catalog
+
+# Testar produto único
+node test-api.js ./produto.jpg
+
+# Apenas verificar API
+node test-api.js
+```
+
+/// docs/INTERFACE_REAL.md ///
+# 🤖 Gemini Image Processor - Interface Real
+
+## ✨ Nova Interface Funcional
+
+O arquivo `page.tsx` foi completamente reestruturado para fornecer uma interface **totalmente funcional** que se conecta diretamente com a API backend real, removendo todos os dados mock e elementos de teste.
+
+### 🎯 Principais Mudanças
+
+#### ✅ Interface Funcional Real
+
+- **Upload real de imagens** com drag & drop
+- **Integração direta** com a API backend em Node.js
+- **Processamento real** via Google Gemini Vision
+- **Resultados reais** sem dados mock
+- **Export de dados** em formato JSON
+
+#### ✅ Funcionalidades Implementadas
+
+1. **Upload de Imagens**
+   - Drag & drop funcional
+   - Preview da imagem selecionada
+   - Validação de tipos de arquivo
+   - Informações do arquivo (nome, tamanho)
+
+2. **Opções de Processamento**
+   - ☑️ Modo catálogo (múltiplos produtos)
+   - ☑️ Análise detalhada
+   - Processamento via API real
+
+3. **Exibição de Resultados**
+   - Produto único: nome, marca, preço
+   - Múltiplos produtos: lista organizadas
+   - Timestamp de processamento
+   - Export dos dados em JSON
+
+4. **Tratamento de Erros**
+   - Conexão com API
+   - Arquivos inválidos
+   - Respostas de erro da API
+
+## 🚀 Como Usar
+
+### 1. Iniciar o Servidor Backend
+
+```bash
+cd /srv/apps/LIFE/RAFA-MORI/gemini-image
+npm install
+npm start
+```
+
+### 2. Configurar API Key
+
+```bash
+# Copie o arquivo de exemplo
+cp .env.example .env
+
+# Edite o arquivo .env e adicione sua chave do Gemini
+GEMINI_API_KEY=sua_chave_api_real_aqui
+```
+
+### 3. Acessar a Interface
+
+  ***Opção 1: Interface HTML Pura***
+
+- Acesse: `http://localhost:3000`
+- Interface totalmente funcional em HTML/CSS/JavaScript puro
+- Não requer configuração adicional
+
+  **Opção 2: Componente React (page.tsx)**
+
+- Para usar em ambiente Next.js/React
+- Instale dependências: `npm install lucide-react framer-motion`
+- Configure ambiente React apropriado
+
+### 4. Testar Funcionalidades
+
+#### Upload de Imagem
+
+1. Clique em "Demo Funcional"
+2. Arraste uma imagem ou clique para selecionar
+3. Escolha opções (catálogo/detalhado)
+4. Clique em "Processar com Gemini AI"
+
+#### Tipos de Imagem Recomendados
+
+- **Produtos únicos**: Fotos de produtos com embalagem visível
+- **Catálogos**: Panfletos, encartes promocionais
+- **Formatos**: JPEG, PNG, WebP (máx. 5MB)
+
+## 🔧 Arquitetura
+
+```mermaid
+Interface Frontend ←→ API Express.js ←→ Google Gemini Vision
+     (page.tsx)         (src/routes/api.js)    (gemini.service.js)
+```
+
+### Endpoints Utilizados
+
+- `POST /api/extract-product` - Produto único
+- `POST /api/extract-catalog` - Múltiplos produtos
+- `GET /api/health` - Status da API
+
+## 💡 Vantagens da Nova Implementação
+
+### ✅ Sem Mock/Dados Fake
+
+- Todos os resultados são processamentos reais
+- Integração direta com Google Gemini Vision
+- Respostas autênticas da IA
+
+### ✅ Interface Moderna
+
+- Design responsivo
+- Feedback visual em tempo real
+- Tratamento robusto de erros
+- UX/UI intuitiva
+
+### ✅ Flexibilidade
+
+- Modo produto único
+- Modo catálogo (múltiplos produtos)
+- Análise detalhada opcional
+- Export de dados
+
+## 🐛 Solução de Problemas
+
+### Erro: "Erro de conexão com a API"
+
+- Verifique se o servidor está rodando em `http://localhost:3000`
+- Execute: `npm start`
+
+### Erro: "GEMINI_API_KEY não encontrada"
+
+- Configure o arquivo `.env` com sua chave real
+- Obtenha em: <https://makersuite.google.com/app/apikey>
+
+### Erro: "Cannot find module"
+
+- Execute: `npm install`
+- Para React: `npm install lucide-react framer-motion`
+
+## 📋 Checklist de Funcionalidades
+
+- [x] Upload real de imagens
+- [x] Drag & drop funcional
+- [x] Preview de imagem
+- [x] Integração com API backend
+- [x] Processamento via Gemini Vision
+- [x] Modo produto único
+- [x] Modo catálogo (múltiplos produtos)
+- [x] Análise detalhada
+- [x] Exibição de resultados reais
+- [x] Tratamento de erros
+- [x] Export JSON
+- [x] Interface responsiva
+- [x] Feedback visual (loading)
+- [x] Validação de arquivos
+
+## 🎉 Resultado
+
+A interface agora é **100% funcional** e integra diretamente com:
+
+- ✅ Backend Node.js/Express real
+- ✅ Google Gemini Vision API real
+- ✅ Processamento de imagens real
+- ✅ Resultados de IA reais
+- ✅ Sem dados mock ou de teste
+
+/// next.config.js ///
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api',
+  },
+}
+
+module.exports = nextConfig
+
+/// package.json ///
+{
+  "name": "deep-look",
+  "version": "0.0.1",
+  "description": "API para processar imagens de produtos com Google Gemini e extrair informações estruturadas",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "jest",
+    "test-api": "node test-api.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "framer-motion": "^12.23.6",
+    "joi": "^17.9.2",
+    "lucide-react": "^0.525.0",
+    "multer": "^1.4.5-lts.1",
+    "next": "^15.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.9",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@types/react-router-dom": "^5.3.3",
+    "jest": "^29.6.2",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.8.3"
+  },
+  "keywords": [
+    "gemini",
+    "ai",
+    "image-processing",
+    "product-extraction",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+
+/// public/index.html ///
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Image Processor - Interface Real</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e293b 0%, #065f46 50%, #1e293b 100%);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            max-width: 800px;
+            margin: 0 auto 24px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981 0%, #16a34a 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #374151;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .demo-interface {
+            display: none;
+        }
+        
+        .back-btn {
+            background: transparent;
+            color: #d1d5db;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        }
+        
+        .card {
+            background: rgba(31, 41, 55, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #374151;
+        }
+        
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .drop-zone {
+            border: 2px dashed #6b7280;
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            margin-bottom: 16px;
+        }
+        
+        .drop-zone:hover {
+            border-color: #10b981;
+        }
+        
+        .drop-zone.dragover {
+            border-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .preview {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .preview img {
+            max-width: 100%;
+            max-height: 256px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid #6b7280;
+        }
+        
+        .remove-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .file-info {
+            font-size: 0.875rem;
+            color: #d1d5db;
+            margin-top: 8px;
+        }
+        
+        .options {
+            margin-bottom: 16px;
+        }
+        
+        .checkbox-group {
+            margin-bottom: 12px;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #d1d5db;
+            cursor: pointer;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .process-btn {
+            width: 100%;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #10b981 0%, #16a34a 100%);
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .process-btn:disabled {
+            background: #6b7280;
+            cursor: not-allowed;
+        }
+        
+        .result-success {
+            color: #10b981;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+        }
+        
+        .result-error {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px;
+            background: rgba(185, 28, 28, 0.1);
+            border: 1px solid #dc2626;
+            border-radius: 8px;
+            color: #fca5a5;
+        }
+        
+        .product-card {
+            background: rgba(55, 65, 81, 0.5);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .product-info {
+            display: grid;
+            gap: 8px;
+        }
+        
+        .product-info div {
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-info .label {
+            color: #9ca3af;
+            min-width: 60px;
+        }
+        
+        .product-info .value {
+            color: white;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .product-count {
+            background: #10b981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+        
+        .products-list {
+            display: grid;
+            gap: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .product-item {
+            background: rgba(55, 65, 81, 0.5);
+            border-radius: 8px;
+            padding: 12px;
+        }
+        
+        .product-item-info {
+            font-size: 0.875rem;
+            display: grid;
+            gap: 4px;
+        }
+        
+        .export-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #6b7280;
+            color: white;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+        
+        .placeholder {
+            text-align: center;
+            padding: 32px;
+            color: #9ca3af;
+        }
+        
+        .placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        
+        .info-card {
+            background: rgba(31, 41, 55, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #374151;
+        }
+        
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .info-card p {
+            color: #d1d5db;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🤖 Gemini Image Processor</h1>
+            <p>
+                Interface funcional para processamento de imagens com Google Gemini Vision. 
+                Esta versão integra diretamente com a API backend real.
+            </p>
+            
+            <div class="buttons">
+                <button id="startDemo" class="btn btn-primary">
+                    ▶️ Demo Funcional
+                </button>
+                
+                <a href="https://github.com/rafa-mori/gemini-image-processor" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn btn-secondary">
+                    📁 GitHub
+                </a>
+            </div>
+        </div>
+
+        <!-- Demo Interface -->
+        <div id="demoInterface" class="demo-interface">
+            <button id="backBtn" class="back-btn">
+                ← Voltar
+            </button>
+
+            <div class="grid">
+                <!-- Upload Section -->
+                <div class="card">
+                    <h2>📤 Upload de Imagem</h2>
+
+                    <div id="dropZone" class="drop-zone">
+                        <div id="dropZoneContent">
+                            <div style="font-size: 4rem; margin-bottom: 16px;">📷</div>
+                            <p style="color: #d1d5db; margin-bottom: 16px;">
+                                Arraste uma imagem aqui ou clique para selecionar
+                            </p>
+                            <input type="file" id="fileInput" accept="image/*" class="hidden" />
+                            <button id="selectBtn" class="btn btn-primary">
+                                📤 Selecionar Imagem
+                            </button>
+                        </div>
+
+                        <div id="preview" class="hidden">
+                            <div class="preview">
+                                <img id="previewImg" alt="Preview" />
+                                <button id="removeBtn" class="remove-btn" title="Remover imagem">✕</button>
+                            </div>
+                            <div id="fileInfo" class="file-info"></div>
+                        </div>
+                    </div>
+
+                    <!-- Options -->
+                    <div id="options" class="options hidden">
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" id="catalogMode" />
+                                Modo catálogo (múltiplos produtos)
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" id="detailedMode" />
+                                Análise detalhada
+                            </label>
+                        </div>
+
+                        <button id="processBtn" class="process-btn">
+                            🧠 Processar com Gemini AI
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="card">
+                    <h2>📄 Resultados</h2>
+
+                    <div id="results">
+                        <div class="placeholder">
+                            <div class="placeholder-icon">📷</div>
+                            <p>Selecione uma imagem para começar a análise</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Cards -->
+        <div id="infoSection" class="info-cards">
+            <div class="info-card">
+                <h3>🧠 IA do Google Gemini</h3>
+                <p>Utiliza o modelo Gemini Vision para análise avançada de imagens</p>
+            </div>
+
+            <div class="info-card">
+                <h3>📷 Processamento Inteligente</h3>
+                <p>Extrai informações estruturadas de produtos em imagens</p>
+            </div>
+
+            <div class="info-card">
+                <h3>📄 Parse Avançado</h3>
+                <p>Converte descrições livres em dados estruturados JSON</p>
+            </div>
+
+            <div class="info-card">
+                <h3>🔧 API RESTful</h3>
+                <p>Interface simples e intuitiva para integração</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const API_BASE_URL = 'http://localhost:3000/api';
+            let selectedFile = null;
+
+            // Elements
+            const startDemo = document.getElementById('startDemo');
+            const demoInterface = document.getElementById('demoInterface');
+            const infoSection = document.getElementById('infoSection');
+            const backBtn = document.getElementById('backBtn');
+            const dropZone = document.getElementById('dropZone');
+            const dropZoneContent = document.getElementById('dropZoneContent');
+            const preview = document.getElementById('preview');
+            const previewImg = document.getElementById('previewImg');
+            const fileInput = document.getElementById('fileInput');
+            const selectBtn = document.getElementById('selectBtn');
+            const removeBtn = document.getElementById('removeBtn');
+            const fileInfo = document.getElementById('fileInfo');
+            const options = document.getElementById('options');
+            const catalogMode = document.getElementById('catalogMode');
+            const detailedMode = document.getElementById('detailedMode');
+            const processBtn = document.getElementById('processBtn');
+            const results = document.getElementById('results');
+
+            // Event Listeners
+            startDemo.addEventListener('click', () => {
+                demoInterface.style.display = 'block';
+                infoSection.style.display = 'none';
+                startDemo.parentElement.style.display = 'none';
+            });
+
+            backBtn.addEventListener('click', () => {
+                demoInterface.style.display = 'none';
+                infoSection.style.display = 'grid';
+                startDemo.parentElement.style.display = 'flex';
+                resetDemo();
+            });
+
+            selectBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            dropZone.addEventListener('click', () => {
+                if (!selectedFile) fileInput.click();
+            });
+
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            });
+
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('dragover');
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+                const files = Array.from(e.dataTransfer.files);
+                if (files.length > 0 && files[0].type.startsWith('image/')) {
+                    handleFileSelect(files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                const files = Array.from(e.target.files);
+                if (files.length > 0) {
+                    handleFileSelect(files[0]);
+                }
+            });
+
+            removeBtn.addEventListener('click', resetDemo);
+
+            processBtn.addEventListener('click', processImage);
+
+            function handleFileSelect(file) {
+                selectedFile = file;
+                const url = URL.createObjectURL(file);
+                previewImg.src = url;
+                fileInfo.innerHTML = `
+                    <div><strong>Arquivo:</strong> ${file.name}</div>
+                    <div><strong>Tamanho:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+                `;
+                
+                dropZoneContent.classList.add('hidden');
+                preview.classList.remove('hidden');
+                options.classList.remove('hidden');
+                
+                results.innerHTML = `
+                    <div class="placeholder">
+                        <div style="font-size: 2rem; margin-bottom: 16px;">🖼️</div>
+                        <p>Imagem carregada. Clique em "Processar" para analisar.</p>
+                    </div>
+                `;
+            }
+
+            function resetDemo() {
+                selectedFile = null;
+                dropZoneContent.classList.remove('hidden');
+                preview.classList.add('hidden');
+                options.classList.add('hidden');
+                fileInput.value = '';
+                catalogMode.checked = false;
+                detailedMode.checked = false;
+                processBtn.textContent = '🧠 Processar com Gemini AI';
+                processBtn.disabled = false;
+                results.innerHTML = `
+                    <div class="placeholder">
+                        <div class="placeholder-icon">📷</div>
+                        <p>Selecione uma imagem para começar a análise</p>
+                    </div>
+                `;
+            }
+
+            async function processImage() {
+                if (!selectedFile) return;
+
+                processBtn.textContent = '🔄 Processando...';
+                processBtn.disabled = true;
+
+                try {
+                    const formData = new FormData();
+                    formData.append('image', selectedFile);
+
+                    const endpoint = catalogMode.checked ? 'extract-catalog' : 'extract-product';
+                    const queryParams = new URLSearchParams();
+                    
+                    if (detailedMode.checked) queryParams.append('detailed', 'true');
+
+                    const url = `${API_BASE_URL}/${endpoint}${queryParams.toString() ? '?' + queryParams.toString() : ''}`;
+
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        displayResults(data);
+                    } else {
+                        displayError(data.mensagem || 'Erro ao processar imagem');
+                    }
+                } catch (err) {
+                    displayError('Erro de conexão com a API. Verifique se o servidor está rodando em ' + API_BASE_URL);
+                    console.error('Erro:', err);
+                } finally {
+                    processBtn.textContent = '🧠 Processar com Gemini AI';
+                    processBtn.disabled = false;
+                }
+            }
+
+            function displayResults(data) {
+                let html = `
+                    <div class="result-success">
+                        <span style="font-size: 1.2rem;">✅</span>
+                        <span>${data.mensagem}</span>
+                    </div>
+                `;
+
+                // Single Product Result
+                if (data.dados) {
+                    html += `
+                        <div class="product-card">
+                            <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 12px; color: white;">Informações do Produto</h3>
+                            <div class="product-info">
+                                <div>
+                                    <span class="label">Nome:</span>
+                                    <span class="value">${data.dados.nome}</span>
+                                </div>
+                                <div>
+                                    <span class="label">Marca:</span>
+                                    <span class="value">${data.dados.marca}</span>
+                                </div>
+                                <div>
+                                    <span class="label">Preço:</span>
+                                    <span class="value">${data.dados.preco}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Multiple Products Result
+                if (data.produtos && data.produtos.length > 0) {
+                    html += `
+                        <div style="margin-bottom: 16px;">
+                            <div class="products-header">
+                                <h3 style="font-size: 1.2rem; font-weight: bold; color: white;">Produtos Encontrados</h3>
+                                <span class="product-count">${data.total_produtos} produtos</span>
+                            </div>
+                            
+                            <div class="products-list">
+                    `;
+                    
+                    data.produtos.forEach((produto, index) => {
+                        html += `
+                            <div class="product-item">
+                                <div class="product-item-info">
+                                    <div><span style="color: #9ca3af;">Nome:</span> <span style="color: white; margin-left: 8px;">${produto.nome}</span></div>
+                                    <div><span style="color: #9ca3af;">Marca:</span> <span style="color: white; margin-left: 8px;">${produto.marca}</span></div>
+                                    <div><span style="color: #9ca3af;">Preço:</span> <span style="color: white; margin-left: 8px;">${produto.preco}</span></div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div></div>';
+                }
+
+                html += `
+                    <div style="font-size: 0.75rem; color: #9ca3af; margin-bottom: 16px;">
+                        Processado em: ${new Date(data.processado_em).toLocaleString('pt-BR')}
+                    </div>
+                    
+                    <button class="export-btn" onclick="downloadJSON()">
+                        💾 Exportar JSON
+                    </button>
+                `;
+
+                results.innerHTML = html;
+                
+                // Store data for download
+                window.lastResult = data;
+            }
+
+            function displayError(message) {
+                results.innerHTML = `
+                    <div class="result-error">
+                        <span style="font-size: 1.2rem;">⚠️</span>
+                        <span>${message}</span>
+                    </div>
+                `;
+            }
+
+            // Global function for JSON download
+            window.downloadJSON = function() {
+                if (window.lastResult) {
+                    const dataStr = JSON.stringify(window.lastResult, null, 2);
+                    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                    const url = URL.createObjectURL(dataBlob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `gemini-result-${Date.now()}.json`;
+                    link.click();
+                    URL.revokeObjectURL(url);
+                }
+            };
+        });
+    </script>
+</body>
+</html>
+
+/// setup.sh ///
+#!/bin/bash
+
+echo "🚀 Configurando Gemini Image Processor..."
+
+# Verificar se Node.js está instalado
+if ! command -v node &> /dev/null; then
+    echo "❌ Node.js não encontrado. Por favor, instale Node.js 18+ primeiro."
+    exit 1
+fi
+
+# Verificar versão do Node.js
+NODE_VERSION=$(node -v | cut -d'v' -f2 | cut -d'.' -f1)
+if [ "$NODE_VERSION" -lt 18 ]; then
+    echo "❌ Node.js versão 18+ é necessária. Versão atual: $(node -v)"
+    exit 1
+fi
+
+echo "✅ Node.js $(node -v) encontrado"
+
+# Instalar dependências se necessário
+if [ ! -d "node_modules" ]; then
+    echo "📦 Instalando dependências..."
+    npm install
+fi
+
+# Configurar arquivo .env se não existir
+if [ ! -f ".env" ]; then
+    echo "⚙️ Configurando arquivo .env..."
+    cp .env.example .env
+    echo ""
+    echo "🔑 IMPORTANTE: Configure sua GEMINI_API_KEY no arquivo .env"
+    echo "   1. Abra o arquivo .env"
+    echo "   2. Substitua 'your_gemini_api_key_here' pela sua chave real"
+    echo "   3. Salve o arquivo"
+    echo ""
+    read -p "Pressione Enter após configurar a chave da API..."
+fi
+
+# Criar diretórios necessários
+mkdir -p logs
+mkdir -p temp
+
+echo "🏁 Configuração concluída!"
+echo ""
+echo "📋 Próximos passos:"
+echo "   1. Configure sua GEMINI_API_KEY no arquivo .env (se ainda não fez)"
+echo "   2. Execute: npm run dev"
+echo "   3. Acesse: http://localhost:3000"
+echo ""
+echo "🧪 Para testar a API:"
+echo "   node test-api.js ./caminho/para/uma/imagem.jpg"
+echo ""
+echo "📚 Documentação:"
+echo "   http://localhost:3000/api/docs"
+
+/// src/gemini.service.js ///
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import dotenv from 'dotenv';
+import { logger } from './logger.js';
+
+dotenv.config();
+
+class GeminiService {
+  constructor() {
+    if (!process.env.GEMINI_API_KEY) {
+      throw new Error('GEMINI_API_KEY não encontrada nas variáveis de ambiente');
+    }
+    
+    this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    this.model = this.genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  }
+
+  /**
+   * Converte arquivo para formato compatível com Gemini
+   */
+  convertFileToGeminiFormat(buffer, mimeType) {
+    return {
+      inlineData: {
+        data: buffer.toString('base64'),
+        mimeType: mimeType
+      }
+    };
+  }
+
+  /**
+   * Cria prompt otimizado para extração de dados de produtos (produto único)
+   */
+  createProductExtractionPrompt() {
+    return `
+Analise cuidadosamente a imagem do produto fornecida e extraia as seguintes informações:
+
+1. Nome do produto (nome específico do item, não descrição genérica)
+2. Marca do produto (fabricante ou marca comercial)
+3. Preço do produto (valor monetário visível na imagem)
+
+INSTRUÇÕES IMPORTANTES:
+- Retorne APENAS um objeto JSON válido, sem texto adicional
+- Use exatamente estas chaves: "nome_produto", "marca", "preco"
+- Se alguma informação não estiver visível, use "N/A"
+- Para preços, inclua a moeda se visível (ex: "R$ 29,90")
+- Seja preciso e conciso nas informações extraídas
+
+Formato de resposta obrigatório:
+{
+  "nome_produto": "[nome específico do produto]",
+  "marca": "[marca do produto]",
+  "preco": "[preço com moeda se disponível]"
+}`;
+  }
+
+  /**
+   * Cria prompt otimizado para extração de múltiplos produtos (catálogos)
+   */
+  createCatalogExtractionPrompt() {
+    return `
+Analise cuidadosamente esta imagem que pode conter MÚLTIPLOS PRODUTOS (como um catálogo, panfleto, ou prateleira de supermercado).
+
+IDENTIFIQUE TODOS OS PRODUTOS VISÍVEIS e extraia para cada um:
+1. Nome do produto (específico, não categoria genérica)
+2. Marca do produto (fabricante ou marca comercial)
+3. Preço do produto (valor monetário completo)
+
+INSTRUÇÕES CRÍTICAS:
+- Se houver APENAS 1 produto, retorne um array com 1 item
+- Se houver MÚLTIPLOS produtos, retorne um array com todos
+- NUNCA misture informações de produtos diferentes
+- Para cada produto, se alguma info não estiver visível, use "N/A"
+- Mantenha os preços exatos com moeda (ex: "R$ 4,99", "€ 12,50")
+- Seja meticuloso: um produto por item do array
+
+FORMATO DE RESPOSTA OBRIGATÓRIO (ARRAY JSON):
+[
+  {
+    "nome_produto": "[nome específico do produto 1]",
+    "marca": "[marca do produto 1]", 
+    "preco": "[preço com moeda do produto 1]"
+  },
+  {
+    "nome_produto": "[nome específico do produto 2]",
+    "marca": "[marca do produto 2]",
+    "preco": "[preço com moeda do produto 2]"
+  }
+]
+
+IMPORTANTE: Retorne APENAS o array JSON, sem texto adicional antes ou depois.`;
+  }
+
+  /**
+   * Extrai informações do produto usando Gemini
+   */
+  async extractProductInfo(imageBuffer, mimeType) {
+    try {
+      logger.info('Iniciando extração de informações do produto com Gemini');
+      
+      const imageData = this.convertFileToGeminiFormat(imageBuffer, mimeType);
+      const prompt = this.createProductExtractionPrompt();
+
+      const result = await this.model.generateContent([prompt, imageData]);
+      const response = await result.response;
+      const text = response.text();
+
+      logger.info('Resposta bruta do Gemini recebida');
+      logger.debug('Resposta do Gemini:', { text });
+
+      return this.parseGeminiResponse(text);
+    } catch (error) {
+      logger.error('Erro ao extrair informações do produto:', error);
+      throw new Error(`Falha na extração com Gemini: ${error.message}`);
+    }
+  }
+
+  /**
+   * Extrai informações de múltiplos produtos usando Gemini (para catálogos)
+   */
+  async extractCatalogInfo(imageBuffer, mimeType) {
+    try {
+      logger.info('Iniciando extração de catálogo com múltiplos produtos');
+      
+      const imageData = this.convertFileToGeminiFormat(imageBuffer, mimeType);
+      const prompt = this.createCatalogExtractionPrompt();
+
+      const result = await this.model.generateContent([prompt, imageData]);
+      const response = await result.response;
+      const text = response.text();
+
+      logger.info('Resposta bruta do Gemini para catálogo recebida');
+      logger.debug('Resposta do Gemini (catálogo):', { text });
+
+      return this.parseCatalogResponse(text);
+    } catch (error) {
+      logger.error('Erro ao extrair informações do catálogo:', error);
+      throw new Error(`Falha na extração de catálogo com Gemini: ${error.message}`);
+    }
+  }
+
+  /**
+   * Método alternativo com prompt mais específico para casos difíceis
+   */
+  async extractProductInfoDetailed(imageBuffer, mimeType) {
+    try {
+      const imageData = this.convertFileToGeminiFormat(imageBuffer, mimeType);
+      
+      const detailedPrompt = `
+Você é um especialista em análise de produtos. Examine esta imagem cuidadosamente e identifique:
+
+1. NOME DO PRODUTO: O nome específico do item (não categoria genérica)
+2. MARCA: O fabricante ou marca comercial
+3. PREÇO: Qualquer valor monetário visível
+
+Procure por:
+- Texto em embalagens, etiquetas, rótulos
+- Logos e marcas comerciais
+- Etiquetas de preço, códigos de barras com valores
+- Informações em displays ou placas
+
+Retorne APENAS este formato JSON (sem explicações):
+{
+  "nome_produto": "nome específico encontrado ou N/A",
+  "marca": "marca identificada ou N/A", 
+  "preco": "valor com moeda se encontrado ou N/A"
+}`;
+
+      const result = await this.model.generateContent([detailedPrompt, imageData]);
+      const response = await result.response;
+      const text = response.text();
+
+      return this.parseGeminiResponse(text);
+    } catch (error) {
+      logger.error('Erro na extração detalhada:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Método alternativo com prompt mais específico para catálogos difíceis
+   */
+  async extractCatalogInfoDetailed(imageBuffer, mimeType) {
+    try {
+      const imageData = this.convertFileToGeminiFormat(imageBuffer, mimeType);
+      
+      const detailedCatalogPrompt = `
+Você é um especialista em análise de catálogos e materiais promocionais. Examine esta imagem meticulosamente.
+
+IDENTIFIQUE TODOS OS PRODUTOS DISTINTOS visíveis na imagem:
+- Produtos em prateleiras
+- Itens em panfletos/catálogos
+- Produtos em displays
+- Ofertas promocionais
+- Qualquer item com preço visível
+
+Para CADA PRODUTO INDIVIDUAL, extraia:
+1. NOME ESPECÍFICO (não categoria genérica)
+2. MARCA (fabricante/marca comercial)
+3. PREÇO EXATO (valor monetário completo)
+
+INSTRUÇÕES DETALHADAS:
+- Examine cada canto da imagem
+- NÃO agrupe produtos similares
+- CADA produto = 1 item no array
+- Se vir "Kit" ou "Combo", trate como 1 produto
+- Preços devem incluir moeda e centavos
+- Se marca não estiver clara, use "N/A"
+- Se preço não estiver visível, use "N/A"
+
+RESPOSTA OBRIGATÓRIA (ARRAY JSON):
+[
+  {
+    "nome_produto": "[nome exato do produto]",
+    "marca": "[marca identificada ou N/A]",
+    "preco": "[preço completo com moeda ou N/A]"
+  }
+]
+
+CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
+
+      const result = await this.model.generateContent([detailedCatalogPrompt, imageData]);
+      const response = await result.response;
+      const text = response.text();
+
+      return this.parseCatalogResponse(text);
+    } catch (error) {
+      logger.error('Erro na extração detalhada de catálogo:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Processa e valida a resposta do Gemini com estratégias múltiplas
+   */
+  parseGeminiResponse(rawResponse) {
+    try {
+      logger.debug('Processando resposta bruta do Gemini:', { rawResponse });
+      
+      // Estratégia 1: Limpar e tentar parse direto
+      let cleanedResponse = this.cleanResponseText(rawResponse);
+      
+      // Estratégia 2: Tentar parse direto
+      try {
+        const parsed = JSON.parse(cleanedResponse);
+        if (this.isValidProductData(parsed)) {
+          return this.validateAndNormalizeData(parsed);
+        }
+      } catch (directParseError) {
+        logger.debug('Parse direto falhou, tentando estratégias alternativas');
+      }
+      
+      // Estratégia 3: Buscar padrões JSON no texto
+      const extractedData = this.extractJSONFromText(cleanedResponse);
+      if (extractedData) {
+        return this.validateAndNormalizeData(extractedData);
+      }
+      
+      // Estratégia 4: Extração baseada em padrões de texto
+      const textBasedData = this.extractDataFromNaturalText(cleanedResponse);
+      if (textBasedData) {
+        return this.validateAndNormalizeData(textBasedData);
+      }
+      
+      // Se chegou aqui, não conseguiu extrair dados válidos
+      throw new Error('Não foi possível extrair informações válidas da resposta do Gemini');
+      
+    } catch (error) {
+      logger.error('Erro ao processar resposta do Gemini:', error);
+      throw new Error(`Falha ao processar resposta: ${error.message}`);
+    }
+  }
+
+  /**
+   * Processa resposta do Gemini para múltiplos produtos
+   */
+  parseCatalogResponse(rawResponse) {
+    try {
+      logger.debug('Processando resposta de catálogo do Gemini:', { rawResponse });
+      
+      // Estratégia 1: Limpar e tentar parse direto como array
+      let cleanedResponse = this.cleanResponseText(rawResponse);
+      logger.debug('Resposta limpa:', { cleanedResponse });
+      
+      // Estratégia 2: Tentar parse direto como array
+      try {
+        const parsed = JSON.parse(cleanedResponse);
+        logger.debug('Parse direto realizado:', { 
+          parsed, 
+          type: typeof parsed,
+          isArray: Array.isArray(parsed),
+          keys: parsed ? Object.keys(parsed) : null
+        });
+        
+        if (Array.isArray(parsed)) {
+          return this.validateAndNormalizeCatalogData(parsed);
+        } else if (this.isValidProductData(parsed)) {
+          // Se retornou um objeto único, transformar em array
+          logger.info('Objeto único detectado, convertendo para array');
+          return this.validateAndNormalizeCatalogData([parsed]);
+        } else if (typeof parsed === 'object' && parsed !== null) {
+          // Tentar tratar como objeto com chaves numéricas
+          logger.info('Objeto com possíveis chaves numéricas detectado');
+          return this.validateAndNormalizeCatalogData(parsed);
+        }
+      } catch (directParseError) {
+        logger.debug('Parse direto de array falhou, tentando estratégias alternativas', { error: directParseError.message });
+      }
+      
+      // Estratégia 3: Buscar array JSON no texto
+      const extractedArray = this.extractArrayFromText(cleanedResponse);
+      if (extractedArray) {
+        logger.debug('Array extraído do texto:', extractedArray);
+        return this.validateAndNormalizeCatalogData(extractedArray);
+      }
+      
+      // Estratégia 4: Buscar objetos individuais e criar array
+      const individualObjects = this.extractMultipleObjectsFromText(cleanedResponse);
+      if (individualObjects && individualObjects.length > 0) {
+        logger.debug('Objetos individuais encontrados:', individualObjects);
+        return this.validateAndNormalizeCatalogData(individualObjects);
+      }
+      
+      // Estratégia 5: Fallback para extração de texto natural múltiplo
+      const textBasedProducts = this.extractMultipleProductsFromNaturalText(cleanedResponse);
+      if (textBasedProducts && textBasedProducts.length > 0) {
+        logger.debug('Produtos extraídos via texto natural:', textBasedProducts);
+        return this.validateAndNormalizeCatalogData(textBasedProducts);
+      }
+      
+      // Se chegou aqui, tentar pelo menos um produto
+      logger.warn('Todas as estratégias falharam, tentando parse como produto único');
+      const singleProduct = this.parseGeminiResponse(rawResponse);
+      return [singleProduct];
+      
+    } catch (error) {
+      logger.error('Erro ao processar resposta de catálogo do Gemini:', error);
+      throw new Error(`Falha ao processar resposta de catálogo: ${error.message}`);
+    }
+  }
+
+  /**
+   * Limpa o texto da resposta removendo marcadores e formatação
+   */
+  cleanResponseText(text) {
+    return text
+      .trim()
+      // Remove marcadores de código
+      .replace(/```json\s*/gi, '')
+      .replace(/```\s*$/g, '')
+      .replace(/^```\s*/g, '')
+      // Remove quebras de linha desnecessárias
+      .replace(/\n\s*\n/g, '\n')
+      .replace(/^\s*\n/, '')
+      .replace(/\n\s*$/, '')
+      // Remove caracteres invisíveis
+      .replace(/[\u200B-\u200D\uFEFF]/g, '')
+      .trim();
+  }
+
+  /**
+   * Extrai JSON usando múltiplos padrões
+   */
+  extractJSONFromText(text) {
+    const jsonPatterns = [
+      // Padrão básico para objetos JSON
+      /\{[^{}]*"nome_produto"[^{}]*\}/g,
+      /\{[^{}]*"nome"[^{}]*\}/g,
+      // Padrão mais permissivo
+      /\{[\s\S]*?\}/g,
+      // Padrão para JSON em múltiplas linhas
+      /\{[\s\S]*?"nome[^"]*"[\s\S]*?"marca"[\s\S]*?"preco"[\s\S]*?\}/gi
+    ];
+
+    for (const pattern of jsonPatterns) {
+      const matches = text.match(pattern);
+      if (matches && matches.length > 0) {
+        for (const match of matches) {
+          try {
+            const parsed = JSON.parse(match);
+            if (this.isValidProductData(parsed)) {
+              logger.debug('JSON extraído com sucesso usando padrão:', { pattern: pattern.source, match });
+              return parsed;
+            }
+          } catch (parseError) {
+            logger.debug('Falha ao parsear match:', { match, error: parseError.message });
+            continue;
+          }
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Extrai dados baseado em padrões de texto natural
+   */
+  extractDataFromNaturalText(text) {
+    logger.debug('Tentando extração baseada em texto natural');
+    
+    const result = {
+      nome_produto: 'N/A',
+      marca: 'N/A',
+      preco: 'N/A'
+    };
+
+    // Padrões para extrair nome do produto
+    const nomePatterns = [
+      /(?:nome|produto|item):\s*([^\n,]+)/gi,
+      /(?:produto|nome)[\s\-:]+([^\n,]+)/gi,
+      /^([^,\n]+)(?:,|\n|$)/m // Primeira linha como nome
+    ];
+
+    // Padrões para extrair marca
+    const marcaPatterns = [
+      /(?:marca|fabricante|brand):\s*([^\n,]+)/gi,
+      /(?:marca|brand)[\s\-:]+([^\n,]+)/gi
+    ];
+
+    // Padrões para extrair preço
+    const precoPatterns = [
+      /(?:preço|preco|price|valor):\s*([^\n,]+)/gi,
+      /(?:R\$|€|\$)\s*[\d.,]+/gi,
+      /[\d.,]+\s*(?:reais?|euros?|dollars?)/gi
+    ];
+
+    // Tentar extrair cada campo
+    for (const pattern of nomePatterns) {
+      const match = text.match(pattern);
+      if (match && match[1]) {
+        result.nome_produto = match[1].trim();
+        break;
+      }
+    }
+
+    for (const pattern of marcaPatterns) {
+      const match = text.match(pattern);
+      if (match && match[1]) {
+        result.marca = match[1].trim();
+        break;
+      }
+    }
+
+    for (const pattern of precoPatterns) {
+      const match = text.match(pattern);
+      if (match) {
+        result.preco = match[0].trim();
+        break;
+      }
+    }
+
+    // Verificar se pelo menos um campo foi encontrado
+    const hasValidData = Object.values(result).some(value => value !== 'N/A');
+    
+    if (hasValidData) {
+      logger.debug('Dados extraídos via texto natural:', result);
+      return result;
+    }
+
+    return null;
+  }
+
+  /**
+   * Valida se os dados extraídos têm a estrutura esperada
+   */
+  isValidProductData(data) {
+    return (
+      typeof data === 'object' &&
+      data !== null &&
+      ('nome_produto' in data || 'nome' in data) &&
+      ('marca' in data) &&
+      ('preco' in data)
+    );
+  }
+
+  /**
+   * Normaliza e valida os dados extraídos
+   */
+  validateAndNormalizeData(data) {
+    const normalized = {
+      nome_produto: data.nome_produto || data.nome || 'N/A',
+      marca: data.marca || 'N/A',
+      preco: data.preco || data.preço || 'N/A'
+    };
+
+    // Limpa dados vazios ou inválidos
+    Object.keys(normalized).forEach(key => {
+      if (typeof normalized[key] === 'string') {
+        normalized[key] = normalized[key].trim();
+        if (normalized[key] === '' || normalized[key].toLowerCase() === 'null') {
+          normalized[key] = 'N/A';
+        }
+      }
+    });
+
+    logger.info('Dados normalizados extraídos:', normalized);
+    return normalized;
+  }
+
+  /**
+   * Extrai array JSON do texto
+   */
+  extractArrayFromText(text) {
+    const arrayPatterns = [
+      // Array com produtos completos
+      /\[[\s\S]*?\{[\s\S]*?"nome_produto"[\s\S]*?\}[\s\S]*?\]/g,
+      // Array mais permissivo
+      /\[[\s\S]*?\]/g
+    ];
+
+    for (const pattern of arrayPatterns) {
+      const matches = text.match(pattern);
+      if (matches && matches.length > 0) {
+        for (const match of matches) {
+          try {
+            const parsed = JSON.parse(match);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              // Verificar se pelo menos um item é um produto válido
+              const hasValidProducts = parsed.some(item => this.isValidProductData(item));
+              if (hasValidProducts) {
+                logger.debug('Array JSON extraído com sucesso:', { match, parsed });
+                return parsed;
+              }
+            }
+          } catch (parseError) {
+            logger.debug('Falha ao parsear array match:', { match, error: parseError.message });
+            continue;
+          }
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Extrai múltiplos objetos JSON individuais do texto
+   */
+  extractMultipleObjectsFromText(text) {
+    const objects = [];
+    
+    // Padrões para encontrar objetos individuais
+    const objectPatterns = [
+      /\{[^{}]*"nome_produto"[^{}]*\}/g,
+      /\{[^{}]*"nome"[^{}]*\}/g
+    ];
+
+    for (const pattern of objectPatterns) {
+      const matches = text.match(pattern);
+      if (matches && matches.length > 0) {
+        for (const match of matches) {
+          try {
+            const parsed = JSON.parse(match);
+            if (this.isValidProductData(parsed)) {
+              objects.push(parsed);
+            }
+          } catch (parseError) {
+            logger.debug('Falha ao parsear objeto individual:', { match, error: parseError.message });
+            continue;
+          }
+        }
+      }
+    }
+    
+    return objects.length > 0 ? objects : null;
+  }
+
+  /**
+   * Extrai múltiplos produtos baseado em padrões de texto natural
+   */
+  extractMultipleProductsFromNaturalText(text) {
+    logger.debug('Tentando extração de múltiplos produtos via texto natural');
+    
+    const products = [];
+    
+    // Dividir texto em seções que podem representar produtos diferentes
+    const sections = this.splitTextIntoProductSections(text);
+    
+    for (const section of sections) {
+      const productData = this.extractDataFromNaturalText(section);
+      if (productData) {
+        products.push(productData);
+      }
+    }
+    
+    return products.length > 0 ? products : null;
+  }
+
+  /**
+   * Divide texto em seções que podem representar produtos diferentes
+   */
+  splitTextIntoProductSections(text) {
+    // Padrões para identificar separadores entre produtos
+    const separators = [
+      /\n\s*\n/g,          // Linhas vazias
+      /\d+\.\s/g,          // Numeração (1. 2. 3.)
+      /produto\s*\d+/gi,   // "Produto 1", "Produto 2"
+      /item\s*\d+/gi,      // "Item 1", "Item 2"
+      /[-=]{3,}/g          // Linhas com traços
+    ];
+    
+    let sections = [text];
+    
+    // Aplicar cada separador
+    for (const separator of separators) {
+      const newSections = [];
+      for (const section of sections) {
+        const parts = section.split(separator);
+        newSections.push(...parts.filter(part => part.trim().length > 10));
+      }
+      if (newSections.length > sections.length) {
+        sections = newSections;
+      }
+    }
+    
+    return sections.filter(section => section.trim().length > 5);
+  }
+
+  /**
+   * Valida e normaliza dados de catálogo (array de produtos)
+   */
+  validateAndNormalizeCatalogData(products) {
+    logger.debug('validateAndNormalizeCatalogData - Input recebido:', { 
+      products, 
+      type: typeof products,
+      isArray: Array.isArray(products),
+      keys: products ? Object.keys(products) : null
+    });
+
+    // Se não é array, tentar converter objeto com chaves numéricas para array
+    if (!Array.isArray(products)) {
+      if (typeof products === 'object' && products !== null) {
+        // Verificar se é um objeto com chaves numéricas (0, 1, 2, etc.)
+        const keys = Object.keys(products);
+        const isNumericKeys = keys.every(key => /^\d+$/.test(key));
+        
+        if (isNumericKeys && keys.length > 0) {
+          logger.info('Convertendo objeto com chaves numéricas para array');
+          // Converter para array mantendo a ordem
+          const arrayFromObject = keys
+            .sort((a, b) => parseInt(a) - parseInt(b)) // Ordenar numericamente
+            .map(key => products[key]);
+          
+          logger.debug('Objeto convertido para array:', arrayFromObject);
+          return this.validateAndNormalizeCatalogData(arrayFromObject);
+        }
+      }
+      
+      throw new Error('Dados de catálogo devem ser um array ou objeto com chaves numéricas');
+    }
+
+    const normalizedProducts = products
+      .filter(product => product && typeof product === 'object')
+      .map(product => this.validateAndNormalizeData(product))
+      .filter(product => {
+        // Remove produtos completamente vazios (todos campos N/A)
+        const values = Object.values(product);
+        return !values.every(value => value === 'N/A');
+      });
+
+    if (normalizedProducts.length === 0) {
+      throw new Error('Nenhum produto válido encontrado no catálogo');
+    }
+
+    logger.info(`Catálogo processado: ${normalizedProducts.length} produtos encontrados`, normalizedProducts);
+    
+    // Garantir que sempre retornamos um array verdadeiro
+    const finalArray = Array.from(normalizedProducts);
+    logger.debug('Array final retornado:', { 
+      result: finalArray,
+      isArray: Array.isArray(finalArray),
+      length: finalArray.length
+    });
+    
+    return finalArray;
+  }
+}
+
+export default new GeminiService();
+
+/// src/logger.js ///
+import winston from 'winston';
+
+// Configuração do logger
+const logger = winston.createLogger({
+  level: process.env.LOG_LEVEL || 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.errors({ stack: true }),
+    winston.format.json()
+  ),
+  defaultMeta: { service: 'gemini-image-processor' },
+  transports: [
+    new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'logs/combined.log' }),
+  ],
+});
+
+// Em desenvolvimento, também loga no console
+if (process.env.NODE_ENV !== 'production') {
+  logger.add(new winston.transports.Console({
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.simple()
+    )
+  }));
+}
+
+export { logger };
+
+/// src/middleware.js ///
+import { logger } from './logger.js';
+
+// Middleware de tratamento de erros
+export const errorHandler = (err, req, res, next) => {
+  logger.error('Erro capturado pelo middleware:', {
+    error: err.message,
+    stack: err.stack,
+    url: req.url,
+    method: req.method,
+    ip: req.ip
+  });
+
+  // Erro de validação
+  if (err.name === 'ValidationError') {
+    return res.status(400).json({
+      status: 'erro',
+      mensagem: 'Dados inválidos',
+      detalhes: err.message
+    });
+  }
+
+  // Erro de arquivo muito grande
+  if (err.code === 'LIMIT_FILE_SIZE') {
+    return res.status(413).json({
+      status: 'erro',
+      mensagem: 'Arquivo muito grande. Tamanho máximo: 5MB'
+    });
+  }
+
+  // Erro de tipo de arquivo inválido
+  if (err.code === 'INVALID_FILE_TYPE') {
+    return res.status(400).json({
+      status: 'erro',
+      mensagem: 'Tipo de arquivo não suportado. Use: JPEG, PNG ou WebP'
+    });
+  }
+
+  // Erro da API do Gemini
+  if (err.message.includes('Gemini')) {
+    return res.status(502).json({
+      status: 'erro',
+      mensagem: 'Erro no serviço de análise de imagem',
+      detalhes: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
+  }
+
+  // Erro interno genérico
+  return res.status(500).json({
+    status: 'erro',
+    mensagem: 'Erro interno do servidor',
+    detalhes: process.env.NODE_ENV === 'development' ? err.message : undefined
+  });
+};
+
+// Middleware de logging de requisições
+export const requestLogger = (req, res, next) => {
+  const startTime = Date.now();
+  
+  res.on('finish', () => {
+    const duration = Date.now() - startTime;
+    logger.info('Requisição processada', {
+      method: req.method,
+      url: req.url,
+      statusCode: res.statusCode,
+      duration: `${duration}ms`,
+      ip: req.ip,
+      userAgent: req.get('User-Agent')
+    });
+  });
+
+  next();
+};
+
+// Middleware de resposta padronizada para sucesso
+export const successResponse = (data, message = 'Operação realizada com sucesso') => {
+  return {
+    status: 'sucesso',
+    mensagem: message,
+    dados: data,
+    processado_em: new Date().toISOString()
+  };
+};
+
+/// src/pages/page.tsx ///
+'use client';
+
+import { useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Brain, 
+  Code, 
+  Github, 
+  Camera, 
+  Upload, 
+  FileText, 
+  Star, 
+  Play,
+  Loader2,
+  CheckCircle,
+  AlertCircle,
+  ArrowLeft,
+  Download,
+  X
+} from 'lucide-react';
+
+interface ProductInfo {
+  nome: string;
+  marca: string;
+  preco: string;
+}
+
+interface ApiResponse {
+  status: string;
+  mensagem: string;
+  dados?: ProductInfo;
+  produtos?: ProductInfo[];
+  total_produtos?: number;
+  processado_em: string;
+}
+
+export default function GeminiImagePage() {
+  // Esta é uma interface funcional real para o Gemini Image Processor
+  // Para usar a versão completa com React, configure um ambiente Next.js/React apropriado
+  
+  return (
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #1e293b 0%, #065f46 50%, #1e293b 100%)', padding: '20px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', color: 'white' }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '16px' }}>
+            🤖 Gemini Image Processor
+          </h1>
+          <p style={{ fontSize: '1.2rem', color: '#d1d5db', maxWidth: '800px', margin: '0 auto 24px' }}>
+            Interface funcional para processamento de imagens com Google Gemini Vision. 
+            Esta versão integra diretamente com a API backend real.
+          </p>
+          
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button
+              id="startDemo"
+              style={{
+                padding: '12px 24px',
+                background: 'linear-gradient(135deg, #10b981 0%, #16a34a 100%)',
+                color: 'white',
+                borderRadius: '8px',
+                fontWeight: 'bold',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'all 0.3s'
+              }}
+            >
+              ▶️ Demo Funcional
+            </button>
+            
+            <a
+              href="https://github.com/rafa-mori/gemini-image-processor"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: '12px 24px',
+                background: '#374151',
+                color: 'white',
+                borderRadius: '8px',
+                fontWeight: 'bold',
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'all 0.3s'
+              }}
+            >
+              📁 GitHub
+            </a>
+          </div>
+        </div>
+
+        {/* Demo Interface */}
+        <div id="demoInterface" style={{ display: 'none' }}>
+          <div style={{ marginBottom: '24px' }}>
+            <button
+              id="backBtn"
+              style={{
+                background: 'transparent',
+                color: '#d1d5db',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '16px'
+              }}
+            >
+              ← Voltar
+            </button>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', gap: '32px' }}>
+            {/* Upload Section */}
+            <div style={{
+              background: 'rgba(31, 41, 55, 0.5)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid #374151'
+            }}>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                📤 Upload de Imagem
+              </h2>
+
+              <div
+                id="dropZone"
+                style={{
+                  border: '2px dashed #6b7280',
+                  borderRadius: '8px',
+                  padding: '32px',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  transition: 'border-color 0.3s',
+                  marginBottom: '16px'
+                }}
+              >
+                <div id="dropZoneContent">
+                  <div style={{ fontSize: '4rem', marginBottom: '16px' }}>📷</div>
+                  <p style={{ color: '#d1d5db', marginBottom: '16px' }}>
+                    Arraste uma imagem aqui ou clique para selecionar
+                  </p>
+                  <input
+                    type="file"
+                    id="fileInput"
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                  />
+                  <button
+                    id="selectBtn"
+                    style={{
+                      padding: '12px 24px',
+                      background: '#10b981',
+                      color: 'white',
+                      borderRadius: '8px',
+                      fontWeight: 'bold',
+                      border: 'none',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    📤 Selecionar Imagem
+                  </button>
+                </div>
+
+                <div id="preview" style={{ display: 'none' }}>
+                  <div style={{ position: 'relative', display: 'inline-block' }}>
+                    <img
+                      id="previewImg"
+                      style={{
+                        maxWidth: '100%',
+                        maxHeight: '256px',
+                        objectFit: 'contain',
+                        borderRadius: '8px',
+                        border: '1px solid #6b7280'
+                      }}
+                    />
+                    <button
+                      id="removeBtn"
+                      style={{
+                        position: 'absolute',
+                        top: '8px',
+                        right: '8px',
+                        background: '#dc2626',
+                        color: 'white',
+                        borderRadius: '50%',
+                        width: '32px',
+                        height: '32px',
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontSize: '16px'
+                      }}
+                      title="Remover imagem"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                  <div id="fileInfo" style={{ fontSize: '0.875rem', color: '#d1d5db', marginTop: '8px' }}></div>
+                </div>
+              </div>
+
+              {/* Options */}
+              <div id="options" style={{ display: 'none', marginBottom: '16px' }}>
+                <div style={{ marginBottom: '12px' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d1d5db' }}>
+                    <input type="checkbox" id="catalogMode" />
+                    Modo catálogo (múltiplos produtos)
+                  </label>
+                </div>
+                
+                <div style={{ marginBottom: '16px' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d1d5db' }}>
+                    <input type="checkbox" id="detailedMode" />
+                    Análise detalhada
+                  </label>
+                </div>
+
+                <button
+                  id="processBtn"
+                  style={{
+                    width: '100%',
+                    padding: '12px 24px',
+                    background: 'linear-gradient(135deg, #10b981 0%, #16a34a 100%)',
+                    color: 'white',
+                    borderRadius: '8px',
+                    fontWeight: 'bold',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  🧠 Processar com Gemini AI
+                </button>
+              </div>
+            </div>
+
+            {/* Results Section */}
+            <div style={{
+              background: 'rgba(31, 41, 55, 0.5)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid #374151'
+            }}>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                📄 Resultados
+              </h2>
+
+              <div id="results">
+                <div id="placeholder" style={{ textAlign: 'center', padding: '32px' }}>
+                  <div style={{ fontSize: '4rem', color: '#6b7280', marginBottom: '16px' }}>📷</div>
+                  <p style={{ color: '#9ca3af' }}>
+                    Selecione uma imagem para começar a análise
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Info Cards */}
+        <div id="infoSection" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginTop: '40px' }}>
+          <div style={{
+            background: 'rgba(31, 41, 55, 0.5)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '12px',
+            padding: '24px',
+            border: '1px solid #374151'
+          }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '12px' }}>🧠 IA do Google Gemini</h3>
+            <p style={{ color: '#d1d5db' }}>Utiliza o modelo Gemini Vision para análise avançada de imagens</p>
+          </div>
+
+          <div style={{
+            background: 'rgba(31, 41, 55, 0.5)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '12px',
+            padding: '24px',
+            border: '1px solid #374151'
+          }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '12px' }}>📷 Processamento Inteligente</h3>
+            <p style={{ color: '#d1d5db' }}>Extrai informações estruturadas de produtos em imagens</p>
+          </div>
+
+          <div style={{
+            background: 'rgba(31, 41, 55, 0.5)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '12px',
+            padding: '24px',
+            border: '1px solid #374151'
+          }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '12px' }}>📄 Parse Avançado</h3>
+            <p style={{ color: '#d1d5db' }}>Converte descrições livres em dados estruturados JSON</p>
+          </div>
+
+          <div style={{
+            background: 'rgba(31, 41, 55, 0.5)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '12px',
+            padding: '24px',
+            border: '1px solid #374151'
+          }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '12px' }}>🔧 API RESTful</h3>
+            <p style={{ color: '#d1d5db' }}>Interface simples e intuitiva para integração</p>
+          </div>
+        </div>
+      </div>
+
+      <script dangerouslySetInnerHTML={{
+        __html: `
+        document.addEventListener('DOMContentLoaded', function() {
+          const API_BASE_URL = 'http://localhost:3000/api';
+          let selectedFile = null;
+
+          // Elements
+          const startDemo = document.getElementById('startDemo');
+          const demoInterface = document.getElementById('demoInterface');
+          const infoSection = document.getElementById('infoSection');
+          const backBtn = document.getElementById('backBtn');
+          const dropZone = document.getElementById('dropZone');
+          const dropZoneContent = document.getElementById('dropZoneContent');
+          const preview = document.getElementById('preview');
+          const previewImg = document.getElementById('previewImg');
+          const fileInput = document.getElementById('fileInput');
+          const selectBtn = document.getElementById('selectBtn');
+          const removeBtn = document.getElementById('removeBtn');
+          const fileInfo = document.getElementById('fileInfo');
+          const options = document.getElementById('options');
+          const catalogMode = document.getElementById('catalogMode');
+          const detailedMode = document.getElementById('detailedMode');
+          const processBtn = document.getElementById('processBtn');
+          const results = document.getElementById('results');
+          const placeholder = document.getElementById('placeholder');
+
+          // Event Listeners
+          startDemo.addEventListener('click', () => {
+            demoInterface.style.display = 'block';
+            infoSection.style.display = 'none';
+            startDemo.parentElement.style.display = 'none';
+          });
+
+          backBtn.addEventListener('click', () => {
+            demoInterface.style.display = 'none';
+            infoSection.style.display = 'grid';
+            startDemo.parentElement.style.display = 'flex';
+            resetDemo();
+          });
+
+          selectBtn.addEventListener('click', () => {
+            fileInput.click();
+          });
+
+          dropZone.addEventListener('click', () => {
+            if (!selectedFile) fileInput.click();
+          });
+
+          dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#10b981';
+          });
+
+          dropZone.addEventListener('dragleave', () => {
+            dropZone.style.borderColor = '#6b7280';
+          });
+
+          dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#6b7280';
+            const files = Array.from(e.dataTransfer.files);
+            if (files.length > 0 && files[0].type.startsWith('image/')) {
+              handleFileSelect(files[0]);
+            }
+          });
+
+          fileInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            if (files.length > 0) {
+              handleFileSelect(files[0]);
+            }
+          });
+
+          removeBtn.addEventListener('click', resetDemo);
+
+          processBtn.addEventListener('click', processImage);
+
+          function handleFileSelect(file) {
+            selectedFile = file;
+            const url = URL.createObjectURL(file);
+            previewImg.src = url;
+            fileInfo.innerHTML = \`
+              <div><strong>Arquivo:</strong> \${file.name}</div>
+              <div><strong>Tamanho:</strong> \${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+            \`;
+            
+            dropZoneContent.style.display = 'none';
+            preview.style.display = 'block';
+            options.style.display = 'block';
+            
+            results.innerHTML = '<div id="placeholder" style="text-align: center; padding: 32px; color: #9ca3af;"><div style="font-size: 2rem; margin-bottom: 16px;">🖼️</div><p>Imagem carregada. Clique em "Processar" para analisar.</p></div>';
+          }
+
+          function resetDemo() {
+            selectedFile = null;
+            dropZoneContent.style.display = 'block';
+            preview.style.display = 'none';
+            options.style.display = 'none';
+            fileInput.value = '';
+            catalogMode.checked = false;
+            detailedMode.checked = false;
+            processBtn.textContent = '🧠 Processar com Gemini AI';
+            processBtn.disabled = false;
+            results.innerHTML = '<div id="placeholder" style="text-align: center; padding: 32px; color: #9ca3af;"><div style="font-size: 4rem; margin-bottom: 16px;">📷</div><p>Selecione uma imagem para começar a análise</p></div>';
+          }
+
+          async function processImage() {
+            if (!selectedFile) return;
+
+            processBtn.textContent = '🔄 Processando...';
+            processBtn.disabled = true;
+
+            try {
+              const formData = new FormData();
+              formData.append('image', selectedFile);
+
+              const endpoint = catalogMode.checked ? 'extract-catalog' : 'extract-product';
+              const queryParams = new URLSearchParams();
+              
+              if (detailedMode.checked) queryParams.append('detailed', 'true');
+              if (!catalogMode.checked) queryParams.append('catalog', catalogMode.checked.toString());
+
+              const url = \`\${API_BASE_URL}/\${endpoint}\${queryParams.toString() ? '?' + queryParams.toString() : ''}\`;
+
+              const response = await fetch(url, {
+                method: 'POST',
+                body: formData,
+              });
+
+              const data = await response.json();
+
+              if (response.ok) {
+                displayResults(data);
+              } else {
+                displayError(data.mensagem || 'Erro ao processar imagem');
+              }
+            } catch (err) {
+              displayError('Erro de conexão com a API. Verifique se o servidor está rodando em ' + API_BASE_URL);
+              console.error('Erro:', err);
+            } finally {
+              processBtn.textContent = '🧠 Processar com Gemini AI';
+              processBtn.disabled = false;
+            }
+          }
+
+          function displayResults(data) {
+            let html = \`
+              <div style="color: #10b981; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 1.2rem;">✅</span>
+                <span style="font-weight: bold;">\${data.mensagem}</span>
+              </div>
+            \`;
+
+            // Single Product Result
+            if (data.dados) {
+              html += \`
+                <div style="background: rgba(55, 65, 81, 0.5); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+                  <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 12px; color: white;">Informações do Produto</h3>
+                  <div style="display: grid; gap: 8px;">
+                    <div><span style="color: #9ca3af;">Nome:</span> <span style="color: white; font-weight: bold; margin-left: 8px;">\${data.dados.nome}</span></div>
+                    <div><span style="color: #9ca3af;">Marca:</span> <span style="color: white; font-weight: bold; margin-left: 8px;">\${data.dados.marca}</span></div>
+                    <div><span style="color: #9ca3af;">Preço:</span> <span style="color: white; font-weight: bold; margin-left: 8px;">\${data.dados.preco}</span></div>
+                  </div>
+                </div>
+              \`;
+            }
+
+            // Multiple Products Result
+            if (data.produtos && data.produtos.length > 0) {
+              html += \`
+                <div style="margin-bottom: 16px;">
+                  <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 12px;">
+                    <h3 style="font-size: 1.2rem; font-weight: bold; color: white;">Produtos Encontrados</h3>
+                    <span style="background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.875rem; margin-left: auto;">\${data.total_produtos} produtos</span>
+                  </div>
+                  
+                  <div style="display: grid; gap: 12px; max-height: 300px; overflow-y: auto;">
+              \`;
+              
+              data.produtos.forEach((produto, index) => {
+                html += \`
+                  <div style="background: rgba(55, 65, 81, 0.5); border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 0.875rem; display: grid; gap: 4px;">
+                      <div><span style="color: #9ca3af;">Nome:</span> <span style="color: white; margin-left: 8px;">\${produto.nome}</span></div>
+                      <div><span style="color: #9ca3af;">Marca:</span> <span style="color: white; margin-left: 8px;">\${produto.marca}</span></div>
+                      <div><span style="color: #9ca3af;">Preço:</span> <span style="color: white; margin-left: 8px;">\${produto.preco}</span></div>
+                    </div>
+                  </div>
+                \`;
+              });
+              
+              html += '</div></div>';
+            }
+
+            html += \`
+              <div style="font-size: 0.75rem; color: #9ca3af; margin-bottom: 16px;">
+                Processado em: \${new Date(data.processado_em).toLocaleString('pt-BR')}
+              </div>
+              
+              <button 
+                onclick="downloadJSON()" 
+                style="display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: #6b7280; color: white; border-radius: 8px; border: none; cursor: pointer;"
+              >
+                💾 Exportar JSON
+              </button>
+            \`;
+
+            results.innerHTML = html;
+            
+            // Store data for download
+            window.lastResult = data;
+          }
+
+          function displayError(message) {
+            results.innerHTML = \`
+              <div style="display: flex; align-items: center; gap: 8px; padding: 16px; background: rgba(185, 28, 28, 0.1); border: 1px solid #dc2626; border-radius: 8px; color: #fca5a5;">
+                <span style="font-size: 1.2rem;">⚠️</span>
+                <span>\${message}</span>
+              </div>
+            \`;
+          }
+
+          // Global function for JSON download
+          window.downloadJSON = function() {
+            if (window.lastResult) {
+              const dataStr = JSON.stringify(window.lastResult, null, 2);
+              const dataBlob = new Blob([dataStr], { type: 'application/json' });
+              const url = URL.createObjectURL(dataBlob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.download = \`gemini-result-\${Date.now()}.json\`;
+              link.click();
+              URL.revokeObjectURL(url);
+            }
+          };
+        });
+        `
+      }} />
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="container mx-auto px-4 py-8"
+      >
+        {/* Header */}
+        <motion.div 
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            🤖 Gemini Image Processor
+          </h1>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-6">
+            Processador de imagens inteligente que utiliza o Google Gemini Vision para extrair 
+            informações estruturadas de produtos. Desenvolvido como desafio técnico para vaga de emprego.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <button
+              onClick={() => setShowDemo(true)}
+              className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg font-semibold hover:from-emerald-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+            >
+              <Play className="w-5 h-5" />
+              Demo Interativo
+            </button>
+            
+            <a
+              href="https://github.com/rafa-mori/gemini-image-processor"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+            >
+              <Github className="w-5 h-5" />
+              GitHub
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Features */}
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+        >
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 hover:border-emerald-500/50 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
+            >
+              <div className="text-emerald-400 mb-3">{feature.icon}</div>
+              <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+              <p className="text-gray-300 text-sm">{feature.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Tech Stack */}
+        <motion.div
+          className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-gray-700 mb-8"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.0, duration: 0.6 }}
+        >
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">🛠️ Stack Tecnológica</h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {techStack.map((tech, index) => (
+              <motion.span
+                key={tech.name}
+                className={`px-4 py-2 ${tech.color} text-white rounded-full font-medium text-sm`}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.2 + index * 0.1, duration: 0.3 }}
+              >
+                {tech.name}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Project Details */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
+        >
+          {/* About */}
+          <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700">
+            <h3 className="text-xl font-bold text-white mb-4">📖 Sobre o Projeto</h3>
+            <div className="space-y-3 text-gray-300">
+              <p>
+                O Gemini Image Processor foi desenvolvido como um desafio técnico para uma vaga de emprego. 
+                O objetivo era criar uma solução que processasse imagens de produtos e extraísse informações estruturadas.
+              </p>
+              <p>
+                O maior desafio foi desenvolver um parser robusto capaz de interpretar as respostas variadas 
+                do modelo Gemini e convertê-las em dados estruturados consistentes.
+              </p>
+              <p>
+                A aplicação demonstra integração com APIs de IA generativa e técnicas avançadas de 
+                processamento de linguagem natural.
+              </p>
+            </div>
+          </div>
+
+          {/* Technical Details */}
+          <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700">
+            <h3 className="text-xl font-bold text-white mb-4">🔧 Detalhes Técnicos</h3>
+            <div className="space-y-3 text-gray-300">
+              <div>
+                <strong className="text-white">IA:</strong> Google Gemini Vision API
+              </div>
+              <div>
+                <strong className="text-white">Backend:</strong> Node.js com Express
+              </div>
+              <div>
+                <strong className="text-white">Upload:</strong> Multer para processamento de arquivos
+              </div>
+              <div>
+                <strong className="text-white">Validação:</strong> Joi para validação de dados
+              </div>
+              <div>
+                <strong className="text-white">Frontend:</strong> React com interface moderna
+              </div>
+              <div>
+                <strong className="text-white">Deploy:</strong> Preparado para containerização
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+}
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="container mx-auto px-4 py-8"
+      >
+        {/* Header */}
+        <motion.div 
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            🤖 Gemini Image Processor
+          </h1>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-6">
+            Processador de imagens inteligente que utiliza o Google Gemini Vision para extrair 
+            informações estruturadas de produtos. Desenvolvido como desafio técnico para vaga de emprego.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <button
+              onClick={() => setShowDemo(true)}
+              className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg font-semibold hover:from-emerald-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+            >
+              <Play className="w-5 h-5" />
+              Demo Interativo
+            </button>
+            
+            <a
+              href="https://github.com/rafa-mori/gemini-image-processor"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+            >
+              <Github className="w-5 h-5" />
+              GitHub
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Features */}
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+        >
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 hover:border-emerald-500/50 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
+            >
+              <div className="text-emerald-400 mb-3">{feature.icon}</div>
+              <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+              <p className="text-gray-300 text-sm">{feature.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Tech Stack */}
+        <motion.div
+          className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-gray-700 mb-8"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.0, duration: 0.6 }}
+        >
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">🛠️ Stack Tecnológica</h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {techStack.map((tech, index) => (
+              <motion.span
+                key={tech.name}
+                className={`px-4 py-2 ${tech.color} text-white rounded-full font-medium text-sm`}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.2 + index * 0.1, duration: 0.3 }}
+              >
+                {tech.name}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Project Details */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
+        >
+          {/* About */}
+          <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700">
+            <h3 className="text-xl font-bold text-white mb-4">📖 Sobre o Projeto</h3>
+            <div className="space-y-3 text-gray-300">
+              <p>
+                O Gemini Image Processor foi desenvolvido como um desafio técnico para uma vaga de emprego. 
+                O objetivo era criar uma solução que processasse imagens de produtos e extraísse informações estruturadas.
+              </p>
+              <p>
+                O maior desafio foi desenvolver um parser robusto capaz de interpretar as respostas variadas 
+                do modelo Gemini e convertê-las em dados estruturados consistentes.
+              </p>
+              <p>
+                A aplicação demonstra integração com APIs de IA generativa e técnicas avançadas de 
+                processamento de linguagem natural.
+              </p>
+            </div>
+          </div>
+
+          {/* Technical Details */}
+          <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700">
+            <h3 className="text-xl font-bold text-white mb-4">🔧 Detalhes Técnicos</h3>
+            <div className="space-y-3 text-gray-300">
+              <div>
+                <strong className="text-white">IA:</strong> Google Gemini Vision API
+              </div>
+              <div>
+                <strong className="text-white">Backend:</strong> Node.js com Express
+              </div>
+              <div>
+                <strong className="text-white">Upload:</strong> Multer para processamento de arquivos
+              </div>
+              <div>
+                <strong className="text-white">Validação:</strong> Joi para validação de dados
+              </div>
+              <div>
+                <strong className="text-white">Frontend:</strong> React com interface moderna
+              </div>
+              <div>
+                <strong className="text-white">Deploy:</strong> Preparado para containerização
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+}
+
+/// src/server.js ///
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { existsSync, mkdirSync } from 'fs';
+
+import apiRoutes from './routes/api.js';
+import { errorHandler, requestLogger } from './middleware.js';
+import { logger } from './logger.js';
+
+// Configuração de paths para ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Carrega variáveis de ambiente
+dotenv.config();
+
+// Cria diretório de logs se não existir
+const logsDir = join(__dirname, '..', 'logs');
+if (!existsSync(logsDir)) {
+  mkdirSync(logsDir, { recursive: true });
+}
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middlewares globais
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://rafa-mori.dev'] // Configure com seus domínios em produção
+    : true, // Permite qualquer origem em desenvolvimento
+  credentials: true
+}));
+
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(requestLogger);
+
+// Middleware para adicionar headers de segurança básicos
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  next();
+});
+
+// Servir arquivos estáticos
+app.use(express.static(join(__dirname, '..', 'public')));
+
+// Rotas da API
+app.use('/api', apiRoutes);
+
+// Rota de boas-vindas (serve o frontend ou JSON baseado no Accept header)
+app.get('/', (req, res) => {
+  const acceptsHtml = req.headers.accept && req.headers.accept.includes('text/html');
+  
+  if (acceptsHtml) {
+    // Serve o frontend HTML
+    res.sendFile(join(__dirname, '..', 'public', 'index.html'));
+  } else {
+    // Serve informações da API em JSON
+    res.json({
+      message: 'Gemini Image Processor API',
+      version: '1.0.0',
+      docs: '/api/docs',
+      health: '/api/health',
+      frontend: '/',
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Middleware de tratamento de rotas não encontradas
+app.use('*', (req, res) => {
+  res.status(404).json({
+    status: 'erro',
+    mensagem: 'Endpoint não encontrado',
+    path: req.originalUrl
+  });
+});
+
+// Middleware de tratamento de erros (deve ser o último)
+app.use(errorHandler);
+
+// Validação de variáveis de ambiente essenciais
+function validateEnvironment() {
+  const requiredVars = ['GEMINI_API_KEY'];
+  const missing = requiredVars.filter(varName => !process.env[varName]);
+  
+  if (missing.length > 0) {
+    logger.error('Variáveis de ambiente obrigatórias não encontradas:', missing);
+    process.exit(1);
+  }
+}
+
+// Inicialização do servidor
+function startServer() {
+  try {
+    validateEnvironment();
+    
+    const server = app.listen(PORT, () => {
+      logger.info(`🚀 Servidor rodando na porta ${PORT}`);
+      logger.info(`📚 Documentação: http://localhost:${PORT}/api/docs`);
+      logger.info(`❤️  Health check: http://localhost:${PORT}/api/health`);
+      logger.info(`🖼️  Endpoint principal: http://localhost:${PORT}/api/extract-product`);
+    });
+
+    // Graceful shutdown
+    process.on('SIGTERM', () => {
+      logger.info('SIGTERM recebido, encerrando servidor...');
+      server.close(() => {
+        logger.info('Servidor encerrado');
+        process.exit(0);
+      });
+    });
+
+    process.on('SIGINT', () => {
+      logger.info('SIGINT recebido, encerrando servidor...');
+      server.close(() => {
+        logger.info('Servidor encerrado');
+        process.exit(0);
+      });
+    });
+
+  } catch (error) {
+    logger.error('Erro ao iniciar servidor:', error);
+    process.exit(1);
+  }
+}
+
+startServer();
+
+export default app;
+
+/// src/utils.js ///
+import fs from 'fs/promises';
+import { logger } from './logger.js';
+
+/**
+ * Utilitários para manipulação de imagens e dados
+ */
+
+export class ImageProcessor {
+  static SUPPORTED_FORMATS = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+  static MAX_SIZE = 5 * 1024 * 1024; // 5MB
+
+  /**
+   * Valida se o arquivo é uma imagem suportada
+   */
+  static isValidImage(file) {
+    return (
+      file &&
+      this.SUPPORTED_FORMATS.includes(file.mimetype) &&
+      file.size <= this.MAX_SIZE
+    );
+  }
+
+  /**
+   * Converte base64 para buffer
+   */
+  static base64ToBuffer(base64String) {
+    try {
+      // Remove prefixo data URL se presente
+      const base64Data = base64String.replace(/^data:image\/[a-z]+;base64,/, '');
+      return Buffer.from(base64Data, 'base64');
+    } catch (error) {
+      throw new Error('Base64 inválido fornecido');
+    }
+  }
+
+  /**
+   * Detecta tipo MIME de base64
+   */
+  static detectMimeTypeFromBase64(base64String) {
+    const match = base64String.match(/^data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+);base64,/);
+    return match ? match[1] : null;
+  }
+}
+
+export class ResponseFormatter {
+  /**
+   * Formata resposta de sucesso padronizada
+   */
+  static success(data, message = 'Operação realizada com sucesso', metadata = {}) {
+    return {
+      status: 'sucesso',
+      mensagem: message,
+      dados: data,
+      ...metadata,
+      processado_em: new Date().toISOString()
+    };
+  }
+
+  /**
+   * Formata resposta de erro padronizada
+   */
+  static error(message, details = null, statusCode = 500) {
+    const response = {
+      status: 'erro',
+      mensagem: message,
+      processado_em: new Date().toISOString()
+    };
+
+    if (details && process.env.NODE_ENV === 'development') {
+      response.detalhes = details;
+    }
+
+    return response;
+  }
+
+  /**
+   * Formata dados de produto extraído
+   */
+  static formatProductData(rawData) {
+    return {
+      nome: rawData.nome_produto || 'N/A',
+      marca: rawData.marca || 'N/A',
+      preco: rawData.preco || 'N/A',
+      confianca: rawData.confidence || null
+    };
+  }
+}
+
+export class TextCleaner {
+  /**
+   * Remove caracteres especiais e normaliza texto
+   */
+  static cleanText(text) {
+    if (typeof text !== 'string') return 'N/A';
+    
+    return text
+      .trim()
+      .replace(/\s+/g, ' ') // Remove espaços extras
+      .replace(/[\u200B-\u200D\uFEFF]/g, '') // Remove caracteres invisíveis
+      .replace(/[^\w\s\-.,R$€£¥₹]/g, '') // Mantém apenas caracteres válidos
+      .trim();
+  }
+
+  /**
+   * Extrai preço de texto com diferentes formatos
+   */
+  static extractPrice(text) {
+    if (!text || typeof text !== 'string') return 'N/A';
+    
+    // Padrões comuns de preço
+    const pricePatterns = [
+      /R\$\s*(\d+(?:[.,]\d{2})?)/i, // R$ 29,90 ou R$ 29.90
+      /(\d+(?:[.,]\d{2})?)\s*reais?/i, // 29,90 reais
+      /€\s*(\d+(?:[.,]\d{2})?)/i, // € 29,90
+      /\$\s*(\d+(?:[.,]\d{2})?)/i, // $ 29.90
+      /(\d+(?:[.,]\d{2})?)/, // 29,90 (genérico)
+    ];
+
+    for (const pattern of pricePatterns) {
+      const match = text.match(pattern);
+      if (match) {
+        return match[0];
+      }
+    }
+
+    return text.includes('N/A') ? 'N/A' : this.cleanText(text);
+  }
+
+  /**
+   * Normaliza nome do produto
+   */
+  static normalizeBrandName(brand) {
+    if (!brand || typeof brand !== 'string') return 'N/A';
+    
+    const cleaned = this.cleanText(brand);
+    
+    // Capitaliza primeira letra de cada palavra
+    return cleaned
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+}
+
+export class FileUtils {
+  /**
+   * Salva buffer como arquivo temporário
+   */
+  static async saveBufferToTemp(buffer, filename) {
+    try {
+      const tempPath = `./temp/${Date.now()}_${filename}`;
+      await fs.mkdir('./temp', { recursive: true });
+      await fs.writeFile(tempPath, buffer);
+      return tempPath;
+    } catch (error) {
+      logger.error('Erro ao salvar arquivo temporário:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Remove arquivo temporário
+   */
+  static async removeTemp(filePath) {
+    try {
+      await fs.unlink(filePath);
+    } catch (error) {
+      logger.warn('Erro ao remover arquivo temporário:', error);
+    }
+  }
+}
+
+export class RetryUtils {
+  /**
+   * Executa função com retry em caso de falha
+   */
+  static async retry(fn, maxAttempts = 3, delay = 1000) {
+    let lastError;
+    
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        return await fn();
+      } catch (error) {
+        lastError = error;
+        logger.warn(`Tentativa ${attempt} falhou:`, error.message);
+        
+        if (attempt < maxAttempts) {
+          await new Promise(resolve => setTimeout(resolve, delay * attempt));
+        }
+      }
+    }
+    
+    throw lastError;
+  }
+}
+
+/// src/validation.js ///
+import Joi from 'joi';
+
+// Schema para validação de upload de arquivo
+export const imageUploadSchema = Joi.object({
+  file: Joi.object({
+    fieldname: Joi.string().required(),
+    originalname: Joi.string().required(),
+    encoding: Joi.string().required(),
+    mimetype: Joi.string().valid(
+      'image/jpeg',
+      'image/jpg', 
+      'image/png',
+      'image/webp'
+    ).required(),
+    buffer: Joi.binary().required(),
+    size: Joi.number().max(5 * 1024 * 1024).required() // 5MB max
+  }).required()
+});
+
+// Schema para validação da resposta do produto
+export const productDataSchema = Joi.object({
+  nome_produto: Joi.string().required(),
+  marca: Joi.string().required(),
+  preco: Joi.string().required()
+});
+
+// Schema para validação da resposta de catálogo (múltiplos produtos)
+export const catalogDataSchema = Joi.array().items(productDataSchema).min(1);
+
+// Schema para validação de query parameters
+export const queryParamsSchema = Joi.object({
+  detailed: Joi.boolean().default(false),
+  format: Joi.string().valid('json').default('json'),
+  catalog: Joi.boolean().default(false) // Novo parâmetro para modo catálogo
+});
+
+export const validateImageUpload = (req, res, next) => {
+  if (!req.file) {
+    return res.status(400).json({
+      status: 'erro',
+      mensagem: 'Nenhuma imagem foi enviada'
+    });
+  }
+
+  const { error } = imageUploadSchema.validate({ file: req.file });
+  
+  if (error) {
+    return res.status(400).json({
+      status: 'erro',
+      mensagem: 'Arquivo inválido',
+      detalhes: error.details[0].message
+    });
+  }
+
+  next();
+};
+
+export const validateQueryParams = (req, res, next) => {
+  const { error, value } = queryParamsSchema.validate(req.query);
+  
+  if (error) {
+    return res.status(400).json({
+      status: 'erro',
+      mensagem: 'Parâmetros de consulta inválidos',
+      detalhes: error.details[0].message
+    });
+  }
+
+  req.validatedQuery = value;
+  next();
+};
+
+/// test-api.js ///
+#!/usr/bin/env node
+
+/**
+ * Script de teste para a API Gemini Image Processor
+ * 
+ * Uso:
+ * node test-api.js <caminho-para-imagem>
+ * 
+ * Exemplo:
+ * node test-api.js ./exemplo-produto.jpg
+ */
+
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const API_BASE_URL = process.env.API_URL || 'http://localhost:3000/api';
+
+async function testAPI() {
+  console.log('🧪 Testando API Gemini Image Processor\n');
+  
+  // 1. Testar saúde da API
+  console.log('1️⃣ Verificando saúde da API...');
+  try {
+    const healthResponse = await fetch(`${API_BASE_URL}/health`);
+    const healthData = await healthResponse.json();
+    
+    if (healthResponse.ok) {
+      console.log('✅ API está funcionando');
+      console.log(`   Status: ${healthData.status}`);
+      console.log(`   Timestamp: ${healthData.timestamp}\n`);
+    } else {
+      console.log('❌ API não está funcionando corretamente');
+      return;
+    }
+  } catch (error) {
+    console.log('❌ Erro ao conectar com a API');
+    console.log(`   Erro: ${error.message}`);
+    console.log(`   Verifique se a API está rodando em ${API_BASE_URL}\n`);
+    return;
+  }
+
+  // 2. Testar com imagem se fornecida
+  const imagePath = process.argv[2];
+  
+  if (!imagePath) {
+    console.log('ℹ️  Para testar com uma imagem, forneça o caminho:');
+    console.log('   node test-api.js ./caminho/para/sua/imagem.jpg\n');
+    
+    // Listar arquivos de exemplo se existirem
+    const exampleDir = join(__dirname, 'examples');
+    if (fs.existsSync(exampleDir)) {
+      console.log('📁 Imagens de exemplo encontradas:');
+      const files = fs.readdirSync(exampleDir).filter(f => 
+        f.toLowerCase().match(/\.(jpg|jpeg|png|webp)$/)
+      );
+      files.forEach(file => console.log(`   ${join(exampleDir, file)}`));
+    }
+    return;
+  }
+
+  // Verificar se o arquivo existe
+  if (!fs.existsSync(imagePath)) {
+    console.log(`❌ Arquivo não encontrado: ${imagePath}`);
+    return;
+  }
+
+  console.log(`2️⃣ Testando extração de produto com: ${imagePath}`);
+  
+  try {
+    // Preparar FormData
+    const imageBuffer = fs.readFileSync(imagePath);
+    const formData = new FormData();
+    
+    // Detectar tipo MIME
+    const ext = imagePath.toLowerCase().split('.').pop();
+    const mimeTypes = {
+      'jpg': 'image/jpeg',
+      'jpeg': 'image/jpeg', 
+      'png': 'image/png',
+      'webp': 'image/webp'
+    };
+    const mimeType = mimeTypes[ext] || 'image/jpeg';
+    
+    const blob = new Blob([imageBuffer], { type: mimeType });
+    formData.append('image', blob, imagePath.split('/').pop());
+
+    console.log(`   📤 Enviando imagem (${(imageBuffer.length / 1024).toFixed(1)} KB)...`);
+    
+    // Fazer requisição
+    const startTime = Date.now();
+    const response = await fetch(`${API_BASE_URL}/extract-product`, {
+      method: 'POST',
+      body: formData
+    });
+    
+    const duration = Date.now() - startTime;
+    const data = await response.json();
+    
+    console.log(`   ⏱️  Tempo de resposta: ${duration}ms\n`);
+    
+    if (response.ok && data.status === 'sucesso') {
+      console.log('✅ Extração realizada com sucesso!');
+      console.log('📋 Resultados:');
+      console.log(`   📦 Nome: ${data.dados.nome}`);
+      console.log(`   🏷️  Marca: ${data.dados.marca}`);
+      console.log(`   💰 Preço: ${data.dados.preco}`);
+      console.log(`   🕐 Processado em: ${data.processado_em}\n`);
+      
+      // Testar também com análise detalhada
+      console.log('3️⃣ Testando com análise detalhada...');
+      
+      const detailedResponse = await fetch(`${API_BASE_URL}/extract-product?detailed=true`, {
+        method: 'POST',
+        body: formData
+      });
+      
+      const detailedData = await detailedResponse.json();
+      
+      if (detailedResponse.ok && detailedData.status === 'sucesso') {
+        console.log('✅ Análise detalhada concluída!');
+        console.log('📋 Resultados detalhados:');
+        console.log(`   📦 Nome: ${detailedData.dados.nome}`);
+        console.log(`   🏷️  Marca: ${detailedData.dados.marca}`);
+        console.log(`   💰 Preço: ${detailedData.dados.preco}\n`);
+      } else {
+        console.log('⚠️  Análise detalhada falhou');
+        console.log(`   Erro: ${detailedData.mensagem}\n`);
+      }
+      
+    } else {
+      console.log('❌ Falha na extração');
+      console.log(`   Status: ${data.status}`);
+      console.log(`   Erro: ${data.mensagem}`);
+      if (data.detalhes) {
+        console.log(`   Detalhes: ${data.detalhes}`);
+      }
+    }
+    
+  } catch (error) {
+    console.log('❌ Erro durante o teste');
+    console.log(`   Erro: ${error.message}`);
+  }
+
+  // 3. Testar modo catálogo se solicitado
+  const testCatalog = process.argv.includes('--catalog');
+  
+  if (imagePath && testCatalog) {
+    console.log(`3️⃣ Testando modo catálogo com: ${imagePath}`);
+    
+    try {
+      const imageBuffer = fs.readFileSync(imagePath);
+      const formData = new FormData();
+      
+      const ext = imagePath.toLowerCase().split('.').pop();
+      const mimeTypes = {
+        'jpg': 'image/jpeg',
+        'jpeg': 'image/jpeg', 
+        'png': 'image/png',
+        'webp': 'image/webp'
+      };
+      const mimeType = mimeTypes[ext] || 'image/jpeg';
+      
+      const blob = new Blob([imageBuffer], { type: mimeType });
+      formData.append('image', blob, imagePath.split('/').pop());
+
+      console.log(`   📤 Enviando para extração de catálogo...`);
+      
+      const startTime = Date.now();
+      const response = await fetch(`${API_BASE_URL}/extract-catalog`, {
+        method: 'POST',
+        body: formData
+      });
+      
+      const duration = Date.now() - startTime;
+      const data = await response.json();
+      
+      console.log(`   ⏱️  Tempo de resposta: ${duration}ms\n`);
+      
+      if (response.ok && data.status === 'sucesso') {
+        console.log('✅ Extração de catálogo realizada com sucesso!');
+        console.log(`📊 Total de produtos encontrados: ${data.dados.total_produtos}`);
+        console.log('🛒 Produtos extraídos:');
+        
+        data.dados.produtos.forEach((produto, index) => {
+          console.log(`   ${index + 1}. 📦 ${produto.nome} | 🏷️ ${produto.marca} | 💰 ${produto.preco}`);
+        });
+        
+        console.log(`   🕐 Processado em: ${data.processado_em}\n`);
+        
+      } else {
+        console.log('❌ Falha na extração de catálogo');
+        console.log(`   Status: ${data.status}`);
+        console.log(`   Erro: ${data.mensagem}`);
+      }
+      
+    } catch (error) {
+      console.log('❌ Erro durante o teste de catálogo');
+      console.log(`   Erro: ${error.message}`);
+    }
+  }
+}
+
+// Executar testes
+testAPI().catch(console.error);
+
+/// tsconfig.json ///
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["dom", "dom.iterable", "ES6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}
