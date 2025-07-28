@@ -1,13 +1,13 @@
 'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
+import { Download, ExternalLink, Github, Star } from 'lucide-react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Calendar, Star } from 'lucide-react';
-import { ProjectCategory } from '../../types';
-import { projects } from '../../data/projects';
 import { ProjectFilter } from '../../components/common/ProjectFilter';
-import { Card, CardContent, Button } from '../../components/ui';
+import { Button, Card, CardContent } from '../../components/ui';
+import { projects } from '../../data/projects';
 import { fadeInUp, staggerContainer } from '../../lib/animations';
+import { ProjectCategory } from '../../types';
 
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>('all');
@@ -17,6 +17,27 @@ export function Projects() {
     : projects.filter(project => project.category === activeFilter);
 
   const featuredProjects = projects.filter(project => project.featured);
+
+  const downloadLookatniFile = async (filename: string) => {
+    try {
+      const response = await fetch(`/projects/${filename}`);
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      } else {
+        console.error('Erro ao baixar arquivo:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Erro ao baixar arquivo:', error);
+    }
+  };
 
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 w-full">
@@ -110,6 +131,16 @@ export function Projects() {
                           Demo
                         </Button>
                       )}
+                      {project.lookatniFile && (
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          onClick={() => downloadLookatniFile(project.lookatniFile!)}
+                        >
+                          <Download size={16} className="mr-2" />
+                          .latx
+                        </Button>
+                      )}
                     </div>
                   </div>
 
@@ -159,6 +190,17 @@ export function Projects() {
                         >
                           <ExternalLink size={16} className="mr-2" />
                           Demo
+                        </Button>
+                      )}
+                      {project.lookatniFile && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => downloadLookatniFile(project.lookatniFile!)}
+                          className="flex-1"
+                        >
+                          <Download size={16} className="mr-2" />
+                          .latx
                         </Button>
                       )}
                     </div>

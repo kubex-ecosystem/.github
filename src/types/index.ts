@@ -9,6 +9,7 @@ export interface Project {
   images?: string[];
   github?: string;
   demo?: string;
+  lookatniFile?: string; // Nome do arquivo .latx correspondente
   featured?: boolean;
   status: ProjectStatus;
   startDate?: string; // ISO date string

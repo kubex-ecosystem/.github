@@ -1,16 +1,16 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FolderIcon, 
-  DocumentIcon, 
-  ArrowDownTrayIcon, 
-  EyeIcon,
-  CodeBracketIcon,
-  ChartBarIcon,
-  PlayIcon 
+import {
+    ArrowDownTrayIcon,
+    ChartBarIcon,
+    CodeBracketIcon,
+    DocumentIcon,
+    EyeIcon,
+    FolderIcon,
+    PlayIcon
 } from '@heroicons/react/24/outline';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
 
 interface ProjectFile {
   path: string;
@@ -88,6 +88,27 @@ export default function ProjectExtractor({ projectFile, projectName, description
     }
   };
 
+  const downloadSourceFile = async () => {
+    try {
+      const response = await fetch(`/projects/${projectFile}`);
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = projectFile;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      } else {
+        console.error('Erro ao baixar arquivo:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Erro ao baixar arquivo:', error);
+    }
+  };
+
   const getFileIcon = (filename: string) => {
     const ext = filename.split('.').pop()?.toLowerCase();
     const isFolder = filename.includes('/') && !filename.split('/').pop()?.includes('.');
@@ -157,18 +178,27 @@ export default function ProjectExtractor({ projectFile, projectName, description
       <div className="p-4 border-b bg-gray-50 dark:bg-gray-800">
         <div className="flex gap-2 flex-wrap">
           {!projectData ? (
-            <button
-              onClick={extractProject}
-              disabled={isLoading}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors"
-            >
-              {isLoading ? (
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-              ) : (
-                <PlayIcon className="w-4 h-4" />
-              )}
-              {isLoading ? 'Extraindo...' : 'Extrair Projeto'}
-            </button>
+            <>
+              <button
+                onClick={extractProject}
+                disabled={isLoading}
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors"
+              >
+                {isLoading ? (
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                ) : (
+                  <PlayIcon className="w-4 h-4" />
+                )}
+                {isLoading ? 'Extraindo...' : 'Extrair Projeto'}
+              </button>
+              <button
+                onClick={downloadSourceFile}
+                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+              >
+                <DocumentIcon className="w-4 h-4" />
+                Download .latx
+              </button>
+            </>
           ) : (
             <>
               <button
@@ -193,6 +223,13 @@ export default function ProjectExtractor({ projectFile, projectName, description
                   <ArrowDownTrayIcon className="w-4 h-4" />
                 )}
                 Download ZIP
+              </button>
+              <button
+                onClick={downloadSourceFile}
+                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+              >
+                <DocumentIcon className="w-4 h-4" />
+                Download .latx
               </button>
             </>
           )}

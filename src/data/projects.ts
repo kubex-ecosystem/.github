@@ -12,6 +12,7 @@ export const projects: Project[] = [
     images: [],
     github: "https://github.com/rafa-mori/mini-games",
     demo: "/projects/mini-games",
+    lookatniFile: "lookatni-mini_games.latx",
     status: "completed"
   },
   {
@@ -23,6 +24,7 @@ export const projects: Project[] = [
     technologies: ["Go", "CLI", "Docker", "Git", "Makefile", "Cobra"],
     image: "https://raw.githubusercontent.com/rafa-mori/goforge/refs/heads/main/docs/assets/top_banner_m_a.png",
     github: "https://github.com/rafa-mori/goforge",
+    lookatniFile: "lookatni-goforge.latx",
     status: "completed"
   },
   {
@@ -47,6 +49,7 @@ export const projects: Project[] = [
     image: "https://raw.githubusercontent.com/rafa-mori/gobe/refs/heads/main/docs/assets/top_banner.png",
     images: [],
     github: "https://github.com/rafa-mori/gobe",
+    lookatniFile: "lookatni-gobe.latx",
     status: "in-progress"
   },
   {
@@ -59,6 +62,7 @@ export const projects: Project[] = [
     image: "https://raw.githubusercontent.com/rafa-mori/gdbase/refs/heads/main/docs/assets/top_banner.png",
     images: [],
     github: "https://github.com/rafa-mori/gdbase",
+    lookatniFile: "lookatni-gdbase.latx",
     status: "in-progress"
   },
   {

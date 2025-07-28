@@ -1,18 +1,18 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import {
+  CodeBracketIcon,
+  DocumentTextIcon,
+  HomeIcon,
+  RocketLaunchIcon,
+  SparklesIcon
+} from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import ProjectExtractor from '../../components/ProjectExtractor';
+import { useEffect, useState } from 'react';
 import AICodePlayground from '../../components/AICodePlayground';
+import ProjectExtractor from '../../components/ProjectExtractor';
 import WasmPowerDemo from '../../components/WasmPowerDemo';
-import { 
-  RocketLaunchIcon, 
-  CodeBracketIcon, 
-  SparklesIcon,
-  DocumentTextIcon,
-  HomeIcon
-} from '@heroicons/react/24/outline';
 
 interface ProjectFile {
   name: string;
@@ -38,35 +38,85 @@ export default function LookatniShowcase() {
     return colors[language] || 'bg-gray-100 text-gray-800';
   };
 
+  // Função para baixar arquivo do projeto
+  const downloadProjectFile = async (projectName: string) => {
+    try {
+      const response = await fetch(`/projects/${projectName}`);
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = projectName;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      } else {
+        console.error('Erro ao baixar arquivo:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Erro ao baixar arquivo:', error);
+    }
+  };
+
   useEffect(() => {
     const mockProjects: ProjectFile[] = [
       {
-        name: 'lookatni-gdbase.txt',
+        name: 'lookatni-gdbase.latx',
         displayName: 'GDBase - Database System',
         description: 'Sistema completo de banco de dados desenvolvido em Go com funcionalidades avançadas',
         language: 'Go',
         framework: 'Gin + GORM'
       },
       {
-        name: 'lookatni-gobe.txt',
+        name: 'lookatni-gobe.latx',
         displayName: 'Gobe - Web Framework', 
         description: 'Framework web minimalista e eficiente desenvolvido em Go',
         language: 'Go',
         framework: 'Pure Go'
       },
       {
-        name: 'lookatni-xtui.txt',
+        name: 'lookatni-xtui.latx',
         displayName: 'XTUI - UI Framework',
         description: 'Framework de interface de usuário para aplicações core/terminais/CLI, com conexão em DB, extração de dados e mais',
         language: 'Go',
         framework: 'Pure Go'
       },
       {
-        name: 'lookatni-gdbase.txt',
-        displayName: 'GDBase - Modular: DB, Models & Services',
-        description: 'Solução de gerenciamento de bancos, serviços e modelos de dados desenvolvida em Go, projetada para ser modular, escalável e automática. Permite configuração zero, mas suporta customizações avançadas via arquivos de configuração, CLI e SDK.',
+        name: 'lookatni-gocrafter.latx',
+        displayName: 'GoCrafter - Project Generator',
+        description: 'Ferramenta completa para gerar projetos Go com templates predefinidos e scaffolding automático',
         language: 'Go',
-        framework: 'Gin + GORM'
+        framework: 'Cobra CLI'
+      },
+      {
+        name: 'lookatni-goforge.latx',
+        displayName: 'GoForge - Build System',
+        description: 'Sistema de build e deployment para aplicações Go com pipelines automatizados',
+        language: 'Go',
+        framework: 'Pure Go'
+      },
+      {
+        name: 'lookatni-logz.latx',
+        displayName: 'Logz - Logging System',
+        description: 'Sistema de logging estruturado e centralizado para aplicações distribuídas',
+        language: 'Go',
+        framework: 'Pure Go'
+      },
+      {
+        name: 'lookatni-goSetup.latx',
+        displayName: 'GoSetup - Environment Manager',
+        description: 'Gerenciador de ambiente e configuração para projetos Go',
+        language: 'Go',
+        framework: 'Pure Go'
+      },
+      {
+        name: 'lookatni-mini_games.latx',
+        displayName: 'Mini Games Collection',
+        description: 'Coleção de mini jogos desenvolvidos em JavaScript com Canvas API',
+        language: 'JavaScript',
+        framework: 'Vanilla JS'
       }
     ];
     
