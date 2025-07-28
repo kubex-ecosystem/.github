@@ -31,7 +31,13 @@ export const translations = {
       },
       location: "Location",
       github: "GitHub",
-      linkedin: "LinkedIn"
+      linkedin: "LinkedIn",
+      floating: {
+        workTogether: "Let's Work Together",
+        scrollDown: "Or scroll down for the full form",
+        successMessage: "Message sent successfully!",
+        errorMessage: "Unexpected error. Please try again."
+      }
     },
     hero: {
       externalLink: "View Projects",
@@ -72,7 +78,13 @@ export const translations = {
       },
       location: "Localização",
       github: "GitHub",
-      linkedin: "LinkedIn"
+      linkedin: "LinkedIn",
+      floating: {
+        workTogether: "Vamos Trabalhar Juntos",
+        scrollDown: "Ou role para baixo para o formulário completo",
+        successMessage: "Mensagem enviada com sucesso!",
+        errorMessage: "Erro inesperado. Tente novamente."
+      }
     },
     hero : {
       externalLink: "Ver Projetos",

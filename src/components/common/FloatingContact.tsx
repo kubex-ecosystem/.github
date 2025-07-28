@@ -3,11 +3,13 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronUp, Mail, MessageCircle, Send, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 import { useContactSectionVisibility } from '../../hooks/useContactSectionVisibility';
 import { ContactForm } from '../../types';
 import { Button, Card, CardContent, Input, Textarea } from '../ui';
 
 export function FloatingContact() {
+  const { t, language } = useLanguage();
   const isInContactSection = useContactSectionVisibility();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,10 +51,10 @@ export function FloatingContact() {
     
     // Simple validation
     const newErrors: Partial<ContactForm> = {};
-    if (!formData.name.trim()) newErrors.name = 'Nome é obrigatório';
-    if (!formData.email.trim()) newErrors.email = 'Email é obrigatório';
-    if (!formData.subject.trim()) newErrors.subject = 'Assunto é obrigatório';
-    if (!formData.message.trim()) newErrors.message = 'Mensagem é obrigatória';
+    if (!formData.name.trim()) newErrors.name = t('contact.validation.nameRequired');
+    if (!formData.email.trim()) newErrors.email = t('contact.validation.emailRequired');
+    if (!formData.subject.trim()) newErrors.subject = t('contact.validation.subjectRequired');
+    if (!formData.message.trim()) newErrors.message = t('contact.validation.messageRequired');
     
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -66,7 +68,7 @@ export function FloatingContact() {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      setSubmitStatus({ type: 'success', message: 'Mensagem enviada com sucesso!' });
+      setSubmitStatus({ type: 'success', message: t('contact.floating.successMessage') });
       setFormData({ name: '', email: '', subject: '', message: '' });
       // Auto-collapse after successful submission
       setTimeout(() => {
@@ -76,7 +78,7 @@ export function FloatingContact() {
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'Erro inesperado. Tente novamente.',
+        message: t('contact.floating.errorMessage'),
       });
     } finally {
       setIsSubmitting(false);
@@ -115,7 +117,7 @@ export function FloatingContact() {
               animate={{ opacity: 1, x: 0 }}
               className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-800 dark:bg-gray-700 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap shadow-lg"
             >
-              Vamos Trabalhar Juntos
+              {t('contact.floating.workTogether')}
               <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 dark:border-l-gray-700 border-y-4 border-y-transparent"></div>
             </motion.div>
           </motion.div>
@@ -139,7 +141,7 @@ export function FloatingContact() {
                       <Mail className="w-4 h-4 text-white" />
                     </div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">
-                      Contato Rápido
+                      {t('contact.quickContact')}
                     </h3>
                   </div>
                   <Button
@@ -159,7 +161,7 @@ export function FloatingContact() {
                     value={formData.name}
                     onChange={handleInputChange}
                     error={errors.name}
-                    placeholder="Seu nome completo"
+                    placeholder={t('contact.form.namePlaceholder')}
                     required
                   />
                   
@@ -169,7 +171,7 @@ export function FloatingContact() {
                     value={formData.email}
                     onChange={handleInputChange}
                     error={errors.email}
-                    placeholder="seu@email.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                     required
                   />
                   
@@ -178,7 +180,7 @@ export function FloatingContact() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     error={errors.subject}
-                    placeholder="Sobre o que é?"
+                    placeholder={t('contact.form.subjectPlaceholder')}
                     required
                   />
                   
@@ -187,7 +189,7 @@ export function FloatingContact() {
                     value={formData.message}
                     onChange={handleInputChange}
                     error={errors.message}
-                    placeholder="Conte-me sobre seu projeto ou apenas diga olá!"
+                    placeholder={t('contact.form.messagePlaceholder')}
                     rows={3}
                     required
                   />
@@ -216,12 +218,12 @@ export function FloatingContact() {
                     {isSubmitting ? (
                       <>
                         <div className="w-3 h-3 border border-white border-t-transparent rounded-full animate-spin mr-2" />
-                        Enviando...
+                        {t('contact.form.sending')}
                       </>
                     ) : (
                       <>
                         <Send className="w-3 h-3 mr-2" />
-                        Enviar Mensagem
+                        {t('contact.form.send')}
                       </>
                     )}
                   </Button>
@@ -230,7 +232,7 @@ export function FloatingContact() {
                 {/* Footer */}
                 <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
                   <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                    Ou role para baixo para o formulário completo
+                    {t('contact.floating.scrollDown')}
                     <ChevronUp className="w-3 h-3 inline ml-1" />
                   </p>
                 </div>
