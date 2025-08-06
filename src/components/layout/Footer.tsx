@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Heart, Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Heart, Linkedin, Mail } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
 
 export function Footer() {
@@ -92,6 +92,7 @@ export function Footer() {
             and lots of ☕
           </p>
         </div>
+        
       </div>
     </footer>
   );

@@ -1,7 +1,8 @@
-import React from 'react';
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from '../context/ThemeContext';
+import Script from 'next/script';
+import React from 'react';
 import { LanguageProvider } from '../context/LanguageContext';
+import { ThemeProvider } from '../context/ThemeContext';
 import './globals.css';
 
 // import { metadata } from '../data/metadata';
@@ -62,17 +63,44 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} font-sans`}>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QK23V83HGE"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QK23V83HGE"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-QK23V83HGE');
-          `
-          }}
-        />
+          `}
+        </Script>
+
+        {/* Meta Pixel */}
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '715746831460950');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+        <noscript>
+          <img 
+            height="1" 
+            width="1" 
+            style={{display: 'none'}}
+            src="https://www.facebook.com/tr?id=715746831460950&ev=PageView&noscript=1"
+          />
+        </noscript>
+
         <LanguageProvider>
           <ThemeProvider>
             {children}
