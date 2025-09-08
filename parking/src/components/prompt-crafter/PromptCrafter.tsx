@@ -164,6 +164,15 @@ const PromptCrafter: React.FC<PromptCrafterProps> = ({ theme, isApiKeyMissing })
 
   return (
     <div className="grid lg:grid-cols-2 gap-8">
+      {/* API Key Input Section - only show when no API key is configured */}
+      {isApiKeyMissing && (
+        <div className="lg:col-span-2">
+          <ApiKeyInput
+            onApiKeyChange={handleApiKeyChange}
+            isVisible={isApiKeyMissing}
+          />
+        </div>
+      )}
       {/* Input Section */}
       <div className="bg-white/60 dark:bg-[#10151b]/30 p-6 rounded-lg border-2 border-slate-200 dark:border-[#7c4dff]/30 backdrop-blur-sm shadow-2xl shadow-slate-500/10">
         <div className="flex justify-between items-center mb-4">
@@ -186,16 +195,6 @@ const PromptCrafter: React.FC<PromptCrafterProps> = ({ theme, isApiKeyMissing })
         <IdeasList ideas={ideas} onRemoveIdea={handleRemoveIdea} />
         <PurposeSelector purpose={purpose} setPurpose={handleSetPurpose} />
       </div>
-
-      {/* API Key Input Section - only show when no API key is configured */}
-      {isApiKeyMissing && (
-        <div className="lg:col-span-2">
-          <ApiKeyInput
-            onApiKeyChange={handleApiKeyChange}
-            isVisible={isApiKeyMissing}
-          />
-        </div>
-      )}
 
       {/* Output Section */}
       <div className="flex flex-col">
