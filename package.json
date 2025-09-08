@@ -7,10 +7,10 @@
   "homepage": "https://rafa-mori.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rafa-mori/.github.git"
+    "url": "https://github.com/kubex-ecosystem/.github.git"
   },
   "bugs": {
-    "url": "https://github.com/rafa-mori/.github/issues"
+    "url": "https://github.com/kubex-ecosystem/.github/issues"
   },
   "engines": {
     "node": ">=22.x",

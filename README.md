@@ -1,4 +1,4 @@
-# ![Rafa Mori Banner](https://github.com/rafa-mori/.github/blob/661f6f130131342296429af51d15f5eb6b98679e/assets/banners/name-top_banner_a.png)
+# ![Rafa Mori Banner](https://github.com/kubex-ecosystem/.github/blob/661f6f130131342296429af51d15f5eb6b98679e/assets/banners/name-top_banner_a.png)
 
 ---
 
@@ -10,10 +10,10 @@ creating impactful solutions. Always looking to learn, grow, and share knowledge
 ---
 
 [![wakatime](https://wakatime.com/badge/user/04f6fe46-6782-45b3-a50a-604625b89d5b.svg)](https://wakatime.com/@04f6fe46-6782-45b3-a50a-604625b89d5b)
-![![Rafa Mori's GitHub followers](https://img.shields.io/github/followers/faelmori?style=social)](https://github.com/rafa-mori)
-![![Rafa Mori's GitHub stars](https://img.shields.io/github/stars/faelmori?style=social)](https://github.com/rafa-mori)
-![![Rafa Mori's GitHub forks](https://img.shields.io/github/forks/faelmori?style=social)](https://github.com/rafa-mori)
-![![Rafa Mori's GitHub watchers](https://img.shields.io/github/watchers/faelmori?style=social)](https://github.com/rafa-mori)
+![![Rafa Mori's GitHub followers](https://img.shields.io/github/followers/faelmori?style=social)](https://github.com/kubex-ecosystem)
+![![Rafa Mori's GitHub stars](https://img.shields.io/github/stars/faelmori?style=social)](https://github.com/kubex-ecosystem)
+![![Rafa Mori's GitHub forks](https://img.shields.io/github/forks/faelmori?style=social)](https://github.com/kubex-ecosystem)
+![![Rafa Mori's GitHub watchers](https://img.shields.io/github/watchers/faelmori?style=social)](https://github.com/kubex-ecosystem)
 
 ---
 
