@@ -1,0 +1,29 @@
+{
+  "short_name": "Grompt",
+  "name": "Grompt: AI Prompt Crafter",
+  "description": "An AI-powered tool that transforms raw, unstructured ideas into professional, well-structured prompts for large language models, following the Kubex design principles.",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/vite.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/vite.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0a0f14",
+  "background_color": "#0a0f14"
+}

@@ -1,0 +1,40 @@
+{
+  "name": "grompt",
+  "private": true,
+  "version": "1.0.8",
+  "markdown": "github",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kubex-ecosystem/grompt.git"
+  },
+  "author": "Rafael Mori <faelmori@live.com>",
+  "license": "MIT",
+  "homepage": "https://grompt.kubex.world",
+  "readme": "https://github.com/kubex-ecosystem/grompt/README.md",
+  "bugs": {
+    "url": "https://github.com/kubex-ecosystem/grompt/issues"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:static": "vite build --mode production",
+    "serve": "vite preview --port 4173 --host"
+  },
+  "dependencies": {
+    "@google/genai": "^1.17.0",
+    "lucide-react": "^0.542.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-markdown": "9.0.1",
+    "react-syntax-highlighter": "^15.6.6",
+    "remark-gfm": "4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.12",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}
