@@ -1,10 +1,10 @@
-import React, { useState, useCallback, useEffect, useRef, useContext } from 'react';
-import { Idea, HistoryItem } from '../types';
-import { generateStructuredPrompt } from '../services/geminiService';
-import { LanguageContext } from '../App';
-import { Plus, Trash2, Wand2, Loader, Clipboard, ClipboardCheck, AlertTriangle, X, Lightbulb, History, Eye, XCircle, Share2, Code, BrainCircuit } from 'lucide-react';
+import { AlertTriangle, BrainCircuit, Clipboard, ClipboardCheck, Code, Eye, History, Lightbulb, Loader, Plus, Share2, Trash2, Wand2, X, XCircle } from 'lucide-react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { LanguageContext } from '../App';
+import { generateStructuredPrompt } from '../services/geminiService';
+import { HistoryItem, Idea } from '../types';
 
 // --- IndexedDB Helpers for Autosave ---
 const DB_NAME = 'PromptCrafterDB';
@@ -99,10 +99,10 @@ const examples: Example[] = [
   {
     purpose: "Technical Documentation",
     ideas: [
-        "Write the 'Getting Started' section for a new JavaScript library.",
-        "The library is called 'ChronoWarp' and it simplifies date manipulation.",
-        "Include a simple installation guide using npm.",
-        "Provide a clear, concise code example for its primary use case."
+      "Write the 'Getting Started' section for a new JavaScript library.",
+      "The library is called 'ChronoWarp' and it simplifies date manipulation.",
+      "Include a simple installation guide using npm.",
+      "Provide a clear, concise code example for its primary use case."
     ]
   }
 ];
@@ -243,20 +243,20 @@ const useTranslations = () => {
 
 
 const formatRelativeTime = (timestamp: number, locale: string): string => {
-    try {
-        const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
-        const seconds = Math.floor((Date.now() - timestamp) / 1000);
+  try {
+    const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
+    const seconds = Math.floor((Date.now() - timestamp) / 1000);
 
-        if (seconds < 60) return rtf.format(Math.floor(-seconds), 'second');
-        if (seconds < 3600) return rtf.format(-Math.floor(seconds / 60), 'minute');
-        if (seconds < 86400) return rtf.format(-Math.floor(seconds / 3600), 'hour');
-        if (seconds < 2592000) return rtf.format(-Math.floor(seconds / 86400), 'day');
-        if (seconds < 31536000) return rtf.format(-Math.floor(seconds / 2592000), 'month');
-        return rtf.format(-Math.floor(seconds / 31536000), 'year');
-    } catch (e) {
-        console.error("Error formatting relative time", e);
-        return new Date(timestamp).toLocaleDateString();
-    }
+    if (seconds < 60) return rtf.format(Math.floor(-seconds), 'second');
+    if (seconds < 3600) return rtf.format(-Math.floor(seconds / 60), 'minute');
+    if (seconds < 86400) return rtf.format(-Math.floor(seconds / 3600), 'hour');
+    if (seconds < 2592000) return rtf.format(-Math.floor(seconds / 86400), 'day');
+    if (seconds < 31536000) return rtf.format(-Math.floor(seconds / 2592000), 'month');
+    return rtf.format(-Math.floor(seconds / 31536000), 'year');
+  } catch (e) {
+    console.error("Error formatting relative time", e);
+    return new Date(timestamp).toLocaleDateString();
+  }
 };
 
 // --- Sub-components (Memoized) ---
@@ -337,11 +337,10 @@ const PurposeSelector: React.FC<PurposeSelectorProps> = React.memo(({ purpose, s
           <button
             key={p}
             onClick={() => setPurpose(p)}
-            className={`p-2 rounded-md text-sm font-medium border-2 transition-all duration-200 ${
-              purpose === p
+            className={`p-2 rounded-md text-sm font-medium border-2 transition-all duration-200 ${purpose === p
                 ? 'bg-emerald-500/20 dark:bg-[#00e676]/20 border-emerald-500 dark:border-[#00e676] text-emerald-700 dark:text-white scale-105'
                 : 'bg-slate-100 dark:bg-[#10151b]/50 border-transparent hover:border-emerald-500/50 dark:hover:border-[#00e676]/50 text-slate-600 dark:text-slate-300'
-            }`}
+              }`}
           >
             {t(purposeKeys[p])}
           </button>
@@ -405,14 +404,14 @@ const PromptHistoryDisplay: React.FC<PromptHistoryProps> = React.memo(({ history
                 </p>
               </div>
               <div className="flex items-center gap-2 self-end sm:self-center flex-shrink-0">
-                <button 
+                <button
                   onClick={() => onLoad(item)}
                   className="p-2 rounded-md bg-indigo-500/10 dark:bg-indigo-400/20 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-500/20 dark:hover:bg-indigo-400/30 transition-colors duration-200"
                   aria-label={t('loadPrompt')}
                 >
                   <Eye size={18} />
                 </button>
-                <button 
+                <button
                   onClick={() => onDelete(item.id)}
                   className="p-2 rounded-md bg-red-500/10 dark:bg-red-400/20 text-red-600 dark:text-red-300 hover:bg-red-500/20 dark:hover:bg-red-400/30 transition-colors duration-200"
                   aria-label={t('deletePrompt')}
@@ -449,56 +448,56 @@ const PromptCrafter: React.FC = () => {
   // Load history from localStorage
   useEffect(() => {
     try {
-        const storedHistory = localStorage.getItem('promptHistory');
-        if (storedHistory) {
-            setPromptHistory(JSON.parse(storedHistory));
-        }
+      const storedHistory = localStorage.getItem('promptHistory');
+      if (storedHistory) {
+        setPromptHistory(JSON.parse(storedHistory));
+      }
     } catch (error) {
-        console.error("Failed to load history from localStorage", error);
-        setPromptHistory([]);
+      console.error("Failed to load history from localStorage", error);
+      setPromptHistory([]);
     }
   }, []);
 
   // Save history to localStorage
   useEffect(() => {
     if (promptHistory.length === 0 && localStorage.getItem('promptHistory') === null) {
-        return;
+      return;
     }
     try {
-        localStorage.setItem('promptHistory', JSON.stringify(promptHistory));
+      localStorage.setItem('promptHistory', JSON.stringify(promptHistory));
     } catch (error) {
-        console.error("Failed to save history to localStorage", error);
+      console.error("Failed to save history to localStorage", error);
     }
   }, [promptHistory]);
 
   // Load shared prompt from URL hash on initial load
   useEffect(() => {
     const loadSharedPrompt = () => {
-        try {
-            const hash = window.location.hash;
-            if (hash.startsWith('#prompt=')) {
-                const encodedData = hash.substring('#prompt='.length);
-                const decodedJson = atob(encodedData);
-                const data = JSON.parse(decodedJson) as { ideas: Idea[], purpose: string, prompt: string };
+      try {
+        const hash = window.location.hash;
+        if (hash.startsWith('#prompt=')) {
+          const encodedData = hash.substring('#prompt='.length);
+          const decodedJson = atob(encodedData);
+          const data = JSON.parse(decodedJson) as { ideas: Idea[], purpose: string, prompt: string };
 
-                if (data.ideas && data.purpose && data.prompt) {
-                    setIdeas(data.ideas);
-                    setPurpose(data.purpose);
-                    setGeneratedPrompt(data.prompt);
-                    setTokenUsage(null); // Tokens are not shared in link
-                    setError(null);
-                    window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
-                }
-            }
-        } catch (e) {
-            console.error("Failed to parse shared prompt from URL", e);
-            setError("The shared link appears to be invalid or corrupted.");
+          if (data.ideas && data.purpose && data.prompt) {
+            setIdeas(data.ideas);
+            setPurpose(data.purpose);
+            setGeneratedPrompt(data.prompt);
+            setTokenUsage(null); // Tokens are not shared in link
+            setError(null);
             window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+          }
         }
+      } catch (e) {
+        console.error("Failed to parse shared prompt from URL", e);
+        setError("The shared link appears to be invalid or corrupted.");
+        window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+      }
     };
     loadSharedPrompt();
   }, []);
-  
+
   // Autosave: Load draft from IndexedDB on mount
   useEffect(() => {
     const loadDraft = async () => {
@@ -535,9 +534,9 @@ const PromptCrafter: React.FC = () => {
   // Auto-resize textarea
   useEffect(() => {
     if (viewMode === 'raw' && textareaRef.current) {
-        textareaRef.current.style.height = 'auto';
-        const scrollHeight = textareaRef.current.scrollHeight;
-        textareaRef.current.style.height = `${scrollHeight}px`;
+      textareaRef.current.style.height = 'auto';
+      const scrollHeight = textareaRef.current.scrollHeight;
+      textareaRef.current.style.height = `${scrollHeight}px`;
     }
   }, [generatedPrompt, viewMode]);
 
@@ -589,37 +588,37 @@ const PromptCrafter: React.FC = () => {
       setIsLoading(false);
     }
   };
-  
+
   const handleCopy = () => {
-    if(generatedPrompt) {
-        navigator.clipboard.writeText(generatedPrompt);
-        setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000);
+    if (generatedPrompt) {
+      navigator.clipboard.writeText(generatedPrompt);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
     }
   };
 
   const handleShare = () => {
     if (!generatedPrompt) return;
     try {
-        const dataToShare = {
-            ideas,
-            purpose,
-            prompt: generatedPrompt,
-        };
-        const jsonString = JSON.stringify(dataToShare);
-        const encodedData = btoa(jsonString);
-        const shareUrl = `${window.location.origin}${window.location.pathname}#prompt=${encodedData}`;
-        
-        navigator.clipboard.writeText(shareUrl);
-        setIsLinkCopied(true);
-        setTimeout(() => setIsLinkCopied(false), 2500);
+      const dataToShare = {
+        ideas,
+        purpose,
+        prompt: generatedPrompt,
+      };
+      const jsonString = JSON.stringify(dataToShare);
+      const encodedData = btoa(jsonString);
+      const shareUrl = `${window.location.origin}${window.location.pathname}#prompt=${encodedData}`;
+
+      navigator.clipboard.writeText(shareUrl);
+      setIsLinkCopied(true);
+      setTimeout(() => setIsLinkCopied(false), 2500);
 
     } catch (e) {
-        console.error("Failed to create share link", e);
-        setError("An unexpected error occurred while creating the shareable link.");
+      console.error("Failed to create share link", e);
+      setError("An unexpected error occurred while creating the shareable link.");
     }
   };
-  
+
   const handleLoadExample = useCallback(() => {
     setError(null);
     setGeneratedPrompt('');
@@ -657,15 +656,15 @@ const PromptCrafter: React.FC = () => {
       {/* Input Section */}
       <div className="bg-white/60 dark:bg-[#10151b]/30 p-6 rounded-lg border-2 border-slate-200 dark:border-[#7c4dff]/30 backdrop-blur-sm shadow-2xl shadow-slate-500/10">
         <div className="flex justify-between items-center mb-4">
-            <h3 className="text-2xl font-bold font-orbitron text-indigo-600 dark:text-[#7c4dff] tracking-wider">{t('inputIdeasTitle')}</h3>
-            <button
-                onClick={handleLoadExample}
-                className="flex items-center gap-2 px-3 py-1 text-sm bg-slate-200/50 dark:bg-[#10151b] text-indigo-600 dark:text-[#7c4dff] rounded-full hover:bg-slate-300/50 dark:hover:bg-slate-800 transition-colors duration-200"
-                aria-label={t('loadExample')}
-            >
-                <Lightbulb size={16} />
-                <span>{t('loadExample')}</span>
-            </button>
+          <h3 className="text-2xl font-bold font-orbitron text-indigo-600 dark:text-[#7c4dff] tracking-wider">{t('inputIdeasTitle')}</h3>
+          <button
+            onClick={handleLoadExample}
+            className="flex items-center gap-2 px-3 py-1 text-sm bg-slate-200/50 dark:bg-[#10151b] text-indigo-600 dark:text-[#7c4dff] rounded-full hover:bg-slate-300/50 dark:hover:bg-slate-800 transition-colors duration-200"
+            aria-label={t('loadExample')}
+          >
+            <Lightbulb size={16} />
+            <span>{t('loadExample')}</span>
+          </button>
         </div>
         <IdeaInput currentIdea={currentIdea} setCurrentIdea={setCurrentIdea} onAddIdea={handleAddIdea} />
         <IdeasList ideas={ideas} onRemoveIdea={handleRemoveIdea} />
@@ -680,72 +679,73 @@ const PromptCrafter: React.FC = () => {
             <div className="relative flex-grow p-4 overflow-y-auto">
               {isLoading && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-100/80 dark:bg-[#0a0f14]/80 backdrop-blur-sm z-20">
-                   <Loader className="animate-spin text-sky-500 dark:text-[#00f0ff]" size={48} />
-                   <p className="mt-4 text-sky-500 dark:text-[#00f0ff] font-semibold">{t('generatingMessage')}</p>
+                  <Loader className="animate-spin text-sky-500 dark:text-[#00f0ff]" size={48} />
+                  <p className="mt-4 text-sky-500 dark:text-[#00f0ff] font-semibold">{t('generatingMessage')}</p>
                 </div>
               )}
               {error && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-100/80 dark:bg-[#0a0f14]/80 backdrop-blur-sm p-4 z-20">
-                   <div className="bg-red-100 dark:bg-red-900/50 border border-red-300 dark:border-red-500 text-red-700 dark:text-red-300 p-4 rounded-lg flex flex-col items-center gap-2 text-center shadow-lg">
-                      <AlertTriangle size={32} />
-                      <h4 className="font-bold">{t('generationFailedTitle')}</h4>
-                      <p className="text-sm">{error}</p>
-                      <button onClick={() => setError(null)} className="mt-2 bg-red-500/20 dark:bg-red-500/50 hover:bg-red-500/30 dark:hover:bg-red-500/80 text-red-800 dark:text-white px-3 py-1 text-sm rounded-md flex items-center gap-1">
-                          <X size={14}/> {t('close')}
-                      </button>
-                   </div>
+                  <div className="bg-red-100 dark:bg-red-900/50 border border-red-300 dark:border-red-500 text-red-700 dark:text-red-300 p-4 rounded-lg flex flex-col items-center gap-2 text-center shadow-lg">
+                    <AlertTriangle size={32} />
+                    <h4 className="font-bold">{t('generationFailedTitle')}</h4>
+                    <p className="text-sm">{error}</p>
+                    <button onClick={() => setError(null)} className="mt-2 bg-red-500/20 dark:bg-red-500/50 hover:bg-red-500/30 dark:hover:bg-red-500/80 text-red-800 dark:text-white px-3 py-1 text-sm rounded-md flex items-center gap-1">
+                      <X size={14} /> {t('close')}
+                    </button>
+                  </div>
                 </div>
               )}
               {generatedPrompt && !isLoading && !error && (
-                 <>
+                <>
                   <div className="absolute top-2 right-2 flex gap-2 z-10">
-                      <button onClick={() => setViewMode(viewMode === 'raw' ? 'preview' : 'raw')} className="bg-white dark:bg-[#10151b] p-2 rounded-md text-sky-500 dark:text-[#00f0ff] hover:bg-sky-100 dark:hover:bg-[#00f0ff] hover:text-sky-600 dark:hover:text-black transition-all duration-200" aria-label={t('toggleView')}>
-                          {viewMode === 'raw' ? <Eye size={20} /> : <Code size={20} />}
-                      </button>
-                      <button onClick={handleShare} className="bg-white dark:bg-[#10151b] p-2 rounded-md text-sky-500 dark:text-[#00f0ff] hover:bg-sky-100 dark:hover:bg-[#00f0ff] hover:text-sky-600 dark:hover:text-black transition-all duration-200" aria-label={t('copyLink')}>
-                          {isLinkCopied ? <ClipboardCheck size={20} /> : <Share2 size={20} />}
-                      </button>
-                      <button onClick={handleCopy} className="bg-white dark:bg-[#10151b] p-2 rounded-md text-sky-500 dark:text-[#00f0ff] hover:bg-sky-100 dark:hover:bg-[#00f0ff] hover:text-sky-600 dark:hover:text-black transition-all duration-200" aria-label={t('copyPrompt')}>
-                          {isCopied ? <ClipboardCheck size={20} /> : <Clipboard size={20} />}
-                      </button>
+                    <button onClick={() => setViewMode(viewMode === 'raw' ? 'preview' : 'raw')} className="bg-white dark:bg-[#10151b] p-2 rounded-md text-sky-500 dark:text-[#00f0ff] hover:bg-sky-100 dark:hover:bg-[#00f0ff] hover:text-sky-600 dark:hover:text-black transition-all duration-200" aria-label={t('toggleView')}>
+                      {viewMode === 'raw' ? <Eye size={20} /> : <Code size={20} />}
+                    </button>
+                    <button onClick={handleShare} className="bg-white dark:bg-[#10151b] p-2 rounded-md text-sky-500 dark:text-[#00f0ff] hover:bg-sky-100 dark:hover:bg-[#00f0ff] hover:text-sky-600 dark:hover:text-black transition-all duration-200" aria-label={t('copyLink')}>
+                      {isLinkCopied ? <ClipboardCheck size={20} /> : <Share2 size={20} />}
+                    </button>
+                    <button onClick={handleCopy} className="bg-white dark:bg-[#10151b] p-2 rounded-md text-sky-500 dark:text-[#00f0ff] hover:bg-sky-100 dark:hover:bg-[#00f0ff] hover:text-sky-600 dark:hover:text-black transition-all duration-200" aria-label={t('copyPrompt')}>
+                      {isCopied ? <ClipboardCheck size={20} /> : <Clipboard size={20} />}
+                    </button>
                   </div>
                   {viewMode === 'preview' ? (
-                       <div className="prose prose-sm max-w-none text-slate-800 dark:text-[#e0f7fa] dark:prose-invert prose-headings:font-orbitron prose-code:font-plex-mono prose-code:bg-slate-200 dark:prose-code:bg-[#10151b] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-slate-200 dark:prose-pre:bg-[#10151b]">
-                          <ReactMarkdown remarkPlugins={[remarkGfm]}>{generatedPrompt}</ReactMarkdown>
-                       </div>
+                    <div className="prose prose-sm max-w-none text-slate-800 dark:text-[#e0f7fa] dark:prose-invert prose-headings:font-orbitron prose-code:font-plex-mono prose-code:bg-slate-200 dark:prose-code:bg-[#10151b] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-slate-200 dark:prose-pre:bg-[#10151b]">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{generatedPrompt}</ReactMarkdown>
+                    </div>
                   ) : (
-                      <textarea
-                          ref={textareaRef}
-                          readOnly
-                          value={generatedPrompt}
-                          className="w-full h-auto bg-transparent resize-none border-none focus:ring-0 p-0 m-0 font-plex-mono text-sm leading-relaxed text-slate-800 dark:text-[#e0f7fa] overflow-hidden"
-                          rows={1}
-                      />
+                    <textarea
+                      title={`(t('${generatedPrompt}'))`}
+                      ref={textareaRef}
+                      readOnly
+                      value={generatedPrompt}
+                      className="w-full h-auto bg-transparent resize-none border-none focus:ring-0 p-0 m-0 font-plex-mono text-sm leading-relaxed text-slate-800 dark:text-[#e0f7fa] overflow-hidden"
+                      rows={1}
+                    />
                   )}
-                 </>
+                </>
               )}
               {!generatedPrompt && !isLoading && !error && (
-                  <div className="flex flex-col items-center justify-center h-full text-slate-400 dark:text-[#90a4ae]/50">
-                      <Wand2 size={48} className="mb-4"/>
-                      <p className="font-semibold text-center">{t('promptPlaceholder')}</p>
-                  </div>
+                <div className="flex flex-col items-center justify-center h-full text-slate-400 dark:text-[#90a4ae]/50">
+                  <Wand2 size={48} className="mb-4" />
+                  <p className="font-semibold text-center">{t('promptPlaceholder')}</p>
+                </div>
               )}
             </div>
             {tokenUsage && (
-                <div className="flex-shrink-0 bg-slate-200/50 dark:bg-[#10151b]/50 p-2 border-t border-slate-200 dark:border-slate-700/50">
-                  <div className="flex items-center justify-center gap-4 text-xs text-slate-600 dark:text-slate-400 font-semibold">
-                    <BrainCircuit size={16} className="text-sky-500 dark:text-sky-400" />
-                    <span>{t('input')}: <span className="font-bold text-sky-600 dark:text-sky-300">{tokenUsage.input}</span> {t('tokens')}</span>
-                    <span className="text-slate-300 dark:text-slate-600">|</span>
-                    <span>{t('output')}: <span className="font-bold text-emerald-600 dark:text-emerald-300">{tokenUsage.output}</span> {t('tokens')}</span>
-                    <span className="text-slate-300 dark:text-slate-600">|</span>
-                    <span>{t('total')}: <span className="font-bold text-indigo-600 dark:text-indigo-300">{tokenUsage.input + tokenUsage.output}</span> {t('tokens')}</span>
-                  </div>
+              <div className="flex-shrink-0 bg-slate-200/50 dark:bg-[#10151b]/50 p-2 border-t border-slate-200 dark:border-slate-700/50">
+                <div className="flex items-center justify-center gap-4 text-xs text-slate-600 dark:text-slate-400 font-semibold">
+                  <BrainCircuit size={16} className="text-sky-500 dark:text-sky-400" />
+                  <span>{t('input')}: <span className="font-bold text-sky-600 dark:text-sky-300">{tokenUsage.input}</span> {t('tokens')}</span>
+                  <span className="text-slate-300 dark:text-slate-600">|</span>
+                  <span>{t('output')}: <span className="font-bold text-emerald-600 dark:text-emerald-300">{tokenUsage.output}</span> {t('tokens')}</span>
+                  <span className="text-slate-300 dark:text-slate-600">|</span>
+                  <span>{t('total')}: <span className="font-bold text-indigo-600 dark:text-indigo-300">{tokenUsage.input + tokenUsage.output}</span> {t('tokens')}</span>
                 </div>
-              )}
+              </div>
+            )}
           </div>
-          <button 
-            onClick={handleGenerate} 
+          <button
+            onClick={handleGenerate}
             disabled={isLoading || ideas.length === 0 || !purpose.trim()}
             className="w-full mt-6 bg-gradient-to-r from-emerald-500 to-sky-500 dark:from-[#00e676] dark:to-[#00f0ff] text-white dark:text-black font-bold font-orbitron text-lg p-4 rounded-lg flex items-center justify-center gap-3 hover:scale-105 disabled:scale-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-sky-500/40 dark:shadow-[0_0_15px_rgba(0,230,118,0.5)] hover:shadow-xl hover:shadow-sky-500/50 dark:hover:shadow-[0_0_25px_rgba(0,240,255,0.7)]"
           >
@@ -754,9 +754,9 @@ const PromptCrafter: React.FC = () => {
           </button>
         </div>
       </div>
-      
+
       {/* Prompt History Section */}
-      <PromptHistoryDisplay 
+      <PromptHistoryDisplay
         history={promptHistory}
         onLoad={handleLoadFromHistory}
         onDelete={handleDeleteFromHistory}

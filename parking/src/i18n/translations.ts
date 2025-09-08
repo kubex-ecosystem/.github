@@ -46,8 +46,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "lang_es": "Español",
     "lang_zh": "中文",
     "lang_pt": "Português",
-    "apiKeyMissingTitle": "Configuration Error",
-    "apiKeyMissingText": "The Gemini API key is not set. Prompt generation is disabled. Please contact the administrator.",
+    "apiKeyMissingTitle": "Demo Mode Active",
+    "apiKeyMissingText": "Running in demo mode with simulated AI responses. Connect your Gemini API key for enhanced AI-powered prompts.",
+    "demoModeNote": "This prompt was generated in demo mode. Connect your Gemini API key for AI-enhanced results.",
   },
   es: {
     'promptCrafter': 'Creador de Prompts con IA',
@@ -94,8 +95,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "lang_es": "Español",
     "lang_zh": "中文",
     "lang_pt": "Português",
-    "apiKeyMissingTitle": "Error de Configuración",
-    "apiKeyMissingText": "La clave de API de Gemini no está configurada. La generación de prompts está deshabilitada. Por favor, contacte al administrador.",
+    "apiKeyMissingTitle": "Modo Demo Activo",
+    "apiKeyMissingText": "Ejecutándose en modo demo con respuestas de IA simuladas. Conecta tu clave API de Gemini para prompts mejorados con IA.",
+    "demoModeNote": "Este prompt fue generado en modo demo. Conecta tu clave API de Gemini para resultados mejorados con IA.",
   },
   zh: {
     'promptCrafter': 'AI 提示词构建器',
@@ -142,8 +144,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "lang_es": "Español",
     "lang_zh": "中文",
     "lang_pt": "Português",
-    "apiKeyMissingTitle": "配置错误",
-    "apiKeyMissingText": "未设置 Gemini API 密钥。提示生成功能已禁用。请联系管理员。",
+    "apiKeyMissingTitle": "演示模式激活",
+    "apiKeyMissingText": "正在演示模式下运行，使用模拟 AI 响应。连接您的 Gemini API 密钥以获得增强的 AI 提示。",
+    "demoModeNote": "此提示在演示模式下生成。连接您的 Gemini API 密钥以获得 AI 增强的结果。",
   },
   pt: {
     'promptCrafter': 'Criador de Prompts IA',
@@ -190,7 +193,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "lang_es": "Español",
     "lang_zh": "中文",
     "lang_pt": "Português",
-    "apiKeyMissingTitle": "Erro de Configuração",
-    "apiKeyMissingText": "A chave da API Gemini não está configurada. A geração de prompts está desativada. Por favor, entre em contato com o administrador.",
+    "apiKeyMissingTitle": "Modo Demo Ativo",
+    "apiKeyMissingText": "Executando em modo demo com respostas simuladas de IA. Conecte sua chave API do Gemini para prompts aprimorados com IA.",
+    "demoModeNote": "Este prompt foi gerado em modo demo. Conecte sua chave API do Gemini para resultados aprimorados com IA.",
   }
 };

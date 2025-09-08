@@ -18,7 +18,7 @@ const App: React.FC = () => {
     initStorage();
     // Check for the API key availability on mount
     if (!process.env.API_KEY) {
-      console.error("Gemini API key is not configured. Prompt generation will be disabled.");
+      console.log("Running in demo mode - API key not configured");
       setIsApiKeyMissing(true);
     }
   }, []);
@@ -29,8 +29,8 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <Header theme={theme} toggleTheme={toggleTheme} />
           {isApiKeyMissing && (
-            <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md mb-6 dark:bg-yellow-900/30 dark:text-yellow-300 dark:border-yellow-600 flex items-start gap-3" role="alert">
-              <AlertTriangle className="h-6 w-6 text-yellow-500 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
+            <div className="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 rounded-md mb-6 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-600 flex items-start gap-3" role="alert">
+              <AlertTriangle className="h-6 w-6 text-blue-500 dark:text-blue-400 flex-shrink-0 mt-0.5" />
               <div>
                 <p className="font-bold">{t('apiKeyMissingTitle')}</p>
                 <p>{t('apiKeyMissingText')}</p>

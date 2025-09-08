@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react';
-import { HistoryItem, Idea, Theme } from '../../types';
-import { generateStructuredPrompt } from '../../services/geminiService';
-import { useTranslations } from '../../i18n/useTranslations';
-import { Wand2, Loader, Lightbulb } from 'lucide-react';
+import { Lightbulb, Loader, Wand2 } from 'lucide-react';
+import React, { useCallback, useState } from 'react';
 import { examples } from '../../constants/prompts';
+import { useTranslations } from '../../i18n/useTranslations';
+import { generateStructuredPrompt } from '../../services/geminiService';
+import { HistoryItem, Idea, Theme } from '../../types';
 
 // Import hooks
 import { useAutosaveDraft } from '../../hooks/useAutosaveDraft';
@@ -11,11 +11,12 @@ import { usePromptHistory } from '../../hooks/usePromptHistory';
 import { useUrlSharing } from '../../hooks/useUrlSharing';
 
 // Import sub-components
+import ApiKeyInput from './ApiKeyInput';
+import GeneratedPrompt from './GeneratedPrompt';
 import IdeaInput from './IdeaInput';
 import IdeasList from './IdeasList';
-import PurposeSelector from './PurposeSelector';
-import GeneratedPrompt from './GeneratedPrompt';
 import PromptHistoryDisplay from './PromptHistoryDisplay';
+import PurposeSelector from './PurposeSelector';
 
 interface PromptCrafterProps {
   theme: Theme;
@@ -24,7 +25,7 @@ interface PromptCrafterProps {
 
 const PromptCrafter: React.FC<PromptCrafterProps> = ({ theme, isApiKeyMissing }) => {
   const { t } = useTranslations();
-  
+
   // State managed by hooks
   const { ideas, setIdeas, purpose, setPurpose } = useAutosaveDraft();
   const { promptHistory, setPromptHistory, deleteFromHistory, clearHistory } = usePromptHistory();
@@ -36,6 +37,7 @@ const PromptCrafter: React.FC<PromptCrafterProps> = ({ theme, isApiKeyMissing })
   const [error, setError] = useState<string | null>(null);
   const [tokenUsage, setTokenUsage] = useState<{ input: number; output: number; total: number; } | null>(null);
   const [isExampleLoaded, setIsExampleLoaded] = useState(false);
+  const [userApiKey, setUserApiKey] = useState<string>('');
 
   // Hook for loading shared URL
   useUrlSharing({ setIdeas, setPurpose, setGeneratedPrompt, setTokenUsage, setError });
@@ -138,13 +140,13 @@ const PromptCrafter: React.FC<PromptCrafterProps> = ({ theme, isApiKeyMissing })
     setIdeas(item.ideas);
     setPurpose(item.purpose);
     setGeneratedPrompt(item.prompt);
-    setTokenUsage(item.inputTokens != null && item.outputTokens != null 
-        ? { 
-            input: item.inputTokens, 
-            output: item.outputTokens, 
-            total: item.totalTokens ?? (item.inputTokens + item.outputTokens) 
-          } 
-        : null);
+    setTokenUsage(item.inputTokens != null && item.outputTokens != null
+      ? {
+        input: item.inputTokens,
+        output: item.outputTokens,
+        total: item.totalTokens ?? (item.inputTokens + item.outputTokens)
+      }
+      : null);
     setError(null);
     setIsExampleLoaded(false); // Reset flag when loading from history
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -155,19 +157,19 @@ const PromptCrafter: React.FC<PromptCrafterProps> = ({ theme, isApiKeyMissing })
       {/* Input Section */}
       <div className="bg-white/60 dark:bg-[#10151b]/30 p-6 rounded-lg border-2 border-slate-200 dark:border-[#7c4dff]/30 backdrop-blur-sm shadow-2xl shadow-slate-500/10">
         <div className="flex justify-between items-center mb-4">
-            <h3 className="text-2xl font-bold font-orbitron text-indigo-600 dark:text-[#7c4dff] tracking-wider">{t('inputIdeasTitle')}</h3>
-            <button
-                onClick={handleLoadExample}
-                className="flex items-center gap-2 px-3 py-1 text-sm bg-slate-200/50 dark:bg-[#10151b] text-indigo-600 dark:text-[#7c4dff] rounded-full hover:bg-slate-300/50 dark:hover:bg-slate-800 transition-colors duration-200"
-                aria-label={t('loadExample')}
-            >
-                <Lightbulb size={16} />
-                <span>{t('loadExample')}</span>
-            </button>
+          <h3 className="text-2xl font-bold font-orbitron text-indigo-600 dark:text-[#7c4dff] tracking-wider">{t('inputIdeasTitle')}</h3>
+          <button
+            onClick={handleLoadExample}
+            className="flex items-center gap-2 px-3 py-1 text-sm bg-slate-200/50 dark:bg-[#10151b] text-indigo-600 dark:text-[#7c4dff] rounded-full hover:bg-slate-300/50 dark:hover:bg-slate-800 transition-colors duration-200"
+            aria-label={t('loadExample')}
+          >
+            <Lightbulb size={16} />
+            <span>{t('loadExample')}</span>
+          </button>
         </div>
-        <IdeaInput 
-          currentIdea={currentIdea} 
-          setCurrentIdea={handleSetCurrentIdea} 
+        <IdeaInput
+          currentIdea={currentIdea}
+          setCurrentIdea={handleSetCurrentIdea}
           onAddIdea={handleAddIdea}
           disabled={isExampleLoaded}
         />
@@ -175,30 +177,40 @@ const PromptCrafter: React.FC<PromptCrafterProps> = ({ theme, isApiKeyMissing })
         <PurposeSelector purpose={purpose} setPurpose={handleSetPurpose} />
       </div>
 
+      {/* API Key Input Section - only show when no API key is configured */}
+      {isApiKeyMissing && (
+        <div className="lg:col-span-2">
+          <ApiKeyInput
+            onApiKeyChange={setUserApiKey}
+            isVisible={isApiKeyMissing}
+          />
+        </div>
+      )}
+
       {/* Output Section */}
       <div className="flex flex-col">
-        <GeneratedPrompt 
-            isLoading={isLoading}
-            error={error}
-            setError={setError}
-            generatedPrompt={generatedPrompt}
-            ideas={ideas}
-            purpose={purpose}
-            tokenUsage={tokenUsage}
-            theme={theme}
+        <GeneratedPrompt
+          isLoading={isLoading}
+          error={error}
+          setError={setError}
+          generatedPrompt={generatedPrompt}
+          ideas={ideas}
+          purpose={purpose}
+          tokenUsage={tokenUsage}
+          theme={theme}
         />
-        <button 
-            onClick={handleGenerate} 
-            disabled={isLoading || ideas.length === 0 || !purpose.trim() || isExampleLoaded || isApiKeyMissing}
-            className="w-full mt-6 bg-gradient-to-r from-emerald-500 to-sky-500 dark:from-[#00e676] dark:to-[#00f0ff] text-white dark:text-black font-bold font-orbitron text-lg p-4 rounded-lg flex items-center justify-center gap-3 hover:scale-105 disabled:scale-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-sky-500/40 dark:shadow-[0_0_15px_rgba(0,230,118,0.5)] hover:shadow-xl hover:shadow-sky-500/50 dark:hover:shadow-[0_0_25px_rgba(0,240,255,0.7)]"
+        <button
+          onClick={handleGenerate}
+          disabled={isLoading || ideas.length === 0 || !purpose.trim() || isExampleLoaded}
+          className="w-full mt-6 bg-gradient-to-r from-emerald-500 to-sky-500 dark:from-[#00e676] dark:to-[#00f0ff] text-white dark:text-black font-bold font-orbitron text-lg p-4 rounded-lg flex items-center justify-center gap-3 hover:scale-105 disabled:scale-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-sky-500/40 dark:shadow-[0_0_15px_rgba(0,230,118,0.5)] hover:shadow-xl hover:shadow-sky-500/50 dark:hover:shadow-[0_0_25px_rgba(0,240,255,0.7)]"
         >
-            {isLoading ? <Loader className="animate-spin" size={28} /> : <Wand2 size={28} />}
-            {isLoading ? t('generatingButton') : t('generateButton')}
+          {isLoading ? <Loader className="animate-spin" size={28} /> : <Wand2 size={28} />}
+          {isLoading ? t('generatingButton') : t('generateButton')}
         </button>
       </div>
-      
+
       {/* Prompt History Section */}
-      <PromptHistoryDisplay 
+      <PromptHistoryDisplay
         history={promptHistory}
         onLoad={handleLoadFromHistory}
         onDelete={deleteFromHistory}
