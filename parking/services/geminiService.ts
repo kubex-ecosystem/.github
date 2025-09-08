@@ -74,7 +74,7 @@ You are an expert ${purpose.toLowerCase()} specialist. Based on the requirements
 This prompt was generated using Grompt, part of the Kubex Ecosystem, following principles of radical simplicity and avoiding technological cages.
 
 ---
-*Generated in demo mode - Connect your Gemini API key for enhanced AI-powered prompts*`;
+*Generated in demo mode - Connect your AI provider API key for enhanced AI-powered prompts*`;
 
   // Simulate token usage for demo
   const estimatedTokens = Math.floor(demoPrompt.length / 4); // Rough estimation: 1 token ≈ 4 characters
@@ -123,8 +123,8 @@ Return ONLY the generated prompt in Markdown. Do not include any introductory te
 `;
 };
 
-const MAX_RETRIES = 3;
-const RETRY_DELAY_MS = 1000;
+const MAX_RETRIES = parseInt(process.env.MAX_RETRIES || "3", 10);
+const RETRY_DELAY_MS = parseInt(process.env.RETRY_DELAY_MS || "1000", 10);
 
 /**
  * Checks if an error is likely a transient network issue and thus retryable.

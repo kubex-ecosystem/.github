@@ -1,4 +1,4 @@
-import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
+import { GenerateContentResponse, GoogleGenAI } from "@google/genai";
 import { Idea } from '../types';
 
 const API_KEY = process.env.API_KEY;
@@ -63,9 +63,9 @@ const RETRY_DELAY_MS = 1000;
  * @returns True if the error is retryable, false otherwise.
  */
 const isRetryableError = (error: any): boolean => {
-    const errorMessage = (error?.message || '').toLowerCase();
-    // Simple check for network-related errors.
-    return errorMessage.includes('fetch') || errorMessage.includes('network');
+  const errorMessage = (error?.message || '').toLowerCase();
+  // Simple check for network-related errors.
+  return errorMessage.includes('fetch') || errorMessage.includes('network');
 };
 
 /**
@@ -74,19 +74,19 @@ const isRetryableError = (error: any): boolean => {
  * @returns A user-friendly error message string.
  */
 const formatApiError = (error: any): string => {
-    // Keep a detailed log for developers
-    console.error("Gemini API Error:", error);
+  // Keep a detailed log for developers
+  console.error("Gemini API Error:", error);
 
-    if (error instanceof Error) {
-        // Provide a more specific message for common, user-actionable errors.
-        if (error.message.includes('API key not valid')) {
-            return 'API Configuration Error: The API key is not valid. Please contact the administrator.';
-        }
-        // For other errors, provide a message that includes the API's feedback.
-        return `An error occurred: ${error.message}. Please check your input or try again. If the issue persists, it may be a network problem.`;
+  if (error instanceof Error) {
+    // Provide a more specific message for common, user-actionable errors.
+    if (error.message.includes('API key not valid')) {
+      return 'API Configuration Error: The API key is not valid. Please contact the administrator.';
     }
+    // For other errors, provide a message that includes the API's feedback.
+    return `An error occurred: ${error.message}. Please check your input or try again. If the issue persists, it may be a network problem.`;
+  }
 
-    return "An unknown error occurred while communicating with the Gemini API. Please check your connection and try again.";
+  return "An unknown error occurred while communicating with the Gemini API. Please check your connection and try again.";
 };
 
 
@@ -116,7 +116,7 @@ ${purpose}
     // Mock token counts
     const inputTokens = Math.floor(mockPrompt.length / 4);
     const outputTokens = Math.floor(ideasText.length / 4);
-    
+
     return {
       prompt: mockPrompt,
       usageMetadata: {
@@ -143,20 +143,20 @@ ${purpose}
       });
       return {
         // FIX: Using response.text directly as per Gemini API guidelines.
-        prompt: response.text,
+        prompt: response.text || '',
         usageMetadata: response.usageMetadata
       };
     } catch (error) {
-        lastError = error;
-        if (isRetryableError(error) && attempt < MAX_RETRIES) {
-            console.warn(`API call failed (attempt ${attempt}/${MAX_RETRIES}), retrying after delay...`);
-            await new Promise(resolve => setTimeout(resolve, RETRY_DELAY_MS * attempt)); // Simple exponential backoff
-        } else {
-            // Not a retryable error or max retries reached
-            throw new Error(formatApiError(error));
-        }
+      lastError = error;
+      if (isRetryableError(error) && attempt < MAX_RETRIES) {
+        console.warn(`API call failed (attempt ${attempt}/${MAX_RETRIES}), retrying after delay...`);
+        await new Promise(resolve => setTimeout(resolve, RETRY_DELAY_MS * attempt)); // Simple exponential backoff
+      } else {
+        // Not a retryable error or max retries reached
+        throw new Error(formatApiError(error));
+      }
     }
   }
-   // This fallback should ideally not be reached, but it's here for safety.
+  // This fallback should ideally not be reached, but it's here for safety.
   throw new Error(formatApiError(lastError || new Error("Failed to generate prompt after multiple retries.")));
 };
