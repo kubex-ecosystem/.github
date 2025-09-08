@@ -39,6 +39,16 @@ const PromptCrafter: React.FC<PromptCrafterProps> = ({ theme, isApiKeyMissing })
   const [isExampleLoaded, setIsExampleLoaded] = useState(false);
   const [userApiKey, setUserApiKey] = useState<string>('');
 
+  // Handler for API key changes
+  const handleApiKeyChange = (apiKey: string) => {
+    setUserApiKey(apiKey);
+    // Force re-render to update UI state when API key is added/removed
+    if (apiKey && isApiKeyMissing) {
+      // We can now use the API instead of demo mode
+      setError(null);
+    }
+  };
+
   // Hook for loading shared URL
   useUrlSharing({ setIdeas, setPurpose, setGeneratedPrompt, setTokenUsage, setError });
 
@@ -181,7 +191,7 @@ const PromptCrafter: React.FC<PromptCrafterProps> = ({ theme, isApiKeyMissing })
       {isApiKeyMissing && (
         <div className="lg:col-span-2">
           <ApiKeyInput
-            onApiKeyChange={setUserApiKey}
+            onApiKeyChange={handleApiKeyChange}
             isVisible={isApiKeyMissing}
           />
         </div>

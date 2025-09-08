@@ -31,14 +31,6 @@ self.addEventListener('fetch', event => {
         // Not in cache - fetch from network
         return fetch(event.request).then(
           (networkResponse) => {
-            // Check if we received a valid response
-            if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-                if (event.request.url.startsWith('https://aistudiocdn.com') || event.request.url.startsWith('https://esm.sh')) {
-                    // For CDN resources, don't cache opaque responses.
-                    return networkResponse;
-                }
-            }
-
             // IMPORTANT: Clone the response. A response is a stream
             // and because we want the browser to consume the response
             // as well as the cache consuming the response, we need
@@ -58,10 +50,10 @@ self.addEventListener('fetch', event => {
           }
         );
       }
-    ).catch(() => {
+      ).catch(() => {
         // Fallback for when both cache and network fail
         // You can return a custom offline page here if you have one.
-    })
+      })
   );
 });
 
