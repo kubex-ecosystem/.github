@@ -6,12 +6,16 @@ import PromptCrafter from './components/prompt-crafter/PromptCrafter';
 import { LanguageContext } from './context/LanguageContext';
 import { useLanguage } from './hooks/useLanguage';
 import { useTheme } from './hooks/useTheme';
+import { useAnalytics } from './services/analytics';
 import { initStorage } from './services/storageService';
 
 const App: React.FC = () => {
   const [theme, toggleTheme] = useTheme();
   const { language, setLanguage, t } = useLanguage();
   const [isApiKeyMissing, setIsApiKeyMissing] = useState(false);
+
+  // Initialize analytics
+  useAnalytics();
 
   // Initialize the storage service on app load
   useEffect(() => {

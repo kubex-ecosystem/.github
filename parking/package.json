@@ -1,7 +1,19 @@
 {
   "name": "grompt",
-  "private": true,
-  "version": "1.0.8",
+  "private": false,
+  "version": "2.0.0",
+  "description": "AI prompt crafting tool that transforms raw ideas into professional prompts. Part of Kubex Ecosystem — modular, open-source tools following principles of radical simplicity and no lock-in.",
+  "keywords": [
+    "ai",
+    "prompts",
+    "prompt-engineering",
+    "kubex",
+    "open-source",
+    "no-lock-in",
+    "modular",
+    "react",
+    "typescript"
+  ],
   "markdown": "github",
   "repository": {
     "type": "git",
@@ -9,7 +21,7 @@
   },
   "author": "Rafael Mori <faelmori@live.com>",
   "license": "MIT",
-  "homepage": "https://kubex.world",
+  "homepage": "https://kubex.world/grompt",
   "readme": "https://github.com/kubex-ecosystem/grompt/README.md",
   "bugs": {
     "url": "https://github.com/kubex-ecosystem/grompt/issues"
