@@ -1,3 +1,0 @@
-[submodule "analyzer"]
-	path = analyzer
-	url = git@github.com:kubex-ecosystem/analyzer-frontend.git
