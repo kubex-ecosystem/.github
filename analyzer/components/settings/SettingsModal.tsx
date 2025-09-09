@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, X, Save, AlertTriangle, RefreshCw } from 'lucide-react';
-import { AppSettings, UsageTracking } from '../../types';
-import { useTranslation } from '../../hooks/useTranslation';
+import { AnimatePresence, motion } from 'framer-motion';
+import { AlertTriangle, RefreshCw, Save, Settings, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useTranslation } from '../../hooks/useTranslation';
+import { AppSettings, UsageTracking } from '../../types';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -41,17 +41,17 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
     onSave({ tokenLimit: localLimit });
     onClose();
   };
-  
+
   const handleLimitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const valueStr = e.target.value;
     if (valueStr === '') {
-        setLocalLimit(0);
-        setValidationError(null);
-        return;
+      setLocalLimit(0);
+      setValidationError(null);
+      return;
     }
 
     const value = parseInt(valueStr, 10);
-    
+
     if (isNaN(value) || value < 0) {
       setLocalLimit(0);
       setValidationError(null);
@@ -64,7 +64,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
       }
     }
   };
-  
+
   const currentMonthName = new Date(usageTracking.year, usageTracking.month).toLocaleString(locale, { month: 'long' });
 
   return (
@@ -91,7 +91,9 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                 <Settings className="w-6 h-6 text-purple-400" />
                 <h2 className="text-xl font-bold text-white">{t('settings.title')}</h2>
               </div>
-              <button onClick={onClose} className="p-1 rounded-full text-gray-400 hover:bg-gray-700 transition-colors">
+              <button
+                title={t('actions.close')}
+                onClick={onClose} className="p-1 rounded-full text-gray-400 hover:bg-gray-700 transition-colors">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -130,19 +132,19 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                   )}
                   <span className="text-base text-gray-400"> {t('results.usageMetadata.tokens')}</span>
                 </p>
-                 <button
-                    onClick={onResetUsage}
-                    className="mt-4 flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-yellow-400 bg-yellow-900/50 border border-yellow-700 rounded-md hover:bg-yellow-800/50 transition-colors"
+                <button
+                  onClick={onResetUsage}
+                  className="mt-4 flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-yellow-400 bg-yellow-900/50 border border-yellow-700 rounded-md hover:bg-yellow-800/50 transition-colors"
                 >
-                    <RefreshCw className="w-3.5 h-3.5" /> {t('settings.resetUsage')}
+                  <RefreshCw className="w-3.5 h-3.5" /> {t('settings.resetUsage')}
                 </button>
               </div>
 
               <div className="flex items-start gap-3 p-3 bg-yellow-900/30 border border-yellow-800/50 rounded-lg">
-                  <AlertTriangle className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
-                  <p className="text-xs text-yellow-300">
-                    {t('settings.disclaimer')}
-                  </p>
+                <AlertTriangle className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
+                <p className="text-xs text-yellow-300">
+                  {t('settings.disclaimer')}
+                </p>
               </div>
             </div>
 

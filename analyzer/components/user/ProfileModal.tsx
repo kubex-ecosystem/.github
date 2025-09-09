@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { User, X, Save } from 'lucide-react';
-import { UserProfile } from '../../types';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Save, User, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from '../../hooks/useTranslation';
+import { UserProfile } from '../../types';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -56,7 +56,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
                 <User className="w-6 h-6 text-blue-400" />
                 <h2 className="text-xl font-bold text-white">{t('profile.title')}</h2>
               </div>
-              <button onClick={onClose} className="p-1 rounded-full text-gray-400 hover:bg-gray-700 transition-colors">
+              <button
+                title={t('actions.close')}
+                onClick={onClose} className="p-1 rounded-full text-gray-400 hover:bg-gray-700 transition-colors">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -89,7 +91,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
                   placeholder={t('profile.apiKeyPlaceholder')}
                 />
               </div>
-               <div className="text-xs text-gray-400 p-3 bg-gray-900/50 border border-dashed border-gray-600 rounded-md">
+              <div className="text-xs text-gray-400 p-3 bg-gray-900/50 border border-dashed border-gray-600 rounded-md">
                 {t('profile.apiKeyNotice')}
               </div>
             </div>
