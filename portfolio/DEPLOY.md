@@ -27,7 +27,7 @@ npm run deploy -- --dry-run
 
 - **🔒 Zero Side-Effects**: Seu ambiente nunca é afetado
 - **⚡ Super Rápido**: ZIP sem compressão + otimizações
-- **🧹 Auto-Cleanup**: Trap robusto limpa tudo automaticamente  
+- **🧹 Auto-Cleanup**: Trap robusto limpa tudo automaticamente
 - **🔍 Validação Total**: Verifica tudo antes de começar
 - **🏃 Dry Run**: Teste sem fazer push real
 - **📊 Logs Bonitos**: Output colorido e informativo
@@ -42,7 +42,7 @@ npm run deploy -- --dry-run
 
 ## 🌐 Seu site estará em
 
-`https://rafa-mori.github.io/rafa-mori/`
+`https://rafa-mori.github.io/kubex-ecosystem/`
 
 ## 🔧 Personalização
 

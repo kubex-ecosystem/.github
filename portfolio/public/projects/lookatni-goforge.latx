@@ -155,10 +155,10 @@ For further information about the license and terms of use, please refer to the 
 
 ---
 
-[![Build](https://github.com/rafa-mori/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/goforge/actions/workflows/release.yml)
+[![Build](https://github.com/kubex-ecosystem/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/goforge/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-%3E=1.20-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/goforge?include_prereleases)](https://github.com/rafa-mori/goforge/releases)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/goforge?include_prereleases)](https://github.com/kubex-ecosystem/goforge/releases)
 
 ---
 
@@ -204,7 +204,7 @@ rootCmd.AddCommand(cli.HelloCmd)
 ### 2. Advanced logger with extra context
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/kubex-ecosystem/goforge/logger"
 
 func exampleWithContext() {
     gl.Log("warn", "Warning! Something might be wrong.")
@@ -221,7 +221,7 @@ func exampleWithContext() {
 ### 3. Using as a Go library
 
 ```go
-import "github.com/rafa-mori/goforge"
+import "github.com/kubex-ecosystem/goforge"
 
 func main() {
     var myModule goforge.GoForge = &MyModule{}
@@ -315,7 +315,7 @@ Create files in `cmd/cli/` and register them in `wrpr.go`.
 ## 🛠️ Logger usage example
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/kubex-ecosystem/goforge/logger"
 
 gl.Log("info", "Informative message")
 gl.Log("error", "Something went wrong!")
@@ -351,7 +351,7 @@ Rafael Mori — [@rafa-mori](https://github.com/rafa-mori)
 
 ## 🌐 Links
 
-- [GitHub Repository](https://github.com/rafa-mori/goforge)
+- [GitHub Repository](https://github.com/kubex-ecosystem/goforge)
 - [Logger usage example](logger/logger.go)
 - [CI/CD Workflows](.github/workflows/)
 
@@ -381,7 +381,7 @@ If you discover a security vulnerability in GoForge:
 
 - **Do NOT disclose it publicly** or via any public forum (including Discord).
 - Please report it through one of these private channels:
-  - [GitHub Security Advisories](https://github.com/rafa-mori/goforge/security/advisories)
+  - [GitHub Security Advisories](https://github.com/kubex-ecosystem/goforge/security/advisories)
   - Or email: [maintainer@example.com] (replace this with your actual security contact email)
 
 Include as much detail as possible, such as:
@@ -419,17 +419,17 @@ import (
 
 var banners = []string{
 	`
-  ______           ________                                     
- /      \         |        \                                    
-|  ▓▓▓▓▓▓\ ______ | ▓▓▓▓▓▓▓▓ ______   ______   ______   ______  
-| ▓▓ __\▓▓/      \| ▓▓__    /      \ /      \ /      \ /      \ 
+  ______           ________
+ /      \         |        \
+|  ▓▓▓▓▓▓\ ______ | ▓▓▓▓▓▓▓▓ ______   ______   ______   ______
+| ▓▓ __\▓▓/      \| ▓▓__    /      \ /      \ /      \ /      \
 | ▓▓|    \  ▓▓▓▓▓▓\ ▓▓  \  |  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\
 | ▓▓ \▓▓▓▓ ▓▓  | ▓▓ ▓▓▓▓▓  | ▓▓  | ▓▓ ▓▓   \▓▓ ▓▓  | ▓▓ ▓▓    ▓▓
 | ▓▓__| ▓▓ ▓▓__/ ▓▓ ▓▓     | ▓▓__/ ▓▓ ▓▓     | ▓▓__| ▓▓ ▓▓▓▓▓▓▓▓
  \▓▓    ▓▓\▓▓    ▓▓ ▓▓      \▓▓    ▓▓ ▓▓      \▓▓    ▓▓\▓▓     \
   \▓▓▓▓▓▓  \▓▓▓▓▓▓ \▓▓       \▓▓▓▓▓▓ \▓▓      _\▓▓▓▓▓▓▓ \▓▓▓▓▓▓▓
-                                             |  \__| ▓▓         
-                                              \▓▓    ▓▓         
+                                             |  \__| ▓▓
+                                              \▓▓    ▓▓
                                                \▓▓▓▓▓▓          `,
 
 	// Here you can add more banners, they will be randomly selected at runtime on each execution
@@ -457,7 +457,7 @@ func GetDescriptions(descriptionArg []string, _ bool) map[string]string {
 package cli
 
 import (
-	gl "github.com/rafa-mori/goforge/logger"
+	gl "github.com/kubex-ecosystem/goforge/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -495,7 +495,7 @@ func startCommand() *cobra.Command {
 package main
 
 import (
-	gl "github.com/rafa-mori/goforge/logger"
+	gl "github.com/kubex-ecosystem/goforge/logger"
 )
 
 // This file is the entry point for the GoForge CLI application.
@@ -606,9 +606,9 @@ var cliUsageTemplate = `{{- if index .Annotations "banner" }}{{colorBlue (index 
 package main
 
 import (
-	cc "github.com/rafa-mori/goforge/cmd/cli"
-	gl "github.com/rafa-mori/goforge/logger"
-	vs "github.com/rafa-mori/goforge/version"
+	cc "github.com/kubex-ecosystem/goforge/cmd/cli"
+	gl "github.com/kubex-ecosystem/goforge/logger"
+	vs "github.com/kubex-ecosystem/goforge/version"
 	"github.com/spf13/cobra"
 
 	"os"
@@ -737,7 +737,7 @@ This project was generated by AI and extracted using **LookAtni File Markers**!
 
 ## Features
 - ⚡ React-based frontend
-- 🎨 Modern styling  
+- 🎨 Modern styling
 - 🔄 Hot reloading
 - 📦 Production builds
 
@@ -768,17 +768,17 @@ function App() {
       <header className="App-header">
         <h1>🤖 AI-Generated React App</h1>
         <p>Extracted with LookAtni File Markers!</p>
-        
+
         <div className="counter">
           <button onClick={() => setCount(count - 1)}>-</button>
           <span className="count">{count}</span>
           <button onClick={() => setCount(count + 1)}>+</button>
         </div>
-        
+
         <p className="description">
           This entire project was generated by AI in a single document,
           then extracted into perfect file structure using invisible markers.
-          
+
           🎯 The Golden Feature in action!
         </p>
       </header>
@@ -863,13 +863,13 @@ export default App;
 /// docs/CONTRIBUTING.md ///
 # **Contributing to GoForge**
 
-Thank you for your interest in contributing to **[GoForge](https://github.com/rafa-mori/goforge)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
+Thank you for your interest in contributing to **[GoForge](https://github.com/kubex-ecosystem/goforge)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
 
 ---
 
 ## **How to Contribute**
 
-There are several ways to contribute to [GoForge](https://github.com/rafa-mori/goforge):
+There are several ways to contribute to [GoForge](https://github.com/kubex-ecosystem/goforge):
 
 1. **Report Issues**
    - Found bugs or issues in the code? Open an issue detailing the problem.
@@ -892,7 +892,7 @@ There are several ways to contribute to [GoForge](https://github.com/rafa-mori/g
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/rafa-mori/goforge.git
+git clone https://github.com/kubex-ecosystem/goforge.git
 cd goforge
 ```
 
@@ -901,10 +901,10 @@ cd goforge
 Make sure you have Go installed:
 You can install Go using one of the following methods:
 
-- [A super easy way to install Go](https://github.com/rafa-mori/gosetup)
+- [A super easy way to install Go](https://github.com/kubex-ecosystem/gosetup)
 
   ```shell
-    curl -sSfL 'https://raw.githubusercontent.com/rafa-mori/gosetup/refs/heads/main/go.sh' | bash
+    curl -sSfL 'https://raw.githubusercontent.com/kubex-ecosystem/gosetup/refs/heads/main/go.sh' | bash
   ```
 
 - [Convencional way to download Go](https://go.dev/dl/)
@@ -998,16 +998,16 @@ Commits should be clear and descriptive. Examples:
 
 ## **Best Practices**
 
-1. **Be Respectful and Welcoming**  
+1. **Be Respectful and Welcoming**
    This is an open-source project for everyone. Respect other contributors and collaborate constructively.
 
-2. **Document Your Changes**  
+2. **Document Your Changes**
    Update the `README.md` or documentation, if necessary, to include your changes.
 
-3. **Add Tests When Possible**  
+3. **Add Tests When Possible**
    Ensure any new functionality is accompanied by tests.
 
-4. **Be Clear in Issue Reports**  
+4. **Be Clear in Issue Reports**
    When opening an issue, be detailed and provide as much context as possible.
 
 ---
@@ -1030,10 +1030,10 @@ We commit to reviewing pull requests and issues as quickly as possible. We value
 
 ---
 
-[![Build](https://github.com/rafa-mori/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/goforge/actions/workflows/release.yml)
+[![Build](https://github.com/kubex-ecosystem/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/goforge/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-%3E=1.20-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/goforge?include_prereleases)](https://github.com/rafa-mori/goforge/releases)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/goforge?include_prereleases)](https://github.com/kubex-ecosystem/goforge/releases)
 
 ---
 
@@ -1079,7 +1079,7 @@ rootCmd.AddCommand(cli.HelloCmd)
 ### 2. Advanced logger with extra context
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/kubex-ecosystem/goforge/logger"
 
 func exampleWithContext() {
     gl.Log("warn", "Warning! Something might be wrong.")
@@ -1096,7 +1096,7 @@ func exampleWithContext() {
 ### 3. Using as a Go library
 
 ```go
-import "github.com/rafa-mori/goforge"
+import "github.com/kubex-ecosystem/goforge"
 
 func main() {
     var myModule goforge.GoForge = &MyModule{}
@@ -1190,7 +1190,7 @@ Create files in `cmd/cli/` and register them in `wrpr.go`.
 ## 🛠️ Logger usage example
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/kubex-ecosystem/goforge/logger"
 
 gl.Log("info", "Informative message")
 gl.Log("error", "Something went wrong!")
@@ -1226,7 +1226,7 @@ Rafael Mori — [@rafa-mori](https://github.com/rafa-mori)
 
 ## 🌐 Links
 
-- [GitHub Repository](https://github.com/rafa-mori/goforge)
+- [GitHub Repository](https://github.com/kubex-ecosystem/goforge)
 - [Logger usage example](logger/logger.go)
 - [CI/CD Workflows](.github/workflows/)
 
@@ -1237,10 +1237,10 @@ Rafael Mori — [@rafa-mori](https://github.com/rafa-mori)
 /// docs/README.pt-BR.md ///
 # 🚀 GoForge: Automação, CLI Moderna e Estrutura Profissional para Módulos Go
 
-[![Build](https://github.com/rafa-mori/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/goforge/actions/workflows/release.yml)
+[![Build](https://github.com/kubex-ecosystem/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/goforge/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-%3E=1.20-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/goforge?include_prereleases)](https://github.com/rafa-mori/goforge/releases)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/goforge?include_prereleases)](https://github.com/kubex-ecosystem/goforge/releases)
 
 Se você já cansou de builds manuais, deploys complicados, versionamento confuso e quer uma CLI estilosa, fácil de estender e pronta para produção, o **GoForge** é pra você!
 
@@ -1282,7 +1282,7 @@ rootCmd.AddCommand(cli.HelloCmd)
 ### 2. Logger avançado com contexto extra
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/kubex-ecosystem/goforge/logger"
 
 func exemploComContexto() {
     gl.Log("warn", "Atenção! Algo pode estar errado.")
@@ -1299,7 +1299,7 @@ func exemploComContexto() {
 ### 3. Usando como biblioteca Go
 
 ```go
-import "github.com/rafa-mori/goforge"
+import "github.com/kubex-ecosystem/goforge"
 
 func main() {
     var myModule goforge.GoForge = &MeuModulo{}
@@ -1393,7 +1393,7 @@ Crie arquivos em `cmd/cli/` e registre no `wrpr.go`.
 ## 🛠️ Exemplo de uso do Logger
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/kubex-ecosystem/goforge/logger"
 
 gl.Log("info", "Mensagem informativa")
 gl.Log("error", "Algo deu errado!")
@@ -1429,7 +1429,7 @@ Rafael Mori — [@rafa-mori](https://github.com/rafa-mori)
 
 ## 🌐 Links
 
-- [Repositório no GitHub](https://github.com/rafa-mori/goforge)
+- [Repositório no GitHub](https://github.com/kubex-ecosystem/goforge)
 - [Exemplo de uso do logger](logger/logger.go)
 - [Workflows de CI/CD](.github/workflows/)
 
@@ -1533,7 +1533,7 @@ GoForge is a Go CLI template/framework for creating production-ready command-lin
 rtCmd.AddCommand(cc.ServiceCmdList()...)
 ```
 
-**Logger Usage**: Import as `gl "github.com/rafa-mori/goforge/logger"` and use structured logging:
+**Logger Usage**: Import as `gl "github.com/kubex-ecosystem/goforge/logger"` and use structured logging:
 ```go
 gl.Log("info", "message")
 gl.Log("debug", map[string]interface{}{"key": "value"})
@@ -1574,7 +1574,7 @@ gl.Log("debug", map[string]interface{}{"key": "value"})
 
 ## Integration Points
 
-- External logging via `github.com/rafa-mori/logz`
+- External logging via `github.com/kubex-ecosystem/logz`
 - CLI framework via `github.com/spf13/cobra`
 - GitHub API for version checking and releases
 - UPX for binary compression in builds
@@ -1585,7 +1585,7 @@ When adding features, maintain the dual CLI/library interface and ensure command
 version: 2
 updates:
   - package-ecosystem: "gomod"
-    directory: "/" 
+    directory: "/"
     schedule:
       interval: "weekly"
 
@@ -1664,7 +1664,7 @@ jobs:
       - name: Install Go
         run: |
           export NON_INTERACTIVE=true
-          bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/rafa-mori/gosetup/refs/heads/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
+          bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/kubex-ecosystem/gosetup/refs/heads/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
 
       - name: Verify Go Installation
         run: go version
@@ -2034,7 +2034,7 @@ help:
 	$(call log, $(APP_NAME) is a tool for managing Kubernetes resources)
 	$(call log_break)
 	$(call log, For more information, visit:)
-	$(call log, 'https://github.com/rafa-mori/'$(APP_NAME))
+	$(call log, 'https://github.com/kubex-ecosystem/'$(APP_NAME))
 	$(call log_break)
 	$(call log_success, End of help message)
 	$(shell exit 0)
@@ -2063,10 +2063,10 @@ For further information about the license and terms of use, please refer to the 
 
 ---
 
-[![Build](https://github.com/rafa-mori/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/goforge/actions/workflows/release.yml)
+[![Build](https://github.com/kubex-ecosystem/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/goforge/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-%3E=1.20-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/goforge?include_prereleases)](https://github.com/rafa-mori/goforge/releases)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/goforge?include_prereleases)](https://github.com/kubex-ecosystem/goforge/releases)
 
 ---
 
@@ -2112,7 +2112,7 @@ rootCmd.AddCommand(cli.HelloCmd)
 ### 2. Advanced logger with extra context
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/kubex-ecosystem/goforge/logger"
 
 func exampleWithContext() {
     gl.Log("warn", "Warning! Something might be wrong.")
@@ -2129,7 +2129,7 @@ func exampleWithContext() {
 ### 3. Using as a Go library
 
 ```go
-import "github.com/rafa-mori/goforge"
+import "github.com/kubex-ecosystem/goforge"
 
 func main() {
     var myModule goforge.GoForge = &MyModule{}
@@ -2223,7 +2223,7 @@ Create files in `cmd/cli/` and register them in `wrpr.go`.
 ## 🛠️ Logger usage example
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/kubex-ecosystem/goforge/logger"
 
 gl.Log("info", "Informative message")
 gl.Log("error", "Something went wrong!")
@@ -2259,7 +2259,7 @@ Rafael Mori — [@rafa-mori](https://github.com/rafa-mori)
 
 ## 🌐 Links
 
-- [GitHub Repository](https://github.com/rafa-mori/goforge)
+- [GitHub Repository](https://github.com/kubex-ecosystem/goforge)
 - [Logger usage example](logger/logger.go)
 - [CI/CD Workflows](.github/workflows/)
 
@@ -2289,7 +2289,7 @@ If you discover a security vulnerability in GoForge:
 
 - **Do NOT disclose it publicly** or via any public forum (including Discord).
 - Please report it through one of these private channels:
-  - [GitHub Security Advisories](https://github.com/rafa-mori/goforge/security/advisories)
+  - [GitHub Security Advisories](https://github.com/kubex-ecosystem/goforge/security/advisories)
   - Or email: [maintainer@example.com] (replace this with your actual security contact email)
 
 Include as much detail as possible, such as:
@@ -2327,17 +2327,17 @@ import (
 
 var banners = []string{
 	`
-  ______           ________                                     
- /      \         |        \                                    
-|  ▓▓▓▓▓▓\ ______ | ▓▓▓▓▓▓▓▓ ______   ______   ______   ______  
-| ▓▓ __\▓▓/      \| ▓▓__    /      \ /      \ /      \ /      \ 
+  ______           ________
+ /      \         |        \
+|  ▓▓▓▓▓▓\ ______ | ▓▓▓▓▓▓▓▓ ______   ______   ______   ______
+| ▓▓ __\▓▓/      \| ▓▓__    /      \ /      \ /      \ /      \
 | ▓▓|    \  ▓▓▓▓▓▓\ ▓▓  \  |  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\
 | ▓▓ \▓▓▓▓ ▓▓  | ▓▓ ▓▓▓▓▓  | ▓▓  | ▓▓ ▓▓   \▓▓ ▓▓  | ▓▓ ▓▓    ▓▓
 | ▓▓__| ▓▓ ▓▓__/ ▓▓ ▓▓     | ▓▓__/ ▓▓ ▓▓     | ▓▓__| ▓▓ ▓▓▓▓▓▓▓▓
  \▓▓    ▓▓\▓▓    ▓▓ ▓▓      \▓▓    ▓▓ ▓▓      \▓▓    ▓▓\▓▓     \
   \▓▓▓▓▓▓  \▓▓▓▓▓▓ \▓▓       \▓▓▓▓▓▓ \▓▓      _\▓▓▓▓▓▓▓ \▓▓▓▓▓▓▓
-                                             |  \__| ▓▓         
-                                              \▓▓    ▓▓         
+                                             |  \__| ▓▓
+                                              \▓▓    ▓▓
                                                \▓▓▓▓▓▓          `,
 
 	// Here you can add more banners, they will be randomly selected at runtime on each execution
@@ -2365,7 +2365,7 @@ func GetDescriptions(descriptionArg []string, _ bool) map[string]string {
 package cli
 
 import (
-	gl "github.com/rafa-mori/goforge/logger"
+	gl "github.com/kubex-ecosystem/goforge/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -2403,7 +2403,7 @@ func startCommand() *cobra.Command {
 package main
 
 import (
-	gl "github.com/rafa-mori/goforge/logger"
+	gl "github.com/kubex-ecosystem/goforge/logger"
 )
 
 // This file is the entry point for the GoForge CLI application.
@@ -2514,9 +2514,9 @@ var cliUsageTemplate = `{{- if index .Annotations "banner" }}{{colorBlue (index 
 package main
 
 import (
-	cc "github.com/rafa-mori/goforge/cmd/cli"
-	gl "github.com/rafa-mori/goforge/logger"
-	vs "github.com/rafa-mori/goforge/version"
+	cc "github.com/kubex-ecosystem/goforge/cmd/cli"
+	gl "github.com/kubex-ecosystem/goforge/logger"
+	vs "github.com/kubex-ecosystem/goforge/version"
 	"github.com/spf13/cobra"
 
 	"os"
@@ -2612,13 +2612,13 @@ func RegX() *GoForge {
 /// docs/CONTRIBUTING.md ///
 # **Contributing to GoForge**
 
-Thank you for your interest in contributing to **[GoForge](https://github.com/rafa-mori/goforge)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
+Thank you for your interest in contributing to **[GoForge](https://github.com/kubex-ecosystem/goforge)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
 
 ---
 
 ## **How to Contribute**
 
-There are several ways to contribute to [GoForge](https://github.com/rafa-mori/goforge):
+There are several ways to contribute to [GoForge](https://github.com/kubex-ecosystem/goforge):
 
 1. **Report Issues**
    - Found bugs or issues in the code? Open an issue detailing the problem.
@@ -2641,7 +2641,7 @@ There are several ways to contribute to [GoForge](https://github.com/rafa-mori/g
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/rafa-mori/goforge.git
+git clone https://github.com/kubex-ecosystem/goforge.git
 cd goforge
 ```
 
@@ -2650,10 +2650,10 @@ cd goforge
 Make sure you have Go installed:
 You can install Go using one of the following methods:
 
-- [A super easy way to install Go](https://github.com/rafa-mori/gosetup)
+- [A super easy way to install Go](https://github.com/kubex-ecosystem/gosetup)
 
   ```shell
-    curl -sSfL 'https://raw.githubusercontent.com/rafa-mori/gosetup/refs/heads/main/go.sh' | bash
+    curl -sSfL 'https://raw.githubusercontent.com/kubex-ecosystem/gosetup/refs/heads/main/go.sh' | bash
   ```
 
 - [Convencional way to download Go](https://go.dev/dl/)
@@ -2747,16 +2747,16 @@ Commits should be clear and descriptive. Examples:
 
 ## **Best Practices**
 
-1. **Be Respectful and Welcoming**  
+1. **Be Respectful and Welcoming**
    This is an open-source project for everyone. Respect other contributors and collaborate constructively.
 
-2. **Document Your Changes**  
+2. **Document Your Changes**
    Update the `README.md` or documentation, if necessary, to include your changes.
 
-3. **Add Tests When Possible**  
+3. **Add Tests When Possible**
    Ensure any new functionality is accompanied by tests.
 
-4. **Be Clear in Issue Reports**  
+4. **Be Clear in Issue Reports**
    When opening an issue, be detailed and provide as much context as possible.
 
 ---
@@ -2803,7 +2803,7 @@ type GoForge struct {
 
 - **`Alias()`**: Returns empty string (no alias defined)
 - **`ShortDescription()`**: Short description of GoForge
-- **`LongDescription()`**: Long description of GoForge  
+- **`LongDescription()`**: Long description of GoForge
 - **`Usage()`**: Command usage pattern
 - **`Examples()`**: List of usage examples
 - **`Active()`**: Always returns `true` (active module)
@@ -2905,13 +2905,13 @@ goforge
 ```
 
 /// go.mod ///
-module github.com/rafa-mori/goforge
+module github.com/kubex-ecosystem/goforge
 
 go 1.24.5
 
 require (
 	github.com/fatih/color v1.18.0
-	github.com/rafa-mori/logz v1.3.0
+	github.com/kubex-ecosystem/logz v1.3.0
 	github.com/spf13/cobra v1.9.1
 )
 
@@ -2977,7 +2977,7 @@ import (
 	"runtime"
 	"strings"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type gLog struct {
@@ -3323,8 +3323,8 @@ _BANNER="#######################################################################
 
             ██████╗  ██████╗ ███████╗ ██████╗ ██████╗  ██████╗ ███████╗
             ██╔════╝ ██╔═══██╗██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝
-            ██║  ███╗██║   ██║█████╗  ██║   ██║██████╔╝██║  ███╗█████╗  
-            ██║   ██║██║   ██║██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝  
+            ██║  ███╗██║   ██║█████╗  ██║   ██║██████╔╝██║  ███╗█████╗
+            ██║   ██║██║   ██║██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝
             ╚██████╔╝╚██████╔╝██║     ╚██████╔╝██║  ██║╚██████╔╝███████╗
             ╚═════╝  ╚═════╝ ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝"
 
@@ -3347,8 +3347,8 @@ site_url: https://rafa-mori.github.io/timecraft/
 site_description: 'Advanced time series analysis, database integration, and task automation with dynamic notifications and powerful CLI'
 site_author: 'Rafael Mori'
 
-repo_name: 'rafa-mori/timecraft'
-repo_url: https://github.com/rafa-mori/timecraft
+repo_name: 'kubex-ecosystem/timecraft'
+repo_url: https://github.com/kubex-ecosystem/timecraft
 
 theme:
   name: material
@@ -3440,10 +3440,10 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/rafa-mori/timecraft
+      link: https://github.com/kubex-ecosystem/timecraft
       name: TimeCraft AI on GitHub
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/rafa-mori/
+      link: https://www.linkedin.com/in/kubex-ecosystem/
       name: Rafael Mori on LinkedIn
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/faelOmori
@@ -3585,7 +3585,7 @@ run_custom_scripts() {
         else
           log warn "Script não encontrado: ${_CUSTOM_SCRIPT}"
         fi
-      done  
+      done
     else
       log warn "Nenhum script personalizado encontrado no diretório: ${_SCRIPT_DIR}/${_STAGE}.d/"
       return 0
@@ -3800,7 +3800,7 @@ detect_shell_rc() {
             return 1
             ;;
     esac
-    
+
     if [ ! -f "$shell_rc_file" ]; then
         log error "Arquivo de configuração não encontrado: ${shell_rc_file}"
         return 1
@@ -3854,7 +3854,7 @@ add_to_path() {
     }
 
     log success "Adicionado $target_path ao PATH em $shell_rc_file."
-    
+
     "$SHELL" -c "source ${shell_rc_file}" || {
         log warn "Falha ao recarregar o shell. Por favor, execute 'source ${shell_rc_file}' manualmente."
     }
@@ -3952,7 +3952,7 @@ export -f check_path
 
 Use Go Modules for dependency management. Keep `go.mod` and `go.sum` clean and minimal. Avoid indirect dependencies when possible.
 
-Organize projects using idiomatic structure: `cmd/`, `cmd/cli/`, `internal/`, `internal/types`, `internal/interfaces`, `api/`, `support/`, `support/instructions`, `tests/`.  
+Organize projects using idiomatic structure: `cmd/`, `cmd/cli/`, `internal/`, `internal/types`, `internal/interfaces`, `api/`, `support/`, `support/instructions`, `tests/`.
 
 Place the main CLI entrypoint in `cmd/main.go` and the library entrypoint in the root withe package at the same name of project.
 
@@ -4296,8 +4296,8 @@ import (
 	"os"
 	"path/filepath"
 
-	gl "github.com/rafa-mori/goforge/logger"
-	l "github.com/rafa-mori/logz"
+	gl "github.com/kubex-ecosystem/goforge/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/spf13/cobra"
 
@@ -4610,7 +4610,7 @@ type GoForge struct {
 
 - **`Alias()`**: Returns empty string (no alias defined)
 - **`ShortDescription()`**: Short description of GoForge
-- **`LongDescription()`**: Long description of GoForge  
+- **`LongDescription()`**: Long description of GoForge
 - **`Usage()`**: Command usage pattern
 - **`Examples()`**: List of usage examples
 - **`Active()`**: Always returns `true` (active module)
@@ -4792,7 +4792,7 @@ import (
 	"runtime"
 	"strings"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type gLog struct {
@@ -5089,7 +5089,7 @@ parse_vars(){
     ["is_fork"]="${5:-"${IS_FORK:-"$(git config --get remote.origin.url | grep -q 'fork' && echo "true" || echo "false")"}"}"
     ["ref"]="${6:-"${REF:-${GITHUB_REF:-"refs/tags/v0.0.0"}}"}"
   )
-  
+
   # Get MARKER's directory and absolute path for current repo based on the version hash and version
   MARKER_NAME=".kubex_publish_marker_${_ARGS_LIST["version"]}_${_ARGS_LIST["version_hash"]}"
   MARKER_PATH="${MARKER_DIR}/${MARKER_NAME}"
@@ -5132,7 +5132,7 @@ parse_vars(){
       printf '%s\n' "❌ Version is not set. Cannot proceed."
       return 1
     fi
-    
+
     return 0
   }
 
@@ -5173,7 +5173,7 @@ parse_vars(){
       else
         WILL_PROCEED=true
       fi
-    else 
+    else
       WILL_PROCEED=true
     fi
 
@@ -5208,7 +5208,7 @@ parse_vars(){
           # Increment the count
           COUNT=$((COUNT + 1))
         fi
-      else 
+      else
         printf '%s\n' "❌ Error ensuring marker file: ${MARKER_PATH}"
         return 1
       fi
@@ -5264,15 +5264,15 @@ main () {
     printf '%s\n' "❌ No arguments provided."
     printf '%s\n' "Usage: $0 <version> <will_proceed> <marker> <count>"
     return 1
-  else 
+  else
     args=("$@")
   fi
 
   # Shift all arguments to the left, leaving an empty array
-  shift $(( $# )) 
+  shift $(( $# ))
 
   declare -a _cmd=(
-    validate_marker 
+    validate_marker
     "${args[@]}"
   )
 
@@ -5383,8 +5383,8 @@ _BANNER="#######################################################################
 
             ██████╗  ██████╗ ███████╗ ██████╗ ██████╗  ██████╗ ███████╗
             ██╔════╝ ██╔═══██╗██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝
-            ██║  ███╗██║   ██║█████╗  ██║   ██║██████╔╝██║  ███╗█████╗  
-            ██║   ██║██║   ██║██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝  
+            ██║  ███╗██║   ██║█████╗  ██║   ██║██████╔╝██║  ███╗█████╗
+            ██║   ██║██║   ██║██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝
             ╚██████╔╝╚██████╔╝██║     ╚██████╔╝██║  ██║╚██████╔╝███████╗
             ╚═════╝  ╚═════╝ ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝"
 
@@ -5478,8 +5478,8 @@ site_url: https://rafa-mori.github.io/timecraft/
 site_description: 'Advanced time series analysis, database integration, and task automation with dynamic notifications and powerful CLI'
 site_author: 'Rafael Mori'
 
-repo_name: 'rafa-mori/timecraft'
-repo_url: https://github.com/rafa-mori/timecraft
+repo_name: 'kubex-ecosystem/timecraft'
+repo_url: https://github.com/kubex-ecosystem/timecraft
 
 theme:
   name: material
@@ -5571,10 +5571,10 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/rafa-mori/timecraft
+      link: https://github.com/kubex-ecosystem/timecraft
       name: TimeCraft AI on GitHub
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/rafa-mori/
+      link: https://www.linkedin.com/in/kubex-ecosystem/
       name: Rafael Mori on LinkedIn
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/faelOmori
@@ -5716,7 +5716,7 @@ run_custom_scripts() {
         else
           log warn "Script não encontrado: ${_CUSTOM_SCRIPT}"
         fi
-      done  
+      done
     else
       log warn "Nenhum script personalizado encontrado no diretório: ${_SCRIPT_DIR}/${_STAGE}.d/"
       return 0
@@ -5931,7 +5931,7 @@ detect_shell_rc() {
             return 1
             ;;
     esac
-    
+
     if [ ! -f "$shell_rc_file" ]; then
         log error "Arquivo de configuração não encontrado: ${shell_rc_file}"
         return 1
@@ -5985,7 +5985,7 @@ add_to_path() {
     }
 
     log success "Adicionado $target_path ao PATH em $shell_rc_file."
-    
+
     "$SHELL" -c "source ${shell_rc_file}" || {
         log warn "Falha ao recarregar o shell. Por favor, execute 'source ${shell_rc_file}' manualmente."
     }
@@ -6083,7 +6083,7 @@ export -f check_path
 
 Use Go Modules for dependency management. Keep `go.mod` and `go.sum` clean and minimal. Avoid indirect dependencies when possible.
 
-Organize projects using idiomatic structure: `cmd/`, `cmd/cli/`, `internal/`, `internal/types`, `internal/interfaces`, `api/`, `support/`, `support/instructions`, `tests/`.  
+Organize projects using idiomatic structure: `cmd/`, `cmd/cli/`, `internal/`, `internal/types`, `internal/interfaces`, `api/`, `support/`, `support/instructions`, `tests/`.
 
 Place the main CLI entrypoint in `cmd/main.go` and the library entrypoint in the root withe package at the same name of project.
 
@@ -6384,8 +6384,8 @@ import (
 	"os"
 	"path/filepath"
 
-	gl "github.com/rafa-mori/goforge/logger"
-	l "github.com/rafa-mori/logz"
+	gl "github.com/kubex-ecosystem/goforge/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/spf13/cobra"
 

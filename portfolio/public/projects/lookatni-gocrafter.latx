@@ -27,7 +27,7 @@ linters:
     min-complexity: 15
 
   goimports:
-    local-prefixes: github.com/rafa-mori/gocrafter
+    local-prefixes: github.com/kubex-ecosystem/gocrafter
 
   dupl:
     threshold: 100
@@ -262,7 +262,7 @@ gocrafter/
 
 ### Installation Methods
 
-- **Go Install**: `go install github.com/rafa-mori/gocrafter@latest`
+- **Go Install**: `go install github.com/kubex-ecosystem/gocrafter@latest`
 - **Binary Releases**: GitHub releases with pre-built binaries
 - **Docker**: Container image support (planned)
 
@@ -377,7 +377,7 @@ Versions reach EOL 12 months after the next major release.
 
 ---
 
-*For the complete roadmap and feature requests, see our [GitHub Issues](https://github.com/rafa-mori/gocrafter/issues) and [Discussions](https://github.com/rafa-mori/gocrafter/discussions).*
+*For the complete roadmap and feature requests, see our [GitHub Issues](https://github.com/kubex-ecosystem/gocrafter/issues) and [Discussions](https://github.com/kubex-ecosystem/gocrafter/discussions).*
 
 /// CODE_OF_CONDUCT.md ///
 # Contributor Covenant Code of Conduct
@@ -533,10 +533,10 @@ For further information about the license and terms of use, please refer to the 
 
 ## A powerful Go project scaffolding and templating tool with pluggable kits that helps you create production-ready Go projects with best practices, modern tooling, and customizable templates
 
-[![Build](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml)
+[![Build](https://github.com/kubex-ecosystem/gocrafter/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/gocrafter/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-%3E=1.21-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/gocrafter?include_prereleases)](https://github.com/rafa-mori/gocrafter/releases)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/gocrafter?include_prereleases)](https://github.com/kubex-ecosystem/gocrafter/releases)
 
 ---
 
@@ -557,10 +557,10 @@ For further information about the license and terms of use, please refer to the 
 
 ```bash
 # Using Go install
-go install github.com/rafa-mori/gocrafter@latest
+go install github.com/kubex-ecosystem/gocrafter@latest
 
 # Or download from releases
-curl -sSL https://github.com/rafa-mori/gocrafter/releases/latest/download/gocrafter-linux-amd64.tar.gz | tar xz
+curl -sSL https://github.com/kubex-ecosystem/gocrafter/releases/latest/download/gocrafter-linux-amd64.tar.gz | tar xz
 ```
 
 ### Create Your First Project
@@ -767,7 +767,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 </p>
 
 <p align="center">
-  <a href="https://github.com/rafa-mori/gocrafter">⭐ Give us a star if you find GoCrafter useful!</a>
+  <a href="https://github.com/kubex-ecosystem/gocrafter">⭐ Give us a star if you find GoCrafter useful!</a>
 </p>
 
 /// ROADMAP.md ///
@@ -931,10 +931,10 @@ We welcome contributions to help achieve these goals:
 
 We value community input in shaping the future of GoCrafter:
 
-- **Feature Requests** - [Create an issue](https://github.com/rafa-mori/gocrafter/issues/new?template=feature-request.md)
-- **Template Requests** - [Request a template](https://github.com/rafa-mori/gocrafter/issues/new?template=template-request.md)
-- **General Feedback** - [Start a discussion](https://github.com/rafa-mori/gocrafter/discussions)
-- **Roadmap Input** - Comment on [roadmap discussions](https://github.com/rafa-mori/gocrafter/discussions/categories/roadmap)
+- **Feature Requests** - [Create an issue](https://github.com/kubex-ecosystem/gocrafter/issues/new?template=feature-request.md)
+- **Template Requests** - [Request a template](https://github.com/kubex-ecosystem/gocrafter/issues/new?template=template-request.md)
+- **General Feedback** - [Start a discussion](https://github.com/kubex-ecosystem/gocrafter/discussions)
+- **Roadmap Input** - Comment on [roadmap discussions](https://github.com/kubex-ecosystem/gocrafter/discussions/categories/roadmap)
 
 ---
 
@@ -942,8 +942,8 @@ We value community input in shaping the future of GoCrafter:
 
 ## Stay Updated
 
-- **GitHub Repository**: [GoCrafter on GitHub](https://github.com/rafa-mori/gocrafter)
-- **Release Notes**: [Changelog](https://github.com/rafa-mori/gocrafter/releases)
+- **GitHub Repository**: [GoCrafter on GitHub](https://github.com/kubex-ecosystem/gocrafter)
+- **Release Notes**: [Changelog](https://github.com/kubex-ecosystem/gocrafter/releases)
 
 /// SECURITY.md ///
 # Security Policy
@@ -967,7 +967,7 @@ We take the security of GoCrafter seriously. If you have discovered a security v
 
 Please use one of these private channels:
 
-- **GitHub Security Advisories**: [Report a vulnerability](https://github.com/rafa-mori/gocrafter/security/advisories/new)
+- **GitHub Security Advisories**: [Report a vulnerability](https://github.com/kubex-ecosystem/gocrafter/security/advisories/new)
 - **Email**: <security@rafamori.dev>
 
 Include as much detail as possible:
@@ -1008,8 +1008,8 @@ GoCrafter templates include security best practices:
 
 ## Contact
 
-- **Security Issues**: <security@rafamori.dev> or [GitHub Security Advisories](https://github.com/rafa-mori/gocrafter/security/advisories)
-- **General Questions**: [GitHub Issues](https://github.com/rafa-mori/gocrafter/issues) or [Discussions](https://github.com/rafa-mori/gocrafter/discussions)
+- **Security Issues**: <security@rafamori.dev> or [GitHub Security Advisories](https://github.com/kubex-ecosystem/gocrafter/security/advisories)
+- **General Questions**: [GitHub Issues](https://github.com/kubex-ecosystem/gocrafter/issues) or [Discussions](https://github.com/kubex-ecosystem/gocrafter/discussions)
 
 /// cmd/cli/commands.go ///
 package cli
@@ -1039,14 +1039,14 @@ import (
 
 var banners = []string{
 	`
-  ______            ______                     ______    __                       
- /      \          /      \                   /      \  |  \                      
-|  ▓▓▓▓▓▓\ ______ |  ▓▓▓▓▓▓\ ______   ______ |  ▓▓▓▓▓▓\_| ▓▓_    ______   ______  
-| ▓▓ __\▓▓/      \| ▓▓   \▓▓/      \ |      \| ▓▓_  \▓▓   ▓▓ \  /      \ /      \ 
+  ______            ______                     ______    __
+ /      \          /      \                   /      \  |  \
+|  ▓▓▓▓▓▓\ ______ |  ▓▓▓▓▓▓\ ______   ______ |  ▓▓▓▓▓▓\_| ▓▓_    ______   ______
+| ▓▓ __\▓▓/      \| ▓▓   \▓▓/      \ |      \| ▓▓_  \▓▓   ▓▓ \  /      \ /      \
 | ▓▓|    \  ▓▓▓▓▓▓\ ▓▓     |  ▓▓▓▓▓▓\ \▓▓▓▓▓▓\ ▓▓ \    \▓▓▓▓▓▓ |  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\
 | ▓▓ \▓▓▓▓ ▓▓  | ▓▓ ▓▓   __| ▓▓   \▓▓/      ▓▓ ▓▓▓▓     | ▓▓ __| ▓▓    ▓▓ ▓▓   \▓▓
-| ▓▓__| ▓▓ ▓▓__/ ▓▓ ▓▓__/  \ ▓▓     |  ▓▓▓▓▓▓▓ ▓▓       | ▓▓|  \ ▓▓▓▓▓▓▓▓ ▓▓      
- \▓▓    ▓▓\▓▓    ▓▓\▓▓    ▓▓ ▓▓      \▓▓    ▓▓ ▓▓        \▓▓  ▓▓\▓▓     \ ▓▓      
+| ▓▓__| ▓▓ ▓▓__/ ▓▓ ▓▓__/  \ ▓▓     |  ▓▓▓▓▓▓▓ ▓▓       | ▓▓|  \ ▓▓▓▓▓▓▓▓ ▓▓
+ \▓▓    ▓▓\▓▓    ▓▓\▓▓    ▓▓ ▓▓      \▓▓    ▓▓ ▓▓        \▓▓  ▓▓\▓▓     \ ▓▓
   \▓▓▓▓▓▓  \▓▓▓▓▓▓  \▓▓▓▓▓▓ \▓▓       \▓▓▓▓▓▓▓\▓▓         \▓▓▓▓  \▓▓▓▓▓▓▓\▓▓      `,
 
 	// Here you can add more banners, they will be randomly selected at runtime on each execution
@@ -1078,9 +1078,9 @@ import (
 	"strings"
 
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/rafa-mori/gocrafter/internal/generator"
-	"github.com/rafa-mori/gocrafter/internal/types"
-	gl "github.com/rafa-mori/gocrafter/logger"
+	"github.com/kubex-ecosystem/gocrafter/internal/generator"
+	"github.com/kubex-ecosystem/gocrafter/internal/types"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -1410,12 +1410,12 @@ func extractKitNameFromURL(repoURL string) string {
 			return strings.TrimSuffix(name, ".git")
 		}
 	}
-	
+
 	parts := strings.Split(strings.TrimSuffix(repoURL, "/"), "/")
 	if len(parts) > 0 {
 		return strings.TrimSuffix(parts[len(parts)-1], ".git")
 	}
-	
+
 	return ""
 }
 
@@ -1432,7 +1432,7 @@ func printKitSummary(kit types.Kit) {
 
 func printKitDetailed(kit types.Kit) {
 	gl.Log("info", fmt.Sprintf("📦 %s", kit.Name))
-	
+
 	if kit.Description != "" {
 		gl.Log("info", fmt.Sprintf("   Description: %s", kit.Description))
 	}
@@ -1451,18 +1451,18 @@ func printKitDetailed(kit types.Kit) {
 	if kit.LocalPath != "" {
 		gl.Log("info", fmt.Sprintf("   Path: %s", kit.LocalPath))
 	}
-	
+
 	if len(kit.Dependencies) > 0 {
 		gl.Log("info", "   Dependencies:")
 		for _, dep := range kit.Dependencies {
 			gl.Log("info", fmt.Sprintf("     • %s", dep))
 		}
 	}
-	
+
 	if len(kit.Tags) > 0 {
 		gl.Log("info", fmt.Sprintf("   Tags: %s", strings.Join(kit.Tags, ", ")))
 	}
-	
+
 	gl.Log("info", "")
 }
 
@@ -1473,8 +1473,8 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/rafa-mori/gocrafter/internal/generator"
-	gl "github.com/rafa-mori/gocrafter/logger"
+	"github.com/kubex-ecosystem/gocrafter/internal/generator"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -1689,10 +1689,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/rafa-mori/gocrafter/internal/generator"
-	"github.com/rafa-mori/gocrafter/internal/prompt"
-	"github.com/rafa-mori/gocrafter/internal/types"
-	gl "github.com/rafa-mori/gocrafter/logger"
+	"github.com/kubex-ecosystem/gocrafter/internal/generator"
+	"github.com/kubex-ecosystem/gocrafter/internal/prompt"
+	"github.com/kubex-ecosystem/gocrafter/internal/types"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -1767,9 +1767,9 @@ func runKitGeneration(args []string, kitName, outputDir, author, license string)
 	if len(args) == 0 {
 		return fmt.Errorf("project name is required when using kit generation")
 	}
-	
+
 	projectName := args[0]
-	
+
 	// Initialize kit manager
 	kitManager, err := generator.NewKitManager(nil)
 	if err != nil {
@@ -1794,7 +1794,7 @@ func runKitGeneration(args []string, kitName, outputDir, author, license string)
 
 	// Create placeholder values
 	var placeholderValues []types.PlaceholderValue
-	
+
 	// Add basic placeholders
 	if author != "" {
 		placeholderValues = append(placeholderValues, types.PlaceholderValue{
@@ -1802,7 +1802,7 @@ func runKitGeneration(args []string, kitName, outputDir, author, license string)
 			Value: author,
 		})
 	}
-	
+
 	if license != "" {
 		placeholderValues = append(placeholderValues, types.PlaceholderValue{
 			Name:  "license",
@@ -1949,7 +1949,7 @@ func getTemplatesPath() (string, error) {
 package cli
 
 import (
-	gl "github.com/rafa-mori/gocrafter/logger"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -1986,7 +1986,7 @@ func startCommand() *cobra.Command {
 package main
 
 import (
-	gl "github.com/rafa-mori/gocrafter/logger"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 )
 
 // This file is the entry point for the GoCrafter CLI application.
@@ -2097,9 +2097,9 @@ var cliUsageTemplate = `{{- if index .Annotations "banner" }}{{colorBlue (index 
 package main
 
 import (
-	"github.com/rafa-mori/gocrafter/cmd/cli"
-	gl "github.com/rafa-mori/gocrafter/logger"
-	vs "github.com/rafa-mori/gocrafter/version"
+	"github.com/kubex-ecosystem/gocrafter/cmd/cli"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
+	vs "github.com/kubex-ecosystem/gocrafter/version"
 	"github.com/spf13/cobra"
 
 	"os"
@@ -2254,7 +2254,7 @@ Quick Go installation (optional):
 
 ```bash
 # Using go-installer (easy way)
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafa-mori/gosetup/main/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/kubex-ecosystem/gosetup/main/install.sh)"
 ```
 
 ### Setting Up Your Development Environment
@@ -2263,11 +2263,11 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafa-mori/gosetup/main/i
 
    ```bash
    # Fork the repository on GitHub first
-   git clone https://github.com/rafa-mori/gocrafter.git
+   git clone https://github.com/kubex-ecosystem/gocrafter.git
    cd gocrafter
-   
+
    # Add upstream remote
-   git remote add upstream https://github.com/rafa-mori/gocrafter.git
+   git remote add upstream https://github.com/kubex-ecosystem/gocrafter.git
    ```
 
 2. **Install Dependencies**
@@ -2275,7 +2275,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafa-mori/gosetup/main/i
    ```bash
    # Download Go modules
    go mod download
-   
+
    # Install development tools
    go install golang.org/x/tools/cmd/goimports@latest
    go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
@@ -2286,10 +2286,10 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafa-mori/gosetup/main/i
    ```bash
    # Build the project
    go build -o gocrafter .
-   
+
    # Run tests
    go test ./...
-   
+
    # Test the CLI
    ./gocrafter list
    ```
@@ -2326,10 +2326,10 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafa-mori/gosetup/main/i
    ```bash
    # Run all tests
    go test ./...
-   
+
    # Run linting
    golangci-lint run
-   
+
    # Format code
    goimports -w .
    ```
@@ -2538,13 +2538,13 @@ If you have questions about contributing:
 
 Thank you for contributing to GoCrafter! 🚀
 
-2. **Document Your Changes**  
+2. **Document Your Changes**
    Update the `README.md` or documentation, if necessary, to include your changes.
 
-3. **Add Tests When Possible**  
+3. **Add Tests When Possible**
    Ensure any new functionality is accompanied by tests.
 
-4. **Be Clear in Issue Reports**  
+4. **Be Clear in Issue Reports**
    When opening an issue, be detailed and provide as much context as possible.
 
 ---
@@ -2567,10 +2567,10 @@ We commit to reviewing pull requests and issues as quickly as possible. We value
 
 **GoCrafter** é uma poderosa ferramenta de scaffolding e templating para projetos Go que ajuda você a criar projetos Go prontos para produção com melhores práticas, ferramentas modernas e templates personalizáveis.
 
-[![Build](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml)
+[![Build](https://github.com/kubex-ecosystem/gocrafter/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/gocrafter/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-%3E=1.21-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/gocrafter?include_prereleases)](https://github.com/rafa-mori/gocrafter/releases)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/gocrafter?include_prereleases)](https://github.com/kubex-ecosystem/gocrafter/releases)
 
 ---
 
@@ -2589,10 +2589,10 @@ We commit to reviewing pull requests and issues as quickly as possible. We value
 
 ```bash
 # Usando Go install
-go install github.com/rafa-mori/gocrafter@latest
+go install github.com/kubex-ecosystem/gocrafter@latest
 
 # Ou baixar das releases
-curl -sSL https://github.com/rafa-mori/gocrafter/releases/latest/download/gocrafter-linux-amd64.tar.gz | tar xz
+curl -sSL https://github.com/kubex-ecosystem/gocrafter/releases/latest/download/gocrafter-linux-amd64.tar.gz | tar xz
 ```
 
 ### Crie Seu Primeiro Projeto
@@ -2778,7 +2778,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](../L
 
 Feito com ❤️ por [@rafa-mori](https://github.com/rafa-mori)
 
-[⭐ Nos dê uma estrela se você acha o GoCrafter útil!](https://github.com/rafa-mori/gocrafter)
+[⭐ Nos dê uma estrela se você acha o GoCrafter útil!](https://github.com/kubex-ecosystem/gocrafter)
 
 /// docs/architecture.md ///
 # GoCrafter Architecture
@@ -2930,7 +2930,7 @@ templates/
 ### 1. Project Creation Flow
 
 ```plain
-User Input → CLI Parser → Command Router → Interactive Prompts 
+User Input → CLI Parser → Command Router → Interactive Prompts
     ↓
 Configuration Builder → Template Engine → File Generator → Project Output
 ```
@@ -2938,7 +2938,7 @@ Configuration Builder → Template Engine → File Generator → Project Output
 ### 2. Template Processing Flow
 
 ```plain
-Template Selection → Metadata Loading → Variable Collection 
+Template Selection → Metadata Loading → Variable Collection
     ↓
 Template Parsing → Content Generation → File System Operations
 ```
@@ -3527,7 +3527,7 @@ func TestCreatePost(t *testing.T) {
         },
         // ... more test cases
     }
-    
+
     for _, tt := range tests {
         t.Run(tt.name, func(t *testing.T) {
             // Test implementation
@@ -3958,7 +3958,7 @@ Use template functions for advanced transformations:
 ```go
 // String manipulation
 {{upper project_name}}        // UPPERCASE
-{{lower project_name}}        // lowercase  
+{{lower project_name}}        // lowercase
 {{title project_name}}        // Title Case
 {{kebab project_name}}        // kebab-case
 {{snake project_name}}        // snake_case
@@ -4222,7 +4222,7 @@ type GoCrafter struct {
 
 - **`Alias()`**: Returns empty string (no alias defined)
 - **`ShortDescription()`**: Short description of GoCrafter
-- **`LongDescription()`**: Long description of GoCrafter  
+- **`LongDescription()`**: Long description of GoCrafter
 - **`Usage()`**: Command usage pattern
 - **`Examples()`**: List of usage examples
 - **`Active()`**: Always returns `true` (active module)
@@ -4877,7 +4877,7 @@ require (
 
 ---
 
-For more information about template development, see the [GoCrafter documentation](https://github.com/rafa-mori/gocrafter/docs).
+For more information about template development, see the [GoCrafter documentation](https://github.com/kubex-ecosystem/gocrafter/docs).
 
 /// docs/user-guide.md ///
 # 📖 GoCrafter User Guide
@@ -4901,27 +4901,27 @@ This comprehensive guide will help you get the most out of GoCrafter, from basic
 ### Using Go Install (Recommended)
 
 ```bash
-go install github.com/rafa-mori/gocrafter@latest
+go install github.com/kubex-ecosystem/gocrafter@latest
 ```
 
 ### Download Binary
 
 ```bash
 # Linux
-curl -sSL https://github.com/rafa-mori/gocrafter/releases/latest/download/gocrafter-linux-amd64.tar.gz | tar xz
+curl -sSL https://github.com/kubex-ecosystem/gocrafter/releases/latest/download/gocrafter-linux-amd64.tar.gz | tar xz
 
 # macOS
-curl -sSL https://github.com/rafa-mori/gocrafter/releases/latest/download/gocrafter-darwin-amd64.tar.gz | tar xz
+curl -sSL https://github.com/kubex-ecosystem/gocrafter/releases/latest/download/gocrafter-darwin-amd64.tar.gz | tar xz
 
 # Windows
-curl -sSL https://github.com/rafa-mori/gocrafter/releases/latest/download/gocrafter-windows-amd64.zip -o gocrafter.zip
+curl -sSL https://github.com/kubex-ecosystem/gocrafter/releases/latest/download/gocrafter-windows-amd64.zip -o gocrafter.zip
 unzip gocrafter.zip
 ```
 
 ### Build from Source
 
 ```bash
-git clone https://github.com/rafa-mori/gocrafter.git
+git clone https://github.com/kubex-ecosystem/gocrafter.git
 cd gocrafter
 go build -o gocrafter cmd/main.go cmd/wrpr.go cmd/usage.go
 ```
@@ -5005,7 +5005,7 @@ Let's craft your perfect Go project together...
 
 ? What's your project name? blog-api
 ? What's your Go module name? github.com/myuser/blog-api
-? What type of project do you want to create? 
+? What type of project do you want to create?
   ❯ api-rest - REST API with HTTP server (Gin/Fiber)
     cli-tool - Command-line application with Cobra
     microservice - Microservice with gRPC and HTTP
@@ -5013,19 +5013,19 @@ Let's craft your perfect Go project together...
     worker - Background worker/job processor
     library - Go library/package
 
-? Which database do you want to use? 
+? Which database do you want to use?
   ❯ postgres
     mysql
     mongodb
     sqlite
     none
 
-? Do you want to add a cache layer? 
+? Do you want to add a cache layer?
   ❯ redis
     memcached
     none
 
-? Which additional features do you want to include? 
+? Which additional features do you want to include?
   ◉ Authentication (JWT)
   ◉ API Documentation (Swagger)
   ◯ Health Checks
@@ -5037,7 +5037,7 @@ Let's craft your perfect Go project together...
 
 ? Include Docker configuration? Yes
 ? Include Kubernetes manifests? No
-? Which CI/CD system do you want to use? 
+? Which CI/CD system do you want to use?
   ❯ github
     gitlab
     jenkins
@@ -5469,7 +5469,7 @@ echo "  make run"
 
 ---
 
-For more information, visit the [GoCrafter GitHub repository](https://github.com/rafa-mori/gocrafter).
+For more information, visit the [GoCrafter GitHub repository](https://github.com/kubex-ecosystem/gocrafter).
 
 /// examples/sample-kit/metadata.yaml ///
 name: "golang-basic-api"
@@ -6173,7 +6173,7 @@ import (
 	"strings"
 	"text/template"
 
-	gl "github.com/rafa-mori/gocrafter/logger"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 )
 
 // Generator handles project generation from templates
@@ -6483,8 +6483,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/rafa-mori/gocrafter/internal/types"
-	gl "github.com/rafa-mori/gocrafter/logger"
+	"github.com/kubex-ecosystem/gocrafter/internal/types"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 )
 
 // KitGenerator generates projects from kits
@@ -6518,7 +6518,7 @@ func (kg *KitGenerator) GenerateFromKit(req *types.GenerationRequest) error {
 
 	// Setup placeholders
 	kg.replacer.SetPlaceholdersFromRequest(req)
-	
+
 	// Add kit-specific placeholders
 	if err := kg.setupKitPlaceholders(kit, req); err != nil {
 		return fmt.Errorf("failed to setup kit placeholders: %w", err)
@@ -6582,7 +6582,7 @@ func (kg *KitGenerator) GetKitPlaceholders(kitName string) ([]string, error) {
 		for _, p := range placeholders {
 			seen[p] = true
 		}
-		
+
 		for _, p := range templatePlaceholders {
 			if !seen[p] {
 				placeholders = append(placeholders, p)
@@ -6625,7 +6625,7 @@ func (kg *KitGenerator) setupKitPlaceholders(kit *types.Kit, req *types.Generati
 	kg.replacer.SetPlaceholder("kit_name", kit.Name)
 	kg.replacer.SetPlaceholder("kit_version", kit.Version)
 	kg.replacer.SetPlaceholder("kit_author", kit.Author)
-	
+
 	// Set default values for common placeholders if not provided
 	kg.setDefaultPlaceholders(req)
 
@@ -6753,7 +6753,7 @@ func (kg *KitGenerator) shouldProcessAsTemplate(filePath string) bool {
 
 func (kg *KitGenerator) runPostGenerationScript(kitPath, outputPath string) error {
 	scriptPath := filepath.Join(kitPath, "scaffold.sh")
-	
+
 	// Check if script exists
 	if _, err := os.Stat(scriptPath); os.IsNotExist(err) {
 		return nil // No script to run
@@ -6801,8 +6801,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rafa-mori/gocrafter/internal/types"
-	gl "github.com/rafa-mori/gocrafter/logger"
+	"github.com/kubex-ecosystem/gocrafter/internal/types"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 	"gopkg.in/yaml.v3"
 )
 
@@ -6820,7 +6820,7 @@ func NewKitManager(config *types.KitConfig) (*KitManagerImpl, error) {
 		if err != nil {
 			return nil, fmt.Errorf("failed to get user home directory: %w", err)
 		}
-		
+
 		config = &types.KitConfig{
 			KitsPath:    filepath.Join(homeDir, ".gocrafter", "kits"),
 			CachePath:   filepath.Join(homeDir, ".gocrafter", "cache"),
@@ -6879,7 +6879,7 @@ func (km *KitManagerImpl) AddKit(repoURL string) error {
 // RemoveKit removes a kit by name
 func (km *KitManagerImpl) RemoveKit(name string) error {
 	kitPath := filepath.Join(km.kitsPath, name)
-	
+
 	if _, err := os.Stat(kitPath); os.IsNotExist(err) {
 		return fmt.Errorf("kit '%s' not found", name)
 	}
@@ -6923,7 +6923,7 @@ func (km *KitManagerImpl) ListKits() ([]types.Kit, error) {
 // GetKit returns a specific kit by name
 func (km *KitManagerImpl) GetKit(name string) (*types.Kit, error) {
 	kitPath := filepath.Join(km.kitsPath, name)
-	
+
 	if _, err := os.Stat(kitPath); os.IsNotExist(err) {
 		return nil, fmt.Errorf("kit '%s' not found", name)
 	}
@@ -7015,13 +7015,13 @@ func (km *KitManagerImpl) extractKitNameFromURL(repoURL string) string {
 			return strings.TrimSuffix(name, ".git")
 		}
 	}
-	
+
 	// Fallback: use last part of URL path
 	parts := strings.Split(strings.TrimSuffix(repoURL, "/"), "/")
 	if len(parts) > 0 {
 		return strings.TrimSuffix(parts[len(parts)-1], ".git")
 	}
-	
+
 	return ""
 }
 
@@ -7030,7 +7030,7 @@ func (km *KitManagerImpl) downloadKit(repoURL, targetPath string) error {
 	if km.isLocalPath(repoURL) {
 		return km.copyLocalKit(repoURL, targetPath)
 	}
-	
+
 	// Try git clone first
 	if err := km.gitClone(repoURL, targetPath); err == nil {
 		return nil
@@ -7067,11 +7067,11 @@ func (km *KitManagerImpl) gitClone(repoURL, targetPath string) error {
 	if err := cmd.Run(); err != nil {
 		return fmt.Errorf("git clone failed: %w", err)
 	}
-	
+
 	// Remove .git directory to save space
 	gitDir := filepath.Join(targetPath, ".git")
 	os.RemoveAll(gitDir)
-	
+
 	return nil
 }
 
@@ -7114,7 +7114,7 @@ func (km *KitManagerImpl) extractTarGz(src io.Reader, targetPath string) error {
 		}
 
 		path := filepath.Join(targetPath, header.Name)
-		
+
 		switch header.Typeflag {
 		case tar.TypeDir:
 			if err := os.MkdirAll(path, 0755); err != nil {
@@ -7124,12 +7124,12 @@ func (km *KitManagerImpl) extractTarGz(src io.Reader, targetPath string) error {
 			if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
 				return err
 			}
-			
+
 			file, err := os.Create(path)
 			if err != nil {
 				return err
 			}
-			
+
 			if _, err := io.Copy(file, tr); err != nil {
 				file.Close()
 				return err
@@ -7215,8 +7215,8 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/rafa-mori/gocrafter/internal/types"
-	gl "github.com/rafa-mori/gocrafter/logger"
+	"github.com/kubex-ecosystem/gocrafter/internal/types"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 )
 
 // PlaceholderReplacer handles placeholder replacement in templates
@@ -7254,12 +7254,12 @@ func (pr *PlaceholderReplacer) SetPlaceholdersFromRequest(req *types.GenerationR
 	// Set basic placeholders
 	pr.SetPlaceholder("project_name", req.ProjectName)
 	pr.SetPlaceholder("current_year", fmt.Sprintf("%d", time.Now().Year()))
-	
+
 	// Set placeholders from request
 	for _, placeholder := range req.Placeholders {
 		pr.SetPlaceholder(placeholder.Name, placeholder.Value)
 	}
-	
+
 	// Set derived placeholders
 	pr.setDerivedPlaceholders(req.ProjectName)
 }
@@ -7268,7 +7268,7 @@ func (pr *PlaceholderReplacer) SetPlaceholdersFromRequest(req *types.GenerationR
 func (pr *PlaceholderReplacer) ProcessContent(content string) (string, error) {
 	// First pass: simple string replacement for basic placeholders
 	processed := pr.simpleReplace(content)
-	
+
 	// Second pass: template processing for complex expressions
 	return pr.templateProcess(processed)
 }
@@ -7282,27 +7282,27 @@ func (pr *PlaceholderReplacer) ProcessPath(path string) string {
 func (pr *PlaceholderReplacer) GetMissingPlaceholders(content string) []string {
 	var missing []string
 	seen := make(map[string]bool)
-	
+
 	// Find all placeholder patterns
 	re := regexp.MustCompile(`\{\{([^}]+)\}\}`)
 	matches := re.FindAllStringSubmatch(content, -1)
-	
+
 	for _, match := range matches {
 		if len(match) > 1 {
 			placeholder := strings.TrimSpace(match[1])
-			
+
 			// Skip template functions and complex expressions
 			if strings.Contains(placeholder, " ") || strings.Contains(placeholder, ".") {
 				continue
 			}
-			
+
 			if _, exists := pr.placeholders[placeholder]; !exists && !seen[placeholder] {
 				missing = append(missing, placeholder)
 				seen[placeholder] = true
 			}
 		}
 	}
-	
+
 	return missing
 }
 
@@ -7319,13 +7319,13 @@ func (pr *PlaceholderReplacer) setupDefaultFunctions() {
 		"contains": strings.Contains,
 		"hasPrefix": strings.HasPrefix,
 		"hasSuffix": strings.HasSuffix,
-		
+
 		// Path manipulation
 		"base":     filepath.Base,
 		"dir":      filepath.Dir,
 		"ext":      filepath.Ext,
 		"join":     filepath.Join,
-		
+
 		// Conversion
 		"kebab": func(s string) string {
 			return strings.ToLower(strings.ReplaceAll(s, " ", "-"))
@@ -7352,7 +7352,7 @@ func (pr *PlaceholderReplacer) setupDefaultFunctions() {
 			}
 			return result.String()
 		},
-		
+
 		// Utilities
 		"now": func() string {
 			return time.Now().Format("2006-01-02 15:04:05")
@@ -7374,13 +7374,13 @@ func (pr *PlaceholderReplacer) setDerivedPlaceholders(projectName string) {
 	if projectName == "" {
 		return
 	}
-	
+
 	// Set derived values
 	pr.SetPlaceholder("package_name", strings.ToLower(strings.ReplaceAll(projectName, "-", "")))
 	pr.SetPlaceholder("module_name", strings.ToLower(strings.ReplaceAll(projectName, " ", "-")))
 	pr.SetPlaceholder("class_name", strings.Title(strings.ReplaceAll(projectName, "-", " ")))
 	pr.SetPlaceholder("const_name", strings.ToUpper(strings.ReplaceAll(projectName, "-", "_")))
-	
+
 	// Go-specific placeholders
 	if goVersion := os.Getenv("GO_VERSION"); goVersion != "" {
 		pr.SetPlaceholder("go_version", goVersion)
@@ -7391,24 +7391,24 @@ func (pr *PlaceholderReplacer) setDerivedPlaceholders(projectName string) {
 
 func (pr *PlaceholderReplacer) simpleReplace(content string) string {
 	result := content
-	
+
 	for name, value := range pr.placeholders {
 		// Replace {{placeholder_name}} patterns
 		pattern := fmt.Sprintf("{{%s}}", name)
 		result = strings.ReplaceAll(result, pattern, value)
-		
+
 		// Also support {{.placeholder_name}} patterns for template compatibility
 		dotPattern := fmt.Sprintf("{{.%s}}", name)
 		result = strings.ReplaceAll(result, dotPattern, value)
 	}
-	
+
 	return result
 }
 
 func (pr *PlaceholderReplacer) templateProcess(content string) (string, error) {
 	// Create template with custom functions
 	tmpl := template.New("content").Funcs(pr.funcMap)
-	
+
 	// Parse template
 	tmpl, err := tmpl.Parse(content)
 	if err != nil {
@@ -7416,7 +7416,7 @@ func (pr *PlaceholderReplacer) templateProcess(content string) (string, error) {
 		gl.Log("warn", fmt.Sprintf("Template parsing failed, using simple replacement: %v", err))
 		return content, nil
 	}
-	
+
 	// Execute template with placeholders as data
 	var buf bytes.Buffer
 	if err := tmpl.Execute(&buf, pr.placeholders); err != nil {
@@ -7424,7 +7424,7 @@ func (pr *PlaceholderReplacer) templateProcess(content string) (string, error) {
 		gl.Log("warn", fmt.Sprintf("Template execution failed, using simple replacement: %v", err))
 		return content, nil
 	}
-	
+
 	return buf.String(), nil
 }
 
@@ -7432,53 +7432,53 @@ func (pr *PlaceholderReplacer) templateProcess(content string) (string, error) {
 func ExtractPlaceholdersFromKit(kitPath string) ([]string, error) {
 	var placeholders []string
 	seen := make(map[string]bool)
-	
+
 	templatesPath := filepath.Join(kitPath, "templates")
-	
+
 	err := filepath.Walk(templatesPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
-		
+
 		if info.IsDir() {
 			return nil
 		}
-		
+
 		// Read file content
 		content, err := os.ReadFile(path)
 		if err != nil {
 			gl.Log("warn", fmt.Sprintf("Failed to read file %s: %v", path, err))
 			return nil // Continue walking
 		}
-		
+
 		// Extract placeholders from content
 		re := regexp.MustCompile(`\{\{([^}]+)\}\}`)
 		matches := re.FindAllStringSubmatch(string(content), -1)
-		
+
 		for _, match := range matches {
 			if len(match) > 1 {
 				placeholder := strings.TrimSpace(match[1])
-				
+
 				// Clean up placeholder name (remove dots, spaces, etc.)
 				placeholder = strings.TrimPrefix(placeholder, ".")
 				if idx := strings.Index(placeholder, " "); idx != -1 {
 					placeholder = placeholder[:idx]
 				}
-				
+
 				if placeholder != "" && !seen[placeholder] {
 					placeholders = append(placeholders, placeholder)
 					seen[placeholder] = true
 				}
 			}
 		}
-		
+
 		return nil
 	})
-	
+
 	if err != nil {
 		return nil, fmt.Errorf("failed to walk templates directory: %w", err)
 	}
-	
+
 	return placeholders, nil
 }
 
@@ -7491,8 +7491,8 @@ import (
 	"strings"
 
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/rafa-mori/gocrafter/internal/generator"
-	gl "github.com/rafa-mori/gocrafter/logger"
+	"github.com/kubex-ecosystem/gocrafter/internal/generator"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 )
 
 // InteractivePrompt handles interactive configuration prompts
@@ -7838,8 +7838,8 @@ import (
 	"strings"
 
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/rafa-mori/gocrafter/internal/types"
-	gl "github.com/rafa-mori/gocrafter/logger"
+	"github.com/kubex-ecosystem/gocrafter/internal/types"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 )
 
 // KitPrompt handles prompting for kit-specific placeholders
@@ -8010,7 +8010,7 @@ func (kp *KitPrompt) humanizePlaceholderName(placeholder string) string {
 	// Replace underscores and hyphens with spaces
 	humanized := strings.ReplaceAll(placeholder, "_", " ")
 	humanized = strings.ReplaceAll(humanized, "-", " ")
-	
+
 	// Capitalize first letter of each word
 	words := strings.Fields(humanized)
 	for i, word := range words {
@@ -8018,7 +8018,7 @@ func (kp *KitPrompt) humanizePlaceholderName(placeholder string) string {
 			words[i] = strings.ToUpper(word[:1]) + strings.ToLower(word[1:])
 		}
 	}
-	
+
 	return strings.Join(words, " ")
 }
 
@@ -8061,7 +8061,7 @@ func (kp *KitPrompt) ConfirmGeneration(kitName, projectName, outputPath string, 
 	gl.Log("info", fmt.Sprintf("   Kit: %s", kitName))
 	gl.Log("info", fmt.Sprintf("   Project: %s", projectName))
 	gl.Log("info", fmt.Sprintf("   Output: %s", outputPath))
-	
+
 	if len(placeholders) > 0 {
 		gl.Log("info", "   Placeholders:")
 		for _, p := range placeholders {
@@ -8070,7 +8070,7 @@ func (kp *KitPrompt) ConfirmGeneration(kitName, projectName, outputPath string, 
 			}
 		}
 	}
-	
+
 	gl.Log("info", "")
 
 	var confirm bool
@@ -8162,7 +8162,7 @@ import (
 	"strings"
 	"time"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type gLog struct {
@@ -8473,8 +8473,8 @@ _BANNER="#######################################################################
 
             ██████╗  ██████╗ ███████╗ ██████╗ ██████╗  ██████╗ ███████╗
             ██╔════╝ ██╔═══██╗██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝
-            ██║  ███╗██║   ██║█████╗  ██║   ██║██████╔╝██║  ███╗█████╗  
-            ██║   ██║██║   ██║██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝  
+            ██║  ███╗██║   ██║█████╗  ██║   ██║██████╔╝██║  ███╗█████╗
+            ██║   ██║██║   ██║██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝
             ╚██████╔╝╚██████╔╝██║     ╚██████╔╝██║  ██║╚██████╔╝███████╗
             ╚═════╝  ╚═════╝ ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝"
 
@@ -8789,7 +8789,7 @@ detect_shell_rc() {
             return 1
             ;;
     esac
-    
+
     if [ ! -f "$shell_rc_file" ]; then
         log error "Arquivo de configuração não encontrado: ${shell_rc_file}"
         return 1
@@ -8843,7 +8843,7 @@ add_to_path() {
     }
 
     log success "Adicionado $target_path ao PATH em $shell_rc_file."
-    
+
     "$SHELL" -c "source ${shell_rc_file}" || {
         log warn "Falha ao recarregar o shell. Por favor, execute 'source ${shell_rc_file}' manualmente."
     }
@@ -9220,7 +9220,7 @@ export -f check_dependencies
 - ✅ {{.CacheType | title}} caching
 {{- end}}
 {{- if hasFeature "Authentication"}}
-- ✅ JWT authentication  
+- ✅ JWT authentication
 {{- end}}
 {{- if hasFeature "API Documentation"}}
 - ✅ Swagger API documentation
@@ -9385,8 +9385,8 @@ import (
 	{{- end}}
 
 	"github.com/gin-gonic/gin"
-	gl "github.com/rafa-mori/gocrafter/logger"
-	
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
+
 	{{- if hasFeature "API Documentation"}}
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -9805,7 +9805,7 @@ import (
 	"github.com/user/test-api/internal/middleware"
 
 	"github.com/gin-gonic/gin"
-	gl "github.com/rafa-mori/gocrafter/logger"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
 )
 
 // @title test-api API
@@ -9996,8 +9996,8 @@ import (
 	"os"
 	"path/filepath"
 
-	gl "github.com/rafa-mori/gocrafter/logger"
-	l "github.com/rafa-mori/logz"
+	gl "github.com/kubex-ecosystem/gocrafter/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/spf13/cobra"
 

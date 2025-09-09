@@ -154,7 +154,7 @@ For further information about the license and terms of use, please refer to the 
 .
 │   # Camada de abstração para exposição de lógicas para uso externo como programa executável autônomo.
 │   # Essa estrutura praticamente todos possuem e é onde a lógica usada na execução da CLI, por exemplo,
-│   # irá interagir com a lógica encapsulada, sem que ocorra o contrário. Como se fosse um módulo separado 
+│   # irá interagir com a lógica encapsulada, sem que ocorra o contrário. Como se fosse um módulo separado
 │   # dentro do próprio módulo, dedicado à execução destacada, direta, integrada e independente do restante, direto no OS.
 ├── cmd
 │   ├── cli
@@ -163,7 +163,7 @@ For further information about the license and terms of use, please refer to the 
 │   └── wrpr.go
 
 │  # Camada de abstração para exposição de lógicas para uso externo das estruturas e coisas
-│  # encapsuladas no internal, mas que demandam exposição de constructors, middlewares ou coisas do tipo 
+│  # encapsuladas no internal, mas que demandam exposição de constructors, middlewares ou coisas do tipo
 │  # para que a interface exportada lá de dentro seja funcional e totalmente utilizável de fora
 ├── factory
 │   ├── gateway
@@ -171,15 +171,15 @@ For further information about the license and terms of use, please refer to the 
 │   ├── gobjects
 │   └── security
 
-│   # Camada estrutural que Go usa pra gerir dependências e para permitir que seja 
-│   # usado como biblioteca, porque é obrigatório que esteja na raiz do projeto, onde 
+│   # Camada estrutural que Go usa pra gerir dependências e para permitir que seja
+│   # usado como biblioteca, porque é obrigatório que esteja na raiz do projeto, onde
 │   # o nome do módulo aponta dentro do repositório e que possua o package com o mesmo nome da lib disponibilizada/exposta para importação
 ├── gobe.go
 ├── go.mod
 ├── go.sum
 
-│   # Toda a lógica central e outras coisas que demandam encapsulamento 
-│   # para fixação/injeção/envelope/uso de qualquer 
+│   # Toda a lógica central e outras coisas que demandam encapsulamento
+│   # para fixação/injeção/envelope/uso de qualquer
 │   # dependência/serviço/algoritmo/até embed se precisar, dependendo do que for obviamente...
 ├── internal
 │   ├── common
@@ -255,13 +255,13 @@ For further information about the license and terms of use, please refer to the 
 
 ![GoBE Banner](docs/assets/top_banner_lg_b.png)
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/rafa-mori/gobe/release.yml?branch=main)](https://github.com/rafa-mori/gobe/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/kubex-ecosystem/gobe/release.yml?branch=main)](https://github.com/kubex-ecosystem/gobe/actions)
 [![Go](https://img.shields.io/badge/Go-1.24+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/rafa-mori/gobe/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/kubex-ecosystem/gobe/blob/main/LICENSE)
 [![Automation](https://img.shields.io/badge/automation-zero%20config-blue)](#features)
 [![Modular](https://img.shields.io/badge/modular-yes-yellow)](#features)
 [![Security](https://img.shields.io/badge/security-high-red)](#features)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/rafa-mori/gobe/blob/main/CONTRIBUTING.md)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/kubex-ecosystem/gobe/blob/main/CONTRIBUTING.md)
 
 ---
 
@@ -362,7 +362,7 @@ Clone the repository and build GoBE:
 
 ```sh
 # Clone the repository
-git clone https://github.com/rafa-mori/gobe.git
+git clone https://github.com/kubex-ecosystem/gobe.git
 cd gobe
 go build -o gobe .
 ```
@@ -445,9 +445,9 @@ Contributions are welcome! Feel free to open issues or submit pull requests. See
 
 ## **Contact**
 
-💌 **Developer**:  
-[Rafael Mori](mailto:faelmori@gmail.com)  
-💼 [Follow me on GitHub](https://github.com/rafa-mori)  
+💌 **Developer**:
+[Rafael Mori](mailto:faelmori@gmail.com)
+💼 [Follow me on GitHub](https://github.com/rafa-mori)
 I'm open to collaborations and new ideas. If you found the project interesting, get in touch!
 
 
@@ -479,12 +479,12 @@ declined, etc.
 package gobe
 
 import (
-	. "github.com/rafa-mori/gobe/internal/interfaces"
-	. "github.com/rafa-mori/gobe/internal/security/interfaces"
+	. "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	. "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
 
-	isc "github.com/rafa-mori/gobe/internal/security/certificates"
-	t "github.com/rafa-mori/gobe/internal/types"
-	l "github.com/rafa-mori/logz"
+	isc "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 //func StartGoBE(name string, port string, bind string, logFile string, configFile string, isConfidential bool, logger l.Logger, debug bool) {
@@ -611,9 +611,9 @@ import (
 	"fmt"
 	"os"
 
-	gbm "github.com/rafa-mori/gobe"
-	crp "github.com/rafa-mori/gobe/internal/security/crypto"
-	gl "github.com/rafa-mori/gobe/logger"
+	gbm "github.com/kubex-ecosystem/gobe"
+	crp "github.com/kubex-ecosystem/gobe/internal/security/crypto"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -759,13 +759,13 @@ import (
 
 var banners = []string{
 	`
-  ______           _______  ________ 
+  ______           _______  ________
  /      \         |       \|        \
 |  ▓▓▓▓▓▓\ ______ | ▓▓▓▓▓▓▓\ ▓▓▓▓▓▓▓▓
-| ▓▓ __\▓▓/      \| ▓▓__/ ▓▓ ▓▓__    
-| ▓▓|    \  ▓▓▓▓▓▓\ ▓▓    ▓▓ ▓▓  \   
-| ▓▓ \▓▓▓▓ ▓▓  | ▓▓ ▓▓▓▓▓▓▓\ ▓▓▓▓▓   
-| ▓▓__| ▓▓ ▓▓__/ ▓▓ ▓▓__/ ▓▓ ▓▓_____ 
+| ▓▓ __\▓▓/      \| ▓▓__/ ▓▓ ▓▓__
+| ▓▓|    \  ▓▓▓▓▓▓\ ▓▓    ▓▓ ▓▓  \
+| ▓▓ \▓▓▓▓ ▓▓  | ▓▓ ▓▓▓▓▓▓▓\ ▓▓▓▓▓
+| ▓▓__| ▓▓ ▓▓__/ ▓▓ ▓▓__/ ▓▓ ▓▓_____
  \▓▓    ▓▓\▓▓    ▓▓ ▓▓    ▓▓ ▓▓     \
   \▓▓▓▓▓▓  \▓▓▓▓▓▓ \▓▓▓▓▓▓▓ \▓▓▓▓▓▓▓▓
 `,
@@ -792,9 +792,9 @@ func GetDescriptions(descriptionArg []string, _ bool) map[string]string {
 package cli
 
 import (
-	gb "github.com/rafa-mori/gobe"
-	gl "github.com/rafa-mori/gobe/logger"
-	l "github.com/rafa-mori/logz"
+	gb "github.com/kubex-ecosystem/gobe"
+	gl "github.com/kubex-ecosystem/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
 	"github.com/spf13/cobra"
 )
 
@@ -844,8 +844,8 @@ func startCommand() *cobra.Command {
 package main
 
 import (
-	l "github.com/rafa-mori/logz"
-	gl "github.com/rafa-mori/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 var logger l.Logger
@@ -942,9 +942,9 @@ var cliUsageTemplate = `{{- if index .Annotations "banner" }}{{colorBlue (index 
 package main
 
 import (
-	cc "github.com/rafa-mori/gobe/cmd/cli"
-	gl "github.com/rafa-mori/gobe/logger"
-	vs "github.com/rafa-mori/gobe/version"
+	cc "github.com/kubex-ecosystem/gobe/cmd/cli"
+	gl "github.com/kubex-ecosystem/gobe/logger"
+	vs "github.com/kubex-ecosystem/gobe/version"
 	"github.com/spf13/cobra"
 
 	"os"
@@ -1038,13 +1038,13 @@ func RegX() *GoBE {
 
 ![GoBE Banner](/docs/assets/top_banner_lg_b.png)
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/rafa-mori/gobe/release.yml?branch=main)](https://github.com/rafa-mori/gobe/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/kubex-ecosystem/gobe/release.yml?branch=main)](https://github.com/kubex-ecosystem/gobe/actions)
 [![Go](https://img.shields.io/badge/Go-1.24+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/rafa-mori/gobe/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/kubex-ecosystem/gobe/blob/main/LICENSE)
 [![Automation](https://img.shields.io/badge/automation-zero%20config-blue)](#features)
 [![Modular](https://img.shields.io/badge/modular-yes-yellow)](#features)
 [![Security](https://img.shields.io/badge/security-high-red)](#features)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/rafa-mori/gobe/blob/main/CONTRIBUTING.md)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/kubex-ecosystem/gobe/blob/main/CONTRIBUTING.md)
 
 ---
 
@@ -1118,7 +1118,7 @@ Clone o repositório e compile o GoBE:
 
 ```sh
 # Clone o repositório
-git clone https://github.com/rafa-mori/gobe.git
+git clone https://github.com/kubex-ecosystem/gobe.git
 cd gobe
 go build -o gobe .
 ```
@@ -1201,9 +1201,9 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 
 ## **Contact**
 
-💌 **Developer**:  
-[Rafael Mori](mailto:rafa-mori@gmail.com)  
-💼 [Follow me on GitHub](https://github.com/rafa-mori)  
+💌 **Developer**:
+[Rafael Mori](mailto:rafa-mori@gmail.com)
+💼 [Follow me on GitHub](https://github.com/rafa-mori)
 Estou aberto a colaborações e novas ideias. Se achou o projeto interessante, entre em contato!
 
 
@@ -1212,8 +1212,8 @@ Estou aberto a colaborações e novas ideias. Se achou o projeto interessante, e
 package gateway
 
 import (
-	ii "github.com/rafa-mori/gobe/internal/security/authentication"
-	fsi "github.com/rafa-mori/gobe/internal/security/certificates"
+	ii "github.com/kubex-ecosystem/gobe/internal/security/authentication"
+	fsi "github.com/kubex-ecosystem/gobe/internal/security/certificates"
 )
 
 type AuthManager = ii.AuthManager
@@ -1230,9 +1230,9 @@ import (
 	"log"
 	"time"
 
-	l "github.com/rafa-mori/logz"
-	gb "github.com/rafa-mori/gobe"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
+	l "github.com/kubex-ecosystem/logz"
+	gb "github.com/kubex-ecosystem/gobe"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
 	"github.com/streadway/amqp"
 )
 
@@ -1371,8 +1371,8 @@ type GobJect interface{}
 package security
 
 import (
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
 )
 
 type CertService interface{ sci.ICertService }
@@ -1385,8 +1385,8 @@ func NewCertService(keyPath, certPath string) CertService {
 package security
 
 import (
-	crp "github.com/rafa-mori/gobe/internal/security/crypto"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
+	crp "github.com/kubex-ecosystem/gobe/internal/security/crypto"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
 )
 
 type CryptoService interface {
@@ -1401,8 +1401,8 @@ func NewCryptoService() CryptoService {
 package security
 
 import (
-	krs "github.com/rafa-mori/gobe/internal/security/external"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
+	krs "github.com/kubex-ecosystem/gobe/internal/security/external"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
 )
 
 type KeyringService interface{ sci.IKeyringService }
@@ -1420,13 +1420,13 @@ import (
 	"path/filepath"
 	"strings"
 
-	ut "github.com/rafa-mori/gdbase/utils"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	crp "github.com/rafa-mori/gobe/internal/security/crypto"
-	krs "github.com/rafa-mori/gobe/internal/security/external"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	t "github.com/rafa-mori/gobe/internal/types"
-	gl "github.com/rafa-mori/gobe/logger"
+	ut "github.com/kubex-ecosystem/gdbase/utils"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	crp "github.com/kubex-ecosystem/gobe/internal/security/crypto"
+	krs "github.com/kubex-ecosystem/gobe/internal/security/external"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type ISecureMapper[T any] interface {
@@ -1637,9 +1637,9 @@ func (s *SecureMapper[T]) SetValue(value *T) { s.object.SetValue(value) }
 package security
 
 import (
-	s "github.com/rafa-mori/gdbase/factory"
-	sau "github.com/rafa-mori/gobe/internal/security/authentication"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
+	s "github.com/kubex-ecosystem/gdbase/factory"
+	sau "github.com/kubex-ecosystem/gobe/internal/security/authentication"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
 )
 
 func NewTokenClient(certService sci.ICertService, db s.DBService) sci.TokenClient {
@@ -1650,8 +1650,8 @@ func NewTokenClient(certService sci.ICertService, db s.DBService) sci.TokenClien
 package security
 
 import (
-	sau "github.com/rafa-mori/gobe/internal/security/authentication"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
+	sau "github.com/kubex-ecosystem/gobe/internal/security/authentication"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
 	"gorm.io/gorm"
 )
 
@@ -1661,8 +1661,8 @@ func NewTokenRepo(db *gorm.DB) sci.TokenRepo { return sau.NewTokenRepo(db) }
 package security
 
 import (
-	sau "github.com/rafa-mori/gobe/internal/security/authentication"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
+	sau "github.com/kubex-ecosystem/gobe/internal/security/authentication"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
 )
 
 func NewTokenService(c *sci.TSConfig) sci.TokenService {
@@ -1682,18 +1682,18 @@ import (
 	"reflect"
 	"time"
 
-	gdbf "github.com/rafa-mori/gdbase/factory"
-	ut "github.com/rafa-mori/gdbase/utils"
-	crp "github.com/rafa-mori/gobe/factory/security"
-	cm "github.com/rafa-mori/gobe/internal/common"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	"github.com/rafa-mori/gobe/internal/routes"
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	is "github.com/rafa-mori/gobe/internal/services"
-	t "github.com/rafa-mori/gobe/internal/types"
-	l "github.com/rafa-mori/logz"
+	gdbf "github.com/kubex-ecosystem/gdbase/factory"
+	ut "github.com/kubex-ecosystem/gdbase/utils"
+	crp "github.com/kubex-ecosystem/gobe/factory/security"
+	cm "github.com/kubex-ecosystem/gobe/internal/common"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	"github.com/kubex-ecosystem/gobe/internal/routes"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	is "github.com/kubex-ecosystem/gobe/internal/services"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
+	l "github.com/kubex-ecosystem/logz"
 
-	gl "github.com/rafa-mori/gobe/logger"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type GoBECertData struct {
@@ -2165,9 +2165,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	t "github.com/rafa-mori/gobe/internal/types"
-	gl "github.com/rafa-mori/gobe/logger"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type SMTPConfig struct {
@@ -2343,9 +2343,9 @@ import (
 	"strings"
 	"time"
 
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	t "github.com/rafa-mori/gobe/internal/types"
-	gl "github.com/rafa-mori/gobe/logger"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 func enqueueEmail(cc *ContactController, emailQueue chan t.ContactForm) {
@@ -2503,8 +2503,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	whk "github.com/rafa-mori/gdbase/factory/models"
-	"github.com/rafa-mori/gobe/internal/types"
+	whk "github.com/kubex-ecosystem/gdbase/factory/models"
+	"github.com/kubex-ecosystem/gobe/internal/types"
 	"github.com/streadway/amqp"
 )
 
@@ -2547,9 +2547,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	cron "github.com/rafa-mori/gdbase/factory/models"
-	"github.com/rafa-mori/gobe/internal/types"
-	gl "github.com/rafa-mori/gobe/logger"
+	cron "github.com/kubex-ecosystem/gdbase/factory/models"
+	"github.com/kubex-ecosystem/gobe/internal/types"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 	"gorm.io/gorm"
 )
 
@@ -2943,8 +2943,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	fscm "github.com/rafa-mori/gdbase/factory/models"
-	t "github.com/rafa-mori/gobe/internal/types"
+	fscm "github.com/kubex-ecosystem/gdbase/factory/models"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
 	"gorm.io/gorm"
 )
 
@@ -3023,8 +3023,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	fscm "github.com/rafa-mori/gdbase/factory/models"
-	t "github.com/rafa-mori/gobe/internal/types"
+	fscm "github.com/kubex-ecosystem/gdbase/factory/models"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
 	"gorm.io/gorm"
 )
 
@@ -3105,15 +3105,15 @@ import (
 	"os"
 	"strings"
 
-	user "github.com/rafa-mori/gdbase/factory/models"
-	cm "github.com/rafa-mori/gobe/internal/common"
-	sau "github.com/rafa-mori/gobe/internal/security/authentication"
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
+	user "github.com/kubex-ecosystem/gdbase/factory/models"
+	cm "github.com/kubex-ecosystem/gobe/internal/common"
+	sau "github.com/kubex-ecosystem/gobe/internal/security/authentication"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
 
-	gl "github.com/rafa-mori/gobe/logger"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 
 	"github.com/gin-gonic/gin"
-	"github.com/rafa-mori/gobe/internal/types"
+	"github.com/kubex-ecosystem/gobe/internal/types"
 	"gorm.io/gorm"
 )
 
@@ -3478,8 +3478,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	whk "github.com/rafa-mori/gdbase/factory/models"
-	t "github.com/rafa-mori/gobe/internal/types"
+	whk "github.com/kubex-ecosystem/gdbase/factory/models"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
 	"github.com/streadway/amqp"
 )
 
@@ -3661,8 +3661,8 @@ type IEnvironment interface {
 package interfaces
 
 import (
-	gdbf "github.com/rafa-mori/gdbase/factory"
-	l "github.com/rafa-mori/logz"
+	gdbf "github.com/kubex-ecosystem/gdbase/factory"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type ContactForm struct {
@@ -3823,7 +3823,7 @@ package interfaces
 
 import (
 	"github.com/google/uuid"
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 // IProperty is an interface that defines the methods for a property.
@@ -3846,7 +3846,7 @@ package interfaces
 
 import (
 	"github.com/google/uuid"
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 	"reflect"
 )
 
@@ -3977,14 +3977,14 @@ import (
 
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 
-	sau "github.com/rafa-mori/gobe/factory/security"
-	cm "github.com/rafa-mori/gobe/internal/common"
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	srv "github.com/rafa-mori/gobe/internal/services"
-	gl "github.com/rafa-mori/gobe/logger"
+	sau "github.com/kubex-ecosystem/gobe/factory/security"
+	cm "github.com/kubex-ecosystem/gobe/internal/common"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	srv "github.com/kubex-ecosystem/gobe/internal/services"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type AuthenticationMiddleware struct {
@@ -4120,8 +4120,8 @@ func RateLimiter(limit rate.Limit, burst int) gin.HandlerFunc {
 package middlewares
 
 import (
-	gl "github.com/rafa-mori/gobe/logger"
-	l "github.com/rafa-mori/logz"
+	gl "github.com/kubex-ecosystem/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/gin-gonic/gin"
 
@@ -4161,9 +4161,9 @@ import (
 	"net/http"
 	"time"
 
-	srv "github.com/rafa-mori/gobe/internal/services"
-	t "github.com/rafa-mori/gobe/internal/types"
-	gl "github.com/rafa-mori/gobe/logger"
+	srv "github.com/kubex-ecosystem/gobe/internal/services"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type RateLimitMiddleware struct {
@@ -4219,7 +4219,7 @@ func (rl *RateLimitMiddleware) SetRequestWindow(window time.Duration) {
 package middlewares
 
 import (
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
 )
 
 type RequestTracerMiddleware struct {
@@ -4285,7 +4285,7 @@ import (
 	"sync"
 	"time"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 // JobWrapper decorates the given Job with some behavior.
@@ -4418,7 +4418,7 @@ import (
 	"sync"
 	"time"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 // Cron keeps track of any number of entries, invoking the associated func as
@@ -4790,7 +4790,7 @@ package cron
 import (
 	"time"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 // Option represents a modification to the default behavior of a Cron.
@@ -5465,7 +5465,7 @@ func dayMatches(s *SpecSchedule, t time.Time) bool {
 package scheduler
 
 import (
-	tp "github.com/rafa-mori/gobe/internal/scheduler/types"
+	tp "github.com/kubex-ecosystem/gobe/internal/scheduler/types"
 )
 
 type IScheduler interface {
@@ -5498,7 +5498,7 @@ import (
 	"log"
 	"time"
 
-	pl "github.com/rafa-mori/gobe/internal/scheduler/services"
+	pl "github.com/kubex-ecosystem/gobe/internal/scheduler/services"
 )
 
 // CronJobScheduler gerencia a execução de cronjobs usando o GoroutinePool.
@@ -5539,7 +5539,7 @@ package manager
 import (
 	"fmt"
 
-	tp "github.com/rafa-mori/gobe/internal/scheduler/types"
+	tp "github.com/kubex-ecosystem/gobe/internal/scheduler/types"
 )
 
 type Scheduler struct {
@@ -5676,7 +5676,7 @@ func watchGoroutines() {
 package services
 
 import (
-	tp "github.com/rafa-mori/gobe/internal/scheduler/types"
+	tp "github.com/kubex-ecosystem/gobe/internal/scheduler/types"
 )
 
 // ICronService define os métodos necessários para interagir com o serviço de cronjobs.
@@ -5767,9 +5767,9 @@ import (
 	"sync"
 	"time"
 
-	m "github.com/rafa-mori/gobe/internal/scheduler/monitor"
+	m "github.com/kubex-ecosystem/gobe/internal/scheduler/monitor"
 
-	tp "github.com/rafa-mori/gobe/internal/scheduler/types"
+	tp "github.com/kubex-ecosystem/gobe/internal/scheduler/types"
 )
 
 // GoroutinePool gerencia a execução de tarefas usando um pool de goroutines.
@@ -5945,7 +5945,7 @@ import (
 	"log"
 
 	"github.com/google/uuid"
-	t "github.com/rafa-mori/gobe/internal/types"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
 )
 
 type IJob interface {
@@ -6091,8 +6091,8 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 
 	"github.com/google/uuid"
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	"github.com/rafa-mori/gobe/logger"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	"github.com/kubex-ecosystem/gobe/logger"
 )
 
 type AuthManager struct {
@@ -6187,13 +6187,13 @@ import (
 	"crypto/rsa"
 	"fmt"
 
-	s "github.com/rafa-mori/gdbase/factory"
-	"github.com/rafa-mori/gobe/internal/common"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	kri "github.com/rafa-mori/gobe/internal/security/external"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	s "github.com/kubex-ecosystem/gdbase/factory"
+	"github.com/kubex-ecosystem/gobe/internal/common"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	kri "github.com/kubex-ecosystem/gobe/internal/security/external"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type TokenClientImpl struct {
@@ -6296,8 +6296,8 @@ import (
 	"fmt"
 	"time"
 
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	"github.com/rafa-mori/gobe/internal/security/models"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	"github.com/kubex-ecosystem/gobe/internal/security/models"
 	"gorm.io/gorm"
 )
 
@@ -6361,10 +6361,10 @@ import (
 
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/google/uuid"
-	m "github.com/rafa-mori/gdbase/factory/models"
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	m "github.com/kubex-ecosystem/gdbase/factory/models"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type idTokenCustomClaims struct {
@@ -6698,11 +6698,11 @@ import (
 	"path/filepath"
 	"time"
 
-	cm "github.com/rafa-mori/gobe/internal/common"
-	crp "github.com/rafa-mori/gobe/internal/security/crypto"
-	krs "github.com/rafa-mori/gobe/internal/security/external"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	cm "github.com/kubex-ecosystem/gobe/internal/common"
+	crp "github.com/kubex-ecosystem/gobe/internal/security/crypto"
+	krs "github.com/kubex-ecosystem/gobe/internal/security/external"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 	"golang.org/x/crypto/chacha20poly1305"
 )
 
@@ -7203,8 +7203,8 @@ import (
 	"regexp"
 	"strings"
 
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 	"golang.org/x/crypto/chacha20poly1305"
 )
 
@@ -7632,10 +7632,10 @@ import (
 	"fmt"
 	"os"
 
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	t "github.com/rafa-mori/gobe/internal/types"
-	gl "github.com/rafa-mori/gobe/logger"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 	"github.com/zalando/go-keyring"
 )
 
@@ -7745,8 +7745,8 @@ import (
 	"crypto/rsa"
 	"time"
 
-	is "github.com/rafa-mori/gdbase/factory"
-	ism "github.com/rafa-mori/gdbase/factory/models"
+	is "github.com/kubex-ecosystem/gdbase/factory"
+	ism "github.com/kubex-ecosystem/gdbase/factory/models"
 )
 
 type TSConfig struct {
@@ -7860,16 +7860,16 @@ import (
 	"path/filepath"
 	"time"
 
-	f "github.com/rafa-mori/gdbase/factory"
-	s "github.com/rafa-mori/gdbase/types"
-	sc "github.com/rafa-mori/gdbase/types"
-	ut "github.com/rafa-mori/gdbase/utils"
-	cm "github.com/rafa-mori/gobe/internal/common"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	fcs "github.com/rafa-mori/gobe/internal/security/certificates"
-	t "github.com/rafa-mori/gobe/internal/types"
-	gl "github.com/rafa-mori/gobe/logger"
-	l "github.com/rafa-mori/logz"
+	f "github.com/kubex-ecosystem/gdbase/factory"
+	s "github.com/kubex-ecosystem/gdbase/types"
+	sc "github.com/kubex-ecosystem/gdbase/types"
+	ut "github.com/kubex-ecosystem/gdbase/utils"
+	cm "github.com/kubex-ecosystem/gobe/internal/common"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	fcs "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	t "github.com/kubex-ecosystem/gobe/internal/types"
+	gl "github.com/kubex-ecosystem/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -8034,7 +8034,7 @@ func InitializeAllServices(environment ci.IEnvironment, logger l.Logger, debug b
 package services
 
 import (
-	user "github.com/rafa-mori/gdbase/factory/models"
+	user "github.com/kubex-ecosystem/gdbase/factory/models"
 )
 
 type UserService = user.UserService
@@ -8184,10 +8184,10 @@ package types
 import (
 	"fmt"
 
-	l "github.com/rafa-mori/logz"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	tu "github.com/rafa-mori/gobe/internal/utils"
-	gl "github.com/rafa-mori/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	tu "github.com/kubex-ecosystem/gobe/internal/utils"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 
 	"reflect"
 
@@ -8630,11 +8630,11 @@ import (
 	"os"
 	"time"
 
-	crp "github.com/rafa-mori/gobe/internal/security/crypto"
+	crp "github.com/kubex-ecosystem/gobe/internal/security/crypto"
 
-	cm "github.com/rafa-mori/gobe/internal/common"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	cm "github.com/kubex-ecosystem/gobe/internal/common"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type TLSConfig struct {
@@ -8983,11 +8983,11 @@ import (
 	"syscall"
 	"time"
 
-	l "github.com/rafa-mori/logz"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	crp "github.com/rafa-mori/gobe/internal/security/crypto"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	crp "github.com/kubex-ecosystem/gobe/internal/security/crypto"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type EnvCache struct {
@@ -9722,8 +9722,8 @@ import (
 	"strings"
 
 	"github.com/pelletier/go-toml/v2"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 	"github.com/subosito/gotenv"
 	"gopkg.in/yaml.v3"
 )
@@ -10190,7 +10190,7 @@ func (d dataImporter) ImportFromPDF(filename string) error {
 package types
 
 import (
-	gl "github.com/rafa-mori/gobe/logger"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 
 	"sync"
 	"time"
@@ -10404,9 +10404,9 @@ import (
 	"os"
 	"reflect"
 
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
-	l "github.com/rafa-mori/logz"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/google/uuid"
 )
@@ -10539,9 +10539,9 @@ func (p *Property[T]) LoadFromFile(filename, format string) error {
 package types
 
 import (
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
-	l "github.com/rafa-mori/logz"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"fmt"
 	"reflect"
@@ -10786,7 +10786,7 @@ import (
 	"runtime"
 
 	"github.com/google/uuid"
-	gl "github.com/rafa-mori/gobe/logger"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type IReference interface {
@@ -10875,7 +10875,7 @@ import (
 	"fmt"
 	"reflect"
 
-	gl "github.com/rafa-mori/gobe/logger"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 func AutoEncode[T any](v T, format, filePath string) ([]byte, error) {
@@ -10917,9 +10917,9 @@ import (
 	"strings"
 	"time"
 
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
-	l "github.com/rafa-mori/logz"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 var (
@@ -11313,9 +11313,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
-	l "github.com/rafa-mori/logz"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type SignalManager[T chan string] struct {
@@ -11374,7 +11374,7 @@ func (sm *SignalManager[T]) StopListening() {
 package types
 
 import (
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 	"sync"
 	"time"
 )
@@ -11533,8 +11533,8 @@ import (
 	"io"
 	"os"
 
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 func IsShellSpecialVar(c uint8) bool {
@@ -11598,7 +11598,7 @@ import (
 	"reflect"
 
 	"github.com/google/uuid"
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
 
 	"fmt"
 	"sort"
@@ -12076,7 +12076,7 @@ package types
 import (
 	"reflect"
 
-	gl "github.com/rafa-mori/gobe/logger"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type ValidationListenerType string
@@ -12379,8 +12379,8 @@ func (vl *ValidationListener) Trigger(event string, result *ValidationResult) {
 package utils
 
 import (
-	ci "github.com/rafa-mori/gobe/internal/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 
 	"fmt"
 	"reflect"
@@ -12515,7 +12515,7 @@ import (
 	"time"
 	"unicode"
 
-	gl "github.com/rafa-mori/gobe/logger"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 // ValidateWorkerLimit valida o limite de workers
@@ -12648,7 +12648,7 @@ import (
 	"runtime"
 	"strings"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type gLog struct {
@@ -13224,7 +13224,7 @@ detect_shell_rc() {
             return 1
             ;;
     esac
-    
+
     if [ ! -f "$shell_rc_file" ]; then
         log error "Arquivo de configuração não encontrado: ${shell_rc_file}"
         return 1
@@ -13278,7 +13278,7 @@ add_to_path() {
     }
 
     log success "Adicionado $target_path ao PATH em $shell_rc_file."
-    
+
     "$SHELL" -c "source ${shell_rc_file}" || {
         log warn "Falha ao recarregar o shell. Por favor, execute 'source ${shell_rc_file}' manualmente."
     }
@@ -13651,14 +13651,14 @@ import (
 
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 
-	sau "github.com/rafa-mori/gobe/factory/security"
-	cm "github.com/rafa-mori/gobe/internal/common"
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	srv "github.com/rafa-mori/gobe/internal/services"
-	gl "github.com/rafa-mori/gobe/logger"
+	sau "github.com/kubex-ecosystem/gobe/factory/security"
+	cm "github.com/kubex-ecosystem/gobe/internal/common"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	srv "github.com/kubex-ecosystem/gobe/internal/services"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 // ... resto do arquivo permanece igual,
@@ -13674,8 +13674,8 @@ import (
 
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/google/uuid"
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	"github.com/rafa-mori/gobe/logger"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	"github.com/kubex-ecosystem/gobe/logger"
 )
 
 type AuthManager struct {
@@ -13774,10 +13774,10 @@ import (
 
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/google/uuid"
-	m "github.com/rafa-mori/gdbase/factory/models"
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	sci "github.com/rafa-mori/gobe/internal/security/interfaces"
-	gl "github.com/rafa-mori/gobe/logger"
+	m "github.com/kubex-ecosystem/gdbase/factory/models"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	sci "github.com/kubex-ecosystem/gobe/internal/security/interfaces"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 type idTokenCustomClaims struct {
@@ -13918,7 +13918,7 @@ package tests
 // 	"time"
 
 // 	"github.com/golang-jwt/jwt/v4"
-// 	"github.com/rafa-mori/gobe/internal/security/authentication"
+// 	"github.com/kubex-ecosystem/gobe/internal/security/authentication"
 // 	"github.com/stretchr/testify/assert"
 // )
 
@@ -14081,7 +14081,7 @@ $(call log_break)
 $(call log, $(APP_NAME) is a tool for managing Kubernetes resources)
 $(call log_break)
 $(call log, For more information, visit:)
-$(call log, 'https://github.com/rafa-mori/'$(APP_NAME))
+$(call log, 'https://github.com/kubex-ecosystem/'$(APP_NAME))
 $(call log_break)
 $(call log_success, End of help message)
 $(shell exit 0)
@@ -14120,7 +14120,7 @@ __cleanner_sourced_name() {
 # defined. This is to prevent loading the script multiple times and causing
 # conflicts. The logger.sh script is used to kbx_log messages to the console and
 # to a file. It is not meant to be run directly.
-# 
+#
 #################################################################################
 # shellcheck disable=SC2065,SC1091
 test -z "$(declare -f kbx_log)" >/dev/null && source "${_kbx_path_helpers:-"$(dirname "${0}")"}/logger.sh"
@@ -14179,7 +14179,7 @@ __first "$@" >/dev/tty || exit 1
 # It will be called when the script exits or when the user interrupts
 # the script. It will also check if the script is run as root or with
 # sudo and will remove the temporary directory with sudo if necessary.
-# 
+#
 ###################################################################################
 clear_script_cache() {
   # Disable the trap for cleanup
@@ -14236,14 +14236,14 @@ __inst_sourced_name() {
 # defined. This is to prevent loading the script multiple times and causing
 # conflicts. The logger.sh script is used to kbx_log messages to the console and
 # to a file. It is not meant to be run directly.
-# 
+#
 #################################################################################
 # shellcheck disable=SC2065,SC1091
 test -z "$(declare -f kbx_log)" >/dev/null && source "${_kbx_path_helpers:-"$(dirname "${0}")"}/logger.sh"
 
 
 ###############################################################################
-# __first 
+# __first
 #
 # This function is the validation entry point for the script. It will trigger
 # the unique environment variable name generation and check if the script is
@@ -14344,10 +14344,10 @@ IFS=$'\n\t'
 # uname command to get the operating system and architecture information.
 # It is not meant to be run directly. It will be called when the script
 # is run to determine the platform and architecture for building the binary.
-# It will also set the _PLATFORM and _ARCH variables to the detected values.  
+# It will also set the _PLATFORM and _ARCH variables to the detected values.
 # It will also set the _PLATFORM_WITH_ARCH variable to the detected platform
-# and architecture in the format of "os_arch". 
-# 
+# and architecture in the format of "os_arch".
+#
 #################################################################################
 what_platform() {
   local _platform=""
@@ -14432,7 +14432,7 @@ what_platform() {
 # If the argument is not "all", it returns the specified platform.
 # It is not meant to be run directly. It will be called when the script
 # is run to determine the platform and architecture for building the binary.
-# 
+#
 #################################################################################
 _get_os_arr_from_args() {
   local _PLATFORM_ARG=$1
@@ -14477,7 +14477,7 @@ _get_arch_arr_from_args() {
 }
 
 #################################################################################
-# _get_os_from_args 
+# _get_os_from_args
 #
 # This function takes a platform argument and returns the corresponding
 # platform name. It is not meant to be run directly. It will be called when
@@ -14550,7 +14550,7 @@ _get_arch_from_args() {
 # This function will check if application binary folder is in the PATH
 # and if not, it will add it to the PATH in the appropriate shell configuration file.
 # It is not meant to be run directly. It will be called when the script
-# 
+#
 # Arguments:
 #   $1 - target path to add to PATH
 #
@@ -14576,13 +14576,13 @@ add_to_path() {
 #################################################################################
 # install_binary
 #
-# Install the binary to the appropriate directory. 
+# Install the binary to the appropriate directory.
 # It will check if the user is root or not and install the binary
 # in the appropriate directory. It will also check if the binary is already
 # installed and if so, it will remove the old binary before installing the new one.
 # It will also check if the binary is in the PATH and if not, it will add it to the PATH.
-# It is not meant to be run directly. 
-# 
+# It is not meant to be run directly.
+#
 #################################################################################
 install_binary() {
     local _SUFFIX="${_PLATFORM_WITH_ARCH}"
@@ -14608,8 +14608,8 @@ install_binary() {
 # This function checks if UPX is installed and installs it if not.
 # It will check if the user is root or not and install UPX in the appropriate
 # directory. It will also check if UPX is already installed and if so, it will
-# override the old UPX before installing the new one. 
-# 
+# override the old UPX before installing the new one.
+#
 #################################################################################
 install_upx() {
     if ! command -v upx > /dev/null; then
@@ -14654,7 +14654,7 @@ check_dependencies() {
 # Ensure that all required folders exist. This function will create the
 # required folders if they do not exist. It will also check if the folders
 # are writable and if not, it will print an error message and exit.
-# 
+#
 #################################################################################
 ensure_folders(){
     # Create the build directory if it doesn't exist
@@ -14670,7 +14670,7 @@ ensure_folders(){
 # build_binary
 #
 # Build the binary for the specified platform and architecture.
-# 
+#
 ###############################################################################
 # shellcheck disable=SC2207,SC2116,SC2091,SC2155,SC2005
 build_binary() {
@@ -14758,10 +14758,10 @@ build_binary() {
 #################################################################################
 # compress_binary
 #
-# Compress the binary into a single tar.gz/zip file. 
+# Compress the binary into a single tar.gz/zip file.
 # It will check user system and architecture and compress the binary
 # in the appropriate format. It will also check if the binary is already
-# compressed and if so, it will remove the old compressed file before 
+# compressed and if so, it will remove the old compressed file before
 # compressing the new one.
 #
 #################################################################################
@@ -14828,8 +14828,8 @@ compress_binary() {
 #
 # Validate the Go version wich is required to build the binary and check if
 # the Go modules are tidy. It will check if the Go version is same or greater
-# than the go.mod required version. 
-# 
+# than the go.mod required version.
+#
 #################################################################################
 validate_versions() {
     REQUIRED_GO_VERSION="${_VERSION_GO:-1.20.0}"
@@ -14846,7 +14846,7 @@ validate_versions() {
 # sumary
 #
 # Print a summary of the installation process.
-# 
+#
 #################################################################################
 summary() {
     install_dir="$_BINARY"
@@ -14862,7 +14862,7 @@ summary() {
 # Is the function tha precede the build process. It will check if the Go version
 # is valid and if the Go modules are tidy. It will also check if the user
 # provided a platform and architecture. If not, it will use the default values.
-# 
+#
 ##################################################################################
 build_and_validate() {
     # Check if the Go version is valid
@@ -14886,10 +14886,10 @@ build_and_validate() {
 # check_path
 #
 # Check if the installation directory is in the PATH
-# 
+#
 # Arguments:
 #   $1 - installation directory
-# 
+#
 #################################################################################
 check_path() {
     kbx_log "info" "Checking if the installation directory is in the PATH..."
@@ -14905,7 +14905,7 @@ check_path() {
 #################################################################################
 # download_binary
 #
-# Download the binary from the release URL. 
+# Download the binary from the release URL.
 #
 #################################################################################
 download_binary() {
@@ -15007,7 +15007,7 @@ show_banner() {
 # show_headers
 #
 # Print the BANNER and ABOUT messages
-# 
+#
 #################################################################################
 show_headers() {
     # Print the BANNER message
@@ -15094,12 +15094,12 @@ main "$@"
 
 ###############################################################
 # __wrapper
-# 
-# This is a wrapper script to run the kubex modules installation, 
-# building, uninstalling, cleaning and testing.It is not meant to 
-# be run directly to avoid any issues and protect the environment 
+#
+# This is a wrapper script to run the kubex modules installation,
+# building, uninstalling, cleaning and testing.It is not meant to
+# be run directly to avoid any issues and protect the environment
 # and the user. It is meant to be run by the Makefile or other scripts.
-# 
+#
 #########################################################################
 . "$(dirname "$(readlink -e "${0}")")/wrapper.sh"
 __wrapper "$@" || exit $?
@@ -15114,7 +15114,7 @@ __wrapper "$@" || exit $?
 # defined. This is to prevent loading the script multiple times and causing
 # conflicts. The logger.sh script is used to kbx_log messages to the console and
 # to a file. It is not meant to be run directly.
-# 
+#
 #################################################################################
 # shellcheck disable=SC2065,SC1091
 test -z "$(declare -f kbx_log)" >/dev/null && source "${_kbx_path_helpers:-"$(dirname "${0}")"}/logger.sh"
@@ -15129,7 +15129,7 @@ test -z "$(declare -f kbx_log)" >/dev/null && source "${_kbx_path_helpers:-"$(di
 # This is a wrapper script to run the kubex modules installation,
 # building, uninstalling, cleaning and testing. It is not meant to be run
 # directly to avoid any issues and protect the environment and the user.
-# It is meant to be run by the Makefile or other scripts. 
+# It is meant to be run by the Makefile or other scripts.
 #
 ###############################################################################
 # shellcheck disable=SC2317,SC2155
@@ -15172,7 +15172,7 @@ __wrapper(){
   _kbx_path_scripts="${_kbx_path_root}/support/scripts" || return 1
   _kbx_path_helpers="${_kbx_path_root}/support/utils" || return 1
   _kbx_path_settings="${_kbx_path_root}/support/settings" || return 1
-  
+
   if test $EUID && test $UID -eq 0; then
     kbx_log error "KUBEX: Please do not run as root."
     exit 1 || kill -9 $$
@@ -15213,14 +15213,14 @@ __wrapper(){
       _kbx_run_file="${_kbx_path_scripts}/${_kbx_run_file}.sh"
 
       # Check if the file exists and if it is inside the scripts folder.
-      # after that, 
+      # after that,
       if test ! -f "${_kbx_run_file}"; then
         kbx_log error "KUBEX: File not found: ${_kbx_run_file}" > /dev/tty
         exit 1 || kill -9 $$
-      else 
+      else
         kbx_log debug "KUBEX: File found: ${_kbx_run_file}" > /dev/tty
       fi
-      
+
       # shellcheck disable=SC1091
       . "${_kbx_path_settings}/loader.sh" || return 1
 
@@ -15246,7 +15246,7 @@ export -f __wrapper
 # the script from being run directly and will ensure that the environment
 # is set up correctly before running any commands. It is not meant to be run
 # directly.
-# 
+#
 ###############################################################################
 __env_sourced_name() {
   local _self="${BASH_SOURCE-}"
@@ -15266,7 +15266,7 @@ __env_sourced_name() {
 # defined. This is to prevent loading the script multiple times and causing
 # conflicts. The logger.sh script is used to kbx_log messages to the console and
 # to a file. It is not meant to be run directly.
-# 
+#
 #################################################################################
 # shellcheck disable=SC2065,SC1091
 test -z "$(declare -f kbx_log)" >/dev/null && source "${_kbx_path_helpers:-"$(dirname "${0}")"}/logger.sh"
@@ -15278,9 +15278,9 @@ test -z "$(declare -f kbx_log)" >/dev/null && source "${_kbx_path_helpers:-"$(di
 # the unique environment variable name generation and check if the script is
 # sourced or run directly. It will also check if the script is run as root
 # or with sudo and set the shell options to ensure that the script is run
-# correctly. If the script is run as root or with sudo privileges, it will 
+# correctly. If the script is run as root or with sudo privileges, it will
 # print an error message and exit with a non-zero status code.
-# 
+#
 ###############################################################################
 __first(){
   if [ "$EUID" -eq 0 ] || [ "$UID" -eq 0 ]; then
@@ -15321,7 +15321,7 @@ __first "$@" >/dev/tty || exit 1
 # It prevents the script from exporting functions that are not meant to be used
 # outside the script. It is used to clean up the environment before running
 # any commands. It is not meant to be run directly.
-# 
+#
 ############################################################################
 # shellcheck disable=SC2207,SC2116,SC2155
 __env_list_functions() {
@@ -15467,7 +15467,7 @@ Notes:
 
 ################################################################################
 # __set_globals
-# 
+#
 # This function is used to set the global variables for the project.
 # It is called by the main script to ensure that the environment is set up
 # correctly before running any commands. It is not meant to be run directly.
@@ -15488,7 +15488,7 @@ __set_globals() {
 #
 # This function is used to unset exported global variables.
 # It isn't exported to the environment, is used internally just if needed.
-# 
+#
 #################################################################################
 __unset_globals() {
     # Unset the global variables to clean up the environment
@@ -15501,9 +15501,9 @@ __unset_globals() {
 # __main
 #
 # This function is the main entry point for the script. It will call the
-# function passed as argument and pass the arguments to it, but only after 
+# function passed as argument and pass the arguments to it, but only after
 # checking all validations and setting up the environment correctly.
-# 
+#
 ###############################################################################
 _main() {
   local _ws_name="$(__env_sourced_name)"
@@ -15569,7 +15569,7 @@ __check_modifications() {
 # the script from being run directly and will ensure that the environment
 # is set up correctly before running any commands. It is not meant to be run
 # directly.
-# 
+#
 ###############################################################################
 __loader_sourced_name() {
   local _self="${BASH_SOURCE-}"
@@ -15589,7 +15589,7 @@ __loader_sourced_name() {
 # defined. This is to prevent loading the script multiple times and causing
 # conflicts. The logger.sh script is used to kbx_log messages to the console and
 # to a file. It is not meant to be run directly.
-# 
+#
 #################################################################################
 # shellcheck disable=SC2065,SC1091
 test -z "$(declare -f kbx_log)" >/dev/null && source "${_kbx_path_helpers:-"$(dirname "${0}")"}/logger.sh"
@@ -15601,9 +15601,9 @@ test -z "$(declare -f kbx_log)" >/dev/null && source "${_kbx_path_helpers:-"$(di
 # the unique environment variable name generation and check if the script is
 # sourced or run directly. It will also check if the script is run as root
 # or with sudo and set the shell options to ensure that the script is run
-# correctly. If the script is run as root or with sudo privileges, it will 
+# correctly. If the script is run as root or with sudo privileges, it will
 # print an error message and exit with a non-zero status code.
-# 
+#
 ###############################################################################
 __first(){
   if [ "$EUID" -eq 0 ] || [ "$UID" -eq 0 ]; then
@@ -15644,7 +15644,7 @@ __first "$@" >/dev/tty || exit 1
 # It prevents the script from exporting functions that are not meant to be used
 # outside the script. It is used to clean up the environment before running
 # any commands. It is not meant to be run directly.
-# 
+#
 ############################################################################
 # shellcheck disable=SC2207,SC2116,SC2155
 __loader_list_functions() {
@@ -15665,11 +15665,11 @@ __loader_main_functions() {
 
 #################################################################################
 # get_current_shell
-# 
+#
 # This function retrieves the current shell being used. It checks the process
 # name and the shebang line of the script to determine the shell. It is not
 # meant to be run directly.
-# 
+#
 #################################################################################
 get_current_shell() {
   _CURRENT_SHELL="$(cat /proc/$$/comm)"
@@ -15716,7 +15716,7 @@ get_release_url() {
 # current shell. It is used to add the installation directory to the PATH
 # in the shell configuration file. It is not meant to be run directly.
 # It is used to ensure that the installation directory is added to the PATH
-# 
+#
 #############################################################################
 detect_shell_rc() {
     shell_rc_file=""
@@ -15745,9 +15745,9 @@ detect_shell_rc() {
 # __main
 #
 # This function is the main entry point for the script. It will call the
-# function passed as argument and pass the arguments to it, but only after 
+# function passed as argument and pass the arguments to it, but only after
 # checking all validations and setting up the environment correctly.
-# 
+#
 ###############################################################################
 _main() {
   # if ! __check_modifications "${_kbx_path_source:-$(dirname "${0}")}"; then
@@ -15772,7 +15772,7 @@ _main "$@"
 
 ########################################################################
 # kbx_detect_background_color
-# 
+#
 # Detects the background color of the terminal.
 #
 ###########################################################################
@@ -15823,7 +15823,7 @@ kbx_get_high_contrast_color() {
 #   - _nocolor: No color
 #   - _bold: Bold text
 #   - _nobold: Normal text
-#   - _underline: Underlined text    
+#   - _underline: Underlined text
 #   - _nounderline: Normal text
 #   - _red: Red text
 #   - _green: Green text
@@ -15868,7 +15868,7 @@ kbx_get_colors(){
   local _light_cyan="\033[38;5;116m"
   local _dark_cyan="\033[38;5;45m"
 
-  local _kbx_detected_background_color=$(kbx_detect_background_color) >/dev/null || return 1  
+  local _kbx_detected_background_color=$(kbx_detect_background_color) >/dev/null || return 1
   local _kbx_contrast=$(kbx_get_high_contrast_color "$_kbx_detected_background_color") >/dev/null || return 1
 
   export _nocolor="\033[0m"
@@ -15927,7 +15927,7 @@ test -z "$(declare -f log)" >/dev/null && source "${_kbx_path_helpers:-"$(dirnam
 # It prevents the script from exporting functions that are not meant to be used
 # outside the script. It is used to clean up the environment before running
 # any commands. It is not meant to be run directly.
-# 
+#
 ############################################################################
 # shellcheck disable=SC2207,SC2116,SC2155
 __log_list_functions() {
@@ -15955,7 +15955,7 @@ __log_main_functions() {
 # to the kbx_log file. The function exports the _TEMP_DIR and _kbx_log_output
 # variables for use in other functions.
 # The function returns 0 on success and 1 on failure.
-# 
+#
 ############################################################################
 _kbx_create_temp_dir() {
   # Create a temporary directory for logs
@@ -15980,7 +15980,7 @@ _kbx_create_temp_dir() {
 #
 # Tails the kbx_log file and waits for it to finish.
 # The function runs the tail command in the background and waits for it
-# to finish. The function also sets the kbx_tail_pid variable to the 
+# to finish. The function also sets the kbx_tail_pid variable to the
 # process ID of the tail command. The function exports the kbx_tail_pid
 # variable for use in other functions. The function returns 0 on success
 # and 1 on failure.
@@ -16111,14 +16111,14 @@ kbx_exit_handler() {
   fi
   kbx_log notice "Time elapsed: $(kbx_get_elapsed)s." || true
   kbx_log notice "Exiting with code: '${kbx_last_exit}'" || true
-  
+
   ## Print the kbx_log file location.
   if test -n "${_kbx_log_output:-}"; then
     kbx_log notice "Log file: '${_kbx_log_output}'" || true
   fi
   kbx_log notice "Log file size: $(du -h "${_kbx_log_output}" | awk '{print $1}')" || true
   kbx_log notice "Log file location: $(dirname "${_kbx_log_output}")" || true
-  
+
   kbx_end || exit "${kbx_last_exit}" || return 1
 }
 ## </editor-fold>
@@ -16202,9 +16202,9 @@ kbx_yes_no_question() {
 # The function uses ANSI escape codes to read a secret from the user.
 # The function also uses the read command to read the secret from the user without
 # echoing it to the terminal. The function returns 0 on success and 1 on failure.
-# 
+#
 # The function returns 0 on success and 1 on failure.
-# 
+#
 ############################################################################
 kbx_read_secret_with_callback() {
   local _prompt="${1}"
@@ -16269,7 +16269,7 @@ kbx_wait_with_escape() {
     fi
     kbx_log notice "${_message}"
   fi
-  
+
   local _half_second_marker=""
   local _escape_wait_dummy=""
   local _waiting_char_acum="s) "
@@ -16411,13 +16411,13 @@ kbx_std_log_selector() {
 # variable. The function uses colors for different kbx_log levels and formats
 # the output accordingly. The function also supports a debug mode that
 # logs messages to both the kbx_log file and the console.
-# 
+#
 # kbx_log messages with different levels
 # Arguments:
 #   $1 - kbx_log level (info, warn, error, success)
 #   $2 and above - message to log, can be multiple arguments. It will be
 #                 concatenated into a single string.
-# 
+#
 ############################################################################
 kbx_log(){
   ## Avoid clogging output if kbx_log() is working alright.
@@ -16440,7 +16440,7 @@ kbx_log(){
   # Check if the output file exists, if not, create it
   if [ ! -f "$_kbx_log_output" ]; then
     touch "$_kbx_log_output"
-  else 
+  else
     _kbx_create_temp_dir || return 1
   fi
 
@@ -16506,8 +16506,8 @@ kbx_log(){
 #
 # Handles all exit codes and errors.
 # The function takes an exit code and an error message as arguments
-# and logs the error message. 
-# 
+# and logs the error message.
+#
 ###########################################################################
 kbx_die(){
   export kbx_start_time="${kbx_start_time:-$(date +%s)}"
@@ -16542,7 +16542,7 @@ kbx_die(){
 # handling errors and registering the time elapsed to run the command.
 # The function will sanitize the command before running it, set the
 # necessary environment variables and run provided command.
-# 
+#
 ##########################################################################
 kbx_run(){
   export kbx_start_time="${kbx_start_time:-$(date +%s)}"
@@ -16579,7 +16579,7 @@ kbx_run(){
 # echoing it to the terminal and without resetting the cursor position.
 # The function uses ANSI escape codes to get the elapsed time since
 # the start of the script. The function also uses the date command
-# to get the elapsed time since the start of the script. 
+# to get the elapsed time since the start of the script.
 #
 ############################################################################
 kbx_get_elapsed(){
@@ -16627,9 +16627,9 @@ import (
 	"os"
 	"testing"
 
-	crt "github.com/rafa-mori/gobe/internal/security/certificates"
-	krs "github.com/rafa-mori/gobe/internal/security/external"
-	gl "github.com/rafa-mori/gobe/logger"
+	crt "github.com/kubex-ecosystem/gobe/internal/security/certificates"
+	krs "github.com/kubex-ecosystem/gobe/internal/security/external"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 
 	"github.com/stretchr/testify/require"
 	"golang.org/x/crypto/chacha20poly1305"
@@ -16831,7 +16831,7 @@ import (
 	"strings"
 	"testing"
 
-	crp "github.com/rafa-mori/gobe/internal/security/crypto"
+	crp "github.com/kubex-ecosystem/gobe/internal/security/crypto"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/crypto/chacha20poly1305"
 )
@@ -17150,11 +17150,11 @@ package tests
 // import (
 // 	"context"
 // 	"fmt"
-// 	gb "github.com/rafa-mori/gobe"
-// 	ci "github.com/rafa-mori/gobe/internal/interfaces"
-// 	at "github.com/rafa-mori/gobe/internal/types"
-// 	gl "github.com/rafa-mori/gobe/logger"
-// 	l "github.com/rafa-mori/logz"
+// 	gb "github.com/kubex-ecosystem/gobe"
+// 	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+// 	at "github.com/kubex-ecosystem/gobe/internal/types"
+// 	gl "github.com/kubex-ecosystem/gobe/logger"
+// 	l "github.com/kubex-ecosystem/logz"
 // 	"os"
 // 	"testing"
 // 	"time"
@@ -17483,7 +17483,7 @@ package tests
 import (
 	"testing"
 
-	krs "github.com/rafa-mori/gobe/internal/security/external"
+	krs "github.com/kubex-ecosystem/gobe/internal/security/external"
 	"github.com/stretchr/testify/require"
 )
 
@@ -17539,9 +17539,9 @@ import (
 	"fmt"
 	"testing"
 
-	at "github.com/rafa-mori/gobe/internal/types"
-	atc "github.com/rafa-mori/gobe/internal/types"
-	gl "github.com/rafa-mori/gobe/logger"
+	at "github.com/kubex-ecosystem/gobe/internal/types"
+	atc "github.com/kubex-ecosystem/gobe/internal/types"
+	gl "github.com/kubex-ecosystem/gobe/logger"
 )
 
 func TestEncodeJSONInputProducesJSONOutput(t *testing.T) {
@@ -17742,11 +17742,11 @@ package tests
 
 // import (
 // 	"fmt"
-// 	gb "github.com/rafa-mori/gobe"
-// 	ci "github.com/rafa-mori/gobe/internal/interfaces"
-// 	at "github.com/rafa-mori/gobe/internal/types"
-// 	gl "github.com/rafa-mori/gobe/logger"
-// 	l "github.com/rafa-mori/logz"
+// 	gb "github.com/kubex-ecosystem/gobe"
+// 	ci "github.com/kubex-ecosystem/gobe/internal/interfaces"
+// 	at "github.com/kubex-ecosystem/gobe/internal/types"
+// 	gl "github.com/kubex-ecosystem/gobe/logger"
+// 	l "github.com/kubex-ecosystem/logz"
 // 	"path/filepath"
 // 	"strings"
 // 	"sync"
@@ -18201,7 +18201,7 @@ __main() {
   else
     kbx_die 1 "This script must be run from within a Git repository."
   fi
-  
+
   if [[ -z "${_project_root}" ]]; then
     kbx_die 1 "Failed to determine the project root directory."
   fi
@@ -19229,8 +19229,8 @@ clear_script_cache() {
 package tests
 
 import (
-	fsc "github.com/rafa-mori/gobe/factory/security"
-	//at "github.com/rafa-mori/gobe/internal/types"
+	fsc "github.com/kubex-ecosystem/gobe/factory/security"
+	//at "github.com/kubex-ecosystem/gobe/internal/types"
 	"testing"
 
 	"github.com/stretchr/testify/mock"
@@ -19369,7 +19369,7 @@ package tests
 // 	"time"
 
 // 	"github.com/golang-jwt/jwt/v4"
-// 	"github.com/rafa-mori/gobe/internal/security/authentication"
+// 	"github.com/kubex-ecosystem/gobe/internal/security/authentication"
 // 	"github.com/stretchr/testify/assert"
 // )
 
@@ -19572,8 +19572,8 @@ func SanitizeInput(input string) string {
 package version
 
 import (
-	gl "github.com/rafa-mori/gobe/logger"
-	l "github.com/rafa-mori/logz"
+	gl "github.com/kubex-ecosystem/gobe/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/spf13/cobra"
 
@@ -19589,7 +19589,7 @@ import (
 
 const moduleAlias = "GoBE"
 const moduleName = "gobe"
-const gitModelUrl = "https://github.com/rafa-mori/" + moduleName + ".git"
+const gitModelUrl = "https://github.com/kubex-ecosystem/" + moduleName + ".git"
 const currentVersionFallback = "v1.1.0" // First version with the version file
 
 type Service interface {

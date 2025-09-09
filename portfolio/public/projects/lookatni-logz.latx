@@ -234,7 +234,7 @@ Requirements:
 
 ```bash
 # Clone this repository
-git clone https://github.com/rafa-mori/logz.git
+git clone https://github.com/kubex-ecosystem/logz.git
 
 # Navigate to the project directory
 cd logz
@@ -263,10 +263,10 @@ logz info --msg "Starting the application."
 logz error --msg "Database connection failed."
 
 # Start the detached service
-logz start  
+logz start
 
 # Stop the detached service
-logz stop  
+logz stop
 
 # Watch logs in real-time
 logz watch
@@ -344,7 +344,7 @@ logz error \
 
 ### Configuration
 
-Logz uses a JSON or YAML configuration file to centralize its setup. The file is automatically generated on first use or can be manually configured at:  
+Logz uses a JSON or YAML configuration file to centralize its setup. The file is automatically generated on first use or can be manually configured at:
 `~/.kubex/logz/config.json`.
 
 **Example Configuration**:
@@ -403,12 +403,12 @@ Contributions are welcome! Feel free to open issues or submit pull requests. Che
 
 ## **Contact**
 
-💌 **Developer**:  
+💌 **Developer**:
 
 Rafael Mori
 
 - 🌐 [Portfolio](https://rafa-mori.dev)
-- 🔗 [LinkedIn](https://www.linkedin.com/in/rafa-mori/)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/kubex-ecosystem/)
 - 📧 [Email](mailto:faelmori@gmail.com)
 - 💼 Follow me on GitHub:
   - [faelmori](https://github.com/faelmori)
@@ -422,7 +422,7 @@ Rafael Mori
 package cli
 
 import (
-	il "github.com/rafa-mori/logz/internal/core"
+	il "github.com/kubex-ecosystem/logz/internal/core"
 
 	"github.com/spf13/cobra"
 
@@ -595,7 +595,7 @@ func watchMetricsCmd() *cobra.Command {
 package cli
 
 import (
-	il "github.com/rafa-mori/logz/internal/core"
+	il "github.com/kubex-ecosystem/logz/internal/core"
 
 	"github.com/spf13/cobra"
 
@@ -720,17 +720,17 @@ func GetDescriptions(descriptionArg []string, hideBanner bool) map[string]string
 
 	if !hideBanner {
 		banner = `
- __                                  
-|  \                                 
-| ▓▓       ______   ______  ________ 
+ __
+|  \
+| ▓▓       ______   ______  ________
 | ▓▓      /      \ /      \|        \
 | ▓▓     |  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\\▓▓▓▓▓▓▓▓
-| ▓▓     | ▓▓  | ▓▓ ▓▓  | ▓▓ /    ▓▓ 
-| ▓▓_____| ▓▓__/ ▓▓ ▓▓__| ▓▓/  ▓▓▓▓_ 
+| ▓▓     | ▓▓  | ▓▓ ▓▓  | ▓▓ /    ▓▓
+| ▓▓_____| ▓▓__/ ▓▓ ▓▓__| ▓▓/  ▓▓▓▓_
 | ▓▓     \\▓▓    ▓▓\▓▓    ▓▓  ▓▓    \
  \▓▓▓▓▓▓▓▓ \▓▓▓▓▓▓ _\▓▓▓▓▓▓▓\▓▓▓▓▓▓▓▓
-                  |  \__| ▓▓         
-                   \▓▓    ▓▓         
+                  |  \__| ▓▓
+                   \▓▓    ▓▓
                     \▓▓▓▓▓▓          `
 	} else {
 		banner = ""
@@ -875,8 +875,8 @@ func main() {
 package main
 
 import (
-	cc "github.com/rafa-mori/logz/cmd/cli"
-	vs "github.com/rafa-mori/logz/version"
+	cc "github.com/kubex-ecosystem/logz/cmd/cli"
+	vs "github.com/kubex-ecosystem/logz/version"
 
 	"github.com/spf13/cobra"
 
@@ -1098,13 +1098,13 @@ func installCheck() {
 /// docs/CONTRIBUTING.md ///
 # **Contributing to Logz**
 
-Thank you for your interest in contributing to **[Logz](https://github.com/rafa-mori/logz)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
+Thank you for your interest in contributing to **[Logz](https://github.com/kubex-ecosystem/logz)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
 
 ---
 
 ## **How to Contribute**
 
-There are several ways to contribute to [Logz](https://github.com/rafa-mori/logz):
+There are several ways to contribute to [Logz](https://github.com/kubex-ecosystem/logz):
 
 1. **Report Issues**
    - Found bugs or issues in the code? Open an issue detailing the problem.
@@ -1126,7 +1126,7 @@ There are several ways to contribute to [Logz](https://github.com/rafa-mori/logz
 
 ### 1. **Clone the Repository**
 ```bash
-git clone https://github.com/rafa-mori/logz.git
+git clone https://github.com/kubex-ecosystem/logz.git
 cd logz
 ```
 
@@ -1135,7 +1135,7 @@ Make sure you have Go installed:
 
 You can install Go using one of the following methods:
 
-- [A super easy way to install Go](https://github.com/rafa-mori/go-installer)
+- [A super easy way to install Go](https://github.com/kubex-ecosystem/go-installer)
   ```shell
     curl -sSfL 'https://raw.githubusercontent.com/faelmori/go-installer/refs/heads/main/go.sh' | bash
   ```
@@ -1211,16 +1211,16 @@ Commits should be clear and descriptive. Examples:
 
 ## **Best Practices**
 
-1. **Be Respectful and Welcoming**  
+1. **Be Respectful and Welcoming**
    This is an open-source project for everyone. Respect other contributors and collaborate constructively.
 
-2. **Document Your Changes**  
+2. **Document Your Changes**
    Update the `README.md` or documentation, if necessary, to include your changes.
 
-3. **Add Tests When Possible**  
+3. **Add Tests When Possible**
    Ensure any new functionality is accompanied by tests.
 
-4. **Be Clear in Issue Reports**  
+4. **Be Clear in Issue Reports**
    When opening an issue, be detailed and provide as much context as possible.
 
 ---
@@ -1298,7 +1298,7 @@ Requisitos:
 
 ```bash
 # Clone este repositório
-git clone https://github.com/rafa-mori/logz.git
+git clone https://github.com/kubex-ecosystem/logz.git
 
 # Navegue até o diretório do projeto
 cd logz
@@ -1387,9 +1387,9 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 ---
 
 ## **Contato**
-💌 **Desenvolvedor:**  
-[Seu Nome](mailto:seu-email@dominio.com)  
-🌐 [Seu LinkedIn](https://linkedin.com/in/seu-perfil)  
+💌 **Desenvolvedor:**
+[Seu Nome](mailto:seu-email@dominio.com)
+🌐 [Seu LinkedIn](https://linkedin.com/in/seu-perfil)
 💼 [Portfólio](https://seu-portfolio.com)
 
 Adoraria ouvir sobre novas oportunidades de trabalho ou colaborações. Se você gostou desse projeto, não hesite em entrar em contato comigo!
@@ -1974,9 +1974,9 @@ package core
 
 import (
 	//"fmt"
-	//c "github.com/rafa-mori/kubex-interfaces/config"
+	//c "github.com/kubex-ecosystem/kubex-interfaces/config"
 
-	//c "github.com/rafa-mori/kubex-interfaces/config"
+	//c "github.com/kubex-ecosystem/kubex-interfaces/config"
 	//"os"
 	//"path/filepath"
 	"time"
@@ -3378,7 +3378,7 @@ func TestDynamicConfigChanges(t *testing.T) {
 package core
 
 /*import (
-	iKbxCfg "github.com/rafa-mori/kubex-interfaces/config"
+	iKbxCfg "github.com/kubex-ecosystem/kubex-interfaces/config"
 
 	"fmt"
 	"sync"
@@ -5016,7 +5016,7 @@ func (ft FormattedTable) SaveFormattedTable(filename string) error {
 package logger
 
 import (
-	il "github.com/rafa-mori/logz/internal/core"
+	il "github.com/kubex-ecosystem/logz/internal/core"
 	"log"
 	"os"
 )
@@ -5092,9 +5092,9 @@ package logz
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/rafa-mori/logz/internal/core"
-	logz "github.com/rafa-mori/logz/logger"
-	vs "github.com/rafa-mori/logz/version"
+	"github.com/kubex-ecosystem/logz/internal/core"
+	logz "github.com/kubex-ecosystem/logz/logger"
+	vs "github.com/kubex-ecosystem/logz/version"
 	"os"
 	"sync"
 )
@@ -5860,7 +5860,7 @@ detect_shell_rc() {
             return 1
             ;;
     esac
-    
+
     if [ ! -f "$shell_rc_file" ]; then
         log error "Arquivo de configuração não encontrado: ${shell_rc_file}"
         return 1
@@ -5914,7 +5914,7 @@ add_to_path() {
     }
 
     log success "Adicionado $target_path ao PATH em $shell_rc_file."
-    
+
     "$SHELL" -c "source ${shell_rc_file}" || {
         log warn "Falha ao recarregar o shell. Por favor, execute 'source ${shell_rc_file}' manualmente."
     }
@@ -6276,7 +6276,7 @@ export -f check_dependencies
 package version
 
 import (
-	lgr "github.com/rafa-mori/logz/logger"
+	lgr "github.com/kubex-ecosystem/logz/logger"
 
 	"github.com/spf13/cobra"
 
@@ -6292,7 +6292,7 @@ import (
 
 const moduleAlias = "Logz"
 const moduleName = "logz"
-const gitModelUrl = "https://github.com/rafa-mori/" + moduleName + ".git"
+const gitModelUrl = "https://github.com/kubex-ecosystem/" + moduleName + ".git"
 const currentVersionFallback = "v1.2.0" // First version with the version file
 
 type Service interface {

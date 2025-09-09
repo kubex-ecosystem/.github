@@ -183,8 +183,8 @@ All contributors are valued and recognized for their efforts. Contributors will 
 For questions about contributing or this project, please contact:
 
 - Rafael Mori: <faelmori@gmail.com>
-- GitHub Issues: <https://github.com/rafa-mori/timecraft/issues>
-- GitHub Discussions: <https://github.com/rafa-mori/timecraft/discussions>
+- GitHub Issues: <https://github.com/kubex-ecosystem/timecraft/issues>
+- GitHub Discussions: <https://github.com/kubex-ecosystem/timecraft/discussions>
 
 ---
 
@@ -216,11 +216,11 @@ For further information about the license and terms of use, please refer to the 
 
 ---
 
-[![Build](https://github.com/rafa-mori/timecraft/actions/workflows/publish.yml/badge.svg)](https://github.com/rafa-mori/timecraft/actions/workflows/publish.yml)
+[![Build](https://github.com/kubex-ecosystem/timecraft/actions/workflows/publish.yml/badge.svg)](https://github.com/kubex-ecosystem/timecraft/actions/workflows/publish.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/badge/python-%3E=3.11-blue)](https://www.python.org/)
 [![PyPI](https://img.shields.io/pypi/v/timecraft?color=blue)](https://pypi.org/project/timecraft-ai/)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/timecraft?include_prereleases)](https://github.com/rafa-mori/timecraft/releases)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/timecraft?include_prereleases)](https://github.com/kubex-ecosystem/timecraft/releases)
 
 ---
 
@@ -298,7 +298,7 @@ pip install timecraft[all]
 
 ```bash
 # Clone the repository
-git clone https://github.com/rafa-mori/timecraft.git
+git clone https://github.com/kubex-ecosystem/timecraft.git
 cd timecraft
 
 # Quick setup with development script
@@ -488,9 +488,9 @@ Contributions are welcome! See the [Contributing Guide](CONTRIBUTING.md) for det
 
 ## **Contact**
 
-💌 **Developer**:  
+💌 **Developer**:
 [Rafael Mori](mailto:faelmori@gmail.com)
-💼 [rafa-mori/timecraft on GitHub](https://github.com/rafa-mori/timecraft)
+💼 [kubex-ecosystem/timecraft on GitHub](https://github.com/kubex-ecosystem/timecraft)
 [LinkedIn: Rafa Mori](https://www.linkedin.com/in/rafa-mori)
 
 /// apply_stt_improvements.py ///
@@ -555,28 +555,28 @@ from timecraft_ai.ai.audio_processor import AudioProcessor
 
 def test_real_microphone():
     """Teste com configurações otimizadas para microfone real."""
-    
+
     print("🎤 Teste Real com Microfone")
     print("=" * 35)
-    
+
     # Configurações otimizadas para ambiente real
     processor = AudioProcessor(
         chunk=8192,  # Chunk maior para melhor precisão
         max_silent_duration=3.0,  # Mais tempo para processar
     )
-    
+
     print("🔧 Configurações otimizadas aplicadas:")
     print("   - Chunk: 8192 (maior precisão)")
     print("   - Timeout: 15s (mais tempo)")
     print("   - Silêncio: 3s (processamento completo)")
-    
+
     print("\\n🎙️ Fale claramente e aguarde...")
     print("   Dica: Fale pausadamente e articule bem")
-    
+
     start = time.time()
     result = processor.listen_and_transcribe_once(timeout=15.0)
     elapsed = time.time() - start
-    
+
     if result:
         print(f"✅ Sucesso: '{result}'")
         print(f"⏱️ Tempo: {elapsed:.2f}s")
@@ -694,9 +694,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic notification system
 - Documentation and examples
 
-[Unreleased]: https://github.com/rafa-mori/timecraft/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/rafa-mori/timecraft/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/rafa-mori/timecraft/releases/tag/v1.0.0
+[Unreleased]: https://github.com/kubex-ecosystem/timecraft/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/kubex-ecosystem/timecraft/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/kubex-ecosystem/timecraft/releases/tag/v1.0.0
 
 /// docs/NOTICE.md ///
 # 📋 NOTICE
@@ -785,11 +785,11 @@ When using this project, please:
 
 ---
 
-[![Build](https://github.com/rafa-mori/timecraft/actions/workflows/publish.yml/badge.svg)](https://github.com/rafa-mori/timecraft/actions/workflows/publish.yml)
+[![Build](https://github.com/kubex-ecosystem/timecraft/actions/workflows/publish.yml/badge.svg)](https://github.com/kubex-ecosystem/timecraft/actions/workflows/publish.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/badge/python-%3E=3.11-blue)](https://www.python.org/)
 [![PyPI](https://img.shields.io/pypi/v/timecraft?color=blue)](https://pypi.org/project/timecraft-ai/)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/timecraft?include_prereleases)](https://github.com/rafa-mori/timecraft/releases)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/timecraft?include_prereleases)](https://github.com/kubex-ecosystem/timecraft/releases)
 
 ---
 
@@ -864,7 +864,7 @@ pip install timecraft_ai
 
 ```bash
 # Clone the repository
-git clone https://github.com/rafa-mori/timecraft.git
+git clone https://github.com/kubex-ecosystem/timecraft.git
 cd timecraft
 
 # Quick setup with development script
@@ -1045,9 +1045,9 @@ Contributions are welcome! See the [Contributing Guide](CONTRIBUTING.md) for det
 
 ## **Contact**
 
-💌 **Developer**:  
+💌 **Developer**:
 [Rafael Mori](mailto:faelmori@gmail.com)
-💼 [rafa-mori/timecraft on GitHub](https://github.com/rafa-mori/timecraft)
+💼 [kubex-ecosystem/timecraft on GitHub](https://github.com/kubex-ecosystem/timecraft)
 [LinkedIn: Rafa Mori](https://www.linkedin.com/in/rafa-mori)
 
 /// docs/README.pt-BR.md ///
@@ -1059,11 +1059,11 @@ Contributions are welcome! See the [Contributing Guide](CONTRIBUTING.md) for det
 
 ---
 
-[![Build](https://github.com/rafa-mori/timecraft/actions/workflows/publish.yml/badge.svg)](https://github.com/rafa-mori/timecraft/actions/workflows/publish.yml)
+[![Build](https://github.com/kubex-ecosystem/timecraft/actions/workflows/publish.yml/badge.svg)](https://github.com/kubex-ecosystem/timecraft/actions/workflows/publish.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/badge/python-%3E=3.11-blue)](https://www.python.org/)
 [![PyPI](https://img.shields.io/pypi/v/timecraft?color=blue)](https://pypi.org/project/timecraft-ai/)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/timecraft?include_prereleases)](https://github.com/rafa-mori/timecraft/releases)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/timecraft?include_prereleases)](https://github.com/kubex-ecosystem/timecraft/releases)
 
 ---
 
@@ -1133,7 +1133,7 @@ Requisitos:
 
 ```bash
 # Clone o repositório
- git clone https://github.com/rafa-mori/timecraft.git
+ git clone https://github.com/kubex-ecosystem/timecraft.git
  cd timecraft
 
 # (Opcional) Crie e ative um ambiente virtual
@@ -1153,7 +1153,7 @@ Requisitos:
 
 ### CLI
 
-Exemplos de comandos com a CLI do TimeCraft AI:  
+Exemplos de comandos com a CLI do TimeCraft AI:
 
 ```bash
 # Rodar modelo TimeCraft AI
@@ -1292,9 +1292,9 @@ Contribuições são bem-vindas! Veja o [Guia de Contribuição](/CONTRIBUTING.m
 
 ## **Contato**
 
-💌 **Developer**:  
+💌 **Developer**:
 [Rafael Mori](mailto:faelmori@gmail.com)
-💼 [rafa-mori/timecraft no GitHub](https://github.com/rafa-mori/timecraft)
+💼 [kubex-ecosystem/timecraft no GitHub](https://github.com/kubex-ecosystem/timecraft)
 [LinkedIn: Rafa Mori](https://www.linkedin.com/in/rafa-mori)
 
 /// docs/README_DOCS.md ///
@@ -1765,7 +1765,7 @@ Conseguimos implementar com sucesso um **sistema completo de voz mãos-livres** 
 # Teste STT (Speech-to-Text)
 python test_stt_real.py
 
-# Teste TTS (Text-to-Speech) 
+# Teste TTS (Text-to-Speech)
 python test_voice.py
 
 # Teste HotwordDetector
@@ -1948,7 +1948,7 @@ O sistema reconhece e responde aos seguintes comandos em português:
 O sistema de voz mãos-livres está **100% funcional** e pronto para uso em produção. Todos os componentes foram testados e estão trabalhando em harmonia:
 
 - ✅ **STT funcionando** com reconhecimento preciso
-- ✅ **TTS funcionando** com voz clara e natural  
+- ✅ **TTS funcionando** com voz clara e natural
 - ✅ **HotwordDetector funcionando** com detecção confiável
 - ✅ **Sistema integrado funcionando** end-to-end
 - ✅ **Hardware real testado** e funcionando
@@ -1960,8 +1960,8 @@ O TimeCraft AI agora possui um **sistema de voz profissional, robusto e hands-fr
 
 ---
 
-*Documentação gerada em: 06 de Julho de 2025*  
-*Sistema: TimeCraft AI v1.1.3*  
+*Documentação gerada em: 06 de Julho de 2025*
+*Sistema: TimeCraft AI v1.1.3*
 *Status: ✅ COMPLETO E FUNCIONAL*
 
 /// docs/index.md ///
@@ -1983,8 +1983,8 @@ For complete documentation, see [README](README.en) or the [Portuguese version](
 
 ## Contact
 
-- **Developer**: [Rafael Mori](mailto:faelmori@gmail.com)  
-- [GitHub](<https://github.com/rafa-mori/timecraft>) | [LinkedIn](<https://www.linkedin.com/in/rafa-mori>)
+- **Developer**: [Rafael Mori](mailto:faelmori@gmail.com)
+- [GitHub](<https://github.com/kubex-ecosystem/timecraft>) | [LinkedIn](<https://www.linkedin.com/in/rafa-mori>)
 - [Twitter](<https://twitter.com/faelOmori>) | [Gravatar](<https://rafamori.pro>)
 
 /// docs/knowledge/INSTALL.md ///
@@ -2003,7 +2003,7 @@ pip install timecraft_ai
 
 ```bash
 # Clone the repository
-git clone https://github.com/rafa-mori/timecraft.git
+git clone https://github.com/kubex-ecosystem/timecraft.git
 cd timecraft
 
 # Quick setup with development script
@@ -2104,11 +2104,11 @@ if timecraft.AI_AVAILABLE:
     # Chatbot for data analysis
     chatbot = timecraft.ChatbotActions()
     response = chatbot.process_query("Analyze my sales data")
-    
+
     # Audio processing
     audio = timecraft.AudioProcessor()
     audio.start_recording()
-    
+
     # Voice synthesis
     voice = timecraft.VoiceSynthesizer()
     voice.speak("Analysis completed!")
@@ -2509,7 +2509,7 @@ from timecraft_ai.audio_processor import AudioProcessor
 ### Contact
 
 - 📧 Email: [<faelmori@gmail.com>](mailto://faelmori@gmail.com)
-- 🐙 GitHub: [Issues](https://github.com/rafa-mori/timecraft/issues)
+- 🐙 GitHub: [Issues](https://github.com/kubex-ecosystem/timecraft/issues)
 - 💬 LinkedIn: [Rafa Mori](https://www.linkedin.com/in/rafa-mori)
 
 ---
@@ -2703,7 +2703,7 @@ There are many ways to contribute to TimeCraft AI, including:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/rafa-mori/timecraft.git
+   git clone https://github.com/kubex-ecosystem/timecraft.git
    cd timecraft
    ```
 
@@ -2823,10 +2823,10 @@ def test_function_name_should_return_expected_result():
     # Arrange
     input_data = ...
     expected_result = ...
-    
+
     # Act
     result = function_under_test(input_data)
-    
+
     # Assert
     assert result == expected_result
 ```
@@ -2877,7 +2877,7 @@ When creating a pull request, please include:
 
 ### Before Submitting an Issue
 
-1. Check if the issue already exists in our [issue tracker](https://github.com/rafa-mori/timecraft/issues)
+1. Check if the issue already exists in our [issue tracker](https://github.com/kubex-ecosystem/timecraft/issues)
 2. Try to reproduce the issue with the latest version
 3. Gather relevant information (OS, Python version, TimeCraft version, etc.)
 
@@ -3070,7 +3070,7 @@ Before seeking help, please check our comprehensive documentation:
 
 For general questions, usage help, and community discussions:
 
-**[GitHub Discussions](https://github.com/rafa-mori/timecraft/discussions)**
+**[GitHub Discussions](https://github.com/kubex-ecosystem/timecraft/discussions)**
 
 This is the best place to:
 
@@ -3084,7 +3084,7 @@ This is the best place to:
 
 For specific problems, bugs, or feature requests:
 
-**[GitHub Issues](https://github.com/rafa-mori/timecraft/issues)**
+**[GitHub Issues](https://github.com/kubex-ecosystem/timecraft/issues)**
 
 Please use issues for:
 
@@ -3222,9 +3222,9 @@ For security vulnerabilities, please follow our [Security Policy](SECURITY.md). 
 ## Quick Links
 
 - 📖 [Documentation](https://rafa-mori.github.io/timecraft/)
-- 💬 [GitHub Discussions](https://github.com/rafa-mori/timecraft/discussions)
-- 🐛 [Report Bugs](https://github.com/rafa-mori/timecraft/issues/new?template=bug_report.md)
-- 💡 [Request Features](https://github.com/rafa-mori/timecraft/issues/new?template=feature_request.md)
+- 💬 [GitHub Discussions](https://github.com/kubex-ecosystem/timecraft/discussions)
+- 🐛 [Report Bugs](https://github.com/kubex-ecosystem/timecraft/issues/new?template=bug_report.md)
+- 💡 [Request Features](https://github.com/kubex-ecosystem/timecraft/issues/new?template=feature_request.md)
 - 🤝 [Contributing Guide](CONTRIBUTING.md)
 - 🔒 [Security Policy](SECURITY.md)
 
@@ -4516,13 +4516,13 @@ description = "Time series analysis and AI-powered forecasting with voice intera
 readme = "README.md"
 license = { text = "MIT" }
 keywords = [
-    "time-series", 
-    "forecasting", 
-    "database", 
-    "automation", 
-    "ai", 
-    "voice", 
-    "chatbot", 
+    "time-series",
+    "forecasting",
+    "database",
+    "automation",
+    "ai",
+    "voice",
+    "chatbot",
     "data-analysis"
 ]
 classifiers = [
@@ -4650,11 +4650,11 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/rafa-mori/timecraft"
-Documentation = "https://github.com/rafa-mori/timecraft/docs"
-Repository = "https://github.com/rafa-mori/timecraft"
-"Bug Tracker" = "https://github.com/rafa-mori/timecraft/issues"
-Changelog = "https://github.com/rafa-mori/timecraft/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/kubex-ecosystem/timecraft"
+Documentation = "https://github.com/kubex-ecosystem/timecraft/docs"
+Repository = "https://github.com/kubex-ecosystem/timecraft"
+"Bug Tracker" = "https://github.com/kubex-ecosystem/timecraft/issues"
+Changelog = "https://github.com/kubex-ecosystem/timecraft/blob/main/CHANGELOG.md"
 
 [project.scripts]
 timecraft = "timecraft_ai:main"
@@ -4666,7 +4666,7 @@ packages = ["timecraft_ai"]
 [tool.hatch.build.targets.sdist]
 include = [
     "/timecraft_ai",
-    "/README.md", 
+    "/README.md",
     "/LICENSE",
     "/CHANGELOG.md",
     "/NOTICE.md",
@@ -4755,7 +4755,7 @@ do_request() {
 
   # # shellcheck disable=SC2091,SC2116
   # local _cmd_request=(
-  #   "${_file_name:-}" 
+  #   "${_file_name:-}"
   #   "${_arg:-}"
   # )
   # eval "$(echo "${_cmd_request[@]}")" || {
@@ -5086,7 +5086,7 @@ parse_vars(){
     ["is_fork"]="${5:-"${IS_FORK:-"$(git config --get remote.origin.url | grep -q 'fork' && echo "true" || echo "false")"}"}"
     ["ref"]="${6:-"${REF:-${GITHUB_REF:-"refs/tags/v0.0.0"}}"}"
   )
-  
+
   # Get MARKER's directory and absolute path for current repo based on the version hash and version
   MARKER_NAME=".kubex_publish_marker_${_ARGS_LIST["version"]}_${_ARGS_LIST["version_hash"]}"
   MARKER_PATH="${MARKER_DIR}/${MARKER_NAME}"
@@ -5129,7 +5129,7 @@ parse_vars(){
       printf '%s\n' "❌ Version is not set. Cannot proceed."
       return 1
     fi
-    
+
     return 0
   }
 
@@ -5170,7 +5170,7 @@ parse_vars(){
       else
         WILL_PROCEED=true
       fi
-    else 
+    else
       WILL_PROCEED=true
     fi
 
@@ -5205,7 +5205,7 @@ parse_vars(){
           # Increment the count
           COUNT=$((COUNT + 1))
         fi
-      else 
+      else
         printf '%s\n' "❌ Error ensuring marker file: ${MARKER_PATH}"
         return 1
       fi
@@ -5261,15 +5261,15 @@ main () {
     printf '%s\n' "❌ No arguments provided."
     printf '%s\n' "Usage: $0 <version> <will_proceed> <marker> <count>"
     return 1
-  else 
+  else
     args=("$@")
   fi
 
   # Shift all arguments to the left, leaving an empty array
-  shift $(( $# )) 
+  shift $(( $# ))
 
   declare -a _cmd=(
-    validate_marker 
+    validate_marker
     "${args[@]}"
   )
 
@@ -5636,7 +5636,7 @@ ensure_vars() {
   else
     export _VERSION_PY="${_VERSION_PY:-0.0.0}" || log "fatal" "Failed to set Python version"
   fi
-  
+
   if test -f "$_ROOT_DIR/go.mod"; then
     export _VERSION_GO="${_VERSION_GO:-$(grep '^go ' "$_ROOT_DIR/go.mod" | awk '{print $2}')}" || log "fatal" "Failed to set Go version"
   else
@@ -5778,7 +5778,7 @@ _HELP="#########################################################################
     clean          Limpa artefatos de build e temporários
     help           Exibe esta mensagem de ajuda
     about          Exibe informações sobre o projeto
-  Opções: 
+  Opções:
     -d, --debug    Ativa o modo de depuração
     -h, --help     Exibe esta mensagem de ajuda
 ################################################################################"
@@ -5804,7 +5804,7 @@ detect_shell_rc() {
           return 1
           ;;
     esac
-    
+
     if [ ! -f "$shell_rc_file" ]; then
         log error "Arquivo de configuração não encontrado: ${shell_rc_file}"
         return 1
@@ -5858,7 +5858,7 @@ add_to_path() {
     }
 
     log success "Adicionado $target_path ao PATH em $shell_rc_file."
-    
+
     "$SHELL" -c "source ${shell_rc_file}" || {
         log warn "Falha ao recarregar o shell. Por favor, execute 'source ${shell_rc_file}' manualmente."
     }
@@ -5986,11 +5986,11 @@ curl -X POST http://127.0.0.1:3001/messages/ \
 curl -X POST http://127.0.0.1:3001/messages/ \
      -H "Content-Type: application/json" \
      -d '{
-       "method": "tools/call", 
+       "method": "tools/call",
        "params": {
          "name": "list_pull_requests",
          "arguments": {
-           "repos": "rafa-mori/lookatni-file-markers,rafa-mori/formatpilot"
+           "repos": "kubex-ecosystem/lookatni-file-markers,kubex-ecosystem/formatpilot"
          }
        }
      }'
@@ -6001,7 +6001,7 @@ curl -X POST http://127.0.0.1:3001/messages/ \
      -d '{
        "method": "tools/call",
        "params": {
-         "name": "get_pipeline_status", 
+         "name": "get_pipeline_status",
          "arguments": {
            "project": "kubex"
          }
@@ -6233,7 +6233,7 @@ main(){
   # Main menu
   while true; do
     clear_screen
-    echo 
+    echo
     echo
     log menu "========================================"
     log menu "       Banana AI 42 - Menu Principal    "
@@ -6295,7 +6295,7 @@ main(){
       echo
     else
       continue
-    fi  
+    fi
     log menu "========================================"
   done
 
@@ -6304,7 +6304,7 @@ main(){
 
 if [[ -z "${1:-}" ]]; then
   # If no argument is provided, start the main menu
-  main  
+  main
 else
   case ${1:-} in
     status) status_server ;;
@@ -6331,8 +6331,8 @@ site_url: https://rafa-mori.github.io/timecraft/
 site_description: 'Advanced time series analysis, database integration, and task automation with dynamic notifications and powerful CLI'
 site_author: 'Rafael Mori'
 
-repo_name: 'rafa-mori/timecraft'
-repo_url: https://github.com/rafa-mori/timecraft
+repo_name: 'kubex-ecosystem/timecraft'
+repo_url: https://github.com/kubex-ecosystem/timecraft
 
 theme:
   name: material
@@ -6424,10 +6424,10 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/rafa-mori/timecraft
+      link: https://github.com/kubex-ecosystem/timecraft
       name: TimeCraft AI on GitHub
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/rafa-mori/
+      link: https://www.linkedin.com/in/kubex-ecosystem/
       name: Rafael Mori on LinkedIn
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/faelOmori
@@ -6659,7 +6659,7 @@ main() {
       export GITHUB_WORKFLOW="Local CI"
       export GITHUB_REF="refs/tags/v1.2.3"
       export GITHUB_ACTOR="faelmori"
-      export GITHUB_REPOSITORY="rafa-mori/timecraft-ai"
+      export GITHUB_REPOSITORY="kubex-ecosystem/timecraft-ai"
       export GITHUB_EVENT_NAME="push"
       # etc...
       bash support/main.sh build
@@ -6850,7 +6850,7 @@ activate_venv() {
     fi
 
     log "info" "Activating virtual environment: ${_VENV_NAME}"
-    
+
     . "${_VENV_NAME}/bin/activate" || {
       log "error" "Failed to activate virtual environment: ${_VENV_NAME}"
       return 1
@@ -6873,9 +6873,9 @@ setup_environment() {
     log "info" "Creating virtual environment: ${_VENV_NAME}"
     python3 -m venv "${_VENV_NAME}"
   fi
-  
+
   activate_venv
-  
+
   log "info" "Installing dependencies..."
   pip install --upgrade pip --quiet >> "${_LOG_FILE}" || {
     log "error" "Failed to upgrade pip. Check the log file: ${_LOG_FILE}"
@@ -6885,7 +6885,7 @@ setup_environment() {
     log "error" "Failed to install dependencies. Check the log file: ${_LOG_FILE}"
     return 1
   }
-  
+
   log "success" "Environment setup complete!"
 }
 
@@ -7030,7 +7030,7 @@ create_temp() {
     log "fatal" "Failed to create temporary directory: ${_TEMP_DIR}"
     return 1
   fi
-  
+
   # Export the temporary directory for use in other functions
   export _TEMP_DIR
 
@@ -7080,7 +7080,7 @@ is_a_real_cmd() {
     # If the command is exactly a command name, check if it's installed and available
     return 0
   else
-    # If the command is not found, check if it's a package, 
+    # If the command is not found, check if it's a package,
     # or if it can be installed via a package manager and not available
     local _pkg_mgr_chk_cmd=""
     case $(get_package_manager) in
@@ -7120,7 +7120,7 @@ log() {
   local message=${2:-}
   local debug=${3:-${DEBUG:-false}}
   local output=${4:-/dev/stderr}
-  
+
   # Check if output is a file or a terminal
   if [[ -t 1 ]]; then
     output="/dev/stderr"
@@ -7129,7 +7129,7 @@ log() {
   else
     output="/dev/stderr"
   fi
-  
+
   # Ensure the output file is writable
   if [[ ! -w "$output" ]]; then
     printf '%b[_ERROR]%b ❌  %s\n' "$_ERROR" "$_NC" "Output file is not writable: $output"
@@ -7165,7 +7165,7 @@ log() {
       if [[ "$debug" == true ]]; then
         printf '%b[_DEBUG]%b 🐞  %s\n' "$_INFO" "$_NC" "$message"
       else
-        printf '%b[_DEBUG]%b 🐞  %s\n' "$_INFO" "$_NC" "$message" 
+        printf '%b[_DEBUG]%b 🐞  %s\n' "$_INFO" "$_NC" "$message"
       fi
       ;;
     *)
@@ -7209,10 +7209,10 @@ log_check() {
   if ! can_read "${_LOG_DIR}"; then
     log "fatal" "Log directory is not readable: ${_LOG_DIR}"
   fi
-  
+
   if check_dir "${_LOG_DIR}"; then
     if ls -1A "${_LOG_DIR}" | grep -v "${_LOG_FILES_PATTERN}" | grep -v "tar.gz" -q; then
-      if ! is_a_real_cmd find; then  
+      if ! is_a_real_cmd find; then
         log "fatal" "The 'find' command is not available. Cannot proceed with log archiving."
       fi
 
@@ -7221,7 +7221,7 @@ log_check() {
       # Create a backup of the log files
       local _LOG_BKP_FILE_NAME=""
       _LOG_BKP_FILE_NAME="${_PROC_REF}_logs.tar.gz"
-      
+
       local _tar_file_path=""
       _tar_file_path="$(readlink -f "${_LOG_DIR}/${_LOG_BKP_FILE_NAME}")"
 
@@ -7231,8 +7231,8 @@ log_check() {
       if [[ ! -d "${_LOG_DIR}" ]]; then
         log "fatal" "Log directory does not exist: ${_LOG_DIR}"
       fi
-    
-      mapfile -t _to_backup < <(find "${_LOG_DIR}" -maxdepth 1 -type f -name "*.log" ! -name "*.${_PROC_REF}.log" ! -name "${_LOG_BKP_FILE_NAME}" -print | 
+
+      mapfile -t _to_backup < <(find "${_LOG_DIR}" -maxdepth 1 -type f -name "*.log" ! -name "*.${_PROC_REF}.log" ! -name "${_LOG_BKP_FILE_NAME}" -print |
         grep -v "${_LOG_FILES_PATTERN}" | grep -v "tar.gz" | sort -u | awk '{print $1}' | xargs -n 1 basename)
 
       if [[ ${#_to_backup[@]} -gt 0 ]]; then
@@ -7249,7 +7249,7 @@ log_check() {
     else
       log "info" "Log directory is empty or contains only the expected log files."
     fi
-  else 
+  else
     log "info" "Creating log directory: ${_LOG_DIR}"
     mkdir -p "${_LOG_DIR}" || log "fatal" "Failed to create log directory: ${_LOG_DIR}"
     touch "${_LOG_DIR}/${_PROC_REF}.log" || log "fatal" "Failed to create log file: ${_LOG_DIR}/${_PROC_REF}.log"
@@ -7458,7 +7458,7 @@ from .mcp.server import (
     get_pipeline_status,
     load_dotenv,
     FastMCP,
-    get_memory,   
+    get_memory,
 )
 
 from .core import (
@@ -9246,7 +9246,7 @@ class HotwordDetector:
 
     Features:
     - Configurable wake words (Portuguese: "hey timecraft", "oi timecraft", etc.)
-    - Low-power passive listening mode  
+    - Low-power passive listening mode
     - Adaptive sensitivity based on environment noise
     - False positive reduction through confirmation
     - Seamless integration with AudioProcessor
@@ -9255,7 +9255,7 @@ class HotwordDetector:
 
     Wake words supported:
     - "hey timecraft" / "ei timecraft"
-    - "oi timecraft" 
+    - "oi timecraft"
     - "olá timecraft"
     - "timecraft" (when configured for single word)
     - Custom wake words can be added
@@ -10085,7 +10085,7 @@ class PyperVoice(IPyperVoice):
                         raise AttributeError("PiperVoice instance does not have 'synthesize' method.")
                     if not isinstance(text, str):
                         raise TypeError("Text to synthesize must be a string.")
-                    if isinstance(wav_file, wave.Wave_write):    
+                    if isinstance(wav_file, wave.Wave_write):
                         audio_data = self.piper_instance.synthesize(
                             text=text,
                         )
@@ -17434,7 +17434,7 @@ Este é um servidor MCP (Model Context Protocol) personalizado que acompanha seu
 ## 🎯 Funcionalidades
 
 - **📋 Pull Requests**: Lista PRs abertos nos seus repositórios GitHub
-- **🚀 Pipelines**: Monitora status de execuções no Azure DevOps  
+- **🚀 Pipelines**: Monitora status de execuções no Azure DevOps
 - **🧠 Memória**: Armazena e consulta progresso recente
 - **🎯 Sugestões**: Analisa dados e sugere próximos passos práticos
 
@@ -17474,7 +17474,7 @@ cp .env.example .env
 
 # Editar .env com seus tokens reais
 # GITHUB_TOKEN=ghp_seu_token_aqui
-# AZURE_DEVOPS_TOKEN=seu_pat_aqui  
+# AZURE_DEVOPS_TOKEN=seu_pat_aqui
 # AZURE_ORG=sua-organizacao
 ```
 
@@ -17498,7 +17498,7 @@ O servidor estará disponível em `http://127.0.0.1:3001`
 3. Selecione os scopes: `repo`, `read:org`, `read:user`
 4. Copie o token gerado
 
-### Azure DevOps Token  
+### Azure DevOps Token
 1. Acesse https://dev.azure.com/[sua-org]/_usersSettings/tokens
 2. Clique em "New Token"
 3. Selecione os scopes: `Build (read)`, `Code (read)`
@@ -18414,8 +18414,8 @@ class StatusRafaService:
             # Buscar automaticamente todos os repos do usuário
             repos = await self.get_user_repos()
             if not repos:
-                repos = ["rafa-mori/lookatni-file-markers",
-                         "rafa-mori/formatpilot"]  # Fallback
+                repos = ["kubex-ecosystem/lookatni-file-markers",
+                         "kubex-ecosystem/formatpilot"]  # Fallback
 
         headers = {
             "Authorization": f"token {self.github_token}",
@@ -18956,19 +18956,19 @@ async def api_repos(request):
     try:
         # Permitir limitar a quantidade de repos retornados
         limit = int(request.query.get("limit", 50))  # Limite padrão de 50
-        
+
         repos = await status_service.get_user_repos()
-        
+
         # Limitar repos (ordenar se forem objetos, apenas fatiar se forem strings)
         if repos and len(repos) > 0 and hasattr(repos[0], 'get'):
             limited_repos = sorted(
-                repos, 
+                repos,
                 key=lambda x: x.get('updated_at', ''), reverse=True # type: ignore
             )[:limit]
         else:
             # Se são strings ou não têm updated_at, apenas limitar
             limited_repos = repos[:limit]
-        
+
         return web.json_response({
             "success": True,
             "message": f"Mostrando {len(limited_repos)} dos {len(repos)} repositórios (limitado por parâmetro ?limit={limit})",
@@ -19110,7 +19110,7 @@ async def api_memory(request):
 
 async def api_suggest(request):
     """Obter sugestão do próximo passo"""
-    
+
     try:
         suggestion = await suggest_next_step()
         return web.json_response({
@@ -19133,7 +19133,7 @@ def create_app():
         "*": ResourceOptions(
             allow_credentials=True,
             expose_headers="*",
-            allow_headers="*", 
+            allow_headers="*",
             allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"]
         )
     })
@@ -19152,7 +19152,7 @@ def create_app():
 
     # Adicionar rotas de configuração do MCP
     add_config_routes(app, cors)
-    
+
     # Adicionar WebSocket para real-time updates
     add_websocket_routes(app, cors)
 
@@ -19267,7 +19267,7 @@ if __name__ == "__main__":
 # # LookAtni Code Snapshot
 # # -----------------------
 # # Data de geração: 2025-07-15T06:00:55.570Z
-# # Fonte: /srv/apps/LIFE/RAFA-MORI/lookatni-file-markers/src/utils
+# # Fonte: /srv/apps/LIFE/kubex-ecosystem/lookatni-file-markers/src/utils
 # # Hostname: asgard
 # # Sistema: linux x64 (Debian GNU/Linux 12 (bookworm))
 # # Kernel: 6.1.0-37-amd64
@@ -21031,10 +21031,10 @@ class ConfigStore:
         self.config_file = self.config_dir / "server_config.json"
         self.polling_file = self.config_dir / "polling_status.json"
         self.rate_limit_file = self.config_dir / "rate_limits.json"
-        
+
         # Initialize default configuration
         self._init_default_config()
-    
+
     def _init_default_config(self):
         """Initialize default configuration if not exists"""
         if not self.config_file.exists():
@@ -21103,7 +21103,7 @@ class ConfigStore:
                 }
             }
             self._save_config(default_config)
-        
+
         # Initialize polling status
         if not self.polling_file.exists():
             polling_status = {
@@ -21133,7 +21133,7 @@ class ConfigStore:
                 }
             }
             self._save_polling_status(polling_status)
-        
+
         # Initialize rate limits
         if not self.rate_limit_file.exists():
             rate_limits = {
@@ -21169,7 +21169,7 @@ class ConfigStore:
                 }
             }
             self._save_rate_limits(rate_limits)
-    
+
     def _save_config(self, config: Dict[str, Any]):
         """Save configuration to file"""
         try:
@@ -21177,7 +21177,7 @@ class ConfigStore:
                 json.dump(config, f, indent=2)
         except Exception as e:
             logging.error(f"Error saving configuration: {e}")
-    
+
     def _load_config(self) -> Dict[str, Any]:
         """Load configuration from file"""
         try:
@@ -21186,7 +21186,7 @@ class ConfigStore:
         except Exception as e:
             logging.error(f"Error loading configuration: {e}")
             return {}
-    
+
     def _save_polling_status(self, status: Dict[str, Any]):
         """Save polling status to file"""
         try:
@@ -21194,7 +21194,7 @@ class ConfigStore:
                 json.dump(status, f, indent=2)
         except Exception as e:
             logging.error(f"Error saving polling status: {e}")
-    
+
     def _load_polling_status(self) -> Dict[str, Any]:
         """Load polling status from file"""
         try:
@@ -21203,7 +21203,7 @@ class ConfigStore:
         except Exception as e:
             logging.error(f"Error loading polling status: {e}")
             return {}
-    
+
     def _save_rate_limits(self, limits: Dict[str, Any]):
         """Save rate limits to file"""
         try:
@@ -21211,7 +21211,7 @@ class ConfigStore:
                 json.dump(limits, f, indent=2)
         except Exception as e:
             logging.error(f"Error saving rate limits: {e}")
-    
+
     def _load_rate_limits(self) -> Dict[str, Any]:
         """Load rate limits from file"""
         try:
@@ -21220,19 +21220,19 @@ class ConfigStore:
         except Exception as e:
             logging.error(f"Error loading rate limits: {e}")
             return {}
-    
+
     def get_server_config(self, server_id: str) -> Optional[Dict[str, Any]]:
         """Get server configuration"""
         config = self._load_config()
         return config.get(server_id)
-    
+
     def update_server_config(self, server_id: str, updates: Dict[str, Any]) -> bool:
         """Update server configuration"""
         try:
             config = self._load_config()
             if server_id not in config:
                 config[server_id] = {}
-            
+
             # Deep merge updates
             def deep_merge(base, updates):
                 for key, value in updates.items():
@@ -21240,21 +21240,21 @@ class ConfigStore:
                         deep_merge(base[key], value)
                     else:
                         base[key] = value
-            
+
             deep_merge(config[server_id], updates)
             config[server_id]["lastConfigUpdate"] = datetime.now(timezone.utc).isoformat()
-            
+
             self._save_config(config)
             return True
         except Exception as e:
             logging.error(f"Error updating server config: {e}")
             return False
-    
+
     def get_rate_limit_status(self, server_id: str, provider: str) -> Optional[Dict[str, Any]]:
         """Get rate limit status for provider"""
         limits = self._load_rate_limits()
         return limits.get(server_id, {}).get(provider)
-    
+
     def update_rate_limit_config(self, server_id: str, provider: str, config: Dict[str, Any]) -> bool:
         """Update rate limit configuration"""
         try:
@@ -21268,19 +21268,19 @@ class ConfigStore:
         except Exception as e:
             logging.error(f"Error updating rate limit config: {e}")
             return False
-    
+
     def get_polling_status(self, server_id: str) -> Optional[Dict[str, Any]]:
         """Get polling status"""
         status = self._load_polling_status()
         return status.get(server_id)
-    
+
     def update_polling_status(self, server_id: str, updates: Dict[str, Any]) -> bool:
         """Update polling status"""
         try:
             status = self._load_polling_status()
             if server_id not in status:
                 status[server_id] = {}
-            
+
             status[server_id].update(updates)
             self._save_polling_status(status)
             return True
@@ -21295,7 +21295,7 @@ config_store = ConfigStore()
 async def api_get_server_config(request):
     """GET /api/config/{serverId} - Get server configuration"""
     server_id = request.match_info['serverId']
-    
+
     try:
         config = config_store.get_server_config(server_id)
         if not config:
@@ -21303,7 +21303,7 @@ async def api_get_server_config(request):
                 "success": False,
                 "error": f"Server {server_id} not found"
             }, status=404)
-        
+
         return web.json_response({
             "success": True,
             **config
@@ -21318,11 +21318,11 @@ async def api_get_server_config(request):
 async def api_update_server_config(request):
     """POST /api/config/{serverId} - Update server configuration"""
     server_id = request.match_info['serverId']
-    
+
     try:
         updates = await request.json()
         success = config_store.update_server_config(server_id, updates)
-        
+
         if success:
             return web.json_response({
                 "success": True,
@@ -21345,7 +21345,7 @@ async def api_get_rate_limit_status(request):
     """GET /api/rate-limit/{serverId}/{provider} - Get rate limit status"""
     server_id = request.match_info['serverId']
     provider = request.match_info['provider']
-    
+
     try:
         status = config_store.get_rate_limit_status(server_id, provider)
         if not status:
@@ -21353,7 +21353,7 @@ async def api_get_rate_limit_status(request):
                 "success": False,
                 "error": f"Rate limit status not found for {server_id}/{provider}"
             }, status=404)
-        
+
         return web.json_response({
             "success": True,
             **status
@@ -21369,11 +21369,11 @@ async def api_update_rate_limit_config(request):
     """POST /api/rate-limit/{serverId}/{provider} - Update rate limit configuration"""
     server_id = request.match_info['serverId']
     provider = request.match_info['provider']
-    
+
     try:
         config = await request.json()
         success = config_store.update_rate_limit_config(server_id, provider, config)
-        
+
         if success:
             return web.json_response({
                 "success": True,
@@ -21395,19 +21395,19 @@ async def api_update_rate_limit_config(request):
 async def api_start_polling(request):
     """POST /api/polling/{serverId}/start - Start polling"""
     server_id = request.match_info['serverId']
-    
+
     try:
         body = await request.json() if request.content_length else {}
         providers = body.get('providers', ['github', 'azureDevOps'])
-        
+
         # Update polling status
         updates = {
             "isActive": True,
             "activeProviders": providers
         }
-        
+
         success = config_store.update_polling_status(server_id, updates)
-        
+
         if success:
             return web.json_response({
                 "success": True,
@@ -21430,18 +21430,18 @@ async def api_start_polling(request):
 async def api_pause_polling(request):
     """POST /api/polling/{serverId}/pause - Pause polling"""
     server_id = request.match_info['serverId']
-    
+
     try:
         body = await request.json() if request.content_length else {}
         providers = body.get('providers')
-        
+
         current_status = config_store.get_polling_status(server_id)
         if not current_status:
             return web.json_response({
                 "success": False,
                 "error": f"Polling status not found for server {server_id}"
             }, status=404)
-        
+
         if providers:
             # Pause specific providers
             active_providers = [p for p in current_status.get("activeProviders", []) if p not in providers]
@@ -21452,9 +21452,9 @@ async def api_pause_polling(request):
                 "isActive": False,
                 "activeProviders": []
             }
-        
+
         success = config_store.update_polling_status(server_id, updates)
-        
+
         if success:
             return web.json_response({
                 "success": True,
@@ -21476,7 +21476,7 @@ async def api_pause_polling(request):
 async def api_get_polling_status(request):
     """GET /api/polling/{serverId}/status - Get polling status"""
     server_id = request.match_info['serverId']
-    
+
     try:
         status = config_store.get_polling_status(server_id)
         if not status:
@@ -21484,7 +21484,7 @@ async def api_get_polling_status(request):
                 "success": False,
                 "error": f"Polling status not found for server {server_id}"
             }, status=404)
-        
+
         return web.json_response({
             "success": True,
             **status
@@ -21501,16 +21501,16 @@ def add_config_routes(app, cors):
     # Server configuration routes
     cors.add(app.router.add_get('/api/config/{serverId}', api_get_server_config))
     cors.add(app.router.add_post('/api/config/{serverId}', api_update_server_config))
-    
+
     # Rate limit routes
     cors.add(app.router.add_get('/api/rate-limit/{serverId}/{provider}', api_get_rate_limit_status))
     cors.add(app.router.add_post('/api/rate-limit/{serverId}/{provider}', api_update_rate_limit_config))
-    
+
     # Polling control routes
     cors.add(app.router.add_post('/api/polling/{serverId}/start', api_start_polling))
     cors.add(app.router.add_post('/api/polling/{serverId}/pause', api_pause_polling))
     cors.add(app.router.add_get('/api/polling/{serverId}/status', api_get_polling_status))
-    
+
     logging.info("✅ Configuration endpoints added:")
     logging.info("   GET/POST /api/config/{serverId}")
     logging.info("   GET/POST /api/rate-limit/{serverId}/{provider}")
@@ -21537,11 +21537,11 @@ curl -X POST http://127.0.0.1:3001/messages/ \
 curl -X POST http://127.0.0.1:3001/messages/ \
      -H "Content-Type: application/json" \
      -d '{
-       "method": "tools/call", 
+       "method": "tools/call",
        "params": {
          "name": "list_pull_requests",
          "arguments": {
-           "repos": "rafa-mori/lookatni-file-markers,rafa-mori/formatpilot"
+           "repos": "kubex-ecosystem/lookatni-file-markers,kubex-ecosystem/formatpilot"
          }
        }
      }'
@@ -21552,7 +21552,7 @@ curl -X POST http://127.0.0.1:3001/messages/ \
      -d '{
        "method": "tools/call",
        "params": {
-         "name": "get_pipeline_status", 
+         "name": "get_pipeline_status",
          "arguments": {
            "project": "kubex"
          }
@@ -21784,7 +21784,7 @@ main(){
   # Main menu
   while true; do
     clear_screen
-    echo 
+    echo
     echo
     log menu "========================================"
     log menu "       Banana AI 42 - Menu Principal    "
@@ -21846,7 +21846,7 @@ main(){
       echo
     else
       continue
-    fi  
+    fi
     log menu "========================================"
   done
 
@@ -22010,8 +22010,8 @@ class StatusRafaService:
             # Buscar automaticamente todos os repos do usuário
             repos = await self.get_user_repos()
             if not repos:
-                repos = ["rafa-mori/lookatni-file-markers",
-                         "rafa-mori/formatpilot"]  # Fallback
+                repos = ["kubex-ecosystem/lookatni-file-markers",
+                         "kubex-ecosystem/formatpilot"]  # Fallback
 
         headers = {
             "Authorization": f"token {self.github_token}",
@@ -22501,7 +22501,7 @@ async def test_github_prs():
     print(
         f"GitHub Token configurado: {'✅' if os.getenv('GITHUB_TOKEN') else '❌'}")
 
-    repos = ["rafa-mori/lookatni-file-markers", "rafa-mori/formatpilot"]
+    repos = ["kubex-ecosystem/lookatni-file-markers", "kubex-ecosystem/formatpilot"]
     prs = await status_service.get_github_prs(repos)
 
     print(f"Resultado: {len(prs)} item(s) encontrado(s)")
@@ -22604,27 +22604,27 @@ class WebSocketManager:
         self.rate_limit_monitors: Dict[str, Dict] = {}
         self.polling_monitors: Dict[str, Dict] = {}
         self.monitoring_tasks: Dict[str, asyncio.Task] = {}
-        
+
     async def add_connection(self, ws: web.WebSocketResponse):
         """Add new WebSocket connection"""
         self.connections.add(ws)
         logging.info(f"✅ New WebSocket connection. Total: {len(self.connections)}")
-        
+
         # Send initial state to new connection
         await self.send_initial_state(ws)
-    
+
     async def remove_connection(self, ws: web.WebSocketResponse):
         """Remove WebSocket connection"""
         if ws in self.connections:
             self.connections.discard(ws)
             logging.info(f"❌ WebSocket disconnected. Total: {len(self.connections)}")
-    
+
     async def send_initial_state(self, ws: web.WebSocketResponse):
         """Send current state to newly connected client"""
         try:
             # Import here to avoid circular imports
             from .config_manager import config_store
-            
+
             # Get current server config
             config = config_store.get_server_config("statusrafa-mcp")
             if config:
@@ -22635,7 +22635,7 @@ class WebSocketManager:
                         "timestamp": datetime.now(timezone.utc).isoformat()
                     }
                 }))
-            
+
             # Get current polling status
             polling_status = config_store.get_polling_status("statusrafa-mcp")
             if polling_status:
@@ -22644,7 +22644,7 @@ class WebSocketManager:
                     "data": polling_status,
                     "timestamp": datetime.now(timezone.utc).isoformat()
                 }))
-            
+
             # Get rate limit status for all providers
             for provider in ["github", "azureDevOps"]:
                 rate_status = config_store.get_rate_limit_status("statusrafa-mcp", provider)
@@ -22655,18 +22655,18 @@ class WebSocketManager:
                         "data": rate_status,
                         "timestamp": datetime.now(timezone.utc).isoformat()
                     }))
-                    
+
         except Exception as e:
             logging.error(f"Error sending initial state: {e}")
-    
+
     async def broadcast(self, message: Dict[str, Any]):
         """Broadcast message to all connected clients"""
         if not self.connections:
             return
-        
+
         message_str = json.dumps(message)
         disconnected = []
-        
+
         for ws in self.connections:
             try:
                 if ws.closed:
@@ -22676,23 +22676,23 @@ class WebSocketManager:
             except Exception as e:
                 logging.error(f"Error broadcasting to client: {e}")
                 disconnected.append(ws)
-        
+
         # Clean up disconnected clients
         for ws in disconnected:
             self.connections.discard(ws)
-    
+
     async def start_rate_limit_monitoring(self, server_id: str, provider: str):
         """Start monitoring rate limits for a provider"""
         monitor_key = f"{server_id}_{provider}"
-        
+
         if monitor_key in self.monitoring_tasks:
             return  # Already monitoring
-        
+
         async def monitor_rate_limits():
             """Monitor rate limits and broadcast updates"""
             from .config_manager import config_store
             import random
-            
+
             while True:
                 try:
                     # Simulate real rate limit data (in production, get from actual APIs)
@@ -22702,16 +22702,16 @@ class WebSocketManager:
                         base_used = current_status["current"]["requestsUsed"]
                         variation = random.randint(-5, 15)  # Small random changes
                         new_used = max(0, base_used + variation)
-                        
+
                         # Calculate new values
                         if provider == "github":
                             total_limit = 5000
                         else:  # azureDevOps
                             total_limit = 3600
-                        
+
                         remaining = total_limit - new_used
                         percentage = (new_used / total_limit) * 100
-                        
+
                         # Update the data
                         updated_status = {
                             "provider": provider,
@@ -22727,14 +22727,14 @@ class WebSocketManager:
                                 "suggestedInterval": 300 if provider == "github" else 240
                             }
                         }
-                        
+
                         # Save to store (merge with existing data)
                         current_limits = config_store._load_rate_limits()
                         if server_id not in current_limits:
                             current_limits[server_id] = {}
                         current_limits[server_id][provider] = updated_status
                         config_store._save_rate_limits(current_limits)
-                        
+
                         # Broadcast update
                         await self.broadcast({
                             "type": "rate_limit_update",
@@ -22743,7 +22743,7 @@ class WebSocketManager:
                             "timestamp": datetime.now(timezone.utc).isoformat(),
                             "alert": percentage > 80  # Alert when over 80%
                         })
-                        
+
                         # Check for auto-pause
                         config = config_store.get_server_config(server_id)
                         if config and config["providers"][provider]["rateLimitSettings"]["autoPause"]:
@@ -22754,7 +22754,7 @@ class WebSocketManager:
                                 if polling_status and provider in polling_status.get("activeProviders", []):
                                     active_providers = [p for p in polling_status["activeProviders"] if p != provider]
                                     config_store.update_polling_status(server_id, {"activeProviders": active_providers})
-                                    
+
                                     # Broadcast auto-pause notification
                                     await self.broadcast({
                                         "type": "auto_pause",
@@ -22763,31 +22763,31 @@ class WebSocketManager:
                                         "percentage": percentage,
                                         "timestamp": datetime.now(timezone.utc).isoformat()
                                     })
-                    
+
                     # Wait 5 seconds before next update
                     await asyncio.sleep(5)
-                    
+
                 except Exception as e:
                     logging.error(f"Error in rate limit monitoring for {provider}: {e}")
                     await asyncio.sleep(10)  # Wait longer on error
-        
+
         # Start the monitoring task
         task = asyncio.create_task(monitor_rate_limits())
         self.monitoring_tasks[monitor_key] = task
         logging.info(f"🔍 Started rate limit monitoring for {provider}")
-    
+
     async def start_polling_monitoring(self, server_id: str):
         """Start monitoring polling status"""
         monitor_key = f"{server_id}_polling"
-        
+
         if monitor_key in self.monitoring_tasks:
             return
-        
+
         async def monitor_polling():
             """Monitor polling status and broadcast updates"""
             from .config_manager import config_store
             import random
-            
+
             while True:
                 try:
                     polling_status = config_store.get_polling_status(server_id)
@@ -22797,7 +22797,7 @@ class WebSocketManager:
                         stats["totalRequests"] = stats.get("totalRequests", 0) + random.randint(0, 3)
                         stats["requestsToday"] = stats.get("requestsToday", 0) + random.randint(0, 2)
                         stats["averageResponseTime"] = random.randint(150, 800)
-                        
+
                         # Update schedule times
                         schedule = polling_status.get("schedule", {})
                         for provider in schedule:
@@ -22807,32 +22807,32 @@ class WebSocketManager:
                                 frequency = schedule[provider].get("frequency", 300)
                                 next_run = datetime.now(timezone.utc)
                                 schedule[provider]["nextRun"] = next_run.isoformat()
-                        
+
                         # Update and broadcast
                         updated_status = {
                             **polling_status,
                             "stats": stats,
                             "schedule": schedule
                         }
-                        
+
                         config_store.update_polling_status(server_id, updated_status)
-                        
+
                         await self.broadcast({
                             "type": "polling_status",
                             "data": updated_status,
                             "timestamp": datetime.now(timezone.utc).isoformat()
                         })
-                    
+
                     await asyncio.sleep(3)  # Update every 3 seconds
-                    
+
                 except Exception as e:
                     logging.error(f"Error in polling monitoring: {e}")
                     await asyncio.sleep(10)
-        
+
         task = asyncio.create_task(monitor_polling())
         self.monitoring_tasks[monitor_key] = task
         logging.info(f"📡 Started polling monitoring for {server_id}")
-    
+
     def stop_monitoring(self, monitor_key: str):
         """Stop a monitoring task"""
         if monitor_key in self.monitoring_tasks:
@@ -22840,16 +22840,16 @@ class WebSocketManager:
             task.cancel()
             del self.monitoring_tasks[monitor_key]
             logging.info(f"🛑 Stopped monitoring: {monitor_key}")
-    
+
     async def shutdown(self):
         """Clean shutdown of all monitoring"""
         for task in self.monitoring_tasks.values():
             task.cancel()
-        
+
         for ws in list(self.connections):
             if not ws.closed:
                 await ws.close()
-        
+
         self.connections.clear()
         self.monitoring_tasks.clear()
         logging.info("🔌 WebSocket manager shutdown complete")
@@ -22861,51 +22861,51 @@ async def websocket_handler(request):
     """WebSocket connection handler"""
     ws = web.WebSocketResponse()
     await ws.prepare(request)
-    
+
     await ws_manager.add_connection(ws)
-    
+
     # Start monitoring for this connection
     await ws_manager.start_rate_limit_monitoring("statusrafa-mcp", "github")
     await ws_manager.start_rate_limit_monitoring("statusrafa-mcp", "azureDevOps")
     await ws_manager.start_polling_monitoring("statusrafa-mcp")
-    
+
     try:
         async for msg in ws:
             if msg.type == WSMsgType.TEXT:
                 try:
                     data = json.loads(msg.data)
-                    
+
                     # Handle different message types from client
                     if data.get("type") == "ping":
                         await ws.send_str(json.dumps({
                             "type": "pong",
                             "timestamp": datetime.now(timezone.utc).isoformat()
                         }))
-                    
+
                     elif data.get("type") == "request_update":
                         # Client requesting specific updates
                         await ws_manager.send_initial_state(ws)
-                        
+
                 except json.JSONDecodeError:
                     logging.error("Invalid JSON received from WebSocket client")
-                    
+
             elif msg.type == WSMsgType.ERROR:
                 logging.error(f'WebSocket error: {ws.exception()}')
                 break
-    
+
     except Exception as e:
         logging.error(f"WebSocket handler error: {e}")
-    
+
     finally:
         await ws_manager.remove_connection(ws)
-    
+
     return ws
 
 def add_websocket_routes(app, cors):
     """Add WebSocket routes to the app"""
     # WebSocket endpoint
     app.router.add_get('/ws', websocket_handler)
-    
+
     logging.info("🔌 WebSocket endpoint added:")
     logging.info("   WS /ws - Real-time updates")
 

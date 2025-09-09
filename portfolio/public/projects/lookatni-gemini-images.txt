@@ -114,7 +114,7 @@ Extrai informações de um produto a partir de uma imagem.
 ```json
 {
   "status": "sucesso",
-  "mensagem": "Informações do produto extraídas com sucesso", 
+  "mensagem": "Informações do produto extraídas com sucesso",
   "dados": {
     "nome": "string",
     "marca": "string",
@@ -146,7 +146,7 @@ Documentação interativa da API.
 # Teste básico
 curl -X POST -F "image=@produto_smartphone.jpg" http://localhost:3000/api/extract-product
 
-# Teste com análise detalhada  
+# Teste com análise detalhada
 curl -X POST -F "image=@produto_notebook.jpg" "http://localhost:3000/api/extract-product?detailed=true"
 
 # Verificar saúde da API
@@ -264,7 +264,7 @@ services:
 ### 1. Via Frontend (Mais Fácil)
 
 - Acesse: <http://localhost:3000>
-- Marque: "Modo catálogo (múltiplos produtos)"  
+- Marque: "Modo catálogo (múltiplos produtos)"
 - Upload da imagem
 - Veja os resultados organizados em cards
 
@@ -294,7 +294,7 @@ curl -X POST -F "image=@catalogo.jpg" "http://localhost:3000/api/extract-catalog
 # Testar catálogo
 node test-api.js ./catalogo.jpg --catalog
 
-# Testar produto único  
+# Testar produto único
 node test-api.js ./produto.jpg
 ```
 
@@ -344,7 +344,7 @@ node test-api.js ./produto.jpg
 ## 🏁 Início Rápido
 
 1. **Configure a API**: Adicione `GEMINI_API_KEY` no `.env`
-2. **Inicie o servidor**: `npm run dev`  
+2. **Inicie o servidor**: `npm run dev`
 3. **Teste rapidamente**: Acesse <http://localhost:3000>
 4. **Marque "Modo catálogo"** e faça upload de uma imagem com múltiplos produtos
 
@@ -486,14 +486,14 @@ import requests
 
 def extrair_produto(caminho_imagem, detalhado=False):
     url = "http://localhost:3000/api/extract-product"
-    
+
     if detalhado:
         url += "?detailed=true"
-    
+
     with open(caminho_imagem, 'rb') as f:
         files = {'image': f}
         response = requests.post(url, files=files)
-    
+
     if response.status_code == 200:
         return response.json()
     else:
@@ -516,18 +516,18 @@ import fetch from 'node-fetch';
 async function extrairProduto(caminhoImagem, detalhado = false) {
   const formData = new FormData();
   formData.append('image', fs.createReadStream(caminhoImagem));
-  
+
   const url = `http://localhost:3000/api/extract-product${detalhado ? '?detailed=true' : ''}`;
-  
+
   const response = await fetch(url, {
     method: 'POST',
     body: formData
   });
-  
+
   if (!response.ok) {
     throw new Error(`Erro: ${response.status} - ${await response.text()}`);
   }
-  
+
   return await response.json();
 }
 
@@ -548,7 +548,7 @@ A partir da versão 2.0, a API suporta extração de múltiplos produtos de uma 
 
 ### ✅ Tipos de imagem suportados para catálogos:
 - Panfletos de supermercado
-- Catálogos promocionais  
+- Catálogos promocionais
 - Prateleiras com vários produtos
 - Displays de lojas
 - Folhetos com ofertas
@@ -587,7 +587,7 @@ Endpoint unificado com modo catálogo ativado.
         "preco": "R$ 4,99"
       },
       {
-        "nome": "Feijão Preto 500g", 
+        "nome": "Feijão Preto 500g",
         "marca": "Camil",
         "preco": "R$ 3,49"
       },
@@ -634,25 +634,25 @@ curl -X POST -F "image=@prateleira-produtos.jpg" \
 async function extrairCatalogo(caminhoImagem, detalhado = false) {
   const formData = new FormData();
   formData.append('image', fs.createReadStream(caminhoImagem));
-  
+
   const url = `http://localhost:3000/api/extract-catalog${detalhado ? '?detailed=true' : ''}`;
-  
+
   const response = await fetch(url, {
     method: 'POST',
     body: formData
   });
-  
+
   if (!response.ok) {
     throw new Error(`Erro: ${response.status}`);
   }
-  
+
   const resultado = await response.json();
-  
+
   console.log(`✅ ${resultado.dados.total_produtos} produtos encontrados:`);
   resultado.dados.produtos.forEach((produto, index) => {
     console.log(`${index + 1}. ${produto.nome} - ${produto.marca} - ${produto.preco}`);
   });
-  
+
   return resultado;
 }
 
@@ -667,22 +667,22 @@ import requests
 
 def extrair_catalogo(caminho_imagem, detalhado=False):
     url = "http://localhost:3000/api/extract-catalog"
-    
+
     if detalhado:
         url += "?detailed=true"
-    
+
     with open(caminho_imagem, 'rb') as f:
         files = {'image': f}
         response = requests.post(url, files=files)
-    
+
     if response.status_code == 200:
         resultado = response.json()
         produtos = resultado['dados']['produtos']
-        
+
         print(f"✅ {len(produtos)} produtos encontrados:")
         for i, produto in enumerate(produtos, 1):
             print(f"{i}. {produto['nome']} - {produto['marca']} - {produto['preco']}")
-        
+
         return resultado
     else:
         raise Exception(f"Erro: {response.status_code} - {response.text}")
@@ -746,7 +746,7 @@ extrair_catalogo("catalogo.jpg", detalhado=True)
 
 ```json
 {
-  "status": "erro", 
+  "status": "erro",
   "mensagem": "Arquivo muito grande. Tamanho máximo: 5MB"
 }
 ```
@@ -830,7 +830,7 @@ O arquivo `page.tsx` foi completamente reestruturado para fornecer uma interface
 ### 1. Iniciar o Servidor Backend
 
 ```bash
-cd /srv/apps/LIFE/RAFA-MORI/gemini-image
+cd /srv/apps/LIFE/kubex-ecosystem/gemini-image
 npm install
 npm start
 ```
@@ -1026,7 +1026,7 @@ module.exports = nextConfig
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
@@ -1034,38 +1034,38 @@ module.exports = nextConfig
             color: white;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         .header {
             text-align: center;
             margin-bottom: 40px;
         }
-        
+
         .header h1 {
             font-size: 3rem;
             font-weight: bold;
             margin-bottom: 16px;
         }
-        
+
         .header p {
             font-size: 1.2rem;
             color: #d1d5db;
             max-width: 800px;
             margin: 0 auto 24px;
         }
-        
+
         .buttons {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+
         .btn {
             padding: 12px 24px;
             border-radius: 8px;
@@ -1078,30 +1078,30 @@ module.exports = nextConfig
             transition: all 0.3s;
             text-decoration: none;
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, #10b981 0%, #16a34a 100%);
             color: white;
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
         }
-        
+
         .btn-secondary {
             background: #374151;
             color: white;
         }
-        
+
         .btn-secondary:hover {
             background: #4b5563;
         }
-        
+
         .demo-interface {
             display: none;
         }
-        
+
         .back-btn {
             background: transparent;
             color: #d1d5db;
@@ -1113,13 +1113,13 @@ module.exports = nextConfig
             font-size: 16px;
             margin-bottom: 24px;
         }
-        
+
         .grid {
             display: grid;
             gap: 32px;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
         }
-        
+
         .card {
             background: rgba(31, 41, 55, 0.5);
             backdrop-filter: blur(10px);
@@ -1127,7 +1127,7 @@ module.exports = nextConfig
             padding: 24px;
             border: 1px solid #374151;
         }
-        
+
         .card h2 {
             font-size: 1.5rem;
             font-weight: bold;
@@ -1136,7 +1136,7 @@ module.exports = nextConfig
             align-items: center;
             gap: 8px;
         }
-        
+
         .drop-zone {
             border: 2px dashed #6b7280;
             border-radius: 8px;
@@ -1146,25 +1146,25 @@ module.exports = nextConfig
             transition: border-color 0.3s;
             margin-bottom: 16px;
         }
-        
+
         .drop-zone:hover {
             border-color: #10b981;
         }
-        
+
         .drop-zone.dragover {
             border-color: #10b981;
             background-color: rgba(16, 185, 129, 0.1);
         }
-        
+
         .hidden {
             display: none;
         }
-        
+
         .preview {
             position: relative;
             display: inline-block;
         }
-        
+
         .preview img {
             max-width: 100%;
             max-height: 256px;
@@ -1172,7 +1172,7 @@ module.exports = nextConfig
             border-radius: 8px;
             border: 1px solid #6b7280;
         }
-        
+
         .remove-btn {
             position: absolute;
             top: 8px;
@@ -1186,21 +1186,21 @@ module.exports = nextConfig
             cursor: pointer;
             font-size: 16px;
         }
-        
+
         .file-info {
             font-size: 0.875rem;
             color: #d1d5db;
             margin-top: 8px;
         }
-        
+
         .options {
             margin-bottom: 16px;
         }
-        
+
         .checkbox-group {
             margin-bottom: 12px;
         }
-        
+
         .checkbox-group label {
             display: flex;
             align-items: center;
@@ -1208,12 +1208,12 @@ module.exports = nextConfig
             color: #d1d5db;
             cursor: pointer;
         }
-        
+
         .checkbox-group input[type="checkbox"] {
             width: 16px;
             height: 16px;
         }
-        
+
         .process-btn {
             width: 100%;
             padding: 12px 24px;
@@ -1228,12 +1228,12 @@ module.exports = nextConfig
             justify-content: center;
             gap: 8px;
         }
-        
+
         .process-btn:disabled {
             background: #6b7280;
             cursor: not-allowed;
         }
-        
+
         .result-success {
             color: #10b981;
             margin-bottom: 16px;
@@ -1242,7 +1242,7 @@ module.exports = nextConfig
             gap: 8px;
             font-weight: bold;
         }
-        
+
         .result-error {
             display: flex;
             align-items: center;
@@ -1253,42 +1253,42 @@ module.exports = nextConfig
             border-radius: 8px;
             color: #fca5a5;
         }
-        
+
         .product-card {
             background: rgba(55, 65, 81, 0.5);
             border-radius: 8px;
             padding: 16px;
             margin-bottom: 16px;
         }
-        
+
         .product-info {
             display: grid;
             gap: 8px;
         }
-        
+
         .product-info div {
             display: flex;
             align-items: center;
         }
-        
+
         .product-info .label {
             color: #9ca3af;
             min-width: 60px;
         }
-        
+
         .product-info .value {
             color: white;
             font-weight: bold;
             margin-left: 8px;
         }
-        
+
         .products-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
         }
-        
+
         .product-count {
             background: #10b981;
             color: white;
@@ -1296,26 +1296,26 @@ module.exports = nextConfig
             border-radius: 20px;
             font-size: 0.875rem;
         }
-        
+
         .products-list {
             display: grid;
             gap: 12px;
             max-height: 300px;
             overflow-y: auto;
         }
-        
+
         .product-item {
             background: rgba(55, 65, 81, 0.5);
             border-radius: 8px;
             padding: 12px;
         }
-        
+
         .product-item-info {
             font-size: 0.875rem;
             display: grid;
             gap: 4px;
         }
-        
+
         .export-btn {
             display: flex;
             align-items: center;
@@ -1328,25 +1328,25 @@ module.exports = nextConfig
             cursor: pointer;
             margin-top: 16px;
         }
-        
+
         .placeholder {
             text-align: center;
             padding: 32px;
             color: #9ca3af;
         }
-        
+
         .placeholder-icon {
             font-size: 4rem;
             margin-bottom: 16px;
         }
-        
+
         .info-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin-top: 40px;
         }
-        
+
         .info-card {
             background: rgba(31, 41, 55, 0.5);
             backdrop-filter: blur(10px);
@@ -1354,31 +1354,31 @@ module.exports = nextConfig
             padding: 24px;
             border: 1px solid #374151;
         }
-        
+
         .info-card h3 {
             font-size: 1.25rem;
             font-weight: bold;
             margin-bottom: 12px;
         }
-        
+
         .info-card p {
             color: #d1d5db;
         }
-        
+
         @media (max-width: 768px) {
             .grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .header h1 {
                 font-size: 2rem;
             }
-            
+
             .buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .info-cards {
                 grid-template-columns: 1fr;
             }
@@ -1391,18 +1391,18 @@ module.exports = nextConfig
         <div class="header">
             <h1>🤖 Gemini Image Processor</h1>
             <p>
-                Interface funcional para processamento de imagens com Google Gemini Vision. 
+                Interface funcional para processamento de imagens com Google Gemini Vision.
                 Esta versão integra diretamente com a API backend real.
             </p>
-            
+
             <div class="buttons">
                 <button id="startDemo" class="btn btn-primary">
                     ▶️ Demo Funcional
                 </button>
-                
-                <a href="https://github.com/rafa-mori/gemini-image-processor" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
+
+                <a href="https://github.com/kubex-ecosystem/gemini-image-processor"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    class="btn btn-secondary">
                     📁 GitHub
                 </a>
@@ -1449,7 +1449,7 @@ module.exports = nextConfig
                                 Modo catálogo (múltiplos produtos)
                             </label>
                         </div>
-                        
+
                         <div class="checkbox-group">
                             <label>
                                 <input type="checkbox" id="detailedMode" />
@@ -1584,11 +1584,11 @@ module.exports = nextConfig
                     <div><strong>Arquivo:</strong> ${file.name}</div>
                     <div><strong>Tamanho:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB</div>
                 `;
-                
+
                 dropZoneContent.classList.add('hidden');
                 preview.classList.remove('hidden');
                 options.classList.remove('hidden');
-                
+
                 results.innerHTML = `
                     <div class="placeholder">
                         <div style="font-size: 2rem; margin-bottom: 16px;">🖼️</div>
@@ -1627,7 +1627,7 @@ module.exports = nextConfig
 
                     const endpoint = catalogMode.checked ? 'extract-catalog' : 'extract-product';
                     const queryParams = new URLSearchParams();
-                    
+
                     if (detailedMode.checked) queryParams.append('detailed', 'true');
 
                     const url = `${API_BASE_URL}/${endpoint}${queryParams.toString() ? '?' + queryParams.toString() : ''}`;
@@ -1692,10 +1692,10 @@ module.exports = nextConfig
                                 <h3 style="font-size: 1.2rem; font-weight: bold; color: white;">Produtos Encontrados</h3>
                                 <span class="product-count">${data.total_produtos} produtos</span>
                             </div>
-                            
+
                             <div class="products-list">
                     `;
-                    
+
                     data.produtos.forEach((produto, index) => {
                         html += `
                             <div class="product-item">
@@ -1707,7 +1707,7 @@ module.exports = nextConfig
                             </div>
                         `;
                     });
-                    
+
                     html += '</div></div>';
                 }
 
@@ -1715,14 +1715,14 @@ module.exports = nextConfig
                     <div style="font-size: 0.75rem; color: #9ca3af; margin-bottom: 16px;">
                         Processado em: ${new Date(data.processado_em).toLocaleString('pt-BR')}
                     </div>
-                    
+
                     <button class="export-btn" onclick="downloadJSON()">
                         💾 Exportar JSON
                     </button>
                 `;
 
                 results.innerHTML = html;
-                
+
                 // Store data for download
                 window.lastResult = data;
             }
@@ -1822,7 +1822,7 @@ class GeminiService {
     if (!process.env.GEMINI_API_KEY) {
       throw new Error('GEMINI_API_KEY não encontrada nas variáveis de ambiente');
     }
-    
+
     this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     this.model = this.genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   }
@@ -1889,7 +1889,7 @@ FORMATO DE RESPOSTA OBRIGATÓRIO (ARRAY JSON):
 [
   {
     "nome_produto": "[nome específico do produto 1]",
-    "marca": "[marca do produto 1]", 
+    "marca": "[marca do produto 1]",
     "preco": "[preço com moeda do produto 1]"
   },
   {
@@ -1908,7 +1908,7 @@ IMPORTANTE: Retorne APENAS o array JSON, sem texto adicional antes ou depois.`;
   async extractProductInfo(imageBuffer, mimeType) {
     try {
       logger.info('Iniciando extração de informações do produto com Gemini');
-      
+
       const imageData = this.convertFileToGeminiFormat(imageBuffer, mimeType);
       const prompt = this.createProductExtractionPrompt();
 
@@ -1932,7 +1932,7 @@ IMPORTANTE: Retorne APENAS o array JSON, sem texto adicional antes ou depois.`;
   async extractCatalogInfo(imageBuffer, mimeType) {
     try {
       logger.info('Iniciando extração de catálogo com múltiplos produtos');
-      
+
       const imageData = this.convertFileToGeminiFormat(imageBuffer, mimeType);
       const prompt = this.createCatalogExtractionPrompt();
 
@@ -1956,7 +1956,7 @@ IMPORTANTE: Retorne APENAS o array JSON, sem texto adicional antes ou depois.`;
   async extractProductInfoDetailed(imageBuffer, mimeType) {
     try {
       const imageData = this.convertFileToGeminiFormat(imageBuffer, mimeType);
-      
+
       const detailedPrompt = `
 Você é um especialista em análise de produtos. Examine esta imagem cuidadosamente e identifique:
 
@@ -1973,7 +1973,7 @@ Procure por:
 Retorne APENAS este formato JSON (sem explicações):
 {
   "nome_produto": "nome específico encontrado ou N/A",
-  "marca": "marca identificada ou N/A", 
+  "marca": "marca identificada ou N/A",
   "preco": "valor com moeda se encontrado ou N/A"
 }`;
 
@@ -1994,7 +1994,7 @@ Retorne APENAS este formato JSON (sem explicações):
   async extractCatalogInfoDetailed(imageBuffer, mimeType) {
     try {
       const imageData = this.convertFileToGeminiFormat(imageBuffer, mimeType);
-      
+
       const detailedCatalogPrompt = `
 Você é um especialista em análise de catálogos e materiais promocionais. Examine esta imagem meticulosamente.
 
@@ -2047,10 +2047,10 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
   parseGeminiResponse(rawResponse) {
     try {
       logger.debug('Processando resposta bruta do Gemini:', { rawResponse });
-      
+
       // Estratégia 1: Limpar e tentar parse direto
       let cleanedResponse = this.cleanResponseText(rawResponse);
-      
+
       // Estratégia 2: Tentar parse direto
       try {
         const parsed = JSON.parse(cleanedResponse);
@@ -2060,22 +2060,22 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
       } catch (directParseError) {
         logger.debug('Parse direto falhou, tentando estratégias alternativas');
       }
-      
+
       // Estratégia 3: Buscar padrões JSON no texto
       const extractedData = this.extractJSONFromText(cleanedResponse);
       if (extractedData) {
         return this.validateAndNormalizeData(extractedData);
       }
-      
+
       // Estratégia 4: Extração baseada em padrões de texto
       const textBasedData = this.extractDataFromNaturalText(cleanedResponse);
       if (textBasedData) {
         return this.validateAndNormalizeData(textBasedData);
       }
-      
+
       // Se chegou aqui, não conseguiu extrair dados válidos
       throw new Error('Não foi possível extrair informações válidas da resposta do Gemini');
-      
+
     } catch (error) {
       logger.error('Erro ao processar resposta do Gemini:', error);
       throw new Error(`Falha ao processar resposta: ${error.message}`);
@@ -2088,21 +2088,21 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
   parseCatalogResponse(rawResponse) {
     try {
       logger.debug('Processando resposta de catálogo do Gemini:', { rawResponse });
-      
+
       // Estratégia 1: Limpar e tentar parse direto como array
       let cleanedResponse = this.cleanResponseText(rawResponse);
       logger.debug('Resposta limpa:', { cleanedResponse });
-      
+
       // Estratégia 2: Tentar parse direto como array
       try {
         const parsed = JSON.parse(cleanedResponse);
-        logger.debug('Parse direto realizado:', { 
-          parsed, 
+        logger.debug('Parse direto realizado:', {
+          parsed,
           type: typeof parsed,
           isArray: Array.isArray(parsed),
           keys: parsed ? Object.keys(parsed) : null
         });
-        
+
         if (Array.isArray(parsed)) {
           return this.validateAndNormalizeCatalogData(parsed);
         } else if (this.isValidProductData(parsed)) {
@@ -2117,33 +2117,33 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
       } catch (directParseError) {
         logger.debug('Parse direto de array falhou, tentando estratégias alternativas', { error: directParseError.message });
       }
-      
+
       // Estratégia 3: Buscar array JSON no texto
       const extractedArray = this.extractArrayFromText(cleanedResponse);
       if (extractedArray) {
         logger.debug('Array extraído do texto:', extractedArray);
         return this.validateAndNormalizeCatalogData(extractedArray);
       }
-      
+
       // Estratégia 4: Buscar objetos individuais e criar array
       const individualObjects = this.extractMultipleObjectsFromText(cleanedResponse);
       if (individualObjects && individualObjects.length > 0) {
         logger.debug('Objetos individuais encontrados:', individualObjects);
         return this.validateAndNormalizeCatalogData(individualObjects);
       }
-      
+
       // Estratégia 5: Fallback para extração de texto natural múltiplo
       const textBasedProducts = this.extractMultipleProductsFromNaturalText(cleanedResponse);
       if (textBasedProducts && textBasedProducts.length > 0) {
         logger.debug('Produtos extraídos via texto natural:', textBasedProducts);
         return this.validateAndNormalizeCatalogData(textBasedProducts);
       }
-      
+
       // Se chegou aqui, tentar pelo menos um produto
       logger.warn('Todas as estratégias falharam, tentando parse como produto único');
       const singleProduct = this.parseGeminiResponse(rawResponse);
       return [singleProduct];
-      
+
     } catch (error) {
       logger.error('Erro ao processar resposta de catálogo do Gemini:', error);
       throw new Error(`Falha ao processar resposta de catálogo: ${error.message}`);
@@ -2200,7 +2200,7 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
         }
       }
     }
-    
+
     return null;
   }
 
@@ -2209,7 +2209,7 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
    */
   extractDataFromNaturalText(text) {
     logger.debug('Tentando extração baseada em texto natural');
-    
+
     const result = {
       nome_produto: 'N/A',
       marca: 'N/A',
@@ -2263,7 +2263,7 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
 
     // Verificar se pelo menos um campo foi encontrado
     const hasValidData = Object.values(result).some(value => value !== 'N/A');
-    
+
     if (hasValidData) {
       logger.debug('Dados extraídos via texto natural:', result);
       return result;
@@ -2341,7 +2341,7 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
         }
       }
     }
-    
+
     return null;
   }
 
@@ -2350,7 +2350,7 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
    */
   extractMultipleObjectsFromText(text) {
     const objects = [];
-    
+
     // Padrões para encontrar objetos individuais
     const objectPatterns = [
       /\{[^{}]*"nome_produto"[^{}]*\}/g,
@@ -2373,7 +2373,7 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
         }
       }
     }
-    
+
     return objects.length > 0 ? objects : null;
   }
 
@@ -2382,19 +2382,19 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
    */
   extractMultipleProductsFromNaturalText(text) {
     logger.debug('Tentando extração de múltiplos produtos via texto natural');
-    
+
     const products = [];
-    
+
     // Dividir texto em seções que podem representar produtos diferentes
     const sections = this.splitTextIntoProductSections(text);
-    
+
     for (const section of sections) {
       const productData = this.extractDataFromNaturalText(section);
       if (productData) {
         products.push(productData);
       }
     }
-    
+
     return products.length > 0 ? products : null;
   }
 
@@ -2410,9 +2410,9 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
       /item\s*\d+/gi,      // "Item 1", "Item 2"
       /[-=]{3,}/g          // Linhas com traços
     ];
-    
+
     let sections = [text];
-    
+
     // Aplicar cada separador
     for (const separator of separators) {
       const newSections = [];
@@ -2424,7 +2424,7 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
         sections = newSections;
       }
     }
-    
+
     return sections.filter(section => section.trim().length > 5);
   }
 
@@ -2432,8 +2432,8 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
    * Valida e normaliza dados de catálogo (array de produtos)
    */
   validateAndNormalizeCatalogData(products) {
-    logger.debug('validateAndNormalizeCatalogData - Input recebido:', { 
-      products, 
+    logger.debug('validateAndNormalizeCatalogData - Input recebido:', {
+      products,
       type: typeof products,
       isArray: Array.isArray(products),
       keys: products ? Object.keys(products) : null
@@ -2445,19 +2445,19 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
         // Verificar se é um objeto com chaves numéricas (0, 1, 2, etc.)
         const keys = Object.keys(products);
         const isNumericKeys = keys.every(key => /^\d+$/.test(key));
-        
+
         if (isNumericKeys && keys.length > 0) {
           logger.info('Convertendo objeto com chaves numéricas para array');
           // Converter para array mantendo a ordem
           const arrayFromObject = keys
             .sort((a, b) => parseInt(a) - parseInt(b)) // Ordenar numericamente
             .map(key => products[key]);
-          
+
           logger.debug('Objeto convertido para array:', arrayFromObject);
           return this.validateAndNormalizeCatalogData(arrayFromObject);
         }
       }
-      
+
       throw new Error('Dados de catálogo devem ser um array ou objeto com chaves numéricas');
     }
 
@@ -2475,15 +2475,15 @@ CRÍTICO: Retorne apenas o array JSON, sem explicações.`;
     }
 
     logger.info(`Catálogo processado: ${normalizedProducts.length} produtos encontrados`, normalizedProducts);
-    
+
     // Garantir que sempre retornamos um array verdadeiro
     const finalArray = Array.from(normalizedProducts);
-    logger.debug('Array final retornado:', { 
+    logger.debug('Array final retornado:', {
       result: finalArray,
       isArray: Array.isArray(finalArray),
       length: finalArray.length
     });
-    
+
     return finalArray;
   }
 }
@@ -2578,7 +2578,7 @@ export const errorHandler = (err, req, res, next) => {
 // Middleware de logging de requisições
 export const requestLogger = (req, res, next) => {
   const startTime = Date.now();
-  
+
   res.on('finish', () => {
     const duration = Date.now() - startTime;
     logger.info('Requisição processada', {
@@ -2609,14 +2609,14 @@ export const successResponse = (data, message = 'Operação realizada com sucess
 
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Brain, 
-  Code, 
-  Github, 
-  Camera, 
-  Upload, 
-  FileText, 
-  Star, 
+import {
+  Brain,
+  Code,
+  Github,
+  Camera,
+  Upload,
+  FileText,
+  Star,
   Play,
   Loader2,
   CheckCircle,
@@ -2644,7 +2644,7 @@ interface ApiResponse {
 export default function GeminiImagePage() {
   // Esta é uma interface funcional real para o Gemini Image Processor
   // Para usar a versão completa com React, configure um ambiente Next.js/React apropriado
-  
+
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #1e293b 0%, #065f46 50%, #1e293b 100%)', padding: '20px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', color: 'white' }}>
@@ -2654,10 +2654,10 @@ export default function GeminiImagePage() {
             🤖 Gemini Image Processor
           </h1>
           <p style={{ fontSize: '1.2rem', color: '#d1d5db', maxWidth: '800px', margin: '0 auto 24px' }}>
-            Interface funcional para processamento de imagens com Google Gemini Vision. 
+            Interface funcional para processamento de imagens com Google Gemini Vision.
             Esta versão integra diretamente com a API backend real.
           </p>
-          
+
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
               id="startDemo"
@@ -2677,9 +2677,9 @@ export default function GeminiImagePage() {
             >
               ▶️ Demo Funcional
             </button>
-            
+
             <a
-              href="https://github.com/rafa-mori/gemini-image-processor"
+              href="https://github.com/kubex-ecosystem/gemini-image-processor"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -2816,7 +2816,7 @@ export default function GeminiImagePage() {
                     Modo catálogo (múltiplos produtos)
                   </label>
                 </div>
-                
+
                 <div style={{ marginBottom: '16px' }}>
                   <label style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d1d5db' }}>
                     <input type="checkbox" id="detailedMode" />
@@ -3003,11 +3003,11 @@ export default function GeminiImagePage() {
               <div><strong>Arquivo:</strong> \${file.name}</div>
               <div><strong>Tamanho:</strong> \${(file.size / 1024 / 1024).toFixed(2)} MB</div>
             \`;
-            
+
             dropZoneContent.style.display = 'none';
             preview.style.display = 'block';
             options.style.display = 'block';
-            
+
             results.innerHTML = '<div id="placeholder" style="text-align: center; padding: 32px; color: #9ca3af;"><div style="font-size: 2rem; margin-bottom: 16px;">🖼️</div><p>Imagem carregada. Clique em "Processar" para analisar.</p></div>';
           }
 
@@ -3036,7 +3036,7 @@ export default function GeminiImagePage() {
 
               const endpoint = catalogMode.checked ? 'extract-catalog' : 'extract-product';
               const queryParams = new URLSearchParams();
-              
+
               if (detailedMode.checked) queryParams.append('detailed', 'true');
               if (!catalogMode.checked) queryParams.append('catalog', catalogMode.checked.toString());
 
@@ -3093,10 +3093,10 @@ export default function GeminiImagePage() {
                     <h3 style="font-size: 1.2rem; font-weight: bold; color: white;">Produtos Encontrados</h3>
                     <span style="background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.875rem; margin-left: auto;">\${data.total_produtos} produtos</span>
                   </div>
-                  
+
                   <div style="display: grid; gap: 12px; max-height: 300px; overflow-y: auto;">
               \`;
-              
+
               data.produtos.forEach((produto, index) => {
                 html += \`
                   <div style="background: rgba(55, 65, 81, 0.5); border-radius: 8px; padding: 12px;">
@@ -3108,7 +3108,7 @@ export default function GeminiImagePage() {
                   </div>
                 \`;
               });
-              
+
               html += '</div></div>';
             }
 
@@ -3116,9 +3116,9 @@ export default function GeminiImagePage() {
               <div style="font-size: 0.75rem; color: #9ca3af; margin-bottom: 16px;">
                 Processado em: \${new Date(data.processado_em).toLocaleString('pt-BR')}
               </div>
-              
-              <button 
-                onclick="downloadJSON()" 
+
+              <button
+                onclick="downloadJSON()"
                 style="display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: #6b7280; color: white; border-radius: 8px; border: none; cursor: pointer;"
               >
                 💾 Exportar JSON
@@ -3126,7 +3126,7 @@ export default function GeminiImagePage() {
             \`;
 
             results.innerHTML = html;
-            
+
             // Store data for download
             window.lastResult = data;
           }
@@ -3168,7 +3168,7 @@ export default function GeminiImagePage() {
         className="container mx-auto px-4 py-8"
       >
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -3178,10 +3178,10 @@ export default function GeminiImagePage() {
             🤖 Gemini Image Processor
           </h1>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-6">
-            Processador de imagens inteligente que utiliza o Google Gemini Vision para extrair 
+            Processador de imagens inteligente que utiliza o Google Gemini Vision para extrair
             informações estruturadas de produtos. Desenvolvido como desafio técnico para vaga de emprego.
           </p>
-          
+
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => setShowDemo(true)}
@@ -3190,9 +3190,9 @@ export default function GeminiImagePage() {
               <Play className="w-5 h-5" />
               Demo Interativo
             </button>
-            
+
             <a
-              href="https://github.com/rafa-mori/gemini-image-processor"
+              href="https://github.com/kubex-ecosystem/gemini-image-processor"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
@@ -3260,15 +3260,15 @@ export default function GeminiImagePage() {
             <h3 className="text-xl font-bold text-white mb-4">📖 Sobre o Projeto</h3>
             <div className="space-y-3 text-gray-300">
               <p>
-                O Gemini Image Processor foi desenvolvido como um desafio técnico para uma vaga de emprego. 
+                O Gemini Image Processor foi desenvolvido como um desafio técnico para uma vaga de emprego.
                 O objetivo era criar uma solução que processasse imagens de produtos e extraísse informações estruturadas.
               </p>
               <p>
-                O maior desafio foi desenvolver um parser robusto capaz de interpretar as respostas variadas 
+                O maior desafio foi desenvolver um parser robusto capaz de interpretar as respostas variadas
                 do modelo Gemini e convertê-las em dados estruturados consistentes.
               </p>
               <p>
-                A aplicação demonstra integração com APIs de IA generativa e técnicas avançadas de 
+                A aplicação demonstra integração com APIs de IA generativa e técnicas avançadas de
                 processamento de linguagem natural.
               </p>
             </div>
@@ -3313,7 +3313,7 @@ export default function GeminiImagePage() {
         className="container mx-auto px-4 py-8"
       >
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -3323,10 +3323,10 @@ export default function GeminiImagePage() {
             🤖 Gemini Image Processor
           </h1>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-6">
-            Processador de imagens inteligente que utiliza o Google Gemini Vision para extrair 
+            Processador de imagens inteligente que utiliza o Google Gemini Vision para extrair
             informações estruturadas de produtos. Desenvolvido como desafio técnico para vaga de emprego.
           </p>
-          
+
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => setShowDemo(true)}
@@ -3335,9 +3335,9 @@ export default function GeminiImagePage() {
               <Play className="w-5 h-5" />
               Demo Interativo
             </button>
-            
+
             <a
-              href="https://github.com/rafa-mori/gemini-image-processor"
+              href="https://github.com/kubex-ecosystem/gemini-image-processor"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
@@ -3405,15 +3405,15 @@ export default function GeminiImagePage() {
             <h3 className="text-xl font-bold text-white mb-4">📖 Sobre o Projeto</h3>
             <div className="space-y-3 text-gray-300">
               <p>
-                O Gemini Image Processor foi desenvolvido como um desafio técnico para uma vaga de emprego. 
+                O Gemini Image Processor foi desenvolvido como um desafio técnico para uma vaga de emprego.
                 O objetivo era criar uma solução que processasse imagens de produtos e extraísse informações estruturadas.
               </p>
               <p>
-                O maior desafio foi desenvolver um parser robusto capaz de interpretar as respostas variadas 
+                O maior desafio foi desenvolver um parser robusto capaz de interpretar as respostas variadas
                 do modelo Gemini e convertê-las em dados estruturados consistentes.
               </p>
               <p>
-                A aplicação demonstra integração com APIs de IA generativa e técnicas avançadas de 
+                A aplicação demonstra integração com APIs de IA generativa e técnicas avançadas de
                 processamento de linguagem natural.
               </p>
             </div>
@@ -3479,7 +3479,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middlewares globais
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
+  origin: process.env.NODE_ENV === 'production'
     ? ['https://rafa-mori.dev'] // Configure com seus domínios em produção
     : true, // Permite qualquer origem em desenvolvimento
   credentials: true
@@ -3506,7 +3506,7 @@ app.use('/api', apiRoutes);
 // Rota de boas-vindas (serve o frontend ou JSON baseado no Accept header)
 app.get('/', (req, res) => {
   const acceptsHtml = req.headers.accept && req.headers.accept.includes('text/html');
-  
+
   if (acceptsHtml) {
     // Serve o frontend HTML
     res.sendFile(join(__dirname, '..', 'public', 'index.html'));
@@ -3539,7 +3539,7 @@ app.use(errorHandler);
 function validateEnvironment() {
   const requiredVars = ['GEMINI_API_KEY'];
   const missing = requiredVars.filter(varName => !process.env[varName]);
-  
+
   if (missing.length > 0) {
     logger.error('Variáveis de ambiente obrigatórias não encontradas:', missing);
     process.exit(1);
@@ -3550,7 +3550,7 @@ function validateEnvironment() {
 function startServer() {
   try {
     validateEnvironment();
-    
+
     const server = app.listen(PORT, () => {
       logger.info(`🚀 Servidor rodando na porta ${PORT}`);
       logger.info(`📚 Documentação: http://localhost:${PORT}/api/docs`);
@@ -3680,7 +3680,7 @@ export class TextCleaner {
    */
   static cleanText(text) {
     if (typeof text !== 'string') return 'N/A';
-    
+
     return text
       .trim()
       .replace(/\s+/g, ' ') // Remove espaços extras
@@ -3694,7 +3694,7 @@ export class TextCleaner {
    */
   static extractPrice(text) {
     if (!text || typeof text !== 'string') return 'N/A';
-    
+
     // Padrões comuns de preço
     const pricePatterns = [
       /R\$\s*(\d+(?:[.,]\d{2})?)/i, // R$ 29,90 ou R$ 29.90
@@ -3719,9 +3719,9 @@ export class TextCleaner {
    */
   static normalizeBrandName(brand) {
     if (!brand || typeof brand !== 'string') return 'N/A';
-    
+
     const cleaned = this.cleanText(brand);
-    
+
     // Capitaliza primeira letra de cada palavra
     return cleaned
       .toLowerCase()
@@ -3765,20 +3765,20 @@ export class RetryUtils {
    */
   static async retry(fn, maxAttempts = 3, delay = 1000) {
     let lastError;
-    
+
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       try {
         return await fn();
       } catch (error) {
         lastError = error;
         logger.warn(`Tentativa ${attempt} falhou:`, error.message);
-        
+
         if (attempt < maxAttempts) {
           await new Promise(resolve => setTimeout(resolve, delay * attempt));
         }
       }
     }
-    
+
     throw lastError;
   }
 }
@@ -3794,7 +3794,7 @@ export const imageUploadSchema = Joi.object({
     encoding: Joi.string().required(),
     mimetype: Joi.string().valid(
       'image/jpeg',
-      'image/jpg', 
+      'image/jpg',
       'image/png',
       'image/webp'
     ).required(),
@@ -3829,7 +3829,7 @@ export const validateImageUpload = (req, res, next) => {
   }
 
   const { error } = imageUploadSchema.validate({ file: req.file });
-  
+
   if (error) {
     return res.status(400).json({
       status: 'erro',
@@ -3843,7 +3843,7 @@ export const validateImageUpload = (req, res, next) => {
 
 export const validateQueryParams = (req, res, next) => {
   const { error, value } = queryParamsSchema.validate(req.query);
-  
+
   if (error) {
     return res.status(400).json({
       status: 'erro',
@@ -3861,10 +3861,10 @@ export const validateQueryParams = (req, res, next) => {
 
 /**
  * Script de teste para a API Gemini Image Processor
- * 
+ *
  * Uso:
  * node test-api.js <caminho-para-imagem>
- * 
+ *
  * Exemplo:
  * node test-api.js ./exemplo-produto.jpg
  */
@@ -3880,13 +3880,13 @@ const API_BASE_URL = process.env.API_URL || 'http://localhost:3000/api';
 
 async function testAPI() {
   console.log('🧪 Testando API Gemini Image Processor\n');
-  
+
   // 1. Testar saúde da API
   console.log('1️⃣ Verificando saúde da API...');
   try {
     const healthResponse = await fetch(`${API_BASE_URL}/health`);
     const healthData = await healthResponse.json();
-    
+
     if (healthResponse.ok) {
       console.log('✅ API está funcionando');
       console.log(`   Status: ${healthData.status}`);
@@ -3904,16 +3904,16 @@ async function testAPI() {
 
   // 2. Testar com imagem se fornecida
   const imagePath = process.argv[2];
-  
+
   if (!imagePath) {
     console.log('ℹ️  Para testar com uma imagem, forneça o caminho:');
     console.log('   node test-api.js ./caminho/para/sua/imagem.jpg\n');
-    
+
     // Listar arquivos de exemplo se existirem
     const exampleDir = join(__dirname, 'examples');
     if (fs.existsSync(exampleDir)) {
       console.log('📁 Imagens de exemplo encontradas:');
-      const files = fs.readdirSync(exampleDir).filter(f => 
+      const files = fs.readdirSync(exampleDir).filter(f =>
         f.toLowerCase().match(/\.(jpg|jpeg|png|webp)$/)
       );
       files.forEach(file => console.log(`   ${join(exampleDir, file)}`));
@@ -3928,39 +3928,39 @@ async function testAPI() {
   }
 
   console.log(`2️⃣ Testando extração de produto com: ${imagePath}`);
-  
+
   try {
     // Preparar FormData
     const imageBuffer = fs.readFileSync(imagePath);
     const formData = new FormData();
-    
+
     // Detectar tipo MIME
     const ext = imagePath.toLowerCase().split('.').pop();
     const mimeTypes = {
       'jpg': 'image/jpeg',
-      'jpeg': 'image/jpeg', 
+      'jpeg': 'image/jpeg',
       'png': 'image/png',
       'webp': 'image/webp'
     };
     const mimeType = mimeTypes[ext] || 'image/jpeg';
-    
+
     const blob = new Blob([imageBuffer], { type: mimeType });
     formData.append('image', blob, imagePath.split('/').pop());
 
     console.log(`   📤 Enviando imagem (${(imageBuffer.length / 1024).toFixed(1)} KB)...`);
-    
+
     // Fazer requisição
     const startTime = Date.now();
     const response = await fetch(`${API_BASE_URL}/extract-product`, {
       method: 'POST',
       body: formData
     });
-    
+
     const duration = Date.now() - startTime;
     const data = await response.json();
-    
+
     console.log(`   ⏱️  Tempo de resposta: ${duration}ms\n`);
-    
+
     if (response.ok && data.status === 'sucesso') {
       console.log('✅ Extração realizada com sucesso!');
       console.log('📋 Resultados:');
@@ -3968,17 +3968,17 @@ async function testAPI() {
       console.log(`   🏷️  Marca: ${data.dados.marca}`);
       console.log(`   💰 Preço: ${data.dados.preco}`);
       console.log(`   🕐 Processado em: ${data.processado_em}\n`);
-      
+
       // Testar também com análise detalhada
       console.log('3️⃣ Testando com análise detalhada...');
-      
+
       const detailedResponse = await fetch(`${API_BASE_URL}/extract-product?detailed=true`, {
         method: 'POST',
         body: formData
       });
-      
+
       const detailedData = await detailedResponse.json();
-      
+
       if (detailedResponse.ok && detailedData.status === 'sucesso') {
         console.log('✅ Análise detalhada concluída!');
         console.log('📋 Resultados detalhados:');
@@ -3989,7 +3989,7 @@ async function testAPI() {
         console.log('⚠️  Análise detalhada falhou');
         console.log(`   Erro: ${detailedData.mensagem}\n`);
       }
-      
+
     } else {
       console.log('❌ Falha na extração');
       console.log(`   Status: ${data.status}`);
@@ -3998,7 +3998,7 @@ async function testAPI() {
         console.log(`   Detalhes: ${data.detalhes}`);
       }
     }
-    
+
   } catch (error) {
     console.log('❌ Erro durante o teste');
     console.log(`   Erro: ${error.message}`);
@@ -4006,56 +4006,56 @@ async function testAPI() {
 
   // 3. Testar modo catálogo se solicitado
   const testCatalog = process.argv.includes('--catalog');
-  
+
   if (imagePath && testCatalog) {
     console.log(`3️⃣ Testando modo catálogo com: ${imagePath}`);
-    
+
     try {
       const imageBuffer = fs.readFileSync(imagePath);
       const formData = new FormData();
-      
+
       const ext = imagePath.toLowerCase().split('.').pop();
       const mimeTypes = {
         'jpg': 'image/jpeg',
-        'jpeg': 'image/jpeg', 
+        'jpeg': 'image/jpeg',
         'png': 'image/png',
         'webp': 'image/webp'
       };
       const mimeType = mimeTypes[ext] || 'image/jpeg';
-      
+
       const blob = new Blob([imageBuffer], { type: mimeType });
       formData.append('image', blob, imagePath.split('/').pop());
 
       console.log(`   📤 Enviando para extração de catálogo...`);
-      
+
       const startTime = Date.now();
       const response = await fetch(`${API_BASE_URL}/extract-catalog`, {
         method: 'POST',
         body: formData
       });
-      
+
       const duration = Date.now() - startTime;
       const data = await response.json();
-      
+
       console.log(`   ⏱️  Tempo de resposta: ${duration}ms\n`);
-      
+
       if (response.ok && data.status === 'sucesso') {
         console.log('✅ Extração de catálogo realizada com sucesso!');
         console.log(`📊 Total de produtos encontrados: ${data.dados.total_produtos}`);
         console.log('🛒 Produtos extraídos:');
-        
+
         data.dados.produtos.forEach((produto, index) => {
           console.log(`   ${index + 1}. 📦 ${produto.nome} | 🏷️ ${produto.marca} | 💰 ${produto.preco}`);
         });
-        
+
         console.log(`   🕐 Processado em: ${data.processado_em}\n`);
-        
+
       } else {
         console.log('❌ Falha na extração de catálogo');
         console.log(`   Status: ${data.status}`);
         console.log(`   Erro: ${data.mensagem}`);
       }
-      
+
     } catch (error) {
       console.log('❌ Erro durante o teste de catálogo');
       console.log(`   Erro: ${error.message}`);

@@ -159,8 +159,8 @@ For further information about the license and terms of use, please refer to the 
 [![React](https://img.shields.io/badge/React-18+-blue.svg)](https://reactjs.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md)
-[![Build Status](https://github.com/rafa-mori/grompt/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/grompt/actions/workflows/release.yml)
-[![GitHub Stars](https://img.shields.io/github/stars/rafa-mori/grompt?style=social)](https://github.com/rafa-mori/grompt/stargazers)
+[![Build Status](https://github.com/kubex-ecosystem/grompt/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/grompt/actions/workflows/release.yml)
+[![GitHub Stars](https://img.shields.io/github/stars/kubex-ecosystem/grompt?style=social)](https://github.com/kubex-ecosystem/grompt/stargazers)
 
 ---
 
@@ -192,8 +192,8 @@ For further information about the license and terms of use, please refer to the 
 **Before Grompt:**
 
 ```plaintext
-hey can you help me make a function that takes a list and sorts it but also 
-removes duplicates and maybe returns the count too? oh and it should work 
+hey can you help me make a function that takes a list and sorts it but also
+removes duplicates and maybe returns the count too? oh and it should work
 with strings and numbers...
 ```
 
@@ -241,7 +241,7 @@ Create a generic TypeScript function that:
 
 ```bash
 # Download the latest release for your platform
-curl -L https://github.com/rafa-mori/grompt/releases/latest/download/grompt-linux-amd64 -o grompt
+curl -L https://github.com/kubex-ecosystem/grompt/releases/latest/download/grompt-linux-amd64 -o grompt
 chmod +x grompt
 ./grompt
 
@@ -251,7 +251,7 @@ chmod +x grompt
 ### Option 2: Build from Source
 
 ```bash
-git clone https://github.com/rafa-mori/grompt
+git clone https://github.com/kubex-ecosystem/grompt
 cd grompt
 make build-all
 ./grompt
@@ -375,7 +375,7 @@ export DEBUG=true                   # Enable debug mode
 
 # AI Provider APIs (all optional)
 export OPENAI_API_KEY=sk-...        # OpenAI GPT models
-export CLAUDE_API_KEY=sk-ant-...    # Anthropic Claude models  
+export CLAUDE_API_KEY=sk-ant-...    # Anthropic Claude models
 export DEEPSEEK_API_KEY=...         # DeepSeek models
 export CHATGPT_API_KEY=...          # ChatGPT API
 
@@ -407,7 +407,7 @@ grompt/
 │   │   └── index.js         # Entry point
 │   └── package.json
 ├── � internal/
-│   ├── services/server/     # HTTP server & handlers  
+│   ├── services/server/     # HTTP server & handlers
 │   └── types/               # API integrations & types
 ├── � cmd/                  # CLI entry points
 ├── 📄 main.go              # Application entry
@@ -661,7 +661,7 @@ Look for issues labeled `good-first-issue` or `help-wanted` to get started!
 Special thanks to:
 
 - **[Anthropic](https://anthropic.com)** for the Claude API and advancing AI safety
-- **[OpenAI](https://openai.com)** for pioneering accessible AI models  
+- **[OpenAI](https://openai.com)** for pioneering accessible AI models
 - **[Ollama](https://ollama.ai)** for making local LLMs accessible to everyone
 - **[Go Team](https://golang.org)** for creating a robust, efficient language
 - **[React Team](https://reactjs.org)** for the excellent UI framework
@@ -685,7 +685,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ by Mori family, using Go + React!**
 
-[⭐ Star this project](https://github.com/rafa-mori/grompt/stargazers) • [🐛 Report Bug](https://github.com/rafa-mori/grompt/issues) • [✨ Request Feature](https://github.com/rafa-mori/grompt/issues)
+[⭐ Star this project](https://github.com/kubex-ecosystem/grompt/stargazers) • [🐛 Report Bug](https://github.com/kubex-ecosystem/grompt/issues) • [✨ Request Feature](https://github.com/kubex-ecosystem/grompt/issues)
 
 *Transform your ideas into powerful prompts today!*
 
@@ -709,7 +709,7 @@ If you discover a security vulnerability in Grompt:
 
 - **Do NOT disclose it publicly** or via any public forum (including Discord).
 - Please report it through one of these private channels:
-  - [GitHub Security Advisories](https://github.com/rafa-mori/grompt/security/advisories)
+  - [GitHub Security Advisories](https://github.com/kubex-ecosystem/grompt/security/advisories)
   - Or email: [maintainer@example.com] (replace this with your actual security contact email)
 
 Include as much detail as possible, such as:
@@ -1174,7 +1174,7 @@ echo "   📁 Arquivos adicionados"
 git commit -m "🎉 Clean history - Security fix
 
 ✅ Removed exposed Supabase keys from history
-✅ Implemented secure environment configuration  
+✅ Implemented secure environment configuration
 ✅ Fresh start for security compliance
 
 Previous commits removed for security reasons.
@@ -1210,7 +1210,7 @@ echo "🎉 LIMPEZA CONCLUÍDA!"
 echo "==================="
 echo ""
 echo "📊 Novo status:"
-echo "   Branch: $(git branch --show-current)"  
+echo "   Branch: $(git branch --show-current)"
 echo "   Commits: $(git rev-list --all --count)"
 echo ""
 echo "🚀 PRÓXIMO PASSO - Execute o comando:"
@@ -1270,63 +1270,63 @@ print_error() {
 
 check_dependencies() {
     print_step "Verificando dependências do sistema..."
-    
+
     # Check Go
     if ! command -v go &> /dev/null; then
         print_error "Go não encontrado! Instale Go 1.21+ antes de continuar."
     fi
-    
+
     GO_VERSION=$(go version | grep -oE 'go[0-9]+\.[0-9]+' | sed 's/go//')
     if [[ "$(printf '%s\n' "1.21" "$GO_VERSION" | sort -V | head -n1)" != "1.21" ]]; then
         print_error "Go 1.21+ é necessário. Versão atual: $GO_VERSION"
     fi
-    
+
     # Check Node.js
     if ! command -v node &> /dev/null; then
         echo -e "${YELLOW}⚠️  Node.js não encontrado. Instalando via nvm...${NC}"
         install_nodejs
     fi
-    
+
     NODE_VERSION=$(node --version | sed 's/v//')
     if [[ "$(printf '%s\n' "16.0.0" "$NODE_VERSION" | sort -V | head -n1)" != "16.0.0" ]]; then
         echo -e "${YELLOW}⚠️  Node.js 16+ recomendado. Versão atual: $NODE_VERSION${NC}"
     fi
-    
+
     # Check npm
     if ! command -v npm &> /dev/null; then
         print_error "npm não encontrado! Instale npm junto com Node.js."
     fi
-    
+
     print_success "Dependências verificadas"
 }
 
 install_nodejs() {
     print_step "Instalando Node.js via nvm..."
-    
+
     # Install nvm if not present
     if ! command -v nvm &> /dev/null; then
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     fi
-    
+
     # Install latest LTS Node.js
     nvm install --lts
     nvm use --lts
-    
+
     print_success "Node.js instalado"
 }
 
 run_setup() {
     print_step "Executando script de configuração..."
-    
+
     # Baixar e executar o script de setup se não existir localmente
     if [ ! -f "setup.sh" ]; then
         echo -e "${YELLOW}📥 Script de setup não encontrado localmente.${NC}"
         echo -e "${YELLOW}💡 Execute o setup.sh que você já tem ou baixe de um repositório.${NC}"
         echo -e "${YELLOW}🔧 Por enquanto, vou criar a estrutura localmente...${NC}"
         echo
-        
+
         # Se não tiver o setup.sh, criar estrutura básica
         create_basic_structure
     else
@@ -1337,39 +1337,39 @@ run_setup() {
 
 create_basic_structure() {
     print_step "Criando estrutura básica do projeto..."
-    
+
     if [ -d "$PROJECT_NAME" ]; then
         print_error "Diretório '$PROJECT_NAME' já existe!"
     fi
-    
+
     mkdir -p "$PROJECT_NAME"
     cd "$PROJECT_NAME"
-    
+
     print_step "Para continuar, você precisa do arquivo setup.sh completo."
     print_step "Execute o script setup.sh que foi gerado anteriormente."
-    
+
     cd ..
     print_success "Estrutura básica criada. Execute o setup.sh para continuar."
 }
 
 build_and_run() {
     print_step "Fazendo build e executando aplicação..."
-    
+
     cd "$PROJECT_NAME"
-    
+
     # Install dependencies
     if [ -f "Makefile" ]; then
         make install-deps
         make build-all
-        
+
         if [ -f "grompt" ] || [ -f "grompt.exe" ]; then
             print_success "Build concluído com sucesso!"
-            
+
             echo -e "${CYAN}🚀 Iniciando Grompt...${NC}"
             echo -e "${YELLOW}💡 A aplicação abrirá automaticamente no seu navegador${NC}"
             echo -e "${YELLOW}🛑 Pressione Ctrl+C para parar o servidor${NC}"
             echo
-            
+
             # Execute the application
             if [ -f "grompt" ]; then
                 ./grompt
@@ -1407,7 +1407,7 @@ show_manual_instructions() {
 
 main() {
     print_banner
-    
+
     echo -e "${CYAN}🎯 O que você gostaria de fazer?${NC}"
     echo -e "${YELLOW}1)${NC} Instalação completa (verificar deps + setup + build + run)"
     echo -e "${YELLOW}2)${NC} Apenas verificar dependências"
@@ -1415,10 +1415,10 @@ main() {
     echo -e "${YELLOW}4)${NC} Apenas build e executar (se já configurado)"
     echo -e "${YELLOW}5)${NC} Mostrar instruções manuais"
     echo
-    
+
     read -p "Escolha uma opção (1-5): " choice
     echo
-    
+
     case $choice in
         1)
             check_dependencies
@@ -1508,42 +1508,42 @@ print_error() {
 # Check dependencies
 check_dependencies() {
     print_step "Verificando dependências..."
-    
+
     if ! command -v node &> /dev/null; then
         print_warning "Node.js não encontrado. Certifique-se de instalar Node.js 16+ para desenvolvimento."
     fi
-    
+
     if ! command -v npm &> /dev/null; then
         print_warning "npm não encontrado. Será necessário para instalar dependências do frontend."
     fi
-    
+
     if ! command -v go &> /dev/null; then
         print_error "Go não encontrado. Por favor, instale Go 1.21+ antes de continuar."
     fi
-    
+
     print_success "Verificação de dependências concluída"
 }
 
 # Create project structure
 create_structure() {
     print_step "Criando estrutura do projeto..."
-    
+
     # Create main directories
     mkdir -p "$PROJECT_NAME"
     cd "$PROJECT_NAME"
-    
+
     # Create frontend structure
     mkdir -p frontend/src
     mkdir -p frontend/public
     mkdir -p .github/workflows
-    
+
     print_success "Estrutura de diretórios criada"
 }
 
 # Create Go files
 create_go_files() {
     print_step "Gerando arquivos Go..."
-    
+
     # main.go
     cat > main.go << 'EOF'
 package main
@@ -1683,7 +1683,7 @@ func (s *Server) Start() error {
 	s.setupRoutes()
 
 	url := fmt.Sprintf("http://localhost:%s", s.config.Port)
-	
+
 	fmt.Printf("🌐 Servidor iniciado em: %s\n", url)
 	fmt.Printf("📁 Servindo aplicação React embarcada\n")
 	fmt.Printf("🔧 APIs disponíveis:\n")
@@ -1779,24 +1779,24 @@ func NewHandlers(cfg *Config) *Handlers {
 
 func (h *Handlers) HandleConfig(w http.ResponseWriter, r *http.Request) {
 	h.setCORSHeaders(w)
-	
+
 	if r.Method == "OPTIONS" {
 		return
 	}
 
 	config := h.config.GetAPIConfig()
-	
+
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(config)
 }
 
 func (h *Handlers) HandleClaude(w http.ResponseWriter, r *http.Request) {
 	h.setCORSHeaders(w)
-	
+
 	if r.Method == "OPTIONS" {
 		return
 	}
-	
+
 	if r.Method != "POST" {
 		http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
 		return
@@ -1828,11 +1828,11 @@ func (h *Handlers) HandleClaude(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handlers) HandleOllama(w http.ResponseWriter, r *http.Request) {
 	h.setCORSHeaders(w)
-	
+
 	if r.Method == "OPTIONS" {
 		return
 	}
-	
+
 	if r.Method != "POST" {
 		http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
 		return
@@ -2071,13 +2071,13 @@ func (o *OllamaAPI) Complete(model, prompt string) (string, error) {
 
 func (o *OllamaAPI) IsAvailable() bool {
 	endpoint := fmt.Sprintf("%s/api/tags", o.baseURL)
-	
+
 	resp, err := o.httpClient.Get(endpoint)
 	if err != nil {
 		return false
 	}
 	defer resp.Body.Close()
-	
+
 	return resp.StatusCode == http.StatusOK
 }
 EOF
@@ -2097,7 +2097,7 @@ EOF
 # Create React files
 create_react_files() {
     print_step "Gerando arquivos React..."
-    
+
     # package.json
     cat > frontend/package.json << EOF
 {
@@ -2238,7 +2238,7 @@ EOF
 # Create configuration files
 create_config_files() {
     print_step "Criando arquivos de configuração..."
-    
+
     # Makefile
     cat > Makefile << 'EOF'
 .PHONY: build-frontend build-backend build-all clean dev install-deps run help
@@ -2417,7 +2417,7 @@ EOF
 # Create App.jsx (the main React component)
 create_app_jsx() {
     print_step "Criando componente React principal..."
-    
+
     cat > frontend/src/App.jsx << 'EOF'
 import React, { useState, useEffect } from 'react';
 import { Trash2, Edit3, Plus, Wand2, Sun, Moon, Copy, Check, AlertCircle } from 'lucide-react';
@@ -2458,7 +2458,7 @@ const Krompt = () => {
         const config = await response.json();
         setAvailableAPIs(config);
         setConnectionStatus('connected');
-        
+
         // Definir provider padrão baseado na disponibilidade
         if (config.claude_available) {
           setApiProvider('claude');
@@ -2499,8 +2499,8 @@ const Krompt = () => {
   };
 
   const saveEdit = () => {
-    setIdeas(ideas.map(idea => 
-      idea.id === editingId 
+    setIdeas(ideas.map(idea =>
+      idea.id === editingId
         ? { ...idea, text: editingText }
         : idea
     ));
@@ -2514,8 +2514,8 @@ const Krompt = () => {
   };
 
   const generateDemoPrompt = () => {
-    const purposeText = purpose === 'Outros' && customPurpose 
-      ? customPurpose 
+    const purposeText = purpose === 'Outros' && customPurpose
+      ? customPurpose
       : purpose;
 
     return `# Prompt Estruturado - ${purposeText}
@@ -2551,13 +2551,13 @@ ${ideas.map((idea, index) => `**${index + 1}.** ${idea.text}`).join('\n')}
 
   const generatePrompt = async () => {
     if (ideas.length === 0) return;
-    
+
     setIsGenerating(true);
-    
-    const purposeText = purpose === 'Outros' && customPurpose 
-      ? customPurpose 
+
+    const purposeText = purpose === 'Outros' && customPurpose
+      ? customPurpose
       : purpose;
-    
+
     const engineeringPrompt = `
 Você é um especialista em engenharia de prompts com conhecimento profundo em técnicas de prompt engineering. Sua tarefa é transformar ideias brutas e desorganizadas em um prompt estruturado, profissional e eficaz.
 
@@ -2585,7 +2585,7 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
 
     try {
       let response;
-      
+
       if (apiProvider === 'demo') {
         // Simular delay para parecer real
         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -2601,11 +2601,11 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
             max_tokens: maxLength
           })
         });
-        
+
         if (!result.ok) {
           throw new Error(`Erro HTTP: ${result.status}`);
         }
-        
+
         const data = await result.json();
         response = data.response || data.content || 'Resposta vazia do servidor';
       } else if (apiProvider === 'ollama') {
@@ -2620,15 +2620,15 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
             stream: false
           })
         });
-        
+
         if (!result.ok) {
           throw new Error(`Erro HTTP: ${result.status}`);
         }
-        
+
         const data = await result.json();
         response = data.response || 'Resposta vazia do Ollama';
       }
-      
+
       setGeneratedPrompt(response);
     } catch (error) {
       console.error('Erro ao gerar prompt:', error);
@@ -2643,7 +2643,7 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
 
 **Dica:** Tente usar o modo demo ou configure uma API diferente.`);
     }
-    
+
     setIsGenerating(false);
   };
 
@@ -2729,7 +2729,7 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
                 {getConnectionStatusText()}
               </span>
             </div>
-            <select 
+            <select
               value={apiProvider}
               onChange={(e) => setApiProvider(e.target.value)}
               className={`px-3 py-2 rounded-lg ${currentTheme.input} border focus:ring-2 focus:ring-blue-500`}
@@ -2798,8 +2798,8 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
                         key={option}
                         onClick={() => setPurpose(option)}
                         className={`px-3 py-2 rounded-lg text-sm border transition-colors ${
-                          purpose === option 
-                            ? 'bg-blue-600 text-white border-blue-600' 
+                          purpose === option
+                            ? 'bg-blue-600 text-white border-blue-600'
                             : `${currentTheme.buttonSecondary} ${currentTheme.border}`
                         }`}
                       >
@@ -2893,7 +2893,7 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
                 ))
               )}
             </div>
-            
+
             {ideas.length > 0 && (
               <button
                 onClick={generatePrompt}
@@ -2920,7 +2920,7 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
                 </button>
               )}
             </div>
-            
+
             {generatedPrompt ? (
               <div className="space-y-4">
                 <div className={`text-xs ${currentTheme.textSecondary} flex justify-between`}>
@@ -2954,7 +2954,7 @@ EOF
 # Create README
 create_readme() {
     print_step "Criando documentação..."
-    
+
     cat > README.md << EOF
 # 🚀 Grompt
 
@@ -3128,7 +3128,7 @@ EOF
 # Create GitHub Actions
 create_github_actions() {
     print_step "Configurando GitHub Actions..."
-    
+
     cat > .github/workflows/build.yml << 'EOF'
 name: Build and Test
 
@@ -3141,32 +3141,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
         go-version: 1.21
-        
+
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-        
+
     - name: Install frontend dependencies
       run: cd frontend && npm install
-      
+
     - name: Build frontend
       run: cd frontend && npm run build
-      
+
     - name: Copy build to root
       run: cp -r frontend/build ./
-      
+
     - name: Build Go application
       run: go build -v ./...
-      
+
     - name: Test
       run: go test -v ./...
 EOF
@@ -3177,7 +3177,7 @@ EOF
 # Initialize git repository
 init_git() {
     print_step "Inicializando repositório Git..."
-    
+
     git init
     git add .
     git commit -m "🚀 Initial commit: Grompt v$PROJECT_VERSION
@@ -3205,26 +3205,26 @@ init_git() {
 # Test build
 test_build() {
     print_step "Testando build inicial..."
-    
+
     if command -v npm &> /dev/null; then
         echo "🔧 Instalando dependências do npm..."
         cd frontend && npm install && cd ..
-        
+
         echo "⚛️  Fazendo build do React..."
         cd frontend && npm run build && cd ..
-        
+
         echo "📁 Copiando build..."
         cp -r frontend/build ./
     else
         print_warning "npm não encontrado. Pulando build do frontend."
     fi
-    
+
     echo "📦 Inicializando módulos Go..."
     go mod tidy
-    
+
     echo "🐹 Testando build Go..."
     go build -o grompt-test .
-    
+
     if [ -f "grompt-test" ]; then
         print_success "Build teste bem-sucedido!"
         rm grompt-test
@@ -3268,12 +3268,12 @@ show_final_instructions() {
 # Main execution
 main() {
     print_banner
-    
+
     # Check if project already exists
     if [ -d "$PROJECT_NAME" ]; then
         print_error "Diretório '$PROJECT_NAME' já existe! Remova-o ou escolha outro nome."
     fi
-    
+
     check_dependencies
     create_structure
     create_go_files
@@ -3472,7 +3472,7 @@ echo ✅ Arquivos Go básicos criados
 
 if "%NODE_AVAILABLE%"=="true" (
     echo ⚛️  Criando arquivos React...
-    
+
     REM Create package.json
     (
     echo {
@@ -3502,7 +3502,7 @@ if "%NODE_AVAILABLE%"=="true" (
     echo   }
     echo }
     ) > frontend\package.json
-    
+
     REM Create basic HTML
     (
     echo ^<!DOCTYPE html^>
@@ -3518,7 +3518,7 @@ if "%NODE_AVAILABLE%"=="true" (
     echo ^</body^>
     echo ^</html^>
     ) > frontend\public\index.html
-    
+
     echo ✅ Arquivos React criados
 ) else (
     echo ⚠️  Pulando criação de arquivos React - Node.js não disponível
@@ -3693,18 +3693,18 @@ import (
 
 var banners = []string{
 	`
-  ______                                            __     
- /      \                                          |  \    
-|  ▓▓▓▓▓▓\ ______   ______  ______ ____   ______  _| ▓▓_   
-| ▓▓ __\▓▓/      \ /      \|      \    \ /      \|   ▓▓ \  
-| ▓▓|    \  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\ ▓▓▓▓▓▓\▓▓▓▓\  ▓▓▓▓▓▓\\▓▓▓▓▓▓  
-| ▓▓ \▓▓▓▓ ▓▓   \▓▓ ▓▓  | ▓▓ ▓▓ | ▓▓ | ▓▓ ▓▓  | ▓▓ | ▓▓ __ 
+  ______                                            __
+ /      \                                          |  \
+|  ▓▓▓▓▓▓\ ______   ______  ______ ____   ______  _| ▓▓_
+| ▓▓ __\▓▓/      \ /      \|      \    \ /      \|   ▓▓ \
+| ▓▓|    \  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\ ▓▓▓▓▓▓\▓▓▓▓\  ▓▓▓▓▓▓\\▓▓▓▓▓▓
+| ▓▓ \▓▓▓▓ ▓▓   \▓▓ ▓▓  | ▓▓ ▓▓ | ▓▓ | ▓▓ ▓▓  | ▓▓ | ▓▓ __
 | ▓▓__| ▓▓ ▓▓     | ▓▓__/ ▓▓ ▓▓ | ▓▓ | ▓▓ ▓▓__/ ▓▓ | ▓▓|  \
  \▓▓    ▓▓ ▓▓      \▓▓    ▓▓ ▓▓ | ▓▓ | ▓▓ ▓▓    ▓▓  \▓▓  ▓▓
-  \▓▓▓▓▓▓ \▓▓       \▓▓▓▓▓▓ \▓▓  \▓▓  \▓▓ ▓▓▓▓▓▓▓    \▓▓▓▓ 
-                                        | ▓▓               
-                                        | ▓▓               
-                                         \▓▓               
+  \▓▓▓▓▓▓ \▓▓       \▓▓▓▓▓▓ \▓▓  \▓▓  \▓▓ ▓▓▓▓▓▓▓    \▓▓▓▓
+                                        | ▓▓
+                                        | ▓▓
+                                         \▓▓
 `,
 }
 
@@ -3738,11 +3738,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	gl "github.com/rafa-mori/grompt/logger"
-	"github.com/rafa-mori/grompt/utils"
+	gl "github.com/kubex-ecosystem/grompt/logger"
+	"github.com/kubex-ecosystem/grompt/utils"
 
-	s "github.com/rafa-mori/grompt/internal/services/server"
-	t "github.com/rafa-mori/grompt/internal/types"
+	s "github.com/kubex-ecosystem/grompt/internal/services/server"
+	t "github.com/kubex-ecosystem/grompt/internal/types"
 
 	"github.com/spf13/cobra"
 )
@@ -3809,7 +3809,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/rafa-mori/grompt/internal/services/squad"
+	"github.com/kubex-ecosystem/grompt/internal/services/squad"
 )
 
 func SquadCmdList() []*cobra.Command {
@@ -3847,7 +3847,7 @@ func generateSquad() *cobra.Command {
 package main
 
 import (
-	gl "github.com/rafa-mori/grompt/logger"
+	gl "github.com/kubex-ecosystem/grompt/logger"
 )
 
 // This file is the entry point for the Grompt CLI application.
@@ -3958,9 +3958,9 @@ var cliUsageTemplate = `{{- if index .Annotations "banner" }}{{colorBlue (index 
 package main
 
 import (
-	cc "github.com/rafa-mori/grompt/cmd/cli"
-	gl "github.com/rafa-mori/grompt/logger"
-	vs "github.com/rafa-mori/grompt/version"
+	cc "github.com/kubex-ecosystem/grompt/cmd/cli"
+	gl "github.com/kubex-ecosystem/grompt/logger"
+	vs "github.com/kubex-ecosystem/grompt/version"
 	"github.com/spf13/cobra"
 
 	"os"
@@ -4059,13 +4059,13 @@ func RegX() *Grompt {
 /// docs/CONTRIBUTING.md ///
 # **Contributing to Grompt**
 
-Thank you for your interest in contributing to **[Grompt](https://github.com/rafa-mori/grompt)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
+Thank you for your interest in contributing to **[Grompt](https://github.com/kubex-ecosystem/grompt)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
 
 ---
 
 ## **How to Contribute**
 
-There are several ways to contribute to [Grompt](https://github.com/rafa-mori/grompt):
+There are several ways to contribute to [Grompt](https://github.com/kubex-ecosystem/grompt):
 
 1. **Report Issues**
    - Found bugs or issues in the code? Open an issue detailing the problem.
@@ -4088,7 +4088,7 @@ There are several ways to contribute to [Grompt](https://github.com/rafa-mori/gr
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/rafa-mori/grompt.git
+git clone https://github.com/kubex-ecosystem/grompt.git
 cd grompt
 ```
 
@@ -4097,10 +4097,10 @@ cd grompt
 Make sure you have Go installed:
 You can install Go using one of the following methods:
 
-- [A super easy way to install Go](https://github.com/rafa-mori/gosetup)
+- [A super easy way to install Go](https://github.com/kubex-ecosystem/gosetup)
 
   ```shell
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafa-mori/gosetup/main/install.sh)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/kubex-ecosystem/gosetup/main/install.sh)"
   ```
 
 - [Convencional way to download Go](https://go.dev/dl/)
@@ -4194,16 +4194,16 @@ Commits should be clear and descriptive. Examples:
 
 ## **Best Practices**
 
-1. **Be Respectful and Welcoming**  
+1. **Be Respectful and Welcoming**
    This is an open-source project for everyone. Respect other contributors and collaborate constructively.
 
-2. **Document Your Changes**  
+2. **Document Your Changes**
    Update the `README.md` or documentation, if necessary, to include your changes.
 
-3. **Add Tests When Possible**  
+3. **Add Tests When Possible**
    Ensure any new functionality is accompanied by tests.
 
-4. **Be Clear in Issue Reports**  
+4. **Be Clear in Issue Reports**
    When opening an issue, be detailed and provide as much context as possible.
 
 ---
@@ -4239,8 +4239,8 @@ We commit to reviewing pull requests and issues as quickly as possible. We value
 
 **Antes do Grompt:**
 ```
-oi, pode me ajudar a fazer uma função que pega uma lista e ordena mas também 
-remove duplicatas e talvez retorna a contagem também? ah e deveria funcionar 
+oi, pode me ajudar a fazer uma função que pega uma lista e ordena mas também
+remove duplicatas e talvez retorna a contagem também? ah e deveria funcionar
 com strings e números...
 ```
 
@@ -4287,7 +4287,7 @@ Crie uma função TypeScript genérica que:
 
 ```bash
 # Baixe a versão mais recente para sua plataforma
-curl -L https://github.com/rafa-mori/grompt/releases/latest/download/grompt-linux-amd64 -o grompt
+curl -L https://github.com/kubex-ecosystem/grompt/releases/latest/download/grompt-linux-amd64 -o grompt
 chmod +x grompt
 ./grompt
 
@@ -4297,7 +4297,7 @@ chmod +x grompt
 ### Opção 2: Construir do Código Fonte
 
 ```bash
-git clone https://github.com/rafa-mori/grompt
+git clone https://github.com/kubex-ecosystem/grompt
 cd grompt
 make build-all
 ./grompt
@@ -4461,7 +4461,7 @@ Recebemos contribuições! Veja como você pode ajudar:
 ### 💻 **Contribuições de Código**
 ```bash
 # 1. Fork e clone
-git clone https://github.com/rafa-mori/grompt
+git clone https://github.com/kubex-ecosystem/grompt
 cd grompt
 
 # 2. Criar branch de funcionalidade
@@ -4526,7 +4526,7 @@ Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](../LICE
 
 **Feito com ❤️ usando Go + React**
 
-[⭐ Star este projeto](https://github.com/rafa-mori/grompt/stargazers) • [🐛 Reportar Bug](https://github.com/rafa-mori/grompt/issues) • [✨ Solicitar Funcionalidade](https://github.com/rafa-mori/grompt/issues)
+[⭐ Star este projeto](https://github.com/kubex-ecosystem/grompt/stargazers) • [🐛 Reportar Bug](https://github.com/kubex-ecosystem/grompt/issues) • [✨ Solicitar Funcionalidade](https://github.com/kubex-ecosystem/grompt/issues)
 
 *Transforme suas ideias em prompts poderosos hoje!*
 
@@ -4543,19 +4543,19 @@ Grompt é uma ferramenta COMPLETA para construção de prompts com assistência 
 ### Via Go
 
 ```bash
-go install github.com/rafa-mori/grompt@latest
+go install github.com/kubex-ecosystem/grompt@latest
 ```
 
 ### Via Docker
 
 ```bash
-docker run -it --rm ghcr.io/rafa-mori/grompt:latest
+docker run -it --rm ghcr.io/kubex-ecosystem/grompt:latest
 ```
 
 ### Via Binaries
 
 ```bash
-wget https://github.com/rafa-mori/grompt/releases/latest/download/grompt_linux_amd64.tar.gz
+wget https://github.com/kubex-ecosystem/grompt/releases/latest/download/grompt_linux_amd64.tar.gz
 tar -xzf grompt_linux_amd64.tar.gz
 chmod +x grompt
 sudo mv grompt /usr/local/bin/
@@ -4590,7 +4590,7 @@ type Grompt struct {
 
 - **`Alias()`**: Returns empty string (no alias defined)
 - **`ShortDescription()`**: Short description of Grompt
-- **`LongDescription()`**: Long description of Grompt  
+- **`LongDescription()`**: Long description of Grompt
 - **`Usage()`**: Command usage pattern
 - **`Examples()`**: List of usage examples
 - **`Active()`**: Always returns `true` (active module)
@@ -4821,7 +4821,7 @@ const App = () => {
     const baseClass = 'flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 font-medium';
     const activeClass = 'bg-blue-600 text-white shadow-lg';
     const inactiveClass = `${currentTheme.textSecondary} hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400`;
-    
+
     return `${baseClass} ${isActivePath(path) ? activeClass : inactiveClass}`;
   };
 
@@ -4841,13 +4841,13 @@ const App = () => {
                   Grompt
                 </h1>
               </div>
-              
+
               <div className="hidden md:flex items-center gap-2">
                 <Link to="/" className={getNavLinkClass('/')}>
                   <Sparkles size={18} />
                   {t('nav.promptCrafter')}
                 </Link>
-                
+
                 <Link to="/agents" className={getNavLinkClass('/agents')}>
                   <Users size={18} />
                   {t('nav.agents')}
@@ -4858,7 +4858,7 @@ const App = () => {
             {/* Controls */}
             <div className="flex items-center gap-4">
               <LanguageSelector currentTheme={currentTheme} />
-              
+
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className={`p-2 rounded-lg ${currentTheme.buttonSecondary} transition-colors`}
@@ -4868,7 +4868,7 @@ const App = () => {
               </button>
             </div>
           </div>
-          
+
           {/* Mobile Navigation */}
           <div className="md:hidden pb-4">
             <div className="flex flex-col gap-2">
@@ -4876,7 +4876,7 @@ const App = () => {
                 <Sparkles size={18} />
                 {t('nav.promptCrafter')}
               </Link>
-              
+
               <Link to="/agents" className={getNavLinkClass('/agents')}>
                 <Users size={18} />
                 {t('nav.agents')}
@@ -4970,9 +4970,9 @@ const PromptCrafter = () => {
   const apiCall = async (endpoint, options = {}) => {
     const baseURL = getBaseURL();
     const url = `${baseURL}${endpoint}`;
-    
+
     console.log(`🔗 Fazendo requisição para: ${url}`);
-    
+
     const defaultOptions = {
       headers: {
         'Content-Type': 'application/json',
@@ -5002,10 +5002,10 @@ const PromptCrafter = () => {
   const checkAPIAvailability = async () => {
     try {
       console.log('🔍 Verificando disponibilidade das APIs...');
-      
+
       // Primeiro, verificar se o servidor Go está rodando
       const healthResponse = await apiCall('/api/health');
-      
+
       if (healthResponse.ok) {
         const healthData = await healthResponse.json();
         setServerInfo(healthData);
@@ -5014,14 +5014,14 @@ const PromptCrafter = () => {
 
       // Verificar configuração das APIs
       const configResponse = await apiCall('/api/config');
-      
+
       if (configResponse.ok) {
         const config = await configResponse.json();
         setAvailableAPIs(config);
         setConnectionStatus('connected');
-        
+
         console.log('📋 Configuração recebida:', config);
-        
+
         // Definir provider padrão baseado na disponibilidade
         if (config.claude_available) {
           setApiProvider('claude');
@@ -5042,7 +5042,7 @@ const PromptCrafter = () => {
       setConnectionStatus('offline');
       setAvailableAPIs({ demo_mode: true });
       setApiProvider('demo');
-      
+
       // Se estivermos em desenvolvimento, mostrar dica
       if (process.env.NODE_ENV === 'development') {
         console.log('💡 Dica: Certifique-se de que o servidor Go está rodando na porta 8080');
@@ -5080,8 +5080,8 @@ const PromptCrafter = () => {
   };
 
   const saveEdit = () => {
-    setIdeas(ideas.map(idea => 
-      idea.id === editingId 
+    setIdeas(ideas.map(idea =>
+      idea.id === editingId
         ? { ...idea, text: editingText }
         : idea
     ));
@@ -5120,8 +5120,8 @@ const PromptCrafter = () => {
   };
 
   const generateDemoPrompt = () => {
-    const purposeText = purpose === 'Outros' && customPurpose 
-      ? customPurpose 
+    const purposeText = purpose === 'Outros' && customPurpose
+      ? customPurpose
       : purpose;
 
     if (ideas.length === 0) {
@@ -5165,13 +5165,13 @@ const PromptCrafter = () => {
 
   const generatePrompt = async () => {
     if (ideas.length === 0) return;
-    
+
     setIsGenerating(true);
-    
-    const purposeText = purpose === 'Outros' && customPurpose 
-      ? customPurpose 
+
+    const purposeText = purpose === 'Outros' && customPurpose
+      ? customPurpose
       : purpose;
-    
+
     const engineeringPrompt = `
 Você é um especialista em engenharia de prompts com conhecimento profundo em técnicas de prompt engineering. Sua tarefa é transformar ideias brutas e desorganizadas em um prompt estruturado, profissional e eficaz.
 
@@ -5199,7 +5199,7 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
 
     try {
       let response;
-      
+
       if (apiProvider === 'demo' || connectionStatus === 'offline') {
         // Simular delay para parecer real
         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -5213,16 +5213,16 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
             max_tokens: maxLength
           })
         });
-        
+
         if (!result.ok) {
           const errorText = await result.text();
           throw new Error(`Erro HTTP ${result.status}: ${errorText}`);
         }
-        
+
         const data = await result.json();
         response = data.response || data.content || 'Resposta vazia do servidor';
         console.log('✅ Resposta recebida do Claude');
-        
+
       } else if (apiProvider === 'openai') {
         console.log('🧠 Enviando para OpenAI API...');
         const result = await apiCall('/api/openai', {
@@ -5233,16 +5233,16 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
             model: selectedModel || 'gpt-3.5-turbo'
           })
         });
-        
+
         if (!result.ok) {
           const errorText = await result.text();
           throw new Error(`Erro HTTP ${result.status}: ${errorText}`);
         }
-        
+
         const data = await result.json();
         response = data.response || 'Resposta vazia do OpenAI';
         console.log('✅ Resposta recebida do OpenAI');
-        
+
       } else if (apiProvider === 'deepseek') {
         console.log('🔍 Enviando para DeepSeek API...');
         const result = await apiCall('/api/deepseek', {
@@ -5253,12 +5253,12 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
             model: selectedModel || 'deepseek-chat'
           })
         });
-        
+
         if (!result.ok) {
           const errorText = await result.text();
           throw new Error(`Erro HTTP ${result.status}: ${errorText}`);
         }
-        
+
         const data = await result.json();
         response = data.response || 'Resposta vazia do DeepSeek';
         console.log('✅ Resposta recebida do DeepSeek');
@@ -5272,17 +5272,17 @@ IMPORTANTE: Responda APENAS com o prompt estruturado em markdown, sem explicaç�
             stream: false
           })
         });
-        
+
         if (!result.ok) {
           const errorText = await result.text();
           throw new Error(`Erro HTTP ${result.status}: ${errorText}`);
         }
-        
+
         const data = await result.json();
         response = data.response || 'Resposta vazia do Ollama';
         console.log('✅ Resposta recebida do Ollama');
       }
-      
+
       setGeneratedPrompt(response);
     } catch (error) {
       console.error('❌ Erro ao gerar prompt:', error);
@@ -5311,7 +5311,7 @@ make run
 \`\`\`
 `);
     }
-    
+
     setIsGenerating(false);
   };
 
@@ -5395,8 +5395,8 @@ make run
 
       {/* Conteúdo colapsável com animação super suave */}
       <div className={`overflow-hidden transition-all duration-700 ease-in-out transform origin-top p-6 ${
-        isInputCollapsed 
-          ? 'max-h-0 opacity-0 scale-y-0 -translate-y-4 pointer-events-none' 
+        isInputCollapsed
+          ? 'max-h-0 opacity-0 scale-y-0 -translate-y-4 pointer-events-none'
           : 'max-h-[800px] opacity-100 scale-y-100 translate-y-0 pointer-events-auto'
       }`}>
         <div className={`transition-all duration-500 delay-100 ${
@@ -5440,8 +5440,8 @@ make run
                     key={option.value}
                     onClick={() => setPurpose(option.value)}
                     className={`px-3 py-2 rounded-lg text-sm border transition-colors ${
-                      purpose === option.value 
-                        ? 'bg-blue-600 text-white border-blue-600' 
+                      purpose === option.value
+                        ? 'bg-blue-600 text-white border-blue-600'
                         : `${currentTheme.buttonSecondary} ${currentTheme.border}`
                     }`}
                   >
@@ -5485,7 +5485,7 @@ make run
     <div className={`${currentTheme.cardBg} rounded-xl border ${currentTheme.border} shadow-lg transition-all duration-500 ease-in-out hover:shadow-xl transform hover:scale-[1.02] will-change-transform ${
       isOutputCollapsed ? 'h-20' : 'h-auto'
     }`}>
-      
+
       {/* Header sempre visível */}
       <div className="flex justify-between items-center p-6 pb-0">
         <div className="flex items-center gap-3">
@@ -5498,7 +5498,7 @@ make run
             </div>
           )}
         </div>
-        
+
         <div className="flex items-center gap-2">
           {/* Botão de copiar quando há conteúdo - com animação suave */}
           {generatedPrompt && !isOutputCollapsed && (
@@ -5514,11 +5514,11 @@ make run
           )}
         </div>
       </div>
-      
+
       {/* Conteúdo colapsável com animação super suave */}
       <div className={`overflow-hidden transition-all duration-700 ease-in-out transform origin-top ${
-        isOutputCollapsed 
-          ? 'max-h-0 opacity-0 scale-y-0 -translate-y-4 pointer-events-none' 
+        isOutputCollapsed
+          ? 'max-h-0 opacity-0 scale-y-0 -translate-y-4 pointer-events-none'
           : 'max-h-[800px] opacity-100 scale-y-100 translate-y-0 pointer-events-auto'
       }`}>
         <div className={`p-6 pt-4 transition-all duration-500 delay-100 ${
@@ -5530,7 +5530,7 @@ make run
                 <span>{t('output.characters')}: {generatedPrompt.length.toLocaleString()}</span>
                 <span>{t('output.limit')}: {maxLength.toLocaleString()}</span>
                 <div className={`w-24 h-1 rounded-full ${currentTheme.border} overflow-hidden`}>
-                  <div 
+                  <div
                     className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"
                     style={{ width: `${Math.min((generatedPrompt.length / maxLength) * 100, 100)}%` }}
                   />
@@ -5557,7 +5557,7 @@ make run
           )}
         </div>
       </div>
-      
+
       {/* Indicador visual quando colapsado */}
       {isOutputCollapsed && (
         <div className="px-6 pb-3">
@@ -5607,7 +5607,7 @@ make run
                 {getConnectionStatusText()}
               </span>
             </div>
-            <select 
+            <select
               value={apiProvider}
               onChange={(e) => {
                 setApiProvider(e.target.value);
@@ -5629,7 +5629,7 @@ make run
               )}
               <option value="demo">{t('providers.demo')}</option>
             </select>
-            
+
             {/* Model Selection */}
             {apiProvider !== 'demo' && availableAPIs.available_models && availableAPIs.available_models[apiProvider] && (
               <select
@@ -5643,9 +5643,9 @@ make run
                 ))}
               </select>
             )}
-            
+
             <LanguageSelector currentTheme={currentTheme} />
-            
+
             <button
               onClick={() => setDarkMode(!darkMode)}
               className={`p-2 rounded-lg ${currentTheme.buttonSecondary} transition-colors`}
@@ -5660,8 +5660,8 @@ make run
           <div className="mb-6 p-4 bg-yellow-900 border border-yellow-600 rounded-lg flex items-center gap-3">
             <AlertCircle className="text-yellow-400" size={20} />
             <div className="text-yellow-100">
-              <strong>{t('alerts.offlineTitle')}</strong> 
-              {process.env.NODE_ENV === 'development' 
+              <strong>{t('alerts.offlineTitle')}</strong>
+              {process.env.NODE_ENV === 'development'
                 ? t('alerts.offlineDev')
                 : t('alerts.offlineProduction')
               }
@@ -5673,7 +5673,7 @@ make run
         {process.env.NODE_ENV === 'development' && serverInfo && (
           <div className="mb-6 p-4 bg-blue-900 border border-blue-600 rounded-lg">
             <p className="text-blue-100">
-              <strong>🔧 {t('alerts.serverInfo')}:</strong> v{serverInfo.version} | 
+              <strong>🔧 {t('alerts.serverInfo')}:</strong> v{serverInfo.version} |
               APIs: {serverInfo.apis?.claude ? '✅' : '❌'} Claude, {serverInfo.apis?.ollama ? '✅' : '❌'} Ollama
             </p>
           </div>
@@ -5683,7 +5683,7 @@ make run
           // Grid que se adapta fluida e dinamicamente
           isInputCollapsed && isOutputCollapsed
             ? 'grid-cols-1' // Apenas Ideas quando ambos colapsados
-            : isInputCollapsed && !isOutputCollapsed 
+            : isInputCollapsed && !isOutputCollapsed
             ? 'grid-cols-1 lg:grid-cols-2' // Ideas + Output
             : !isInputCollapsed && isOutputCollapsed
             ? 'grid-cols-1 lg:grid-cols-2' // Input + Ideas
@@ -5692,8 +5692,8 @@ make run
 
           {/* Input Section - Sempre no DOM, mas com transições ultra-fluidas */}
           <div className={`transition-all duration-700 ease-out transform origin-center will-change-transform ${
-            isInputCollapsed 
-              ? 'opacity-0 scale-95 translate-y-4 pointer-events-none filter blur-sm' 
+            isInputCollapsed
+              ? 'opacity-0 scale-95 translate-y-4 pointer-events-none filter blur-sm'
               : 'opacity-100 scale-100 translate-y-0 pointer-events-auto filter blur-0'
           } ${isInputCollapsed ? 'lg:hidden' : ''}`}>
             {inputDiv}
@@ -5705,12 +5705,12 @@ make run
             isInputCollapsed && isOutputCollapsed ? 'lg:col-span-1' : ''
           }`}>
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              💡 {t('ideas.title')} 
+              💡 {t('ideas.title')}
               <span className={`px-2 py-1 rounded-full text-sm ${currentTheme.textSecondary} bg-blue-500/10 border border-blue-500/20`}>
                 {ideas.length}
               </span>
               <div className="h-px flex-1 bg-gradient-to-r from-purple-500/20 to-transparent ml-4"></div>
-              
+
               {/* Botão Limpar Tudo - aparece quando há conteúdo */}
               {(ideas.length > 0 || generatedPrompt || currentInput.trim()) && (
                 <button
@@ -5734,8 +5734,8 @@ make run
                 </p>
               ) : (
                 ideas.map((idea, index) => (
-                  <div 
-                    key={idea.id} 
+                  <div
+                    key={idea.id}
                     className={`p-3 rounded-lg border ${currentTheme.border} bg-opacity-50 transition-all duration-300 ease-out transform hover:scale-[1.02] hover:shadow-md animate-in slide-in-from-bottom-4 fade-in duration-500`}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
@@ -5787,7 +5787,7 @@ make run
                 ))
               )}
             </div>
-            
+
             {ideas.length > 0 && (
               <div className="items-bottom justify-between border-opacity-0 h-auto">
                 <div className="mt-6 pt-4 border-t border-opacity-20 border-gradient-to-r from-purple-500 to-blue-500">
@@ -5795,49 +5795,49 @@ make run
                     onClick={generatePrompt}
                     disabled={isGenerating}
                     className={`
-                      w-full 
-                      flex 
-                      items-center 
-                      justify-center 
-                      gap-3 
-                      px-6 
-                      py-4 
-                      rounded-xl 
-                      bg-gradient-to-r 
-                      from-purple-600 
-                      via-blue-600 
-                      to-indigo-600 
-                      text-white 
-                      hover:from-purple-700 
-                      hover:via-blue-700 
-                      hover:to-indigo-700 
-                      disabled:opacity-50 
-                      disabled:cursor-not-allowed 
-                      transition-all 
+                      w-full
+                      flex
+                      items-center
+                      justify-center
+                      gap-3
+                      px-6
+                      py-4
+                      rounded-xl
+                      bg-gradient-to-r
+                      from-purple-600
+                      via-blue-600
+                      to-indigo-600
+                      text-white
+                      hover:from-purple-700
+                      hover:via-blue-700
+                      hover:to-indigo-700
+                      disabled:opacity-50
+                      disabled:cursor-not-allowed
+                      transition-all
                       duration-500
-                      transform 
-                      hover:scale-105 
+                      transform
+                      hover:scale-105
                       active:scale-95
                       hover:shadow-xl
                       hover:shadow-purple-500/25
-                      font-medium 
-                      text-lg 
-                      relative 
-                      overflow-hidden 
+                      font-medium
+                      text-lg
+                      relative
+                      overflow-hidden
                       group
                       ${isGenerating ? 'animate-pulse' : ''}
                     `}
                   >
                     {/* Efeito de brilho no hover mais suave */}
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1500 ease-in-out"></div>
-                    
+
                     <div className={`transition-transform duration-300 ${isGenerating ? 'animate-spin' : 'group-hover:animate-pulse'}`}>
                       <Wand2 size={24} />
                     </div>
                     <span className="relative z-10 transition-all duration-300">
                       {isGenerating ? t('ideas.generating') : t('ideas.generateButton')}
                     </span>
-                    
+
                     {!isGenerating && (
                       <div className="absolute right-4 opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:animate-bounce">
                         ✨
@@ -5851,8 +5851,8 @@ make run
 
           {/* Generated Prompt - Sempre no DOM, mas com transições ultra-fluidas */}
           <div className={`transition-all duration-700 ease-out transform origin-center will-change-transform ${
-            isOutputCollapsed 
-              ? 'opacity-0 scale-95 translate-y-4 pointer-events-none filter blur-sm' 
+            isOutputCollapsed
+              ? 'opacity-0 scale-95 translate-y-4 pointer-events-none filter blur-sm'
               : 'opacity-100 scale-100 translate-y-0 pointer-events-auto filter blur-0'
           } ${isOutputCollapsed ? 'lg:hidden' : ''}`}>
             {outputDiv}
@@ -5869,14 +5869,14 @@ export default PromptCrafter;
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { 
-  Save, 
-  ArrowLeft, 
-  Plus, 
-  X, 
-  Sun, 
-  Moon, 
-  User, 
+import {
+  Save,
+  ArrowLeft,
+  Plus,
+  X,
+  Sun,
+  Moon,
+  User,
   Code,
   Shield,
   FileText
@@ -5894,7 +5894,7 @@ const AgentForm = () => {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
-  
+
   // Form data
   const [formData, setFormData] = useState({
     Title: '',
@@ -5903,7 +5903,7 @@ const AgentForm = () => {
     Restrictions: [],
     PromptExample: ''
   });
-  
+
   const [currentSkill, setCurrentSkill] = useState('');
   const [currentRestriction, setCurrentRestriction] = useState('');
 
@@ -6011,7 +6011,7 @@ const AgentForm = () => {
   // Submeter formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.Title.trim()) {
       setError('Title is required');
       return;
@@ -6020,18 +6020,18 @@ const AgentForm = () => {
     try {
       setSaving(true);
       setError(null);
-      
+
       const url = isEdit ? `/api/agents/${id}` : '/api/agents';
       const method = isEdit ? 'PUT' : 'POST';
-      
+
       const response = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      
+
       if (!response.ok) throw new Error('Failed to save agent');
-      
+
       navigate('/agents');
     } catch (err) {
       setError(err.message);
@@ -6069,10 +6069,10 @@ const AgentForm = () => {
                 {isEdit ? t('agents.edit') : t('agents.new')}
               </h1>
             </div>
-            
+
             <div className="flex items-center gap-4">
               <LanguageSelector currentTheme={currentTheme} />
-              
+
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className={`p-2 rounded-lg ${currentTheme.buttonSecondary} transition-colors`}
@@ -6098,7 +6098,7 @@ const AgentForm = () => {
               <User size={20} className="text-blue-500" />
               {t('agents.form.basic')}
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium mb-2">
@@ -6113,7 +6113,7 @@ const AgentForm = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium mb-2">
                   {t('agents.form.role')}
@@ -6135,7 +6135,7 @@ const AgentForm = () => {
               <Code size={20} className="text-green-500" />
               {t('agents.form.skills')}
             </h2>
-            
+
             <div className="space-y-4">
               <div className="flex gap-2">
                 <input
@@ -6154,7 +6154,7 @@ const AgentForm = () => {
                   <Plus size={16} />
                 </button>
               </div>
-              
+
               {formData.Skills.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {formData.Skills.map((skill, index) => (
@@ -6183,7 +6183,7 @@ const AgentForm = () => {
               <Shield size={20} className="text-red-500" />
               {t('agents.form.restrictions')}
             </h2>
-            
+
             <div className="space-y-4">
               <div className="flex gap-2">
                 <input
@@ -6202,7 +6202,7 @@ const AgentForm = () => {
                   <Plus size={16} />
                 </button>
               </div>
-              
+
               {formData.Restrictions.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {formData.Restrictions.map((restriction, index) => (
@@ -6231,7 +6231,7 @@ const AgentForm = () => {
               <FileText size={20} className="text-purple-500" />
               {t('agents.form.promptExample')}
             </h2>
-            
+
             <textarea
               value={formData.PromptExample}
               onChange={(e) => handleInputChange('PromptExample', e.target.value)}
@@ -6271,13 +6271,13 @@ export default AgentForm;
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { 
-  ArrowLeft, 
-  Edit, 
-  Trash2, 
-  Sun, 
-  Moon, 
-  User, 
+import {
+  ArrowLeft,
+  Edit,
+  Trash2,
+  Sun,
+  Moon,
+  User,
   Code,
   Shield,
   FileText,
@@ -6348,7 +6348,7 @@ const AgentView = () => {
   // Deletar agent
   const deleteAgent = async () => {
     if (!window.confirm(t('agents.confirmDelete'))) return;
-    
+
     try {
       const response = await fetch(`/api/agents/${id}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Failed to delete agent');
@@ -6387,7 +6387,7 @@ ${agent.Restrictions?.map(restriction => `- ${restriction}`).join('\n') || 'No r
 ${agent.PromptExample || 'No prompt example provided'}
 \`\`\`
 `;
-    
+
     const blob = new Blob([markdown], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -6456,17 +6456,17 @@ ${agent.PromptExample || 'No prompt example provided'}
               <User className="h-8 w-8 text-blue-500" />
               <h1 className="text-2xl font-bold">{agent.Title}</h1>
             </div>
-            
+
             <div className="flex items-center gap-4">
               <LanguageSelector currentTheme={currentTheme} />
-              
+
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className={`p-2 rounded-lg ${currentTheme.buttonSecondary} transition-colors`}
               >
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-              
+
               <button
                 onClick={() => navigate(`/agents/${id}/edit`)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg ${currentTheme.button} transition-colors`}
@@ -6474,7 +6474,7 @@ ${agent.PromptExample || 'No prompt example provided'}
                 <Edit size={16} />
                 {t('edit')}
               </button>
-              
+
               <button
                 onClick={deleteAgent}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white transition-colors"
@@ -6494,7 +6494,7 @@ ${agent.PromptExample || 'No prompt example provided'}
             <User size={20} className="text-blue-500" />
             {t('agents.form.basic')}
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium mb-2">
@@ -6502,7 +6502,7 @@ ${agent.PromptExample || 'No prompt example provided'}
               </label>
               <p className={`${currentTheme.textSecondary} text-lg`}>{agent.Title}</p>
             </div>
-            
+
             {agent.Role && (
               <div>
                 <label className="block text-sm font-medium mb-2">
@@ -6521,7 +6521,7 @@ ${agent.PromptExample || 'No prompt example provided'}
               <Code size={20} className="text-green-500" />
               {t('agents.form.skills')}
             </h2>
-            
+
             <div className="flex flex-wrap gap-2">
               {agent.Skills.map((skill, index) => (
                 <span
@@ -6542,7 +6542,7 @@ ${agent.PromptExample || 'No prompt example provided'}
               <Shield size={20} className="text-red-500" />
               {t('agents.form.restrictions')}
             </h2>
-            
+
             <div className="flex flex-wrap gap-2">
               {agent.Restrictions.map((restriction, index) => (
                 <span
@@ -6564,7 +6564,7 @@ ${agent.PromptExample || 'No prompt example provided'}
                 <FileText size={20} className="text-purple-500" />
                 {t('agents.form.promptExample')}
               </h2>
-              
+
               <div className="flex gap-2">
                 <button
                   onClick={copyPromptExample}
@@ -6573,7 +6573,7 @@ ${agent.PromptExample || 'No prompt example provided'}
                   <Copy size={16} />
                   {copied ? t('copied') : t('copy')}
                 </button>
-                
+
                 <button
                   onClick={exportAsMarkdown}
                   className={`flex items-center gap-2 px-3 py-2 rounded-lg ${currentTheme.buttonSecondary} transition-colors`}
@@ -6583,7 +6583,7 @@ ${agent.PromptExample || 'No prompt example provided'}
                 </button>
               </div>
             </div>
-            
+
             <pre className={`${currentTheme.input} ${currentTheme.border} border rounded-lg p-4 whitespace-pre-wrap text-sm overflow-auto max-h-96`}>
               {agent.PromptExample}
             </pre>
@@ -6600,12 +6600,12 @@ export default AgentView;
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Users, 
-  Plus, 
-  Edit, 
-  Trash2, 
-  Download, 
+import {
+  Users,
+  Plus,
+  Edit,
+  Trash2,
+  Download,
   FileText,
   Search,
   Grid,
@@ -6625,7 +6625,7 @@ import ValidationAgentsModal from './ValidationAgentsModal';
 const AgentsDashboard = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  
+
   // Estados
   const [agents, setAgents] = useState([]);
   const [darkMode, setDarkMode] = useState(true);
@@ -6641,7 +6641,7 @@ const AgentsDashboard = () => {
   const [requirements, setRequirements] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedMarkdown, setGeneratedMarkdown] = useState('');
-  
+
   // Temas
   const theme = {
     dark: {
@@ -6693,7 +6693,7 @@ const AgentsDashboard = () => {
   const filteredAgents = agents.filter(agent => {
     const matchesSearch = agent.Title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          agent.Role?.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = filterCategory === 'all' || 
+    const matchesFilter = filterCategory === 'all' ||
                          agent.Skills?.some(skill => skill.toLowerCase().includes(filterCategory.toLowerCase()));
     return matchesSearch && matchesFilter;
   });
@@ -6718,7 +6718,7 @@ const AgentsDashboard = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ requirements })
       });
-      
+
       if (!response.ok) throw new Error('Failed to generate agents');
       const data = await response.json();
       setGeneratedMarkdown(data.markdown);
@@ -6735,7 +6735,7 @@ const AgentsDashboard = () => {
       const response = await fetch('/api/agents/markdown');
       if (!response.ok) throw new Error('Failed to export markdown');
       const markdown = await response.text();
-      
+
       const blob = new Blob([markdown], { type: 'text/markdown' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -6799,10 +6799,10 @@ const AgentsDashboard = () => {
               <Users className="h-8 w-8 text-blue-500" />
               <h1 className="text-2xl font-bold">{t('agents.title')}</h1>
             </div>
-            
+
             <div className="flex items-center gap-4">
               <LanguageSelector currentTheme={currentTheme} />
-              
+
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className={`p-2 rounded-lg ${currentTheme.buttonSecondary} transition-colors`}
@@ -6830,7 +6830,7 @@ const AgentsDashboard = () => {
                   className={`pl-10 pr-4 py-2 rounded-lg ${currentTheme.input} ${currentTheme.border} border focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full sm:w-64`}
                 />
               </div>
-              
+
               <select
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
@@ -6952,7 +6952,7 @@ const AgentsDashboard = () => {
                 <div className={viewMode === 'list' ? 'flex-1' : ''}>
                   <h3 className="text-xl font-semibold mb-2">{agent.Title}</h3>
                   <p className={`${currentTheme.textSecondary} mb-3`}>{agent.Role}</p>
-                  
+
                   {agent.Skills && agent.Skills.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {agent.Skills.map((skill, index) => (
@@ -7001,7 +7001,7 @@ const AgentsDashboard = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
           <div className={`${currentTheme.cardBg} rounded-lg p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto`}>
             <h2 className="text-2xl font-bold mb-4">{t('agents.generate.title')}</h2>
-            
+
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2">
                 {t('agents.generate.requirements')}
@@ -7049,21 +7049,21 @@ const AgentsDashboard = () => {
       )}
 
       {/* Modais */}
-      <ImportAgentsModal 
+      <ImportAgentsModal
         isOpen={showImportModal}
         onClose={() => setShowImportModal(false)}
         onImport={handleImportSuccess}
         darkMode={darkMode}
       />
-      
-      <ExportAgentsModal 
+
+      <ExportAgentsModal
         isOpen={showExportModal}
         onClose={() => setShowExportModal(false)}
         agents={agents}
         darkMode={darkMode}
       />
-      
-      <ValidationAgentsModal 
+
+      <ValidationAgentsModal
         isOpen={showValidationModal}
         onClose={() => setShowValidationModal(false)}
         darkMode={darkMode}
@@ -7077,9 +7077,9 @@ export default AgentsDashboard;
 /// frontend/src/components/ExportAgentsModal.jsx ///
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { 
-  X, 
-  Download, 
+import {
+  X,
+  Download,
   Loader,
   CheckSquare,
   Square
@@ -7087,12 +7087,12 @@ import {
 
 const ExportAgentsModal = ({ isOpen, onClose, agents, darkMode }) => {
   const { t } = useTranslation();
-  
+
   const [selectedAgents, setSelectedAgents] = useState(new Set());
   const [format, setFormat] = useState('markdown');
   const [filename, setFilename] = useState('agents');
   const [loading, setLoading] = useState(false);
-  
+
   const theme = {
     dark: {
       bg: 'bg-gray-900',
@@ -7158,9 +7158,9 @@ const ExportAgentsModal = ({ isOpen, onClose, agents, darkMode }) => {
 
   const handleExport = async () => {
     if (selectedAgents.size === 0) return;
-    
+
     setLoading(true);
-    
+
     try {
       const response = await fetch('/api/agents/export-advanced', {
         method: 'POST',
@@ -7173,7 +7173,7 @@ const ExportAgentsModal = ({ isOpen, onClose, agents, darkMode }) => {
           filename: filename
         })
       });
-      
+
       if (response.ok) {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
@@ -7185,7 +7185,7 @@ const ExportAgentsModal = ({ isOpen, onClose, agents, darkMode }) => {
         a.click();
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
-        
+
         // Close modal after successful export
         handleClose();
       } else {
@@ -7295,7 +7295,7 @@ const ExportAgentsModal = ({ isOpen, onClose, agents, darkMode }) => {
               <h3 className={`text-lg font-semibold ${currentTheme.text}`}>
                 {t('agents.export.format')}
               </h3>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {Object.entries({
                   markdown: t('agents.export.formats.markdown'),
@@ -7347,7 +7347,7 @@ const ExportAgentsModal = ({ isOpen, onClose, agents, darkMode }) => {
           >
             {t('ideas.cancel')}
           </button>
-          
+
           <button
             onClick={handleExport}
             disabled={selectedAgents.size === 0 || loading || !filename.trim()}
@@ -7371,12 +7371,12 @@ export default ExportAgentsModal;
 /// frontend/src/components/ImportAgentsModal.jsx ///
 import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { 
-  X, 
-  Upload, 
-  FileText, 
-  AlertCircle, 
-  CheckCircle, 
+import {
+  X,
+  Upload,
+  FileText,
+  AlertCircle,
+  CheckCircle,
   Loader,
   AlertTriangle
 } from 'lucide-react';
@@ -7384,7 +7384,7 @@ import {
 const ImportAgentsModal = ({ isOpen, onClose, onImport, darkMode }) => {
   const { t } = useTranslation();
   const fileInputRef = useRef(null);
-  
+
   const [content, setContent] = useState('');
   const [mode, setMode] = useState('upload'); // 'upload' or 'paste'
   const [options, setOptions] = useState({
@@ -7395,7 +7395,7 @@ const ImportAgentsModal = ({ isOpen, onClose, onImport, darkMode }) => {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState('input'); // 'input', 'preview', 'importing'
-  
+
   const theme = {
     dark: {
       bg: 'bg-gray-900',
@@ -7440,10 +7440,10 @@ const ImportAgentsModal = ({ isOpen, onClose, onImport, darkMode }) => {
 
   const validateContent = async () => {
     if (!content.trim()) return;
-    
+
     setLoading(true);
     setErrors([]);
-    
+
     try {
       const response = await fetch('/api/agents/validate', {
         method: 'POST',
@@ -7452,9 +7452,9 @@ const ImportAgentsModal = ({ isOpen, onClose, onImport, darkMode }) => {
         },
         body: JSON.stringify({ content: content.trim() })
       });
-      
+
       const data = await response.json();
-      
+
       if (response.ok) {
         setPreviewData(data);
         setErrors(data.errors || []);
@@ -7471,17 +7471,17 @@ const ImportAgentsModal = ({ isOpen, onClose, onImport, darkMode }) => {
 
   const handleImport = async () => {
     if (!content.trim()) return;
-    
+
     // Confirm replacement if not merging
     if (!options.merge) {
       if (!window.confirm(t('agents.import.confirmReplace'))) {
         return;
       }
     }
-    
+
     setLoading(true);
     setStep('importing');
-    
+
     try {
       const response = await fetch('/api/agents/import', {
         method: 'POST',
@@ -7494,9 +7494,9 @@ const ImportAgentsModal = ({ isOpen, onClose, onImport, darkMode }) => {
           validate: options.validate
         })
       });
-      
+
       const data = await response.json();
-      
+
       if (response.ok && data.success) {
         // Success - close modal and refresh agents list
         onImport(data);
@@ -7759,7 +7759,7 @@ const ImportAgentsModal = ({ isOpen, onClose, onImport, darkMode }) => {
           >
             {t('ideas.cancel')}
           </button>
-          
+
           {step === 'input' && (
             <button
               onClick={validateContent}
@@ -7770,7 +7770,7 @@ const ImportAgentsModal = ({ isOpen, onClose, onImport, darkMode }) => {
               <span>{t('agents.import.validate')}</span>
             </button>
           )}
-          
+
           {step === 'preview' && (
             <button
               onClick={handleImport}
@@ -7816,7 +7816,7 @@ const LanguageSelector = ({ currentTheme }) => {
           {languages.find(lang => lang.code === i18n.language)?.flag || '🌍'}
         </span>
       </button>
-      
+
       <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
         {languages.map((language) => (
           <button
@@ -7840,22 +7840,22 @@ export default LanguageSelector;
 /// frontend/src/components/ValidationAgentsModal.jsx ///
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { 
-  X, 
-  FileText, 
-  AlertCircle, 
-  CheckCircle, 
+import {
+  X,
+  FileText,
+  AlertCircle,
+  CheckCircle,
   Loader,
   AlertTriangle
 } from 'lucide-react';
 
 const ValidationAgentsModal = ({ isOpen, onClose, darkMode }) => {
   const { t } = useTranslation();
-  
+
   const [content, setContent] = useState('');
   const [validationResult, setValidationResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  
+
   const theme = {
     dark: {
       bg: 'bg-gray-900',
@@ -7889,10 +7889,10 @@ const ValidationAgentsModal = ({ isOpen, onClose, darkMode }) => {
 
   const handleValidate = async () => {
     if (!content.trim()) return;
-    
+
     setLoading(true);
     setValidationResult(null);
-    
+
     try {
       const response = await fetch('/api/agents/validate', {
         method: 'POST',
@@ -7901,9 +7901,9 @@ const ValidationAgentsModal = ({ isOpen, onClose, darkMode }) => {
         },
         body: JSON.stringify({ content: content.trim() })
       });
-      
+
       const data = await response.json();
-      
+
       if (response.ok) {
         setValidationResult(data);
       } else {
@@ -8069,7 +8069,7 @@ const ValidationAgentsModal = ({ isOpen, onClose, darkMode }) => {
           >
             {t('ideas.cancel')}
           </button>
-          
+
           <button
             onClick={handleValidate}
             disabled={!content.trim() || loading}
@@ -8115,11 +8115,11 @@ i18n
     resources,
     lng: 'pt-BR', // idioma padrão
     fallbackLng: 'pt-BR',
-    
+
     interpolation: {
       escapeValue: false, // React já faz escape
     },
-    
+
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
@@ -8205,7 +8205,7 @@ export default i18n;
   "ideas": {
     "title": "Your Ideas",
     "edit": "Edit",
-    "delete": "Delete", 
+    "delete": "Delete",
     "save": "Save",
     "cancel": "Cancel",
     "generateButton": "Help me, engineer?!",
@@ -8218,7 +8218,7 @@ export default i18n;
     "purpose": "Prompt Purpose",
     "purposeCode": "Code",
     "purposeImage": "Image",
-    "purposeOthers": "Others", 
+    "purposeOthers": "Others",
     "customPurpose": "Describe the prompt objective...",
     "maxLength": "Maximum Length",
     "characters": "characters"
@@ -8316,7 +8316,7 @@ export default i18n;
 }
   "providers": {
     "claude": "Claude API",
-    "openai": "OpenAI API", 
+    "openai": "OpenAI API",
     "deepseek": "DeepSeek API",
     "ollama": "Ollama Local",
     "demo": "Demo Mode",
@@ -8516,7 +8516,7 @@ export default i18n;
   "ideas": {
     "title": "Your Ideas",
     "edit": "Edit",
-    "delete": "Delete", 
+    "delete": "Delete",
     "save": "Save",
     "cancel": "Cancel",
     "generateButton": "Help me, engineer?!",
@@ -8529,7 +8529,7 @@ export default i18n;
     "purpose": "Prompt Purpose",
     "purposeCode": "Code",
     "purposeImage": "Image",
-    "purposeOthers": "Others", 
+    "purposeOthers": "Others",
     "customPurpose": "Describe the prompt objective...",
     "maxLength": "Maximum Length",
     "characters": "characters"
@@ -8744,7 +8744,7 @@ export default i18n;
     "addButton": "Incluir (Ctrl+Enter)",
     "emptyState": "Adicione suas primeiras ideias ao lado ←",
     "expand": "Expandir entrada",
-    "collapse": "Minimizar entrada", 
+    "collapse": "Minimizar entrada",
     "minimized": "Formulário de entrada minimizado"
   },
   "ideas": {
@@ -8762,7 +8762,7 @@ export default i18n;
   "config": {
     "purpose": "Propósito do Prompt",
     "purposeCode": "Código",
-    "purposeImage": "Imagem", 
+    "purposeImage": "Imagem",
     "purposeOthers": "Outros",
     "customPurpose": "Descreva o objetivo do prompt...",
     "maxLength": "Tamanho Máximo",
@@ -8796,7 +8796,7 @@ export default i18n;
     "instructions": "Instruções Específicas",
     "instructionsList": [
       "Analise cuidadosamente todas as ideias apresentadas acima",
-      "Identifique o objetivo principal e objetivos secundários", 
+      "Identifique o objetivo principal e objetivos secundários",
       "Forneça uma resposta estruturada e bem organizada",
       "Mantenha o foco no propósito definido: **{{purpose}}**",
       "Use exemplos práticos quando apropriado",
@@ -8805,7 +8805,7 @@ export default i18n;
     "responseFormat": "Formato de Resposta Esperado",
     "responseSteps": [
       "**Análise Inicial**: Resumo do que foi solicitado",
-      "**Desenvolvimento**: Resposta detalhada seguindo as ideias", 
+      "**Desenvolvimento**: Resposta detalhada seguindo as ideias",
       "**Conclusão**: Próximos passos ou considerações finais"
     ],
     "technicalConfig": "Configurações Técnicas",
@@ -8908,7 +8908,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
 }
 
 code {
@@ -8992,7 +8992,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/rafa-mori/grompt/internal/services/squad"
+	"github.com/kubex-ecosystem/grompt/internal/services/squad"
 )
 
 // StoredAgent wraps squad.Agent with an ID for persistence
@@ -9104,8 +9104,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/rafa-mori/grompt/internal/services/agents"
-	ii "github.com/rafa-mori/grompt/internal/types"
+	"github.com/kubex-ecosystem/grompt/internal/services/agents"
+	ii "github.com/kubex-ecosystem/grompt/internal/types"
 )
 
 type Handlers struct {
@@ -9648,7 +9648,7 @@ func (h *Handlers) HandleDocs(w http.ResponseWriter, r *http.Request) {
 	}
 
 	docs := map[string]string{
-		"docs": "https://github.com/rafa-mori/grompt/blob/main/README.md",
+		"docs": "https://github.com/kubex-ecosystem/grompt/blob/main/README.md",
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -9663,7 +9663,7 @@ func (h *Handlers) HandleSupport(w http.ResponseWriter, r *http.Request) {
 	}
 
 	supportInfo := map[string]string{
-		"support": "https://github.com/rafa-mori/grompt/blob/main/README.md",
+		"support": "https://github.com/kubex-ecosystem/grompt/blob/main/README.md",
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -9918,7 +9918,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/rafa-mori/grompt/internal/services/squad"
+	"github.com/kubex-ecosystem/grompt/internal/services/squad"
 )
 
 // HandleAgents manages listing and creating agents.
@@ -10360,7 +10360,7 @@ import (
 	"strings"
 	"time"
 
-	t "github.com/rafa-mori/grompt/internal/types"
+	t "github.com/kubex-ecosystem/grompt/internal/types"
 )
 
 //go:embed build/*
@@ -10548,42 +10548,42 @@ func (s *Server) setupFallbackRoutes() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prompt Crafter - Setup Necessário</title>
     <style>
-        body { 
+        body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            max-width: 800px; 
-            margin: 50px auto; 
+            max-width: 800px;
+            margin: 50px auto;
             padding: 20px;
             background: #1a1a1a;
             color: #ffffff;
         }
-        .container { 
-            background: #2d2d2d; 
-            padding: 30px; 
-            border-radius: 12px; 
+        .container {
+            background: #2d2d2d;
+            padding: 30px;
+            border-radius: 12px;
             border: 1px solid #404040;
         }
         h1 { color: #60a5fa; margin-bottom: 20px; }
         h2 { color: #34d399; margin-top: 30px; }
-        pre { 
-            background: #1a1a1a; 
-            padding: 15px; 
-            border-radius: 8px; 
+        pre {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
             overflow-x: auto;
             border: 1px solid #404040;
         }
         code { color: #fbbf24; }
-        .warning { 
-            background: #451a03; 
-            border: 1px solid #f59e0b; 
-            padding: 15px; 
-            border-radius: 8px; 
+        .warning {
+            background: #451a03;
+            border: 1px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
             margin: 20px 0;
         }
-        .step { 
-            background: #1e3a8a; 
-            border: 1px solid #3b82f6; 
-            padding: 15px; 
-            border-radius: 8px; 
+        .step {
+            background: #1e3a8a;
+            border: 1px solid #3b82f6;
+            padding: 15px;
+            border-radius: 8px;
             margin: 15px 0;
         }
     </style>
@@ -10591,14 +10591,14 @@ func (s *Server) setupFallbackRoutes() {
 <body>
     <div class="container">
         <h1>🚀 Prompt Crafter</h1>
-        
+
         <div class="warning">
             <strong>⚠️ Frontend React não encontrado!</strong><br>
             O servidor Go está rodando, mas o frontend React não foi embarcado no binário.
         </div>
 
         <h2>🔧 Como corrigir:</h2>
-        
+
         <div class="step">
             <strong>Passo 1:</strong> Build do Frontend React
             <pre><code>cd frontend
@@ -11470,7 +11470,7 @@ import (
 	"context"
 	"time"
 
-	vs "github.com/rafa-mori/grompt/version"
+	vs "github.com/kubex-ecosystem/grompt/version"
 )
 
 var (
@@ -12165,7 +12165,7 @@ import (
 	"runtime"
 	"strings"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type gLog struct {
@@ -12529,7 +12529,7 @@ run_custom_scripts() {
         else
           log warn "Script não encontrado: ${_CUSTOM_SCRIPT}"
         fi
-      done  
+      done
     else
       log warn "Nenhum script personalizado encontrado no diretório: ${_SCRIPT_DIR}/${_STAGE}.d/"
       return 0
@@ -12744,7 +12744,7 @@ detect_shell_rc() {
             return 1
             ;;
     esac
-    
+
     if [ ! -f "$shell_rc_file" ]; then
         log error "Arquivo de configuração não encontrado: ${shell_rc_file}"
         return 1
@@ -12798,7 +12798,7 @@ add_to_path() {
     }
 
     log success "Adicionado $target_path ao PATH em $shell_rc_file."
-    
+
     "$SHELL" -c "source ${shell_rc_file}" || {
         log warn "Falha ao recarregar o shell. Por favor, execute 'source ${shell_rc_file}' manualmente."
     }
@@ -13198,8 +13198,8 @@ export -f check_dependencies
 
 ## Agent 3
 - Role: Missing title format test
-- Skills: 
-- Restrictions: 
+- Skills:
+- Restrictions:
 
 ## Agent 4: Database Architect
 - Skills: PostgreSQL, MongoDB, Redis, Database Indexing, Query Optimization, Data Modeling
@@ -13231,8 +13231,8 @@ import (
 	"os"
 	"path/filepath"
 
-	gl "github.com/rafa-mori/grompt/logger"
-	l "github.com/rafa-mori/logz"
+	gl "github.com/kubex-ecosystem/grompt/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/spf13/cobra"
 

@@ -157,7 +157,7 @@ I am committed to delivering exceptional results and am eager to discuss how my 
 Have created this project in 3 hours just to show you some proficiency: [SUSsec](https://rafa-mori.github.io/sussec/)
 
 Best regards,
-Rafa Mori 
+Rafa Mori
 
 /// NOTICE.md ///
 # NOTICE
@@ -183,9 +183,9 @@ For further information about the license and terms of use, please refer to the 
 
 🚀 **Easily install and configure Golang on Linux, Mac, and Windows—fast and hassle-free!**
 
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/rafa-mori/gosetup)  
-[![License](https://img.shields.io/github/license/rafa-mori/gosetup.svg?style=flat)](https://github.com/rafa-mori/gosetup/blob/main/LICENSE)
-[![Version](https://img.shields.io/github/v/release/rafa-mori/gosetup.svg?style=flat)](https://github.com/rafa-mori/gosetup/releases)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kubex-ecosystem/gosetup)
+[![License](https://img.shields.io/github/license/kubex-ecosystem/gosetup.svg?style=flat)](https://github.com/kubex-ecosystem/gosetup/blob/main/LICENSE)
+[![Version](https://img.shields.io/github/v/release/kubex-ecosystem/gosetup.svg?style=flat)](https://github.com/kubex-ecosystem/gosetup/releases)
 
 ---
 
@@ -194,7 +194,7 @@ For further information about the license and terms of use, please refer to the 
 ### 🏎️ **Instant Method (wget/curl)**
 
 ```bash
-wget https://raw.githubusercontent.com/rafa-mori/gosetup/refs/heads/main/go.sh && bash gosetup.sh
+wget https://raw.githubusercontent.com/kubex-ecosystem/gosetup/refs/heads/main/go.sh && bash gosetup.sh
 ```
 
 ```bash
@@ -204,12 +204,12 @@ bash <(curl -sL https://git.io/gosetup)
 ### 🛠️ **Cloning the Repository and Running Manually**
 
 ```bash
-git clone https://github.com/rafa-mori/gosetup.git
+git clone https://github.com/kubex-ecosystem/gosetup.git
 cd gosetup
 bash go.sh
 ```
 
-> 💡 **Tip:** By default, Go will be installed in `$HOME/.go`, and `$HOME/go` will be set as the workspace.  
+> 💡 **Tip:** By default, Go will be installed in `$HOME/.go`, and `$HOME/go` will be set as the workspace.
 > You can customize these locations by setting `GOROOT` and `GOPATH` before installation:
 
 ```bash
@@ -221,12 +221,12 @@ export GOPATH=$HOME/projects/go
 
 ## 🎯 **Features**
 
-✅ **Automatic installation & updates**  
-✅ **Specify a Go version to install**  
-✅ **Compatible with Windows, Linux, and macOS**  
-✅ **Smart environment configuration**  
-✅ **Supports multiple architectures (ARM, AMD64, i386)**  
-✅ **Seamless integration with GitHub Actions workflows**  
+✅ **Automatic installation & updates**
+✅ **Specify a Go version to install**
+✅ **Compatible with Windows, Linux, and macOS**
+✅ **Smart environment configuration**
+✅ **Supports multiple architectures (ARM, AMD64, i386)**
+✅ **Seamless integration with GitHub Actions workflows**
 
 ---
 
@@ -300,23 +300,23 @@ make test
 
 ## 💡 **Contribute to the Project**
 
-1. ⭐ **Star the repository** to show support!  
-2. 🔄 **Fork** and clone the repository.  
-3. 🛠️ **Create a new branch** and make your changes.  
-4. 📌 **Submit a pull request** and wait for review.  
-5. 🎉 **Join the community and stay updated!**  
+1. ⭐ **Star the repository** to show support!
+2. 🔄 **Fork** and clone the repository.
+3. 🛠️ **Create a new branch** and make your changes.
+4. 📌 **Submit a pull request** and wait for review.
+5. 🎉 **Join the community and stay updated!**
 
 ---
 
 ## 🔍 **How It Works**
 
 The script follows these steps:
-1️⃣ **Detects** your operating system and architecture.  
-2️⃣ **Checks** the latest available Go version.  
-3️⃣ **Downloads & installs** the correct version.  
-4️⃣ **Sets up directories** (`GOROOT`, `GOPATH`).  
-5️⃣ **Adds Go binaries to PATH** automatically.  
-6️⃣ **Cleans up unnecessary files** to keep things efficient.  
+1️⃣ **Detects** your operating system and architecture.
+2️⃣ **Checks** the latest available Go version.
+3️⃣ **Downloads & installs** the correct version.
+4️⃣ **Sets up directories** (`GOROOT`, `GOPATH`).
+5️⃣ **Adds Go binaries to PATH** automatically.
+6️⃣ **Cleans up unnecessary files** to keep things efficient.
 
 ---
 
@@ -328,7 +328,7 @@ Automate Go installation based on the version specified in `go.mod`:
 - name: Install Go (Exact version from go.mod)
   run: |
     export NON_INTERACTIVE=true
-    bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/rafa-mori/gosetup/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
+    bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/kubex-ecosystem/gosetup/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
 ```
 
 ---
@@ -340,28 +340,28 @@ Automate Go installation based on the version specified in `go.mod`:
 
 🚀 **Easily install and configure Golang on Linux, Mac, and Windows—fast and hassle-free!**
 
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/rafa-mori/gosetup)  
-[![CI Status](https://github.com/rafa-mori/gosetup/actions/workflows/test.yml/badge.svg)](https://github.com/rafa-mori/gosetup/actions/workflows/test.yml)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kubex-ecosystem/gosetup)
+[![CI Status](https://github.com/kubex-ecosystem/gosetup/actions/workflows/test.yml/badge.svg)](https://github.com/kubex-ecosystem/gosetup/actions/workflows/test.yml)
 
 ---
 
 ## 🚀 **Quick Installation**
 ### 🏎️ **Instant Method (wget/curl)**
 ```bash
-wget https://raw.githubusercontent.com/rafa-mori/gosetup/refs/heads/main/go.sh && bash gosetup.sh
+wget https://raw.githubusercontent.com/kubex-ecosystem/gosetup/refs/heads/main/go.sh && bash gosetup.sh
 ```
 ```bash
-bash <<< "curl -sSfL 'https://raw.githubusercontent.com/rafa-mori/gosetup/refs/heads/main/go.sh' | bash"
+bash <<< "curl -sSfL 'https://raw.githubusercontent.com/kubex-ecosystem/gosetup/refs/heads/main/go.sh' | bash"
 ```
 
 ### 🛠️ **Cloning the Repository and Running Manually**
 ```bash
-git clone https://github.com/rafa-mori/gosetup.git
+git clone https://github.com/kubex-ecosystem/gosetup.git
 cd gosetup
 bash go.sh
 ```
 
-> 💡 **Tip:** By default, Go will be installed in `$HOME/.go`, and `$HOME/go` will be set as the workspace.  
+> 💡 **Tip:** By default, Go will be installed in `$HOME/.go`, and `$HOME/go` will be set as the workspace.
 > You can customize these locations by setting `GOROOT` and `GOPATH` before installation:
 
 ```bash
@@ -372,12 +372,12 @@ export GOPATH=$HOME/projects/go
 ---
 
 ## 🎯 **Features**
-✅ **Automatic installation & updates**  
-✅ **Specify a Go version to install**  
-✅ **Compatible with Windows, Linux, and macOS**  
-✅ **Smart environment configuration**  
-✅ **Supports multiple architectures (ARM, AMD64, i386)**  
-✅ **Seamless integration with GitHub Actions workflows**  
+✅ **Automatic installation & updates**
+✅ **Specify a Go version to install**
+✅ **Compatible with Windows, Linux, and macOS**
+✅ **Smart environment configuration**
+✅ **Supports multiple architectures (ARM, AMD64, i386)**
+✅ **Seamless integration with GitHub Actions workflows**
 
 ---
 
@@ -436,22 +436,22 @@ make test
 ---
 
 ## 💡 **Contribute to the Project**
-1. ⭐ **Star the repository** to show support!  
-2. 🔄 **Fork** and clone the repository.  
-3. 🛠️ **Create a new branch** and make your changes.  
-4. 📌 **Submit a pull request** and wait for review.  
-5. 🎉 **Join the community and stay updated!**  
+1. ⭐ **Star the repository** to show support!
+2. 🔄 **Fork** and clone the repository.
+3. 🛠️ **Create a new branch** and make your changes.
+4. 📌 **Submit a pull request** and wait for review.
+5. 🎉 **Join the community and stay updated!**
 
 ---
 
 ## 🔍 **How It Works**
 The script follows these steps:
-1️⃣ **Detects** your operating system and architecture.  
-2️⃣ **Checks** the latest available Go version.  
-3️⃣ **Downloads & installs** the correct version.  
-4️⃣ **Sets up directories** (`GOROOT`, `GOPATH`).  
-5️⃣ **Adds Go binaries to PATH** automatically.  
-6️⃣ **Cleans up unnecessary files** to keep things efficient.  
+1️⃣ **Detects** your operating system and architecture.
+2️⃣ **Checks** the latest available Go version.
+3️⃣ **Downloads & installs** the correct version.
+4️⃣ **Sets up directories** (`GOROOT`, `GOPATH`).
+5️⃣ **Adds Go binaries to PATH** automatically.
+6️⃣ **Cleans up unnecessary files** to keep things efficient.
 
 ---
 
@@ -462,7 +462,7 @@ Automate Go installation based on the version specified in `go.mod`:
 - name: Install Go (Exact version from go.mod)
   run: |
     export NON_INTERACTIVE=true
-    bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/rafa-mori/gosetup/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
+    bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/kubex-ecosystem/gosetup/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
 ```
 
 ---
@@ -474,15 +474,15 @@ Automate Go installation based on the version specified in `go.mod`:
 
 🚀 **Instale e configure Golang de forma rápida e sem complicações** em **Linux**, **Mac** e **Windows**!
 
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/rafa-mori/gosetup)
-[![CI Status](https://github.com/rafa-mori/gosetup/actions/workflows/test.yml/badge.svg)](https://github.com/rafa-mori/gosetup/actions/workflows/test.yml)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kubex-ecosystem/gosetup)
+[![CI Status](https://github.com/kubex-ecosystem/gosetup/actions/workflows/test.yml/badge.svg)](https://github.com/kubex-ecosystem/gosetup/actions/workflows/test.yml)
 
 ---
 
 ## 🚀 **Instalação Rápida**
 ### 🏎️ **Método Instantâneo (wget/curl)**
 ```bash
-wget https://raw.githubusercontent.com/rafa-mori/gosetup/refs/heads/main/go.sh && bash gosetup.sh
+wget https://raw.githubusercontent.com/kubex-ecosystem/gosetup/refs/heads/main/go.sh && bash gosetup.sh
 ```
 ```bash
 bash <(curl -sL https://git.io/gosetup)
@@ -490,12 +490,12 @@ bash <(curl -sL https://git.io/gosetup)
 
 ### 🛠️ **Clonando e executando manualmente**
 ```bash
-git clone https://github.com/rafa-mori/gosetup.git
+git clone https://github.com/kubex-ecosystem/gosetup.git
 cd gosetup
 bash go.sh
 ```
 
-> 💡 **Dica:** O script instala Go em `$HOME/.go` e configura `$HOME/go` como workspace.  
+> 💡 **Dica:** O script instala Go em `$HOME/.go` e configura `$HOME/go` como workspace.
 > Para personalizar esses diretórios, defina `GOROOT` e `GOPATH` antes da instalação:
 ```bash
 export GOROOT=/opt/go
@@ -505,12 +505,12 @@ export GOPATH=$HOME/projects/go
 ---
 
 ## 🎯 **Recursos**
-✅ **Instalação e atualização automáticas**  
-✅ **Definição de versão específica do Go**  
-✅ **Compatível com Windows, Linux e macOS**  
-✅ **Configuração de ambiente inteligente**  
-✅ **Suporte a múltiplas arquiteturas (ARM, AMD64, i386)**  
-✅ **Integração perfeita com workflows do GitHub Actions**  
+✅ **Instalação e atualização automáticas**
+✅ **Definição de versão específica do Go**
+✅ **Compatível com Windows, Linux e macOS**
+✅ **Configuração de ambiente inteligente**
+✅ **Suporte a múltiplas arquiteturas (ARM, AMD64, i386)**
+✅ **Integração perfeita com workflows do GitHub Actions**
 
 ---
 
@@ -569,22 +569,22 @@ make test
 ---
 
 ## 💡 **Contribua para o Projeto**
-1. ⭐ **Dê uma estrela no repositório** e ajude a fortalecer o projeto!  
-2. 🔄 **Faça um fork** e clone o repositório.  
-3. 🛠️ **Crie uma nova branch** e implemente suas mudanças.  
-4. 📌 **Envie um pull request** e aguarde revisão.  
-5. 🎉 **Junte-se à comunidade e acompanhe as novidades!**  
+1. ⭐ **Dê uma estrela no repositório** e ajude a fortalecer o projeto!
+2. 🔄 **Faça um fork** e clone o repositório.
+3. 🛠️ **Crie uma nova branch** e implemente suas mudanças.
+4. 📌 **Envie um pull request** e aguarde revisão.
+5. 🎉 **Junte-se à comunidade e acompanhe as novidades!**
 
 ---
 
 ## 🔍 **Como Funciona**
 O script executa os seguintes passos:
-1️⃣ **Detecta** sistema operacional e arquitetura.  
-2️⃣ **Verifica** a versão disponível do Go.  
-3️⃣ **Baixa e instala** a versão correta.  
-4️⃣ **Cria e configura** os diretórios (`GOROOT`, `GOPATH`).  
-5️⃣ **Adiciona ao PATH** automaticamente.  
-6️⃣ **Limpa** arquivos desnecessários para manter eficiência.  
+1️⃣ **Detecta** sistema operacional e arquitetura.
+2️⃣ **Verifica** a versão disponível do Go.
+3️⃣ **Baixa e instala** a versão correta.
+4️⃣ **Cria e configura** os diretórios (`GOROOT`, `GOPATH`).
+5️⃣ **Adiciona ao PATH** automaticamente.
+6️⃣ **Limpa** arquivos desnecessários para manter eficiência.
 
 ---
 
@@ -595,7 +595,7 @@ Automatize a instalação do Go na versão especificada no `go.mod`:
 - name: Install Go (Exact version from go.mod)
   run: |
     export NON_INTERACTIVE=true
-    bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/rafa-mori/gosetup/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
+    bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/kubex-ecosystem/gosetup/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
 ```
 
 ---
@@ -673,7 +673,7 @@ footer {
         <p>🚀 Easily install and configure Golang on Linux, Mac, and Windows—fast and hassle-free!</p>
         <div class="badges">
             <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" alt="Contributions Welcome">
-            <img src="https://github.com/rafa-mori/gosetup/actions/workflows/test.yml/badge.svg" alt="CI Status">
+            <img src="https://github.com/kubex-ecosystem/gosetup/actions/workflows/test.yml/badge.svg" alt="CI Status">
         </div>
     </header>
 
@@ -681,11 +681,11 @@ footer {
         <h2>🚀 Quick Installation</h2>
         <p>Choose the best method for your environment:</p>
         <h3>🏎️ Instant Method (wget/curl)</h3>
-        <code>wget https://raw.githubusercontent.com/rafa-mori/gosetup/refs/heads/main/go.sh && bash gosetup.sh</code>
+        <code>wget https://raw.githubusercontent.com/kubex-ecosystem/gosetup/refs/heads/main/go.sh && bash gosetup.sh</code>
         <code>bash <(curl -sL https://git.io/gosetup)</code>
 
         <h3>🛠️ Cloning and Running Manually</h3>
-        <code>git clone https://github.com/rafa-mori/gosetup.git</code>
+        <code>git clone https://github.com/kubex-ecosystem/gosetup.git</code>
         <code>cd gosetup && bash go.sh</code>
 
         <p><strong>Tip:</strong> You can customize the installation directories:</p>
@@ -730,7 +730,7 @@ footer {
 - name: Install Go (Exact version from go.mod)
   run: |
     export NON_INTERACTIVE=true
-    bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/rafa-mori/gosetup/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
+    bash -c "$(curl -sSfL 'https://raw.githubusercontent.com/kubex-ecosystem/gosetup/main/go.sh')" -s --version "$(grep '^go ' go.mod | awk '{print $2}')"
         </pre>
     </section>
 

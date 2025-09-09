@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Code, Github, Camera, Zap, FileText, Star, Play } from 'lucide-react';
+import { Brain, Camera, Code, FileText, Github, Play } from 'lucide-react';
+import { useState } from 'react';
 import GeminiImageDemo from '../../../components/projects/GeminiImageDemo';
 
 export default function GeminiImagePage() {
@@ -53,7 +53,7 @@ export default function GeminiImagePage() {
         className="container mx-auto px-4 py-8"
       >
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,10 +63,10 @@ export default function GeminiImagePage() {
             🤖 Gemini Image Processor
           </h1>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-6">
-            Processador de imagens inteligente que utiliza o Google Gemini Vision para extrair 
+            Processador de imagens inteligente que utiliza o Google Gemini Vision para extrair
             informações estruturadas de produtos. Desenvolvido como desafio técnico para vaga de emprego.
           </p>
-          
+
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => setShowDemo(true)}
@@ -75,9 +75,9 @@ export default function GeminiImagePage() {
               <Play className="w-5 h-5" />
               Demo Interativo
             </button>
-            
+
             <a
-              href="https://github.com/rafa-mori/gemini-image-processor"
+              href="https://github.com/kubex-ecosystem/gemini-image-processor"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
@@ -145,15 +145,15 @@ export default function GeminiImagePage() {
             <h3 className="text-xl font-bold text-white mb-4">📖 Sobre o Projeto</h3>
             <div className="space-y-3 text-gray-300">
               <p>
-                O Gemini Image Processor foi desenvolvido como um desafio técnico para uma vaga de emprego. 
+                O Gemini Image Processor foi desenvolvido como um desafio técnico para uma vaga de emprego.
                 O objetivo era criar uma solução que processasse imagens de produtos e extraísse informações estruturadas.
               </p>
               <p>
-                O maior desafio foi desenvolver um parser robusto capaz de interpretar as respostas variadas 
+                O maior desafio foi desenvolver um parser robusto capaz de interpretar as respostas variadas
                 do modelo Gemini e convertê-las em dados estruturados consistentes.
               </p>
               <p>
-                A aplicação demonstra integração com APIs de IA generativa e técnicas avançadas de 
+                A aplicação demonstra integração com APIs de IA generativa e técnicas avançadas de
                 processamento de linguagem natural.
               </p>
             </div>

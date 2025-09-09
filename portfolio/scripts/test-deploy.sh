@@ -25,7 +25,7 @@ fi
 echo "🌍 Testing environment validation..."
 if cd /tmp && git init test-repo && cd test-repo && git remote add origin git@github.com:example/test.git; then
     echo "✅ Basic git environment works"
-    cd '/srv/apps/RAFA-MORI/rafa-mori' || exit 1
+    cd '/srv/apps/kubex-ecosystem/rafa-mori' || exit 1
     rm -rf /tmp/test-repo
 else
     echo "❌ Git environment test failed"

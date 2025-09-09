@@ -241,16 +241,16 @@ Commits should be clear and descriptive. Examples:
 
 ## **Best Practices**
 
-1. **Be Respectful and Welcoming**  
+1. **Be Respectful and Welcoming**
    This is an open-source project for everyone. Respect other contributors and collaborate constructively.
 
-2. **Document Your Changes**  
+2. **Document Your Changes**
    Update the `README.md` or documentation, if necessary, to include your changes.
 
-3. **Add Tests When Possible**  
+3. **Add Tests When Possible**
    Ensure any new functionality is accompanied by tests.
 
-4. **Be Clear in Issue Reports**  
+4. **Be Clear in Issue Reports**
    When opening an issue, be detailed and provide as much context as possible.
 
 ---
@@ -333,7 +333,7 @@ For further information about the license and terms of use, please refer to the 
 To install **xtui**, run the following command:
 
 ```sh
-go get github.com/rafa-mori/xtui
+go get github.com/kubex-ecosystem/xtui
 ```
 
 ## Usage
@@ -344,8 +344,8 @@ Here’s a quick example demonstrating how to use **xtui** for displaying tables
 package main
 
 import (
-	"github.com/rafa-mori/xtui"
-	"github.com/rafa-mori/xtui/types"
+	"github.com/kubex-ecosystem/xtui"
+	"github.com/kubex-ecosystem/xtui/types"
     "github.com/charmbracelet/lipgloss"
 )
 
@@ -356,12 +356,12 @@ func main() {
             {Name: "Name", Placeholder: "User Name"},
         },
     }
-    
+
     customStyles := map[string]lipgloss.Color{
         "Info":    lipgloss.Color("#75FBAB"),
         "Warning": lipgloss.Color("#FDFF90"),
     }
-    
+
     if err := xtui.StartTableScreen(config, customStyles); err != nil {
         panic(err)
     }
@@ -374,8 +374,8 @@ For form-based interactions:
 package main
 
 import (
-	"github.com/rafa-mori/xtui"
-	"github.com/rafa-mori/xtui/types"
+	"github.com/kubex-ecosystem/xtui"
+	"github.com/kubex-ecosystem/xtui/types"
 )
 
 func main() {
@@ -388,7 +388,7 @@ func main() {
             },
         },
     }
-    
+
     result, err := xtui.ShowForm(config)
     if err != nil {
         panic(err)
@@ -411,7 +411,7 @@ Example:
 package main
 
 import (
-	"github.com/rafa-mori/xtui/cmd/cli"
+	"github.com/kubex-ecosystem/xtui/cmd/cli"
     "github.com/spf13/cobra"
 )
 
@@ -439,7 +439,7 @@ Example:
 package main
 
 import (
-	"github.com/rafa-mori/xtui/cmd/cli"
+	"github.com/kubex-ecosystem/xtui/cmd/cli"
     "github.com/spf13/cobra"
 )
 
@@ -467,7 +467,7 @@ Example:
 package main
 
 import (
-	"github.com/rafa-mori/xtui/cmd/cli"
+	"github.com/kubex-ecosystem/xtui/cmd/cli"
     "github.com/spf13/cobra"
 )
 
@@ -519,7 +519,7 @@ go run main.go loader-form
 package main
 
 import (
-	"github.com/rafa-mori/xtui/wrappers"
+	"github.com/kubex-ecosystem/xtui/wrappers"
 )
 
 func main() {
@@ -535,7 +535,7 @@ func main() {
 package main
 
 import (
-	"github.com/rafa-mori/xtui/wrappers"
+	"github.com/kubex-ecosystem/xtui/wrappers"
 )
 
 func main() {
@@ -620,9 +620,9 @@ import (
 	"fmt"
 	"strings"
 
-	. "github.com/rafa-mori/xtui/components"
-	gl "github.com/rafa-mori/xtui/logger"
-	. "github.com/rafa-mori/xtui/wrappers"
+	. "github.com/kubex-ecosystem/xtui/components"
+	gl "github.com/kubex-ecosystem/xtui/logger"
+	. "github.com/kubex-ecosystem/xtui/wrappers"
 	"github.com/spf13/cobra"
 )
 
@@ -720,19 +720,19 @@ import (
 	"reflect"
 	"strings"
 
-	t "github.com/rafa-mori/xtui/types"
+	t "github.com/kubex-ecosystem/xtui/types"
 	"github.com/spf13/pflag"
 )
 
 var (
 	banners = []string{`
- __    __ ________          ______ 
+ __    __ ________          ______
 |  \  |  \        \        |      \
 | ▓▓  | ▓▓\▓▓▓▓▓▓▓▓__    __ \▓▓▓▓▓▓
- \▓▓\/  ▓▓  | ▓▓  |  \  |  \ | ▓▓  
-  >▓▓  ▓▓   | ▓▓  | ▓▓  | ▓▓ | ▓▓  
- /  ▓▓▓▓\   | ▓▓  | ▓▓  | ▓▓ | ▓▓  
-|  ▓▓ \▓▓\  | ▓▓  | ▓▓__/ ▓▓_| ▓▓_ 
+ \▓▓\/  ▓▓  | ▓▓  |  \  |  \ | ▓▓
+  >▓▓  ▓▓   | ▓▓  | ▓▓  | ▓▓ | ▓▓
+ /  ▓▓▓▓\   | ▓▓  | ▓▓  | ▓▓ | ▓▓
+|  ▓▓ \▓▓\  | ▓▓  | ▓▓__/ ▓▓_| ▓▓_
 | ▓▓  | ▓▓  | ▓▓   \▓▓    ▓▓   ▓▓ \
  \▓▓   \▓▓   \▓▓    \▓▓▓▓▓▓ \▓▓▓▓▓▓`}
 )
@@ -803,8 +803,8 @@ import (
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/rafa-mori/xtui/components"
-	"github.com/rafa-mori/xtui/wrappers"
+	"github.com/kubex-ecosystem/xtui/components"
+	"github.com/kubex-ecosystem/xtui/wrappers"
 	"github.com/spf13/cobra"
 )
 
@@ -933,8 +933,8 @@ import (
 	"strings"
 	"time"
 
-	gl "github.com/rafa-mori/xtui/logger"
-	p "github.com/rafa-mori/xtui/packages"
+	gl "github.com/kubex-ecosystem/xtui/logger"
+	p "github.com/kubex-ecosystem/xtui/packages"
 	"github.com/spf13/cobra"
 )
 
@@ -1165,9 +1165,9 @@ import (
 	"testing"
 
 	"github.com/charmbracelet/lipgloss"
-	c "github.com/rafa-mori/xtui/components"
-	gl "github.com/rafa-mori/xtui/logger"
-	t "github.com/rafa-mori/xtui/types"
+	c "github.com/kubex-ecosystem/xtui/components"
+	gl "github.com/kubex-ecosystem/xtui/logger"
+	t "github.com/kubex-ecosystem/xtui/types"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"gopkg.in/yaml.v3"
@@ -1576,10 +1576,10 @@ import (
 	"os"
 	"strings"
 
-	l "github.com/rafa-mori/logz"
-	"github.com/rafa-mori/xtui/cmd/cli"
-	gl "github.com/rafa-mori/xtui/logger"
-	"github.com/rafa-mori/xtui/version"
+	l "github.com/kubex-ecosystem/logz"
+	"github.com/kubex-ecosystem/xtui/cmd/cli"
+	gl "github.com/kubex-ecosystem/xtui/logger"
+	"github.com/kubex-ecosystem/xtui/version"
 	"github.com/spf13/cobra"
 )
 
@@ -1735,13 +1735,13 @@ import (
 	"reflect"
 	"strings"
 
-	gl "github.com/rafa-mori/xtui/logger"
+	gl "github.com/kubex-ecosystem/xtui/logger"
 
 	"github.com/charmbracelet/bubbles/cursor"
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	. "github.com/rafa-mori/xtui/types"
+	. "github.com/kubex-ecosystem/xtui/types"
 )
 
 var (
@@ -2109,8 +2109,8 @@ import (
 	"github.com/johnfercher/maroto/pkg/consts"
 	p "github.com/johnfercher/maroto/pkg/pdf"
 	"github.com/johnfercher/maroto/pkg/props"
-	gl "github.com/rafa-mori/xtui/logger"
-	. "github.com/rafa-mori/xtui/types"
+	gl "github.com/kubex-ecosystem/xtui/logger"
+	. "github.com/kubex-ecosystem/xtui/types"
 	"gopkg.in/yaml.v2"
 )
 
@@ -2755,7 +2755,7 @@ de terminal interativas e visualmente atraentes com o mínimo de esforço, mante
 Para instalar o **xtui**, execute o comando:
 
 ```sh
-go get github.com/rafa-mori/xtui
+go get github.com/kubex-ecosystem/xtui
 ```
 
 ## Uso
@@ -2766,8 +2766,8 @@ Aqui está um exemplo rápido demonstrando como usar o **xtui** para exibir tabe
 package main
 
 import (
-    "github.com/rafa-mori/xtui"
-    "github.com/rafa-mori/xtui/types"
+    "github.com/kubex-ecosystem/xtui"
+    "github.com/kubex-ecosystem/xtui/types"
     "github.com/charmbracelet/lipgloss"
 )
 
@@ -2778,12 +2778,12 @@ func main() {
             {Name: "Nome", Placeholder: "Nome do Usuário"},
         },
     }
-    
+
     customStyles := map[string]lipgloss.Color{
         "Info":    lipgloss.Color("#75FBAB"),
         "Warning": lipgloss.Color("#FDFF90"),
     }
-    
+
     if err := xtui.StartTableScreen(config, customStyles); err != nil {
         panic(err)
     }
@@ -2796,8 +2796,8 @@ Para interações baseadas em formulário:
 package main
 
 import (
-    "github.com/rafa-mori/xtui"
-    "github.com/rafa-mori/xtui/types"
+    "github.com/kubex-ecosystem/xtui"
+    "github.com/kubex-ecosystem/xtui/types"
 )
 
 func main() {
@@ -2810,7 +2810,7 @@ func main() {
             },
         },
     }
-    
+
     result, err := xtui.ShowForm(config)
     if err != nil {
         panic(err)
@@ -2836,7 +2836,7 @@ Exemplo:
 package main
 
 import (
-    "github.com/rafa-mori/xtui/cmd/cli"
+    "github.com/kubex-ecosystem/xtui/cmd/cli"
     "github.com/spf13/cobra"
 )
 
@@ -2866,7 +2866,7 @@ Exemplo:
 package main
 
 import (
-    "github.com/rafa-mori/xtui/cmd/cli"
+    "github.com/kubex-ecosystem/xtui/cmd/cli"
     "github.com/spf13/cobra"
 )
 
@@ -2896,7 +2896,7 @@ Exemplo:
 package main
 
 import (
-    "github.com/rafa-mori/xtui/cmd/cli"
+    "github.com/kubex-ecosystem/xtui/cmd/cli"
     "github.com/spf13/cobra"
 )
 
@@ -2948,7 +2948,7 @@ go run main.go loader-form
 package main
 
 import (
-    "github.com/rafa-mori/xtui/wrappers"
+    "github.com/kubex-ecosystem/xtui/wrappers"
 )
 
 func main() {
@@ -2964,7 +2964,7 @@ func main() {
 package main
 
 import (
-    "github.com/rafa-mori/xtui/wrappers"
+    "github.com/kubex-ecosystem/xtui/wrappers"
 )
 
 func main() {
@@ -3066,8 +3066,8 @@ This package provides a `TableRenderer` for rendering tables in the terminal wit
 - `tea "github.com/charmbracelet/bubbletea"`: For building terminal user interfaces.
 - `github.com/charmbracelet/lipgloss`: For styling terminal output.
 - `github.com/charmbracelet/lipgloss/table`: For creating tables.
-- `l "github.com/rafa-mori/logz"`: For logging.
-- `. "github.com/rafa-mori/xtui/types"`: For custom types.
+- `l "github.com/kubex-ecosystem/logz"`: For logging.
+- `. "github.com/kubex-ecosystem/xtui/types"`: For custom types.
 - `github.com/johnfercher/maroto/pkg/consts`, `p "github.com/johnfercher/maroto/pkg/pdf"`, `props "github.com/johnfercher/maroto/pkg/props"`: For PDF generation.
 - `gopkg.in/yaml.v2`: For YAML parsing.
 - `os`, `sort`, `strconv`, `strings`: Standard library packages.
@@ -3119,7 +3119,7 @@ package examples
 
 import (
 	tea "github.com/charmbracelet/bubbletea"
-	c "github.com/rafa-mori/xtui/components"
+	c "github.com/kubex-ecosystem/xtui/components"
 )
 
 type AppModel struct {
@@ -3250,7 +3250,7 @@ import (
 	"runtime"
 	"strings"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type gLog struct {
@@ -3441,9 +3441,9 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/lipgloss"
-	cmp "github.com/rafa-mori/xtui/components"
-	gl "github.com/rafa-mori/xtui/logger"
-	t "github.com/rafa-mori/xtui/types"
+	cmp "github.com/kubex-ecosystem/xtui/components"
+	gl "github.com/kubex-ecosystem/xtui/logger"
+	t "github.com/kubex-ecosystem/xtui/types"
 )
 
 // AppInfo show information about an installed application.
@@ -3492,12 +3492,12 @@ func CheckDeps(validationFilePath string, version string) bool {
 func GenDepsScript(depsList []string, scriptPath string, validationFilePath string, version string) error {
 	validationFilePath = fmt.Sprintf("%s_%s", validationFilePath, version)
 	scriptContent := `#!/bin/bash
-	
+
 	# Função para verificar se um comando está disponível
 	command_exists() {
 	    dpkg -l "$1" &> /dev/null
 	}
-	
+
 	# Lista de dependências
 	dependencies=(
 	`
@@ -3509,7 +3509,7 @@ func GenDepsScript(depsList []string, scriptPath string, validationFilePath stri
 		scriptContent += fmt.Sprintf("    \"%s\"\n", dep)
 	}
 	scriptContent += `)
-	
+
 	# Verifica e instala dependências
 	for dep in "${dependencies[@]}"; do
 	    if ! command_exists $dep; then
@@ -3525,17 +3525,17 @@ func GenDepsScript(depsList []string, scriptPath string, validationFilePath stri
 	        echo "$dep já está instalado."
 	    fi
 	done
-	
+
 	# Cria arquivo de validação
 	mkdir -p $(dirname ` + validationFilePath + `)
 	touch ` + validationFilePath + `
-	
+
 	echo "Todas as dependências foram verificadas e instaladas."
-	
+
 	sleep 3
-	
+
 	printf "\033[H\033[2J"
-	
+
 	`
 	err := os.WriteFile(scriptPath, []byte(scriptContent), 0755) //nolint:gosec
 	if err != nil {
@@ -3676,7 +3676,7 @@ import (
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	gl "github.com/rafa-mori/xtui/logger"
+	gl "github.com/kubex-ecosystem/xtui/logger"
 )
 
 type KbxDepsModel struct {
@@ -4468,7 +4468,7 @@ detect_shell_rc() {
             return 1
             ;;
     esac
-    
+
     if [ ! -f "$shell_rc_file" ]; then
         log error "Arquivo de configuração não encontrado: ${shell_rc_file}"
         return 1
@@ -4522,7 +4522,7 @@ add_to_path() {
     }
 
     log success "Adicionado $target_path ao PATH em $shell_rc_file."
-    
+
     "$SHELL" -c "source ${shell_rc_file}" || {
         log warn "Falha ao recarregar o shell. Por favor, execute 'source ${shell_rc_file}' manualmente."
     }
@@ -5599,7 +5599,7 @@ import (
 	"strings"
 
 	"github.com/pelletier/go-toml/v2"
-	gl "github.com/rafa-mori/xtui/logger"
+	gl "github.com/kubex-ecosystem/xtui/logger"
 	"github.com/subosito/gotenv"
 	"gopkg.in/yaml.v3"
 )
@@ -6084,8 +6084,8 @@ func (h *TableHandler) GetByteMap() map[string][]byte {
 package version
 
 import (
-	l "github.com/rafa-mori/logz"
-	gl "github.com/rafa-mori/xtui/logger"
+	l "github.com/kubex-ecosystem/logz"
+	gl "github.com/kubex-ecosystem/xtui/logger"
 
 	"github.com/spf13/cobra"
 
@@ -6101,7 +6101,7 @@ import (
 
 const moduleAlias = "XTuI"
 const moduleName = "xtui"
-const gitModelUrl = "https://github.com/rafa-mori/" + moduleName + ".git"
+const gitModelUrl = "https://github.com/kubex-ecosystem/" + moduleName + ".git"
 const currentVersionFallback = "v1.3.1" // First version with the version file
 
 type Service interface {
@@ -6341,7 +6341,7 @@ import (
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	gl "github.com/rafa-mori/xtui/logger"
+	gl "github.com/kubex-ecosystem/xtui/logger"
 )
 
 type AppDepsModel struct {
@@ -6565,7 +6565,7 @@ import (
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/rafa-mori/xtui/types"
+	"github.com/kubex-ecosystem/xtui/types"
 )
 
 var (
@@ -6708,7 +6708,7 @@ import (
 	"sync"
 	"time"
 
-	gl "github.com/rafa-mori/xtui/logger"
+	gl "github.com/kubex-ecosystem/xtui/logger"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -6858,8 +6858,8 @@ func LogViewer(args ...string) error {
 package xtui
 
 import (
-	c "github.com/rafa-mori/xtui/components"
-	t "github.com/rafa-mori/xtui/types"
+	c "github.com/kubex-ecosystem/xtui/components"
+	t "github.com/kubex-ecosystem/xtui/types"
 )
 
 type Config struct{ t.FormConfig }

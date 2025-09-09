@@ -8,7 +8,7 @@ export const personalInfo: PersonalInfo = {
   email: "faelmori@gmail.com",
   social: {
     github: "https://github.com/faelmori",
-    linkedin: "https://www.linkedin.com/in/rafa-mori/",
+    linkedin: "https://www.linkedin.com/in/kubex-ecosystem/",
     twitter: "https://x.com/faelOmori",
   },
   statistics: {

@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
 import JSZip from 'jszip';
+import { NextRequest, NextResponse } from 'next/server';
 
 // Interface para resultados da extração de código AI
 interface ParsedMarker {
@@ -33,16 +33,16 @@ class AIMarkerParser {
 
     try {
       const lines = code.split('\n');
-      
+
       let currentMarker: Partial<ParsedMarker> | null = null;
       let currentContent: string[] = [];
-      
+
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
         const lineNumber = i + 1;
-        
+
         const markerMatch = line.match(this.markerRegex);
-        
+
         if (markerMatch) {
           // Salvar marcador anterior se existir
           if (currentMarker && currentMarker.filename) {
@@ -55,7 +55,7 @@ class AIMarkerParser {
             results.markers.push(marker);
             results.totalBytes += marker.content.length;
           }
-          
+
           // Iniciar novo marcador
           currentMarker = {
             filename: markerMatch[1],
@@ -67,7 +67,7 @@ class AIMarkerParser {
           currentContent.push(line);
         }
       }
-      
+
       // Salvar último marcador
       if (currentMarker && currentMarker.filename) {
         const marker: ParsedMarker = {
@@ -79,16 +79,16 @@ class AIMarkerParser {
         results.markers.push(marker);
         results.totalBytes += marker.content.length;
       }
-      
+
       results.totalFiles = results.markers.length;
-      
+
     } catch (error) {
       results.errors.push({
         line: 0,
         message: `Erro ao processar código AI: ${error}`
       });
     }
-    
+
     return results;
   }
 }
@@ -96,37 +96,37 @@ class AIMarkerParser {
 export async function POST(request: NextRequest) {
   try {
     const { code, format = 'json', projectName = 'ai-generated-project' } = await request.json();
-    
+
     if (!code || typeof code !== 'string') {
       return NextResponse.json({ error: 'Code content required' }, { status: 400 });
     }
-    
+
     const parser = new AIMarkerParser();
     const results = parser.parseAICode(code);
-    
+
     if (results.errors.length > 0) {
-      return NextResponse.json({ 
-        error: 'Failed to parse AI code', 
-        details: results.errors 
+      return NextResponse.json({
+        error: 'Failed to parse AI code',
+        details: results.errors
       }, { status: 400 });
     }
-    
+
     if (results.markers.length === 0) {
-      return NextResponse.json({ 
+      return NextResponse.json({
         error: 'No valid markers found in code',
         hint: 'Make sure your AI-generated code contains LookAtni invisible markers'
       }, { status: 400 });
     }
-    
+
     if (format === 'zip') {
       // Criar ZIP com todos os arquivos extraídos
       const zip = new JSZip();
-      
+
       // Criar estrutura de pastas automaticamente
       results.markers.forEach(marker => {
         zip.file(marker.filename, marker.content);
       });
-      
+
       // Adicionar arquivo README com informações da extração
       const readmeContent = `# ${projectName}
 
@@ -152,16 +152,16 @@ ${results.markers.map(marker => `- \`${marker.filename}\` (${marker.content.spli
 
 ---
 
-*Gerado por [LookAtni File Markers](https://github.com/rafa-mori/lookatni-file-markers)*
+*Gerado por [LookAtni File Markers](https://github.com/kubex-ecosystem/lookatni-file-markers)*
 `;
-      
+
       zip.file('README_EXTRACTION.md', readmeContent);
-      
+
       const zipBuffer = await zip.generateAsync({ type: 'uint8array' });
       const arrayBuffer = new ArrayBuffer(zipBuffer.length);
       const view = new Uint8Array(arrayBuffer);
       view.set(zipBuffer);
-      
+
       return new Response(arrayBuffer, {
         headers: {
           'Content-Type': 'application/zip',
@@ -169,7 +169,7 @@ ${results.markers.map(marker => `- \`${marker.filename}\` (${marker.content.spli
         }
       });
     }
-    
+
     // Retorno JSON com detalhes da extração
     return NextResponse.json({
       success: true,
@@ -190,11 +190,11 @@ ${results.markers.map(marker => `- \`${marker.filename}\` (${marker.content.spli
       })),
       downloadUrl: `/api/extract-ai-project?code=${encodeURIComponent(code)}&format=zip&projectName=${encodeURIComponent(projectName)}`
     });
-    
+
   } catch (error) {
-    return NextResponse.json({ 
-      error: 'Failed to extract AI project', 
-      details: error instanceof Error ? error.message : 'Unknown error' 
+    return NextResponse.json({
+      error: 'Failed to extract AI project',
+      details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
   }
 }
@@ -204,11 +204,11 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get('code');
   const format = searchParams.get('format') || 'json';
   const projectName = searchParams.get('projectName') || 'ai-generated-project';
-  
+
   if (!code) {
     return NextResponse.json({ error: 'Code parameter required' }, { status: 400 });
   }
-  
+
   // Redirecionar para POST com os mesmos parâmetros
   return POST(new NextRequest(request.url, {
     method: 'POST',

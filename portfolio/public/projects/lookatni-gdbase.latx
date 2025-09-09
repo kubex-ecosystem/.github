@@ -156,10 +156,10 @@ For further information about the license and terms of use, please refer to the 
 ![GDBASE Banner](docs/assets/top_banner.png)
 
 [![Go](https://img.shields.io/badge/Go-1.19+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/rafa-mori/gdbase/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/kubex-ecosystem/gdbase/blob/main/LICENSE)
 [![Automation](https://img.shields.io/badge/automation-zero%20config-blue)](#features)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/goforge?include_prereleases)](https://github.com/rafa-mori/goforge/releases)
-[![Build](https://github.com/rafa-mori/gdbase/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/gdbase/actions/workflows/release.yml)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/goforge?include_prereleases)](https://github.com/kubex-ecosystem/goforge/releases)
+[![Build](https://github.com/kubex-ecosystem/gdbase/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/gdbase/actions/workflows/release.yml)
 
 ---
 
@@ -229,7 +229,7 @@ Clone the repository and build:
 
 ```sh
 # Clone the repository
-git clone https://github.com/rafa-mori/gdbase.git
+git clone https://github.com/kubex-ecosystem/gdbase.git
 cd gdbase
 go build -o gdbase .
 ```
@@ -327,9 +327,9 @@ Contributions are welcome! Feel free to open issues or submit pull requests. See
 
 ## **Contact**
 
-💌 **Developer**:  
-[Rafael Mori](mailto:faelmori@gmail.com)  
-💼 [Follow me on GitHub](https://github.com/rafa-mori)  
+💌 **Developer**:
+[Rafael Mori](mailto:faelmori@gmail.com)
+💼 [Follow me on GitHub](https://github.com/rafa-mori)
 I'm open to collaborations and new ideas. If you found the project interesting, get in touch!
 
 ---
@@ -340,10 +340,10 @@ I'm open to collaborations and new ideas. If you found the project interesting, 
 package gdbase
 
 import (
-	. "github.com/rafa-mori/gdbase/internal/interfaces"
-	t "github.com/rafa-mori/gdbase/internal/types"
+	. "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type PropertyValBase[T any] interface{ IPropertyValBase[T] }
@@ -420,7 +420,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/rafa-mori/gdbase/utils"
+	"github.com/kubex-ecosystem/gdbase/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -508,7 +508,7 @@ func sshTunnelServiceCmd() *cobra.Command {
 package cli
 
 import (
-	"github.com/rafa-mori/gdbase/utils/helpers"
+	"github.com/kubex-ecosystem/gdbase/utils/helpers"
 	"github.com/spf13/cobra"
 )
 
@@ -564,10 +564,10 @@ import (
 
 var banners = []string{
 	`
-  ______  _______  _______                             
- /      \|       \|       \                            
-|  ▓▓▓▓▓▓\ ▓▓▓▓▓▓▓\ ▓▓▓▓▓▓▓\ ______   _______  ______  
-| ▓▓ __\▓▓ ▓▓  | ▓▓ ▓▓__/ ▓▓|      \ /       \/      \ 
+  ______  _______  _______
+ /      \|       \|       \
+|  ▓▓▓▓▓▓\ ▓▓▓▓▓▓▓\ ▓▓▓▓▓▓▓\ ______   _______  ______
+| ▓▓ __\▓▓ ▓▓  | ▓▓ ▓▓__/ ▓▓|      \ /       \/      \
 | ▓▓|    \ ▓▓  | ▓▓ ▓▓    ▓▓ \▓▓▓▓▓▓\  ▓▓▓▓▓▓▓  ▓▓▓▓▓▓\
 | ▓▓ \▓▓▓▓ ▓▓  | ▓▓ ▓▓▓▓▓▓▓\/      ▓▓\▓▓    \| ▓▓    ▓▓
 | ▓▓__| ▓▓ ▓▓__/ ▓▓ ▓▓__/ ▓▓  ▓▓▓▓▓▓▓_\▓▓▓▓▓▓\ ▓▓▓▓▓▓▓▓
@@ -759,9 +759,9 @@ package cli
 import (
 	"fmt"
 
-	"github.com/rafa-mori/gdbase/factory"
-	s "github.com/rafa-mori/gdbase/internal/services"
-	l "github.com/rafa-mori/logz"
+	"github.com/kubex-ecosystem/gdbase/factory"
+	s "github.com/kubex-ecosystem/gdbase/internal/services"
+	l "github.com/kubex-ecosystem/logz"
 	"github.com/spf13/cobra"
 )
 
@@ -861,7 +861,7 @@ func statusDockerCmd() *cobra.Command {
 package cli
 
 import (
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 type IWebSrvServerData interface {
@@ -1013,7 +1013,7 @@ package cli
 import (
 	"fmt"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 type IWebSrvServerStatus interface {
@@ -1076,10 +1076,10 @@ import (
 	"strings"
 	"text/template"
 
-	is "github.com/rafa-mori/gdbase/internal/services"
-	gl "github.com/rafa-mori/gdbase/logger"
-	t "github.com/rafa-mori/gdbase/types"
-	l "github.com/rafa-mori/logz"
+	is "github.com/kubex-ecosystem/gdbase/internal/services"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	t "github.com/kubex-ecosystem/gdbase/types"
+	l "github.com/kubex-ecosystem/logz"
 	_ "gorm.io/driver/mysql"
 	_ "gorm.io/driver/postgres"
 	_ "gorm.io/driver/sqlite"
@@ -1236,13 +1236,13 @@ func mapSQLType(sqlType string) string {
 }
 
 /// cmd/main.go ///
-// go:generate go run github.com/rafa-mori/gdbase/internalmodels/user GenUser
+// go:generate go run github.com/kubex-ecosystem/gdbase/internalmodels/user GenUser
 package main
 
 import (
 	"fmt"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 func main() {
@@ -1588,9 +1588,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/rafa-mori/gdbase/cmd/cli"
-	gl "github.com/rafa-mori/gdbase/logger"
-	"github.com/rafa-mori/gdbase/version"
+	"github.com/kubex-ecosystem/gdbase/cmd/cli"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	"github.com/kubex-ecosystem/gdbase/version"
 	"github.com/spf13/cobra"
 )
 
@@ -1712,13 +1712,13 @@ func RegX() *GDBase {
 /// docs/CONTRIBUTING.md ///
 # **Contributing to GoSpider**
 
-Thank you for your interest in contributing to **[GoSpider](https://github.com/rafa-mori/gospider)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
+Thank you for your interest in contributing to **[GoSpider](https://github.com/kubex-ecosystem/gospider)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
 
 ---
 
 ## **How to Contribute**
 
-There are several ways to contribute to [GoSpider](https://github.com/rafa-mori/gospider):
+There are several ways to contribute to [GoSpider](https://github.com/kubex-ecosystem/gospider):
 
 1. **Report Issues**
    - Found bugs or issues in the code? Open an issue detailing the problem.
@@ -1740,7 +1740,7 @@ There are several ways to contribute to [GoSpider](https://github.com/rafa-mori/
 
 ### 1. **Clone the Repository**
 ```bash
-git clone https://github.com/rafa-mori/gospider.git
+git clone https://github.com/kubex-ecosystem/gospider.git
 cd gospider
 ```
 
@@ -1749,9 +1749,9 @@ Make sure you have Go installed:
 
 You can install Go using one of the following methods:
 
-- [A super easy way to install Go](https://github.com/rafa-mori/go-installer)
+- [A super easy way to install Go](https://github.com/kubex-ecosystem/go-installer)
   ```shell
-    curl -sSfL 'https://raw.githubusercontent.com/rafa-mori/go-installer/refs/heads/main/go.sh' | bash
+    curl -sSfL 'https://raw.githubusercontent.com/kubex-ecosystem/go-installer/refs/heads/main/go.sh' | bash
   ```
 
 - [Convencional way to download Go](https://go.dev/dl/)
@@ -1825,16 +1825,16 @@ Commits should be clear and descriptive. Examples:
 
 ## **Best Practices**
 
-1. **Be Respectful and Welcoming**  
+1. **Be Respectful and Welcoming**
    This is an open-source project for everyone. Respect other contributors and collaborate constructively.
 
-2. **Document Your Changes**  
+2. **Document Your Changes**
    Update the `README.md` or documentation, if necessary, to include your changes.
 
-3. **Add Tests When Possible**  
+3. **Add Tests When Possible**
    Ensure any new functionality is accompanied by tests.
 
-4. **Be Clear in Issue Reports**  
+4. **Be Clear in Issue Reports**
    When opening an issue, be detailed and provide as much context as possible.
 
 ---
@@ -1857,10 +1857,10 @@ We commit to reviewing pull requests and issues as quickly as possible. We value
 ![GDBASE Banner](/docs/assets/top_banner.png)
 
 [![Go](https://img.shields.io/badge/Go-1.19+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/rafa-mori/gdbase/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/kubex-ecosystem/gdbase/blob/main/LICENSE)
 [![Automation](https://img.shields.io/badge/automation-zero%20config-blue)](#features)
-[![Releases](https://img.shields.io/github/v/release/rafa-mori/goforge?include_prereleases)](https://github.com/rafa-mori/goforge/releases)
-[![Build](https://github.com/rafa-mori/gdbase/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/gdbase/actions/workflows/release.yml)
+[![Releases](https://img.shields.io/github/v/release/kubex-ecosystem/goforge?include_prereleases)](https://github.com/kubex-ecosystem/goforge/releases)
+[![Build](https://github.com/kubex-ecosystem/gdbase/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/gdbase/actions/workflows/release.yml)
 
 ---
 
@@ -1930,7 +1930,7 @@ Clone o repositório e compile:
 
 ```sh
 # Clone o repositório
-git clone https://github.com/rafa-mori/gdbase.git
+git clone https://github.com/kubex-ecosystem/gdbase.git
 cd gdbase
 go build -o gdbase .
 ```
@@ -2028,9 +2028,9 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 
 ## **Contact**
 
-💌 **Developer**:  
-[Rafael Mori](mailto:rafa-mori@gmail.com)  
-💼 [Follow me on GitHub](https://github.com/rafa-mori)  
+💌 **Developer**:
+[Rafael Mori](mailto:rafa-mori@gmail.com)
+💼 [Follow me on GitHub](https://github.com/rafa-mori)
 Estou aberto a colaborações e novas ideias. Se achou o projeto interessante, entre em contato!
 
 ---
@@ -2043,7 +2043,7 @@ package factory
 import (
 	"log"
 
-	"github.com/rafa-mori/gdbase/internal/services"
+	"github.com/kubex-ecosystem/gdbase/internal/services"
 	"github.com/streadway/amqp"
 )
 
@@ -2106,9 +2106,9 @@ func PublishMessage(queueName string, message string) error {
 package factory
 
 import (
-	crp "github.com/rafa-mori/gdbase/internal/security/crypto"
-	krs "github.com/rafa-mori/gdbase/internal/security/external"
-	sci "github.com/rafa-mori/gdbase/internal/security/interfaces"
+	crp "github.com/kubex-ecosystem/gdbase/internal/security/crypto"
+	krs "github.com/kubex-ecosystem/gdbase/internal/security/external"
+	sci "github.com/kubex-ecosystem/gdbase/internal/security/interfaces"
 )
 
 type CryptoService = sci.ICryptoService
@@ -2126,9 +2126,9 @@ func NewKeyringService(keyringServiceName, keyringServicePath string) KeyringSer
 package factory
 
 import (
-	l "github.com/rafa-mori/logz"
-	dbAbs "github.com/rafa-mori/gdbase/internal/services"
-	t "github.com/rafa-mori/gdbase/types"
+	l "github.com/kubex-ecosystem/logz"
+	dbAbs "github.com/kubex-ecosystem/gdbase/internal/services"
+	t "github.com/kubex-ecosystem/gdbase/types"
 )
 
 type DBConfig = t.DBConfig
@@ -2148,9 +2148,9 @@ func SetupDatabaseServices(d dbAbs.IDockerService, config *t.DBConfig) error {
 package factory
 
 import (
-	dkrs "github.com/rafa-mori/gdbase/internal/services"
-	t "github.com/rafa-mori/gdbase/types"
-	l "github.com/rafa-mori/logz"
+	dkrs "github.com/kubex-ecosystem/gdbase/internal/services"
+	t "github.com/kubex-ecosystem/gdbase/types"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type DockerSrv interface {
@@ -2173,7 +2173,7 @@ type AuthRequestDTO struct {
 package models
 
 import (
-	m "github.com/rafa-mori/gdbase/internal/models/clients"
+	m "github.com/kubex-ecosystem/gdbase/internal/models/clients"
 	"gorm.io/gorm"
 )
 
@@ -2196,7 +2196,7 @@ import (
 	"context"
 	"errors"
 
-	m "github.com/rafa-mori/gdbase/internal/models/cron"
+	m "github.com/kubex-ecosystem/gdbase/internal/models/cron"
 	"gorm.io/gorm"
 )
 
@@ -2222,7 +2222,7 @@ func NewCronJob(ctx context.Context, cron *CronJobModel, restrict bool) (*CronJo
 package models
 
 import (
-	m "github.com/rafa-mori/gdbase/internal/models/products"
+	m "github.com/kubex-ecosystem/gdbase/internal/models/products"
 	"gorm.io/gorm"
 )
 
@@ -2242,7 +2242,7 @@ func NewProductRepo(db *gorm.DB) ProductRepo {
 package models
 
 import (
-	m "github.com/rafa-mori/gdbase/internal/models/users"
+	m "github.com/kubex-ecosystem/gdbase/internal/models/users"
 	"gorm.io/gorm"
 )
 
@@ -2273,7 +2273,7 @@ func NewUserModel(username, name, email string) UserModel {
 package models
 
 import (
-	m "github.com/rafa-mori/gdbase/internal/models/webhooks"
+	m "github.com/kubex-ecosystem/gdbase/internal/models/webhooks"
 	"gorm.io/gorm"
 )
 
@@ -2368,9 +2368,9 @@ import (
 	"fmt"
 	"os"
 
-	crp "github.com/rafa-mori/gdbase/internal/security/crypto"
-	krs "github.com/rafa-mori/gdbase/internal/security/external"
-	gl "github.com/rafa-mori/gdbase/logger"
+	crp "github.com/kubex-ecosystem/gdbase/internal/security/crypto"
+	krs "github.com/kubex-ecosystem/gdbase/internal/security/external"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 var (
@@ -2631,7 +2631,7 @@ package interfaces
 import (
 	"net/http"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type IGoBE interface {
@@ -2695,7 +2695,7 @@ type IMutexes interface {
 package interfaces
 
 import (
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 	"github.com/google/uuid"
 )
 
@@ -2719,7 +2719,7 @@ package interfaces
 
 import (
 	"github.com/google/uuid"
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 	"reflect"
 )
 
@@ -2835,7 +2835,7 @@ type User interface {
 /// internal/interfaces/user_repo.go ///
 package interfaces
 
-import xtt "github.com/rafa-mori/xtui/types"
+import xtt "github.com/kubex-ecosystem/xtui/types"
 
 type IUserRepo interface {
 	Create(u User) (User, error)
@@ -3004,7 +3004,7 @@ package clients
 import (
 	"time"
 
-	t "github.com/rafa-mori/gdbase/internal/types"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
 )
 
 // ClientStatus represents the status of a client
@@ -3293,7 +3293,7 @@ package clients
 import (
 	"fmt"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 	"gorm.io/gorm"
 )
 
@@ -3503,9 +3503,9 @@ import (
 
 	"github.com/google/uuid"
 
-	t "github.com/rafa-mori/gdbase/internal/types"
-	gl "github.com/rafa-mori/gdbase/logger"
-	l "github.com/rafa-mori/logz"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type ICronJobValidation interface {
@@ -3642,13 +3642,13 @@ import (
 	"context"
 	"time"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 	"github.com/google/uuid"
-	t "github.com/rafa-mori/gdbase/types"
+	t "github.com/kubex-ecosystem/gdbase/types"
 
-	jobqueue "github.com/rafa-mori/gdbase/internal/models/job_queue"
+	jobqueue "github.com/kubex-ecosystem/gdbase/internal/models/job_queue"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 type ICronJobModel interface {
@@ -3894,8 +3894,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	jobqueue "github.com/rafa-mori/gdbase/internal/models/job_queue"
-	gl "github.com/rafa-mori/gdbase/logger"
+	jobqueue "github.com/kubex-ecosystem/gdbase/internal/models/job_queue"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 	"github.com/streadway/amqp"
 )
 
@@ -4140,7 +4140,7 @@ import (
 	"reflect"
 
 	"github.com/goccy/go-json"
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
 )
 
 type Model interface {
@@ -4261,7 +4261,7 @@ import (
 
 	"github.com/goccy/go-json"
 	"github.com/google/uuid"
-	typ "github.com/rafa-mori/gdbase/internal/types"
+	typ "github.com/kubex-ecosystem/gdbase/internal/types"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -4372,7 +4372,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	t "github.com/rafa-mori/gdbase/types"
+	t "github.com/kubex-ecosystem/gdbase/types"
 )
 
 type IJobQueue interface {
@@ -5273,7 +5273,7 @@ import (
 	"net/http"
 	"time"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 // Service: NotificationService encapsula a lógica de negócio e envio.
@@ -5403,7 +5403,7 @@ package orders
 import (
 	"time"
 
-	t "github.com/rafa-mori/gdbase/internal/types"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
 )
 
 // PaymentMethod represents the payment methods available for an order
@@ -5837,7 +5837,7 @@ package products
 import (
 	"time"
 
-	t "github.com/rafa-mori/gdbase/internal/types"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
 )
 
 // PriceTable represents a product's price table
@@ -6413,11 +6413,11 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
-	is "github.com/rafa-mori/gdbase/internal/services"
-	gl "github.com/rafa-mori/gdbase/logger"
-	t "github.com/rafa-mori/gdbase/types"
-	l "github.com/rafa-mori/logz"
-	xtt "github.com/rafa-mori/xtui/types"
+	is "github.com/kubex-ecosystem/gdbase/internal/services"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	t "github.com/kubex-ecosystem/gdbase/types"
+	l "github.com/kubex-ecosystem/logz"
+	xtt "github.com/kubex-ecosystem/xtui/types"
 	"gorm.io/gorm"
 )
 
@@ -6558,7 +6558,7 @@ import (
 	"errors"
 	"fmt"
 
-	t "github.com/rafa-mori/gdbase/types"
+	t "github.com/kubex-ecosystem/gdbase/types"
 )
 
 type IUserService interface {
@@ -6661,9 +6661,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	t "github.com/rafa-mori/gdbase/internal/types"
-	gl "github.com/rafa-mori/gdbase/logger"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 type IWebhook interface {
@@ -6813,7 +6813,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	t "github.com/rafa-mori/gdbase/internal/types"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
 	"gorm.io/gorm"
 )
 
@@ -6884,7 +6884,7 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
-	t "github.com/rafa-mori/gdbase/internal/types"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
 )
 
 type IWebhookService interface {
@@ -6940,8 +6940,8 @@ import (
 	"math/big"
 	"regexp"
 
-	sci "github.com/rafa-mori/gdbase/internal/security/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
+	sci "github.com/kubex-ecosystem/gdbase/internal/security/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 	"golang.org/x/crypto/chacha20poly1305"
 )
 
@@ -7210,10 +7210,10 @@ import (
 	"fmt"
 	"os"
 
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	sci "github.com/rafa-mori/gdbase/internal/security/interfaces"
-	t "github.com/rafa-mori/gdbase/internal/types"
-	gl "github.com/rafa-mori/gdbase/logger"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	sci "github.com/kubex-ecosystem/gdbase/internal/security/interfaces"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 	"github.com/zalando/go-keyring"
 )
 
@@ -7672,7 +7672,7 @@ CREATE TABLE IF NOT EXISTS users (
     phone varchar(30),
     document varchar(50),
     role_id uuid REFERENCES roles(id),
-    active boolean NOT NULL DEFAULT true,   
+    active boolean NOT NULL DEFAULT true,
     created_at timestamp without time zone NOT NULL DEFAULT now(),
     updated_at timestamp without time zone NOT NULL DEFAULT now(),
     last_login timestamp without time zone
@@ -7730,27 +7730,27 @@ CREATE TABLE execution_logs (
     output       TEXT DEFAULT NULL,
     error_message TEXT DEFAULT NULL,
     retry_count  INTEGER DEFAULT 0,
-    created_at   TIMESTAMP DEFAULT NOW(), 
-    updated_at   TIMESTAMP DEFAULT NOW(), 
+    created_at   TIMESTAMP DEFAULT NOW(),
+    updated_at   TIMESTAMP DEFAULT NOW(),
     user_id     uuid REFERENCES users(id),
     created_by   uuid REFERENCES users(id),
     updated_by   uuid REFERENCES users(id),
-    metadata     JSONB 
+    metadata     JSONB
 );
 
 CREATE TABLE job_queue (
     id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     cronjob_id    UUID REFERENCES cron_jobs(id),
-    status        job_status DEFAULT 'PENDING', 
+    status        job_status DEFAULT 'PENDING',
     scheduled_time TIMESTAMP DEFAULT NOW(),
     execution_time TIMESTAMP DEFAULT NULL,
     error_message TEXT DEFAULT NULL,
     retry_count   INTEGER DEFAULT 0,
-    next_run_time TIMESTAMP DEFAULT NULL, 
+    next_run_time TIMESTAMP DEFAULT NULL,
     created_at    TIMESTAMP DEFAULT NOW(),
     updated_at    TIMESTAMP DEFAULT NOW(),
     metadata      JSONB DEFAULT NULL,
-    user_id      uuid REFERENCES users(id), 
+    user_id      uuid REFERENCES users(id),
     created_by    uuid REFERENCES users(id),
     updated_by    uuid REFERENCES users(id),
     last_executed_by uuid REFERENCES users(id),
@@ -8036,7 +8036,7 @@ CREATE TABLE IF NOT EXISTS stock_predictions (
 --     updated_at timestamp without time zone NOT NULL DEFAULT now(),
 --     last_sync_at timestamp without time zone,
 --     --prediction_id uuid REFERENCES stock_predictions(id),
---     priority integer, 
+--     priority integer,
 --     expected_margin numeric(18,2)
 -- );
 -- COMMIT;
@@ -8178,7 +8178,7 @@ INSERT INTO role_permissions (id, role_id, permission_id, created_at, updated_at
 (uuid_generate_v4(), (SELECT id FROM roles WHERE name = 'viewer'), (SELECT id FROM permissions WHERE name = 'post_delete'), now(), now());
 
 -- Criando um usuário de exemplo
-INSERT INTO "users" ("id","name","username","password","email","phone","role_id","document","active","created_at","updated_at","last_login") 
+INSERT INTO "users" ("id","name","username","password","email","phone","role_id","document","active","created_at","updated_at","last_login")
 VALUES (
     uuid_generate_v4(),
     'Test User',
@@ -8187,7 +8187,7 @@ VALUES (
     'abcdef',
     '9898989898',
     CASE WHEN (SELECT id FROM roles WHERE name = 'admin') IS NOT NULL THEN
-        (SELECT id FROM roles WHERE name = 'admin') 
+        (SELECT id FROM roles WHERE name = 'admin')
     ELSE
         (SELECT id FROM roles WHERE name = 'editor')
     END,
@@ -8298,7 +8298,7 @@ CREATE TABLE IF NOT EXISTS users (
     phone varchar(30),
     document varchar(50),
     role_id uuid REFERENCES roles(id),
-    active boolean NOT NULL DEFAULT true,   
+    active boolean NOT NULL DEFAULT true,
     created_at timestamp without time zone NOT NULL DEFAULT now(),
     updated_at timestamp without time zone NOT NULL DEFAULT now(),
     last_login timestamp without time zone
@@ -8356,27 +8356,27 @@ CREATE TABLE execution_logs (
     output       TEXT DEFAULT NULL,
     error_message TEXT DEFAULT NULL,
     retry_count  INTEGER DEFAULT 0,
-    created_at   TIMESTAMP DEFAULT NOW(), 
-    updated_at   TIMESTAMP DEFAULT NOW(), 
+    created_at   TIMESTAMP DEFAULT NOW(),
+    updated_at   TIMESTAMP DEFAULT NOW(),
     user_id     uuid REFERENCES users(id),
     created_by   uuid REFERENCES users(id),
     updated_by   uuid REFERENCES users(id),
-    metadata     JSONB 
+    metadata     JSONB
 );
 
 CREATE TABLE job_queue (
     id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     cronjob_id    UUID REFERENCES cron_jobs(id),
-    status        job_status DEFAULT 'PENDING', 
+    status        job_status DEFAULT 'PENDING',
     scheduled_time TIMESTAMP DEFAULT NOW(),
     execution_time TIMESTAMP DEFAULT NULL,
     error_message TEXT DEFAULT NULL,
     retry_count   INTEGER DEFAULT 0,
-    next_run_time TIMESTAMP DEFAULT NULL, 
+    next_run_time TIMESTAMP DEFAULT NULL,
     created_at    TIMESTAMP DEFAULT NOW(),
     updated_at    TIMESTAMP DEFAULT NOW(),
     metadata      JSONB DEFAULT NULL,
-    user_id      uuid REFERENCES users(id), 
+    user_id      uuid REFERENCES users(id),
     created_by    uuid REFERENCES users(id),
     updated_by    uuid REFERENCES users(id),
     last_executed_by uuid REFERENCES users(id),
@@ -8662,7 +8662,7 @@ CREATE TABLE IF NOT EXISTS stock_predictions (
 --     updated_at timestamp without time zone NOT NULL DEFAULT now(),
 --     last_sync_at timestamp without time zone,
 --     --prediction_id uuid REFERENCES stock_predictions(id),
---     priority integer, 
+--     priority integer,
 --     expected_margin numeric(18,2)
 -- );
 -- COMMIT;
@@ -8804,7 +8804,7 @@ INSERT INTO role_permissions (id, role_id, permission_id, created_at, updated_at
 (uuid_generate_v4(), (SELECT id FROM roles WHERE name = 'viewer'), (SELECT id FROM permissions WHERE name = 'post_delete'), now(), now());
 
 -- Criando um usuário de exemplo
-INSERT INTO "users" ("id","name","username","password","email","phone","role_id","document","active","created_at","updated_at","last_login") 
+INSERT INTO "users" ("id","name","username","password","email","phone","role_id","document","active","created_at","updated_at","last_login")
 VALUES (
     uuid_generate_v4(),
     'Test User',
@@ -8813,7 +8813,7 @@ VALUES (
     'abcdef',
     '9898989898',
     CASE WHEN (SELECT id FROM roles WHERE name = 'admin') IS NOT NULL THEN
-        (SELECT id FROM roles WHERE name = 'admin') 
+        (SELECT id FROM roles WHERE name = 'admin')
     ELSE
         (SELECT id FROM roles WHERE name = 'editor')
     END,
@@ -8845,7 +8845,7 @@ import (
 	"sync"
 	"time"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 type BrokerInfo struct {
@@ -8983,7 +8983,7 @@ import (
 
 	"github.com/goccy/go-json"
 	"github.com/pebbe/zmq4"
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 const (
@@ -9201,15 +9201,15 @@ package services
 import (
 	"fmt"
 
-	gbm "github.com/rafa-mori/gdbase"
+	gbm "github.com/kubex-ecosystem/gdbase"
 
-	// gl "github.com/rafa-mori/gdbase/logger"
+	// gl "github.com/kubex-ecosystem/gdbase/logger"
 	"sync"
 
-	glb "github.com/rafa-mori/gdbase/internal/globals"
-	gl "github.com/rafa-mori/gdbase/logger"
-	t "github.com/rafa-mori/gdbase/types"
-	l "github.com/rafa-mori/logz"
+	glb "github.com/kubex-ecosystem/gdbase/internal/globals"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	t "github.com/kubex-ecosystem/gdbase/types"
+	l "github.com/kubex-ecosystem/logz"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
@@ -9467,13 +9467,13 @@ import (
 	k "github.com/docker/docker/client"
 	nl "github.com/docker/docker/libnetwork/netlabel"
 	"github.com/docker/go-connections/nat"
-	gbm "github.com/rafa-mori/gdbase"
-	evs "github.com/rafa-mori/gdbase/internal/events"
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	it "github.com/rafa-mori/gdbase/internal/types"
-	gl "github.com/rafa-mori/gdbase/logger"
-	t "github.com/rafa-mori/gdbase/types"
-	l "github.com/rafa-mori/logz"
+	gbm "github.com/kubex-ecosystem/gdbase"
+	evs "github.com/kubex-ecosystem/gdbase/internal/events"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	it "github.com/kubex-ecosystem/gdbase/internal/types"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	t "github.com/kubex-ecosystem/gdbase/types"
+	l "github.com/kubex-ecosystem/logz"
 
 	_ "embed"
 )
@@ -9906,7 +9906,7 @@ import (
 	"github.com/docker/docker/client"
 	nl "github.com/docker/docker/libnetwork/netlabel"
 	"github.com/docker/go-connections/nat"
-	t "github.com/rafa-mori/gdbase/types"
+	t "github.com/kubex-ecosystem/gdbase/types"
 )
 
 // initDBSQL is an embedded SQL file that initializes the database
@@ -10328,9 +10328,9 @@ import (
 	"os"
 
 	"github.com/docker/go-connections/nat"
-	glb "github.com/rafa-mori/gdbase/internal/globals"
-	gl "github.com/rafa-mori/gdbase/logger"
-	t "github.com/rafa-mori/gdbase/types"
+	glb "github.com/kubex-ecosystem/gdbase/internal/globals"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	t "github.com/kubex-ecosystem/gdbase/types"
 )
 
 func SetupRabbitMQ(config *t.RabbitMQ, dockerService IDockerService) error {
@@ -10419,10 +10419,10 @@ import (
 	"time"
 
 	"github.com/docker/go-connections/nat"
-	glb "github.com/rafa-mori/gdbase/internal/globals"
-	gl "github.com/rafa-mori/gdbase/logger"
-	t "github.com/rafa-mori/gdbase/types"
-	u "github.com/rafa-mori/gdbase/utils"
+	glb "github.com/kubex-ecosystem/gdbase/internal/globals"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	t "github.com/kubex-ecosystem/gdbase/types"
+	u "github.com/kubex-ecosystem/gdbase/utils"
 )
 
 func SlitMessage(recPayload []string) (id, msg []string) {
@@ -11061,10 +11061,10 @@ package types
 import (
 	"fmt"
 
-	l "github.com/rafa-mori/logz"
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
-	tu "github.com/rafa-mori/gdbase/utils"
+	l "github.com/kubex-ecosystem/logz"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	tu "github.com/kubex-ecosystem/gdbase/utils"
 
 	"reflect"
 
@@ -11516,11 +11516,11 @@ import (
 	"encoding/base64"
 	"reflect"
 
-	l "github.com/rafa-mori/logz"
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	crp "github.com/rafa-mori/gdbase/internal/security/crypto"
-	sci "github.com/rafa-mori/gdbase/internal/security/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
+	l "github.com/kubex-ecosystem/logz"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	crp "github.com/kubex-ecosystem/gdbase/internal/security/crypto"
+	sci "github.com/kubex-ecosystem/gdbase/internal/security/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 
 	"context"
 	"fmt"
@@ -12245,8 +12245,8 @@ import (
 	"strings"
 
 	"github.com/pelletier/go-toml/v2"
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 	"github.com/subosito/gotenv"
 	"gopkg.in/yaml.v3"
 )
@@ -12812,7 +12812,7 @@ func (m Money) Absolute() Money {
 package types
 
 import (
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 
 	"sync"
 	"time"
@@ -13024,9 +13024,9 @@ import (
 	"os"
 	"reflect"
 
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
-	l "github.com/rafa-mori/logz"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/google/uuid"
 )
@@ -13146,9 +13146,9 @@ func (p *Property[T]) LoadFromFile(filename, format string) error {
 package types
 
 import (
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
-	l "github.com/rafa-mori/logz"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"fmt"
 	"reflect"
@@ -13393,7 +13393,7 @@ import (
 	"runtime"
 
 	"github.com/google/uuid"
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 type IReference interface {
@@ -13482,7 +13482,7 @@ import (
 	"fmt"
 	"reflect"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 func AutoEncode[T any](v T, format, filePath string) ([]byte, error) {
@@ -13524,9 +13524,9 @@ import (
 	"strings"
 	"time"
 
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
-	l "github.com/rafa-mori/logz"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 var (
@@ -14132,7 +14132,7 @@ import (
 	"os"
 	"strings"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 func EncryptEnv(value string, isConfidential bool) (string, error) {
@@ -14244,9 +14244,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
-	l "github.com/rafa-mori/logz"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type SignalManager[T chan string] struct {
@@ -14305,7 +14305,7 @@ func (sm *SignalManager[T]) StopListening() {
 package types
 
 import (
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 	"sync"
 	"time"
 )
@@ -14464,8 +14464,8 @@ import (
 	"io"
 	"os"
 
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 func IsShellSpecialVar(c uint8) bool {
@@ -14529,7 +14529,7 @@ import (
 	"reflect"
 
 	"github.com/google/uuid"
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
 
 	"fmt"
 	"sort"
@@ -15007,7 +15007,7 @@ package types
 import (
 	"reflect"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 type ValidationListenerType string
@@ -15311,7 +15311,7 @@ import (
 	"runtime"
 	"strings"
 
-	l "github.com/rafa-mori/logz"
+	l "github.com/kubex-ecosystem/logz"
 )
 
 type gLog struct {
@@ -15497,7 +15497,7 @@ func logging(lgr l.Logger, lType LogType, fullMessage string, ctxMessageMap map[
 package services
 
 import (
-	t "github.com/rafa-mori/gdbase/types"
+	t "github.com/kubex-ecosystem/gdbase/types"
 	"gorm.io/gorm"
 )
 
@@ -15822,7 +15822,7 @@ detect_shell_rc() {
             return 1
             ;;
     esac
-    
+
     if [ ! -f "$shell_rc_file" ]; then
         log error "Arquivo de configuração não encontrado: ${shell_rc_file}"
         return 1
@@ -15876,7 +15876,7 @@ add_to_path() {
     }
 
     log success "Adicionado $target_path ao PATH em $shell_rc_file."
-    
+
     "$SHELL" -c "source ${shell_rc_file}" || {
         log warn "Falha ao recarregar o shell. Por favor, execute 'source ${shell_rc_file}' manualmente."
     }
@@ -16388,7 +16388,7 @@ help:
 	$(call log, $(APP_NAME) is a tool for managing Kubernetes resources)
 	$(call break, b )
 	$(call log, For more information, visit: )
-	$(call log, 'https://github.com/rafa-mori/'$(APP_NAME))
+	$(call log, 'https://github.com/kubex-ecosystem/'$(APP_NAME))
 	$(call break, b )
 	$(call success, End of help message)
 	$(shell exit 0)
@@ -16923,7 +16923,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	clients "github.com/rafa-mori/gdbase/internal/models/clients"
+	clients "github.com/kubex-ecosystem/gdbase/internal/models/clients"
 )
 
 func setupClientTestDB(t *testing.T) *gorm.DB {
@@ -16973,7 +16973,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	clients "github.com/rafa-mori/gdbase/internal/models/clients"
+	clients "github.com/kubex-ecosystem/gdbase/internal/models/clients"
 )
 
 func setupClientRepoTestDB(t *testing.T) *gorm.DB {
@@ -17177,7 +17177,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	orders "github.com/rafa-mori/gdbase/internal/models/orders"
+	orders "github.com/kubex-ecosystem/gdbase/internal/models/orders"
 )
 
 func setupTestDB(t *testing.T) *gorm.DB {
@@ -17277,7 +17277,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	products "github.com/rafa-mori/gdbase/internal/models/products"
+	products "github.com/kubex-ecosystem/gdbase/internal/models/products"
 )
 
 func setupProductTestDB(t *testing.T) *gorm.DB {
@@ -17332,7 +17332,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	products "github.com/rafa-mori/gdbase/internal/models/products"
+	products "github.com/kubex-ecosystem/gdbase/internal/models/products"
 )
 
 func setupProductRepoTestDB(t *testing.T) *gorm.DB {
@@ -17397,7 +17397,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	um "github.com/rafa-mori/gdbase/internal/models/users"
+	um "github.com/kubex-ecosystem/gdbase/internal/models/users"
 )
 
 func setupUserTestDB(t *testing.T) *gorm.DB {
@@ -17441,7 +17441,7 @@ package tests
 // import (
 // 	"testing"
 
-// 	um "github.com/rafa-mori/gdbase/internal/models/users"
+// 	um "github.com/kubex-ecosystem/gdbase/internal/models/users"
 // 	"github.com/stretchr/testify/assert"
 // 	"golang.org/x/crypto/bcrypt"
 // )
@@ -17519,7 +17519,7 @@ package tests
 /* import (
 	"testing"
 
-	um "github.com/rafa-mori/gdbase/internal/models/users"
+	um "github.com/kubex-ecosystem/gdbase/internal/models/users"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -17639,9 +17639,9 @@ package tests
 // 	"errors"
 // 	"testing"
 
-// 	um "github.com/rafa-mori/gdbase/internal/models/users"
-// 	"github.com/rafa-mori/gdbase/types"
-// 	"github.com/rafa-mori/xtui/types"
+// 	um "github.com/kubex-ecosystem/gdbase/internal/models/users"
+// 	"github.com/kubex-ecosystem/gdbase/types"
+// 	"github.com/kubex-ecosystem/xtui/types"
 // 	"github.com/stretchr/testify/assert"
 // 	"github.com/stretchr/testify/mock"
 // )
@@ -17855,13 +17855,13 @@ import (
 	"os"
 	"path/filepath"
 
-	l "github.com/rafa-mori/logz"
-	glb "github.com/rafa-mori/gdbase/internal/globals"
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	crp "github.com/rafa-mori/gdbase/internal/security/crypto"
-	krs "github.com/rafa-mori/gdbase/internal/security/external"
-	t "github.com/rafa-mori/gdbase/internal/types"
-	gl "github.com/rafa-mori/gdbase/logger"
+	l "github.com/kubex-ecosystem/logz"
+	glb "github.com/kubex-ecosystem/gdbase/internal/globals"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	crp "github.com/kubex-ecosystem/gdbase/internal/security/crypto"
+	krs "github.com/kubex-ecosystem/gdbase/internal/security/external"
+	t "github.com/kubex-ecosystem/gdbase/internal/types"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 	"gorm.io/gorm"
 )
 
@@ -18178,7 +18178,7 @@ type IDBService interface {
 package models
 
 import (
-	m "github.com/rafa-mori/gdbase/internal/interfaces"
+	m "github.com/kubex-ecosystem/gdbase/internal/interfaces"
 )
 
 type User = m.User
@@ -18192,8 +18192,8 @@ import (
 	"crypto/rsa"
 	"time"
 
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	sci "github.com/rafa-mori/gdbase/internal/security/interfaces"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	sci "github.com/kubex-ecosystem/gdbase/internal/security/interfaces"
 )
 
 type TSConfig struct {
@@ -18244,8 +18244,8 @@ type TokenService interface {
 package utils
 
 import (
-	ci "github.com/rafa-mori/gdbase/internal/interfaces"
-	gl "github.com/rafa-mori/gdbase/logger"
+	ci "github.com/kubex-ecosystem/gdbase/internal/interfaces"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 
 	"fmt"
 	"reflect"
@@ -18954,12 +18954,12 @@ function _mri_yes_no_question() {
   local _timeout="${3:-5}"
   local _answer=""
   local _counter=0
-  
+
   while [[ ! "$_answer" =~ ^[yYnN]$ ]]; do
     if [ "$_counter" -gt 3 ]; then
       mri_log error "Maximum number of attempts reached."
       printf '%s\n' "Please try again later."
-      return 1 
+      return 1
     else
       _counter=$((_counter + 1))
     fi
@@ -20835,7 +20835,7 @@ import (
 	"strings"
 	"time"
 
-	gl "github.com/rafa-mori/gdbase/logger"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
 )
 
 // ValidateWorkerLimit valida o limite de workers
@@ -20922,8 +20922,8 @@ func GetBootTimeWindows() (string, error) {
 package version
 
 import (
-	gl "github.com/rafa-mori/gdbase/logger"
-	l "github.com/rafa-mori/logz"
+	gl "github.com/kubex-ecosystem/gdbase/logger"
+	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/spf13/cobra"
 
@@ -20939,7 +20939,7 @@ import (
 
 const moduleAlias = "GDBase"
 const moduleName = "gdbase"
-const gitModelUrl = "https://github.com/rafa-mori/" + moduleName + ".git"
+const gitModelUrl = "https://github.com/kubex-ecosystem/" + moduleName + ".git"
 const currentVersionFallback = "v1.0.1" // First version with the version file
 
 type Service interface {
