@@ -27,8 +27,8 @@ From old laptops to enterprise clusters. No cages. No excuses.
 - **[GoBE](https://github.com/kubex-ecosystem/gobe)** → Go backend engine · auth · APIs · AI/MCP.
 - **[Logz](https://github.com/kubex-ecosystem/logz)** → Structured logging & notifications framework.
 - **[Kortex](https://github.com/kubex-ecosystem/kortex)** → Next.js dashboard for MCP & infra control.
-- **[Grompt](https://github.com/kubex-ecosystem/grompt)** → Prompt engineering CLI & toolkit.
-- **[GHbex](https://github.com/kubex-ecosystem/ghbex)** → GitHub insights & automation CLI.
+- **[Grompt](https://github.com/kubex-ecosystem/gemx/grompt)** → Prompt engineering CLI & toolkit.
+- **[GHbex](https://github.com/kubex-ecosystem/gemx/ghbex)** → GitHub insights & automation CLI.
 
 > More modules at [kubex.world](https://kubex.world).
 
