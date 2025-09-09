@@ -197,11 +197,11 @@ When creating a new banner/visual:
 
 ## 🖼️ Project Banner Examples
 
-* [Grompt Project Banner](<https://github.com/kubex-ecosystem/gemx/grompt/blob/8b9c677ba2d6e1dd9e5cb0887693b9e1eb76fd15/docs/assets/top_banner_c.png>)
-![Grompt Project Banner](https://github.com/kubex-ecosystem/gemx/grompt/blob/8b9c677ba2d6e1dd9e5cb0887693b9e1eb76fd15/docs/assets/top_banner_c.png)
+* [Grompt Project Banner](<https://github.com/kubex-ecosystem/grompt/blob/8b9c677ba2d6e1dd9e5cb0887693b9e1eb76fd15/docs/assets/top_banner_c.png>)
+![Grompt Project Banner](https://github.com/kubex-ecosystem/grompt/blob/8b9c677ba2d6e1dd9e5cb0887693b9e1eb76fd15/docs/assets/top_banner_c.png)
 
-* [GHbex Project Banner](<https://github.com/kubex-ecosystem/gemx/ghbex/blob/ab24282a3d3f542f266085d9930c3279bfb22e6e/docs/assets/nm_banner_md.png>)
-![GHbex Project Banner](https://github.com/kubex-ecosystem/gemx/ghbex/blob/ab24282a3d3f542f266085d9930c3279bfb22e6e/docs/assets/nm_banner_md.png)
+* [GHbex Project Banner](<https://github.com/kubex-ecosystem/ghbex/blob/ab24282a3d3f542f266085d9930c3279bfb22e6e/docs/assets/nm_banner_md.png>)
+![GHbex Project Banner](https://github.com/kubex-ecosystem/ghbex/blob/ab24282a3d3f542f266085d9930c3279bfb22e6e/docs/assets/nm_banner_md.png)
 
 * [GDBase Project Banner](<https://github.com/kubex-ecosystem/gdbase/blob/a31c97e8b94fad0340b3928acd0ce5242bc0653f/docs/assets/top_banner.png>)
 ![GDBase Project Banner](https://github.com/kubex-ecosystem/gdbase/blob/a31c97e8b94fad0340b3928acd0ce5242bc0653f/docs/assets/top_banner.png)

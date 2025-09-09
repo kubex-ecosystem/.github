@@ -159,8 +159,8 @@ For further information about the license and terms of use, please refer to the 
 [![React](https://img.shields.io/badge/React-18+-blue.svg)](https://reactjs.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md)
-[![Build Status](https://github.com/kubex-ecosystem/gemx/grompt/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/gemx/grompt/actions/workflows/release.yml)
-[![GitHub Stars](https://img.shields.io/github/stars/kubex-ecosystem/grompt?style=social)](https://github.com/kubex-ecosystem/gemx/grompt/stargazers)
+[![Build Status](https://github.com/kubex-ecosystem/grompt/actions/workflows/release.yml/badge.svg)](https://github.com/kubex-ecosystem/grompt/actions/workflows/release.yml)
+[![GitHub Stars](https://img.shields.io/github/stars/kubex-ecosystem/grompt?style=social)](https://github.com/kubex-ecosystem/grompt/stargazers)
 
 ---
 
@@ -241,7 +241,7 @@ Create a generic TypeScript function that:
 
 ```bash
 # Download the latest release for your platform
-curl -L https://github.com/kubex-ecosystem/gemx/grompt/releases/latest/download/grompt-linux-amd64 -o grompt
+curl -L https://github.com/kubex-ecosystem/grompt/releases/latest/download/grompt-linux-amd64 -o grompt
 chmod +x grompt
 ./grompt
 
@@ -251,7 +251,7 @@ chmod +x grompt
 ### Option 2: Build from Source
 
 ```bash
-git clone https://github.com/kubex-ecosystem/gemx/grompt
+git clone https://github.com/kubex-ecosystem/grompt
 cd grompt
 make build-all
 ./grompt
@@ -685,7 +685,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ by Mori family, using Go + React!**
 
-[⭐ Star this project](https://github.com/kubex-ecosystem/gemx/grompt/stargazers) • [🐛 Report Bug](https://github.com/kubex-ecosystem/gemx/grompt/issues) • [✨ Request Feature](https://github.com/kubex-ecosystem/gemx/grompt/issues)
+[⭐ Star this project](https://github.com/kubex-ecosystem/grompt/stargazers) • [🐛 Report Bug](https://github.com/kubex-ecosystem/grompt/issues) • [✨ Request Feature](https://github.com/kubex-ecosystem/grompt/issues)
 
 *Transform your ideas into powerful prompts today!*
 
@@ -709,7 +709,7 @@ If you discover a security vulnerability in Grompt:
 
 - **Do NOT disclose it publicly** or via any public forum (including Discord).
 - Please report it through one of these private channels:
-  - [GitHub Security Advisories](https://github.com/kubex-ecosystem/gemx/grompt/security/advisories)
+  - [GitHub Security Advisories](https://github.com/kubex-ecosystem/grompt/security/advisories)
   - Or email: [maintainer@example.com] (replace this with your actual security contact email)
 
 Include as much detail as possible, such as:
@@ -3738,11 +3738,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	gl "github.com/kubex-ecosystem/gemx/grompt/logger"
-	"github.com/kubex-ecosystem/gemx/grompt/utils"
+	gl "github.com/kubex-ecosystem/grompt/logger"
+	"github.com/kubex-ecosystem/grompt/utils"
 
-	s "github.com/kubex-ecosystem/gemx/grompt/internal/services/server"
-	t "github.com/kubex-ecosystem/gemx/grompt/internal/types"
+	s "github.com/kubex-ecosystem/grompt/internal/services/server"
+	t "github.com/kubex-ecosystem/grompt/internal/types"
 
 	"github.com/spf13/cobra"
 )
@@ -3809,7 +3809,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/kubex-ecosystem/gemx/grompt/internal/services/squad"
+	"github.com/kubex-ecosystem/grompt/internal/services/squad"
 )
 
 func SquadCmdList() []*cobra.Command {
@@ -3847,7 +3847,7 @@ func generateSquad() *cobra.Command {
 package main
 
 import (
-	gl "github.com/kubex-ecosystem/gemx/grompt/logger"
+	gl "github.com/kubex-ecosystem/grompt/logger"
 )
 
 // This file is the entry point for the Grompt CLI application.
@@ -3958,9 +3958,9 @@ var cliUsageTemplate = `{{- if index .Annotations "banner" }}{{colorBlue (index 
 package main
 
 import (
-	cc "github.com/kubex-ecosystem/gemx/grompt/cmd/cli"
-	gl "github.com/kubex-ecosystem/gemx/grompt/logger"
-	vs "github.com/kubex-ecosystem/gemx/grompt/version"
+	cc "github.com/kubex-ecosystem/grompt/cmd/cli"
+	gl "github.com/kubex-ecosystem/grompt/logger"
+	vs "github.com/kubex-ecosystem/grompt/version"
 	"github.com/spf13/cobra"
 
 	"os"
@@ -4059,13 +4059,13 @@ func RegX() *Grompt {
 /// docs/CONTRIBUTING.md ///
 # **Contributing to Grompt**
 
-Thank you for your interest in contributing to **[Grompt](https://github.com/kubex-ecosystem/gemx/grompt)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
+Thank you for your interest in contributing to **[Grompt](https://github.com/kubex-ecosystem/grompt)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
 
 ---
 
 ## **How to Contribute**
 
-There are several ways to contribute to [Grompt](https://github.com/kubex-ecosystem/gemx/grompt):
+There are several ways to contribute to [Grompt](https://github.com/kubex-ecosystem/grompt):
 
 1. **Report Issues**
    - Found bugs or issues in the code? Open an issue detailing the problem.
@@ -4088,7 +4088,7 @@ There are several ways to contribute to [Grompt](https://github.com/kubex-ecosys
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/kubex-ecosystem/gemx/grompt.git
+git clone https://github.com/kubex-ecosystem/grompt.git
 cd grompt
 ```
 
@@ -4287,7 +4287,7 @@ Crie uma função TypeScript genérica que:
 
 ```bash
 # Baixe a versão mais recente para sua plataforma
-curl -L https://github.com/kubex-ecosystem/gemx/grompt/releases/latest/download/grompt-linux-amd64 -o grompt
+curl -L https://github.com/kubex-ecosystem/grompt/releases/latest/download/grompt-linux-amd64 -o grompt
 chmod +x grompt
 ./grompt
 
@@ -4297,7 +4297,7 @@ chmod +x grompt
 ### Opção 2: Construir do Código Fonte
 
 ```bash
-git clone https://github.com/kubex-ecosystem/gemx/grompt
+git clone https://github.com/kubex-ecosystem/grompt
 cd grompt
 make build-all
 ./grompt
@@ -4461,7 +4461,7 @@ Recebemos contribuições! Veja como você pode ajudar:
 ### 💻 **Contribuições de Código**
 ```bash
 # 1. Fork e clone
-git clone https://github.com/kubex-ecosystem/gemx/grompt
+git clone https://github.com/kubex-ecosystem/grompt
 cd grompt
 
 # 2. Criar branch de funcionalidade
@@ -4526,7 +4526,7 @@ Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](../LICE
 
 **Feito com ❤️ usando Go + React**
 
-[⭐ Star este projeto](https://github.com/kubex-ecosystem/gemx/grompt/stargazers) • [🐛 Reportar Bug](https://github.com/kubex-ecosystem/gemx/grompt/issues) • [✨ Solicitar Funcionalidade](https://github.com/kubex-ecosystem/gemx/grompt/issues)
+[⭐ Star este projeto](https://github.com/kubex-ecosystem/grompt/stargazers) • [🐛 Reportar Bug](https://github.com/kubex-ecosystem/grompt/issues) • [✨ Solicitar Funcionalidade](https://github.com/kubex-ecosystem/grompt/issues)
 
 *Transforme suas ideias em prompts poderosos hoje!*
 
@@ -4543,7 +4543,7 @@ Grompt é uma ferramenta COMPLETA para construção de prompts com assistência 
 ### Via Go
 
 ```bash
-go install github.com/kubex-ecosystem/gemx/grompt@latest
+go install github.com/kubex-ecosystem/grompt@latest
 ```
 
 ### Via Docker
@@ -4555,7 +4555,7 @@ docker run -it --rm ghcr.io/kubex-ecosystem/grompt:latest
 ### Via Binaries
 
 ```bash
-wget https://github.com/kubex-ecosystem/gemx/grompt/releases/latest/download/grompt_linux_amd64.tar.gz
+wget https://github.com/kubex-ecosystem/grompt/releases/latest/download/grompt_linux_amd64.tar.gz
 tar -xzf grompt_linux_amd64.tar.gz
 chmod +x grompt
 sudo mv grompt /usr/local/bin/
@@ -8992,7 +8992,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/kubex-ecosystem/gemx/grompt/internal/services/squad"
+	"github.com/kubex-ecosystem/grompt/internal/services/squad"
 )
 
 // StoredAgent wraps squad.Agent with an ID for persistence
@@ -9104,8 +9104,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/kubex-ecosystem/gemx/grompt/internal/services/agents"
-	ii "github.com/kubex-ecosystem/gemx/grompt/internal/types"
+	"github.com/kubex-ecosystem/grompt/internal/services/agents"
+	ii "github.com/kubex-ecosystem/grompt/internal/types"
 )
 
 type Handlers struct {
@@ -9648,7 +9648,7 @@ func (h *Handlers) HandleDocs(w http.ResponseWriter, r *http.Request) {
 	}
 
 	docs := map[string]string{
-		"docs": "https://github.com/kubex-ecosystem/gemx/grompt/blob/main/README.md",
+		"docs": "https://github.com/kubex-ecosystem/grompt/blob/main/README.md",
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -9663,7 +9663,7 @@ func (h *Handlers) HandleSupport(w http.ResponseWriter, r *http.Request) {
 	}
 
 	supportInfo := map[string]string{
-		"support": "https://github.com/kubex-ecosystem/gemx/grompt/blob/main/README.md",
+		"support": "https://github.com/kubex-ecosystem/grompt/blob/main/README.md",
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -9918,7 +9918,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kubex-ecosystem/gemx/grompt/internal/services/squad"
+	"github.com/kubex-ecosystem/grompt/internal/services/squad"
 )
 
 // HandleAgents manages listing and creating agents.
@@ -10360,7 +10360,7 @@ import (
 	"strings"
 	"time"
 
-	t "github.com/kubex-ecosystem/gemx/grompt/internal/types"
+	t "github.com/kubex-ecosystem/grompt/internal/types"
 )
 
 //go:embed build/*
@@ -11470,7 +11470,7 @@ import (
 	"context"
 	"time"
 
-	vs "github.com/kubex-ecosystem/gemx/grompt/version"
+	vs "github.com/kubex-ecosystem/grompt/version"
 )
 
 var (
@@ -13231,7 +13231,7 @@ import (
 	"os"
 	"path/filepath"
 
-	gl "github.com/kubex-ecosystem/gemx/grompt/logger"
+	gl "github.com/kubex-ecosystem/grompt/logger"
 	l "github.com/kubex-ecosystem/logz"
 
 	"github.com/spf13/cobra"

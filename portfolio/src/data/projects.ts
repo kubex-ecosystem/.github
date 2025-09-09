@@ -75,7 +75,7 @@ export const projects: Project[] = [
     technologies: ["React", "Go", "JavaScript", "HTML5", "CSS3", "i18next"],
     image: "https://raw.githubusercontent.com/kubex-ecosystem/grompt/refs/heads/main/docs/assets/top_banner.png",
     images: [],
-    github: "https://github.com/kubex-ecosystem/gemx/grompt",
+    github: "https://github.com/kubex-ecosystem/grompt",
     demo: "/projects/grompt",
     lookatniFile: "lookatni-grompt.latx",
     status: "completed"
