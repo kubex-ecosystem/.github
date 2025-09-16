@@ -1,71 +1,93 @@
-import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
+import * as React from 'react';
+import { createContext, ReactNode, useCallback, useContext, useEffect, useState } from 'react';
+import { translations as localeTranslations, SupportedLocale, TranslationNamespace } from '../locales';
 
-type Locale = 'en-US' | 'pt-BR';
+type Locale = SupportedLocale;
 type Translations = Record<string, any>;
 
 interface LanguageContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   translations: Translations;
-  isLoading: boolean;
+  loadNamespace: (namespace: string) => Promise<void>;
+  isLoading?: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const getInitialLocale = (): Locale => {
-    const storedLocale = localStorage.getItem('locale') as Locale;
-    if (storedLocale && ['en-US', 'pt-BR'].includes(storedLocale)) {
-        return storedLocale;
-    }
-    const browserLang = navigator.language;
-    if (browserLang.startsWith('pt')) {
-        return 'pt-BR';
-    }
-    return 'en-US';
+  const storedLocale = localStorage.getItem('locale') as Locale;
+  if (storedLocale && ['en-US', 'pt-BR'].includes(storedLocale)) {
+    return storedLocale;
+  }
+  const browserLang = navigator.language;
+  if (browserLang.startsWith('pt')) {
+    return 'pt-BR';
+  }
+  return 'en-US';
 };
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [locale, setLocale] = useState<Locale>(getInitialLocale());
+  const [locale, setLocaleState] = useState<Locale>(getInitialLocale());
   const [translations, setTranslations] = useState<Translations>({});
+  const [loadedNamespaces, setLoadedNamespaces] = useState<Record<string, boolean>>({});
+  const [loadingNamespaces, setLoadingNamespaces] = useState<Record<string, boolean>>({});
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchTranslations = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(`/locales/${locale}/translation.json`);
-        if (!response.ok) {
-          throw new Error(`Failed to load translations for ${locale}`);
-        }
-        const data = await response.json();
-        setTranslations(data);
-        localStorage.setItem('locale', locale);
-      } catch (error) {
-        console.error(error);
-        // Fallback to English if loading fails
-        if (locale !== 'en-US') {
-            setLocale('en-US');
-        } else {
-             setTranslations({}); // Clear translations on error
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const setLocale = (newLocale: Locale) => {
+    setLocaleState(newLocale);
+    setTranslations({});
+    setLoadedNamespaces({});
+    setLoadingNamespaces({});
+    setIsInitialLoad(true);
+    localStorage.setItem('locale', newLocale);
+  };
 
-    fetchTranslations();
-  }, [locale]);
+  const loadNamespace = useCallback(async (namespace: string) => {
+    const namespaceKey = `${locale}-${namespace}`;
+    if (loadedNamespaces[namespaceKey] || loadingNamespaces[namespaceKey]) {
+      return;
+    }
+
+    setLoadingNamespaces(prev => ({ ...prev, [namespaceKey]: true }));
+    try {
+      // Use the TypeScript translations instead of fetching JSON
+      const currentLocaleTranslations = localeTranslations[locale];
+      const namespaceData = currentLocaleTranslations[namespace as TranslationNamespace];
+
+      if (!namespaceData) {
+        throw new Error(`Namespace ${namespace} not found for locale ${locale}`);
+      }
+
+      setTranslations(prev => ({
+        ...prev,
+        [namespace]: namespaceData,
+      }));
+      setLoadedNamespaces(prev => ({ ...prev, [namespaceKey]: true }));
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingNamespaces(prev => ({ ...prev, [namespaceKey]: false }));
+    }
+  }, [locale, loadedNamespaces, loadingNamespaces]); useEffect(() => {
+    if (isInitialLoad) {
+      loadNamespace('common').finally(() => {
+        setIsInitialLoad(false);
+      });
+    }
+  }, [locale, isInitialLoad, loadNamespace]);
 
   const value = {
     locale,
     setLocale,
     translations,
-    isLoading,
+    loadNamespace,
   };
 
   return (
     <LanguageContext.Provider value={value}>
-      {!isLoading && children}
+      {!isInitialLoad ? children : null}
     </LanguageContext.Provider>
   );
 };

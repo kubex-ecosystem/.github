@@ -1,0 +1,6 @@
+/// PROJECT_INFO ///
+Project: impl_a01
+Generated: 2025-09-16T11:41:12.965Z
+Total Files: 0
+Source: /srv/apps/LIFE/KUBEX/kubex-ecosystem/landing/bkp/impl_a01
+

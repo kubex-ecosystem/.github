@@ -1,0 +1,81 @@
+{
+  "name": "kubex-ecosystem-landing",
+  "private": false,
+  "version": "1.0.0",
+  "description": "An Open Source Ecosystem made for your simplicity, modularity, and freedom.",
+  "keywords": [
+    "ai",
+    "kubex",
+    "typescript",
+    "open-source",
+    "no-lock-in",
+    "modular",
+    "react"
+  ],
+  "markdown": "github",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kubex-ecosystemt/.github.git"
+  },
+  "license": "MIT",
+  "author": "Rafa Mori <faelmori@live.com>",
+  "homepage": "https://kubex.world",
+  "readme": "https://github.com/kubex-ecosystem/.github/README.md",
+  "bugs": {
+    "url": "https://github.com/kubex-ecosystem/issues"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "vite preview --port 4173 --host",
+    "build:static": "vite build --mode production"
+  },
+  "dependencies": {
+    "tailwindcss": "^4.1.13",
+    "lucide-react": "^0.542.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-markdown": "9.0.1",
+    "remark-gfm": "4.0.0"
+  },
+  "devDependencies": {
+    "@google/genai": "^1.18.0",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "framer-motion": "^12.23.12",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "typescript": "~5.8.2",
+    "vite": "^6.3.6"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false,
+    "child_process": false
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "src/index.tsx",
+  "files": [
+    "src",
+    "services",
+    "types.d.ts",
+    "index.html",
+    "index.css",
+    "assets",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ]
+}
