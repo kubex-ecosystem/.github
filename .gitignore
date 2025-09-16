@@ -2,7 +2,6 @@ log/workspace_sync.log
 
 # Binários
 
-!grompt/
 .venv/
 
 # Build outputs
