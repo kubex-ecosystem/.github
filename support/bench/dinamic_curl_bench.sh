@@ -112,6 +112,7 @@ echo "==========================================" | tee -a "$LOGFILE"
 dns_check
 
 # opções base
+# shellcheck disable=SC2034
 declare -A BASE_OPTS=(
   [follow]="true" [timeout]="${TIMEOUT}" [out]="/dev/null"
   [w_req]="false" [w_code]="true" [w_size]="true" [w_tot]="true"
@@ -143,6 +144,7 @@ if [[ -n "$KEY" ]]; then
       CHAT_OPTS[data]='{"model":"llama-3.1-8b-instant","stream":false,"messages":[{"role":"user","content":"ping coletivo"}]}'
       ;;
   esac
+  # shellcheck disable=SC2034
   CHAT_OPTS[method]="POST"
   run_block "Chat (/v1/chat)" "${DOMAIN}/v1/chat" 1 CHAT_OPTS
 else

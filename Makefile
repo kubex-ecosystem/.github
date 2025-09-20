@@ -69,6 +69,11 @@ I18N_SRC ?= ./frontend/src
 # Default target: help
 .DEFAULT_GOAL := help
 
+# Run the application (development mode).
+run:
+	@bash ./$(BINARY_NAME) gateway serve
+	$(shell exit 0)
+
 # Build the binary using the install script.
 build:
 	@bash $(INSTALL_SCRIPT) build $(ARGS)
@@ -139,6 +144,7 @@ build-docs:
 serve-docs:
 	@echo "Starting documentation server..."
 	@bash $(INSTALL_SCRIPT) serve-docs $(ARGS)
+	$(shell exit 0)
 
 pub-docs:
 	@echo "Publishing documentation..."
