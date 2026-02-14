@@ -4,19 +4,20 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Download, ExternalLink, Github, Star } from 'lucide-react';
 import { useState } from 'react';
 import { ProjectFilter } from '../../components/common/ProjectFilter';
-import { Button, Card, CardContent } from '../../components/ui';
+import { Card, CardContent } from '../../components/ui';
 import { projects } from '../../data/projects';
 import { fadeInUp, staggerContainer } from '../../lib/animations';
 import { ProjectCategory } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 
 export function Projects() {
+  const { t, language } = useLanguage();
+  const isPt = language === 'pt';
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>('all');
 
   const filteredProjects = activeFilter === 'all'
     ? projects
     : projects.filter(project => project.category === activeFilter);
-
-  const featuredProjects = projects.filter(project => project.featured);
 
   const downloadLookatniFile = async (filename: string) => {
     try {
@@ -39,20 +40,37 @@ export function Projects() {
     }
   };
 
+  const getStatusLabel = (status: string) => {
+    if (isPt) {
+      switch (status) {
+        case 'completed': return 'Concluído';
+        case 'in-progress': return 'Em Andamento';
+        default: return 'Planejado';
+      }
+    }
+    switch (status) {
+      case 'completed': return 'Completed';
+      case 'in-progress': return 'In Progress';
+      default: return 'Planned';
+    }
+  };
+
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 bg-bg-base w-full relative">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:40px_40px] pointer-events-none"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Featured Projects
+          <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter">
+            {t('projects.title')}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A showcase of my recent work spanning various technologies and industries
+          <p className="text-lg text-slate-200 max-w-2xl mx-auto font-normal">
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
@@ -66,7 +84,7 @@ export function Projects() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeFilter}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
             variants={staggerContainer}
             initial="initial"
             animate="animate"
@@ -77,131 +95,79 @@ export function Projects() {
                 variants={fadeInUp}
                 layout
               >
-                <Card className="h-full overflow-hidden group">
+                <Card className="h-full overflow-hidden group border-white/10 bg-surface/30">
                   {/* Project Image */}
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden aspect-video">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg-base/90 via-bg-base/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
                     
                     {/* Status Badge */}
                     <div className="absolute top-4 right-4">
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                      <span className={`px-2 py-0.5 text-[10px] font-mono uppercase tracking-widest rounded border font-bold ${
                         project.status === 'completed' 
-                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
+                          ? 'border-secondary-glow/50 bg-secondary-glow/20 text-secondary-glow'
                           : project.status === 'in-progress'
-                          ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300'
-                          : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
+                          ? 'border-tertiary-glow/50 bg-tertiary-glow/20 text-tertiary-glow'
+                          : 'border-slate-600 bg-slate-800/80 text-slate-200'
                       }`}>
-                        {project.status === 'completed' ? 'Completed' : project.status === 'in-progress' ? 'In Progress' : 'Planned'}
+                        {getStatusLabel(project.status)}
                       </span>
                     </div>
 
                     {/* Featured Badge */}
                     {project.featured && (
                       <div className="absolute top-4 left-4">
-                        <div className="flex items-center gap-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300 px-2 py-1 rounded-full text-xs font-medium">
-                          <Star size={12} fill="currentColor" />
-                          Featured
+                        <div className="flex items-center gap-1 border border-primary-glow/50 bg-primary-glow/20 text-primary-glow px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-widest font-bold">
+                          <Star size={10} fill="currentColor" />
+                          {isPt ? 'Destaque' : 'Featured'}
                         </div>
                       </div>
                     )}
-
-                    {/* Overlay Links */}
-                    <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {project.github && (
-                        <Button
-                          variant="secondary"
-                          size="sm"
-                          onClick={() => window.open(project.github, '_blank')}
-                        >
-                          <Github size={16} className="mr-2" />
-                          Code
-                        </Button>
-                      )}
-                      {project.demo && (
-                        <Button
-                          size="sm"
-                          onClick={() => window.open(project.demo, '_blank')}
-                        >
-                          <ExternalLink size={16} className="mr-2" />
-                          Demo
-                        </Button>
-                      )}
-                      {project.lookatniFile && (
-                        <Button
-                          variant="secondary"
-                          size="sm"
-                          onClick={() => downloadLookatniFile(project.lookatniFile!)}
-                        >
-                          <Download size={16} className="mr-2" />
-                          .latx
-                        </Button>
-                      )}
-                    </div>
                   </div>
 
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-xl font-bold mb-2 tracking-tight text-white">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                      {project.description}
+                    <p className="text-slate-300 text-sm mb-4 line-clamp-3 font-normal leading-relaxed">
+                      {isPt && project.descriptionPt ? project.descriptionPt : project.description}
                     </p>
 
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-6">
                       {project.technologies.slice(0, 4).map((tech: unknown, index: number) => (
                         <span
                           key={index}
-                          className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full"
+                          className="px-2 py-0.5 text-[10px] font-mono border border-white/10 bg-white/5 text-slate-300 rounded transition-colors group-hover:border-primary-glow/40 font-medium"
                         >
                           {((tech || '') as string).toUpperCase()}
                         </span>
                       ))}
-                      {project.technologies.length > 4 && (
-                        <span className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-full">
-                          +{project.technologies.length - 4} more
-                        </span>
-                      )}
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-2">
+                    <div className="flex gap-3">
                       {project.github && (
-                        <Button
-                          variant="outline"
-                          size="sm"
+                        <button
                           onClick={() => window.open(project.github, '_blank')}
-                          className="flex-1"
+                          className="flex-1 flex items-center justify-center gap-2 py-2 text-xs font-mono uppercase tracking-widest border border-white/10 hover:border-primary-glow/50 hover:bg-primary-glow/5 transition-all duration-300 rounded"
                         >
-                          <Github size={16} className="mr-2" />
-                          Code
-                        </Button>
+                          <Github size={14} />
+                          {isPt ? 'Código' : 'Source'}
+                        </button>
                       )}
-                      {project.demo && (
-                        <Button
-                          size="sm"
-                          onClick={() => window.open(project.demo, '_blank')}
-                          className="flex-1"
+                      {(project.demo || project.lookatniFile) && (
+                        <button
+                          onClick={() => project.demo ? window.open(project.demo, '_blank') : downloadLookatniFile(project.lookatniFile!)}
+                          className="flex-1 flex items-center justify-center gap-2 py-2 text-xs font-mono uppercase tracking-widest bg-primary-glow hover:bg-primary-glow/90 text-white transition-all duration-300 rounded"
                         >
-                          <ExternalLink size={16} className="mr-2" />
-                          Demo
-                        </Button>
-                      )}
-                      {project.lookatniFile && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => downloadLookatniFile(project.lookatniFile!)}
-                          className="flex-1"
-                        >
-                          <Download size={16} className="mr-2" />
-                          .latx
-                        </Button>
+                          {project.demo ? <ExternalLink size={14} /> : <Download size={14} />}
+                          {project.demo ? 'Live' : 'Spec'}
+                        </button>
                       )}
                     </div>
                   </CardContent>
@@ -210,19 +176,6 @@ export function Projects() {
             ))}
           </motion.div>
         </AnimatePresence>
-
-        {/* Show More Button */}
-        {filteredProjects.length === 0 && (
-          <motion.div
-            className="text-center py-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            <p className="text-gray-600 dark:text-gray-400 text-lg">
-              No projects found for this category.
-            </p>
-          </motion.div>
-        )}
       </div>
     </section>
   );

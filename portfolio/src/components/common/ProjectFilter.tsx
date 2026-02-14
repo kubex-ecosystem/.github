@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ProjectCategory } from '../../types';
 import { projectCategories } from '../../data/projects';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   Code, 
   Database, 
@@ -41,9 +42,12 @@ const categoryIcons = {
 };
 
 export function ProjectFilter({ activeFilter, onFilterChange }: ProjectFilterProps) {
+  const { language } = useLanguage();
+  const isPt = language === 'pt';
+
   return (
     <motion.div
-      className="flex flex-wrap justify-center gap-4 mb-12"
+      className="flex flex-wrap justify-center gap-3 mb-12"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -52,26 +56,27 @@ export function ProjectFilter({ activeFilter, onFilterChange }: ProjectFilterPro
         // Fallback para ícones não encontrados
         const IconComponent = categoryIcons[category.id as keyof typeof categoryIcons] || FolderOpen;
         const isActive = activeFilter === category.id;
+        const label = isPt && (category as any).labelPt ? (category as any).labelPt : category.label;
 
         return (
           <motion.button
             key={category.id}
             onClick={() => onFilterChange(category.id as ProjectCategory)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-widest transition-all duration-300 border ${
               isActive
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md hover:shadow-lg'
+                ? 'bg-primary-glow border-primary-glow text-white shadow-[0_0_15px_rgba(168,85,247,0.4)]'
+                : 'bg-surface/30 border-white/5 text-slate-400 hover:border-white/20 hover:text-slate-200'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <IconComponent size={16} />
-            <span>{category.label}</span>
+            <IconComponent size={14} />
+            <span>{label}</span>
             {category.count > 0 && (
-              <span className={`text-xs px-2 py-1 rounded-full ${
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${
                 isActive 
                   ? 'bg-white/20 text-white' 
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                  : 'bg-white/5 text-slate-500'
               }`}>
                 {category.count}
               </span>

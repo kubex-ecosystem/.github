@@ -3,65 +3,60 @@
 import { motion } from 'framer-motion';
 import { Github, Heart, Linkedin, Mail } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
+import { useLanguage } from '../../context/LanguageContext';
 
 export function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-bg-base border-t border-white/5 text-slate-400 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
-          <div>
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+          <div className="space-y-4">
+            <h3 className="text-2xl font-black tracking-tighter bg-gradient-to-r from-primary-glow to-tertiary-glow bg-clip-text text-transparent">
               Rafa Mori
             </h3>
-            <p className="text-gray-400 mb-4">
-              Full Cycle Developer passionate about creating innovative solutions with modern technologies.
+            <p className="text-sm font-normal leading-relaxed max-w-xs text-slate-200">
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
-              <motion.a
-                href={personalInfo.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-                whileHover={{ scale: 1.2 }}
-              >
-                <Github size={20} />
-              </motion.a>
-              <motion.a
-                href={personalInfo.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
-                whileHover={{ scale: 1.2 }}
-              >
-                <Linkedin size={20} />
-              </motion.a>
-              <motion.a
-                href={`mailto:${personalInfo.email}`}
-                className="text-gray-400 hover:text-red-400 transition-colors duration-200"
-                whileHover={{ scale: 1.2 }}
-              >
-                <Mail size={20} />
-              </motion.a>
+              {[
+                { icon: Github, href: personalInfo.social.github, color: 'hover:text-white' },
+                { icon: Linkedin, href: personalInfo.social.linkedin, color: 'hover:text-tertiary-glow' },
+                { icon: Mail, href: `mailto:${personalInfo.email}`, color: 'hover:text-secondary-glow' }
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-slate-500 ${social.color} transition-colors duration-300`}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <social.icon size={20} />
+                </motion.a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+          <div className="space-y-4">
+            <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-white font-bold">
+              {t('nav.about')} / {t('nav.projects')}
+            </h4>
             <ul className="space-y-2">
               {[
-                { name: 'Home', href: '#home' },
-                { name: 'About', href: '#about' },
-                { name: 'Projects', href: '#projects' },
-                { name: 'Contact', href: '#contact' },
+                { name: t('nav.home'), href: '#home' },
+                { name: t('nav.about'), href: '#about' },
+                { name: t('nav.projects'), href: '#projects' },
+                { name: t('nav.contact'), href: '#contact' },
               ].map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-sm font-normal text-slate-300 hover:text-primary-glow transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -71,26 +66,30 @@ export function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
-            <p className="text-gray-400 mb-2">
+          <div className="space-y-4">
+            <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-white font-bold">{t('contact.getInTouch')}</h4>
+            <p className="text-sm font-normal text-slate-300">
               {personalInfo.location}
             </p>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-sm font-normal text-slate-300 hover:text-secondary-glow transition-colors duration-200"
             >
               {personalInfo.email}
             </a>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-400 flex items-center justify-center gap-2">
-            © {currentYear} Rafael Mori. Made with
-            <Heart size={16} className="text-red-500 fill-current" />
-            and lots of ☕
+        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs font-mono uppercase tracking-widest text-slate-400 font-medium">
+            © {currentYear} Rafael Mori. {t('footer.rights')}
           </p>
+          <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-slate-400 font-medium">
+            <span className="flex items-center gap-1">
+              Made with <Heart size={10} className="text-primary-glow fill-current" />
+            </span>
+            <span>[ STATUS: ONLINE ]</span>
+          </div>
         </div>
         
       </div>

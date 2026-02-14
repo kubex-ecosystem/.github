@@ -30,34 +30,12 @@ export default function LookatniShowcase() {
 
   const getLanguageColor = (language: string) => {
     const colors: Record<string, string> = {
-      'Go': 'bg-blue-100 text-blue-800',
-      'Multiple': 'bg-purple-100 text-purple-800',
-      'JavaScript': 'bg-yellow-100 text-yellow-800',
-      'TypeScript': 'bg-blue-100 text-blue-800'
+      'Go': 'border-tertiary-glow/30 bg-tertiary-glow/10 text-tertiary-glow',
+      'Multiple': 'border-primary-glow/30 bg-primary-glow/10 text-primary-glow',
+      'JavaScript': 'border-secondary-glow/30 bg-secondary-glow/10 text-secondary-glow',
+      'TypeScript': 'border-tertiary-glow/30 bg-tertiary-glow/10 text-tertiary-glow'
     };
-    return colors[language] || 'bg-gray-100 text-gray-800';
-  };
-
-  // Função para baixar arquivo do projeto
-  const downloadProjectFile = async (projectName: string) => {
-    try {
-      const response = await fetch(`/projects/${projectName}`);
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = projectName;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-      } else {
-        console.error('Erro ao baixar arquivo:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Erro ao baixar arquivo:', error);
-    }
+    return colors[language] || 'border-slate-700 bg-slate-800/50 text-slate-400';
   };
 
   useEffect(() => {
@@ -128,173 +106,140 @@ export default function LookatniShowcase() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-bg-base text-slate-300">
       {/* Top Navigation Bar */}
-      <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+      <header className="bg-surface/80 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
               <Link 
                 href="/" 
-                className="flex items-center space-x-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="flex items-center space-x-2 text-slate-300 hover:text-primary-glow transition-colors"
               >
                 <HomeIcon className="h-5 w-5" />
-                <span className="font-medium">Portfólio</span>
+                <span className="text-sm font-mono uppercase tracking-widest">Portfólio</span>
               </Link>
-              <div className="h-6 w-px bg-gray-300 dark:bg-gray-600" />
-              <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <div className="h-6 w-px bg-white/10" />
+              <h1 className="text-lg font-black tracking-tighter bg-gradient-to-r from-primary-glow to-tertiary-glow bg-clip-text text-transparent">
                 LookAtni Showcase
               </h1>
             </div>
 
             <nav className="flex items-center space-x-2">
-              <button
-                onClick={() => setActiveTab('projects')}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  activeTab === 'projects'
-                    ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
-              >
-                <DocumentTextIcon className="h-4 w-4" />
-                <span>Projetos Interativos</span>
-              </button>
-              <button
-                onClick={() => setActiveTab('playground')}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  activeTab === 'playground'
-                    ? 'bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
-              >
-                <SparklesIcon className="h-4 w-4" />
-                <span>AI Playground</span>
-              </button>
-              <button
-                onClick={() => setActiveTab('wasm')}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  activeTab === 'wasm'
-                    ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
-              >
-                <RocketLaunchIcon className="h-4 w-4" />
-                <span>WASM Power</span>
-              </button>
+              {[
+                { id: 'projects', label: 'Projetos', icon: DocumentTextIcon, accent: 'primary-glow' },
+                { id: 'playground', label: 'AI Playground', icon: SparklesIcon, accent: 'secondary-glow' },
+                { id: 'wasm', label: 'WASM Power', icon: RocketLaunchIcon, accent: 'tertiary-glow' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-[10px] font-mono uppercase tracking-widest transition-all ${
+                    activeTab === tab.id
+                      ? `bg-${tab.accent}/10 border border-${tab.accent}/20 text-${tab.accent} shadow-lg shadow-${tab.accent}/5`
+                      : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
+                  }`}
+                >
+                  <tab.icon className="h-4 w-4" />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                </button>
+              ))}
             </nav>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {activeTab === 'projects' ? (
-          <div className="space-y-8">
-            {/* Projects Grid */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  🚀 Projetos Extraíveis em Tempo Real
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                  Cada projeto abaixo é um arquivo real com marcadores invisíveis. 
-                  Clique em qualquer um para explorar a estrutura completa e baixar o código!
-                </p>
-              </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
+        <div className="absolute inset-0 bg-grid-white/[0.01] pointer-events-none"></div>
 
-              {isLoading ? (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="animate-pulse">
-                      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border h-96">
-                        <div className="h-20 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-t-lg"></div>
-                        <div className="p-6 space-y-4">
-                          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                          <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-                          <div className="space-y-2">
-                            <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                            <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
-                          </div>
+        {activeTab === 'projects' ? (
+          <div className="space-y-12 relative">
+            {/* Section Header */}
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <h2 className="text-4xl font-black mb-4 tracking-tighter">
+                🚀 Projetos Extraíveis
+              </h2>
+              <p className="text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                Cada projeto abaixo é um arquivo real com marcadores invisíveis. 
+                Clique em qualquer um para explorar a estrutura completa e baixar o código!
+              </p>
+            </motion.div>
+
+            {isLoading ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="animate-pulse">
+                    <div className="bg-surface/30 border border-white/5 rounded-xl h-96"></div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {projects.map((project, index) => (
+                  <motion.div
+                    key={project.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-surface/20 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-all duration-300"
+                  >
+                    <ProjectExtractor
+                      projectFile={project.name}
+                      projectName={project.displayName}
+                      description={project.description}
+                    />
+                    
+                    {/* Project Meta Info */}
+                    <div className="p-4 border-t border-white/5 bg-surface/40">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <span className={`px-2 py-0.5 rounded border text-[10px] font-mono uppercase tracking-widest ${getLanguageColor(project.language)}`}>
+                            {project.language}
+                          </span>
+                          <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                            {project.framework}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-slate-600">
+                          <CodeBracketIcon className="w-3 h-3" />
+                          Extraível
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {projects.map((project, index) => (
-                    <motion.div
-                      key={project.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
-                    >
-                      <ProjectExtractor
-                        projectFile={project.name}
-                        projectName={project.displayName}
-                        description={project.description}
-                      />
-                      
-                      {/* Project Meta Info */}
-                      <div className="p-4 border-t bg-gray-50 dark:bg-gray-700/50">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getLanguageColor(project.language)}`}>
-                              {project.language}
-                            </span>
-                            <span className="text-xs text-gray-500 dark:text-gray-400">
-                              {project.framework}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
-                            <CodeBracketIcon className="w-3 h-3" />
-                            Extraível
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
-            </motion.div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
 
             {/* Features Highlight */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-lg p-8 text-center"
+              className="bg-surface/30 border border-white/5 rounded-2xl p-12 text-center"
             >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                🌟 Entre as Primeiras Demonstrações Interativas do Mundo
+              <h3 className="text-3xl font-black mb-6 tracking-tighter">
+                🌟 Demonstrações Interativas Next-Gen
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <div className="text-center">
-                  <div className="text-3xl mb-2">🚀</div>
-                  <h4 className="font-semibold text-gray-800 dark:text-gray-200">Extração em Tempo Real</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Veja estruturas completas de projetos sendo extraídas ao vivo
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl mb-2">📦</div>
-                  <h4 className="font-semibold text-gray-800 dark:text-gray-200">Download Instantâneo</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Baixe projetos completos em ZIP com um clique
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl mb-2">🔍</div>
-                  <h4 className="font-semibold text-gray-800 dark:text-gray-200">Exploração Completa</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Navegue por arquivos, veja conteúdo e estatísticas
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                {[
+                  { icon: '🚀', title: 'Extração Real-Time', desc: 'Veja estruturas completas de projetos sendo extraídas ao vivo' },
+                  { icon: '📦', title: 'Download Instantâneo', desc: 'Baixe projetos completos em ZIP com um único clique' },
+                  { icon: '🔍', title: 'Exploração Deep', desc: 'Navegue por arquivos, veja conteúdo e estatísticas detalhadas' }
+                ].map((feature, i) => (
+                  <div key={i} className="space-y-3 p-6 rounded-xl bg-surface/20 border border-white/5">
+                    <div className="text-4xl mb-4">{feature.icon}</div>
+                    <h4 className="font-bold text-white tracking-tight">{feature.title}</h4>
+                    <p className="text-xs text-slate-500 leading-relaxed font-light">
+                      {feature.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -318,18 +263,18 @@ export default function LookatniShowcase() {
       </div>
 
       {/* Footer */}
-      <div className="bg-white dark:bg-gray-900 border-t mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <p className="text-gray-600 dark:text-gray-400">
-              Feito com ❤️ por <a href="https://rafa-mori.dev" className="text-blue-600 hover:text-blue-700">Rafa Mori</a>
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
-              Usando LookAtni File Markers - A revolução da organização de código
-            </p>
+      <footer className="border-t border-white/5 mt-24 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <p className="text-slate-400 font-light">
+            Feito com ❤️ por <Link href="/" className="text-primary-glow hover:text-primary-glow/80 font-bold transition-colors">Rafa Mori</Link>
+          </p>
+          <div className="flex items-center justify-center gap-4 text-[10px] font-mono uppercase tracking-[0.2em] text-slate-600">
+            <span>Powered by LookAtni File Markers</span>
+            <span className="w-1 h-1 bg-slate-700 rounded-full"></span>
+            <span>2026 Edition</span>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
   );
 }

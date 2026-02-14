@@ -72,3 +72,11 @@ docs/prompt/
 support/docs/site/
 internal/services/server/build/*
 !internal/services/server/build/style.css
+portfolio/.notes/rafa-mori.dev_full-src.ltk.txt
+portfolio/.notes/rafa-mori.dev-full-src-data.lkt.txt
+portfolio/.notes/tsconfig.json
+portfolio/.notes/tasks/TASK_A00.md
+portfolio/.notes/tasks/TASK_A01-v1.md
+portfolio/.notes/tasks/TASK_A01-v2.md
+portfolio/.notes/tasks/TASK_A02.md
+portfolio/.gemini/settings.json

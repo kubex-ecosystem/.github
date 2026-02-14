@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Download, ExternalLink, Github, Linkedin } from 'lucide-react';
+import { Mail, ExternalLink, Github, Linkedin } from 'lucide-react';
 import { Button } from '../ui';
 import { personalInfo } from '../../data/personal';
 import { fadeInUp, staggerContainer, scaleIn } from '../../lib/animations';
@@ -9,6 +9,7 @@ import { useLanguage } from '../../context/LanguageContext';
 
 export function Hero() {
   const { t, language } = useLanguage();
+  const isPt = language === 'pt';
 
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
@@ -18,15 +19,15 @@ export function Hero() {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  
-
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-32 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-40 left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center bg-bg-base overflow-hidden">
+      {/* Background Elements - Spec 2.0: Subtle Tech Glows */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 -right-1/4 w-[500px] h-[500px] bg-primary-glow/10 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-1/4 -left-1/4 w-[500px] h-[500px] bg-tertiary-glow/10 rounded-full blur-[120px] animate-pulse transition-delay-2000"></div>
+        
+        {/* Subtle Grid Pattern */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 md:py-24">
@@ -41,38 +42,40 @@ export function Hero() {
             className="flex justify-center mb-8"
             variants={scaleIn}
           >
-            <div className="relative">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary-glow to-tertiary-glow rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
               <img
                 src="/profile/profile.png"
                 alt={personalInfo.name}
-                className="w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-700"
+                className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full object-cover border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
               />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 opacity-20"></div>
             </div>
           </motion.div>
 
           {/* Name & Title */}
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight"
+            className="text-5xl md:text-7xl lg:text-9xl font-black mb-6 tracking-tighter"
             variants={fadeInUp}
           >
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-b from-white via-white to-slate-500 bg-clip-text text-transparent">
               {personalInfo.name}
             </span>
           </motion.h1>
 
           <motion.h2
-            className="text-2xl md:text-3xl lg:text-4xl text-gray-600 dark:text-gray-300 mb-8 font-medium"
+            className="text-2xl md:text-3xl lg:text-4xl text-slate-100 mb-8 font-semibold tracking-tight"
             variants={fadeInUp}
           >
-            {personalInfo.title}
+            <span className="text-mono text-secondary-glow mr-2">[</span>
+            {isPt ? personalInfo.titlePt : personalInfo.title}
+            <span className="text-mono text-secondary-glow ml-2">]</span>
           </motion.h2>
 
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto mb-12 leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl text-slate-200 max-w-3xl mx-auto mb-12 leading-relaxed font-normal"
             variants={fadeInUp}
           >
-            {personalInfo.bio}
+            {isPt ? personalInfo.bioPt : personalInfo.bio}
           </motion.p>
 
           {/* Action Buttons */}
@@ -80,11 +83,11 @@ export function Hero() {
             className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
             variants={fadeInUp}
           >
-            <Button size="lg" onClick={scrollToProjects} className="group text-lg px-8 py-4 min-w-[200px]">
+            <Button size="lg" onClick={scrollToProjects} className="group text-lg px-8 py-4 min-w-[200px] bg-primary-glow hover:bg-primary-glow/90 text-white border-none shadow-[0_0_20px_rgba(168,85,247,0.4)]">
               {t('hero.externalLink')}
               <ExternalLink className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg" onClick={scrollToContact} className="text-lg px-8 py-4 min-w-[200px]">
+            <Button variant="outline" size="lg" onClick={scrollToContact} className="text-lg px-8 py-4 min-w-[200px] border-white/10 hover:bg-white/5 text-slate-300">
               {t('hero.contactLinkButton')}
               <Mail className="ml-2 w-5 h-5" />
             </Button>
@@ -95,34 +98,23 @@ export function Hero() {
             className="flex justify-center space-x-8"
             variants={fadeInUp}
           >
-            <motion.a
-              href={personalInfo.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Github size={32} />
-            </motion.a>
-            <motion.a
-              href={personalInfo.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Linkedin size={32} />
-            </motion.a>
-            <motion.a
-              href={`mailto:${personalInfo.email}`}
-              className="p-3 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Mail size={32} />
-            </motion.a>
+            {[
+              { icon: Github, href: personalInfo.social.github, color: 'hover:text-white' },
+              { icon: Linkedin, href: personalInfo.social.linkedin, color: 'hover:text-tertiary-glow' },
+              { icon: Mail, href: `mailto:${personalInfo.email}`, color: 'hover:text-secondary-glow' }
+            ].map((social, index) => (
+              <motion.a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-3 text-slate-500 ${social.color} transition-all duration-300 border border-white/5 rounded-xl bg-surface/30 backdrop-blur-sm`}
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <social.icon size={24} />
+              </motion.a>
+            ))}
           </motion.div>
         </motion.div>
       </div>
@@ -134,8 +126,8 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.6 }}
       >
-        <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full animate-bounce mt-2"></div>
+        <div className="w-6 h-10 border border-white/10 rounded-full flex justify-center p-1">
+          <div className="w-1 h-2 bg-primary-glow rounded-full animate-bounce"></div>
         </div>
       </motion.div>
     </section>

@@ -154,19 +154,19 @@ export const skillLevelIcons: Record<number, string> = {
 };
 
 export const skillLevelColors: Record<number, string> = {
-  1: "#ffcc00", // Yellow
-  2: "#ff9900", // Orange
-  3: "#33cc33", // Green
-  4: "#0099ff", // Blue
-  5: "#9933ff", // Purple
+  1: "#94a3b8", // Slate 400
+  2: "#3b82f6", // Blue 500 (Tertiary)
+  3: "#34d399", // Emerald 400 (Secondary)
+  4: "#a855f7", // Purple 500 (Primary)
+  5: "#a855f7", // Purple 500 (Primary)
 };
 
 export const skillLevelStyles: Record<number, string> = {
-  1: "bg-yellow-100 text-yellow-800",
-  2: "bg-orange-100 text-orange-800",
-  3: "bg-green-100 text-green-800",
-  4: "bg-blue-100 text-blue-800",
-  5: "bg-purple-100 text-purple-800",
+  1: "border-slate-800 bg-slate-900/50 text-slate-400",
+  2: "border-tertiary-glow/20 bg-tertiary-glow/5 text-tertiary-glow",
+  3: "border-secondary-glow/20 bg-secondary-glow/5 text-secondary-glow",
+  4: "border-primary-glow/20 bg-primary-glow/5 text-primary-glow",
+  5: "border-primary-glow/40 bg-primary-glow/10 text-primary-glow shadow-[0_0_10px_rgba(168,85,247,0.2)]",
 };
 
 export const skills: Skill[] = [

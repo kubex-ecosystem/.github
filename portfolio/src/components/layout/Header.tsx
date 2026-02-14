@@ -4,20 +4,22 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '../../components/ui';
-import { LanguageToggle, ThemeToggle } from '../common';
+import { LanguageToggle } from '../common';
 import { Analytics } from "@vercel/analytics/next"
-
-const navigation = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'LookAtni Showcase', href: '/lookatni-showcase' },
-  { name: 'Contact', href: '#contact' },
-];
+import { useLanguage } from '../../context/LanguageContext';
 
 export function Header() {
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const navigation = [
+    { name: t('nav.home'), href: '#home' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.showcase'), href: '/lookatni-showcase' },
+    { name: t('nav.contact'), href: '#contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +33,7 @@ export function Header() {
     <motion.header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg'
+          ? 'bg-surface/80 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20'
           : 'bg-transparent'
       }`}
       animate={{ y: 0 }}
@@ -44,7 +46,7 @@ export function Header() {
             className="flex-shrink-0"
             whileHover={{ scale: 1.05 }}
           >
-            <a href="#home" className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <a href="#home" className="text-2xl font-black tracking-tighter bg-gradient-to-r from-primary-glow to-tertiary-glow bg-clip-text text-transparent">
               Rafa Mori
             </a>
           </motion.div>
@@ -55,7 +57,7 @@ export function Header() {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                  className="text-slate-200 hover:text-primary-glow px-3 py-2 rounded-md text-base font-semibold transition-colors duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -65,10 +67,9 @@ export function Header() {
             </div>
           </div>
 
-          {/* Language Toggle, Theme Toggle & Mobile Menu */}
+          {/* Language Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
             <LanguageToggle />
-            <ThemeToggle />
 
             {/* Mobile menu button */}
             <div className="md:hidden">
@@ -76,7 +77,7 @@ export function Header() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2"
+                className="p-2 text-slate-300"
               >
                 {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </Button>
@@ -94,12 +95,12 @@ export function Header() {
           }}
           transition={{ duration: 0.2 }}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-lg mt-2">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-surface/95 backdrop-blur-xl border border-white/10 rounded-lg mt-2 shadow-2xl">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                className="text-slate-300 hover:text-primary-glow block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

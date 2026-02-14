@@ -7,59 +7,91 @@ import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui';
 import { skills } from '../../data/skills';
 import { personalInfo } from '../../data/personal';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../../lib/animations';
-
-const skillCategories = [
-  { id: 'language', label: 'Languages', icon: Code, color: 'from-blue-500 to-blue-600' },
-  { id: 'framework', label: 'Frameworks', icon: Database, color: 'from-green-500 to-green-600' },
-  { id: 'cloud', label: 'Cloud & DevOps', icon: Cloud, color: 'from-purple-500 to-purple-600' },
-  { id: 'tool', label: 'Tools', icon: Wrench, color: 'from-orange-500 to-orange-600' },
-  { id: 'database', label: 'Databases', icon: Database, color: 'from-red-500 to-red-600' },
-];
-
-const stats = [
-  { icon: Award, label: 'Years Experience', value: `${((personalInfo.statistics || {}).yearsOfExperience || '0')}+` },
-  { icon: Code, label: 'Projects Completed', value: `${((personalInfo.statistics || {}).projectsCompleted || '0')}+` },
-  { icon: Users, label: 'Happy Clients', value: `${((personalInfo.statistics || {}).happyClients || '0')}+` },
-  { icon: Coffee, label: 'Coffee Consumed', value: `${((personalInfo.statistics || {}).coffeeConsumed || '0')}` },
-];
+import { useLanguage } from '../../context/LanguageContext';
 
 export function About() {
+  const { t, language } = useLanguage();
+  const isPt = language === 'pt';
+
+  const skillCategories = [
+    { id: 'language', label: isPt ? 'Linguagens' : 'Languages', icon: Code, color: 'text-primary-glow' },
+    { id: 'framework', label: isPt ? 'Frameworks' : 'Frameworks', icon: Database, color: 'text-secondary-glow' },
+    { id: 'cloud', label: isPt ? 'Nuvem & DevOps' : 'Cloud & DevOps', icon: Cloud, color: 'text-tertiary-glow' },
+    { id: 'tool', label: isPt ? 'Ferramentas' : 'Tools', icon: Wrench, color: 'text-slate-400' },
+    { id: 'database', label: isPt ? 'Bancos de Dados' : 'Databases', icon: Database, color: 'text-secondary-glow' },
+  ];
+
+  const stats = [
+    { icon: Award, label: t('about.stats.experience'), value: `${((personalInfo.statistics || {}).yearsOfExperience || '0')}+` },
+    { icon: Code, label: t('about.stats.projects'), value: `${((personalInfo.statistics || {}).projectsCompleted || '0')}+` },
+    { icon: Users, label: t('about.stats.clients'), value: `${((personalInfo.statistics || {}).happyClients || '0')}+` },
+    { icon: Coffee, label: t('about.stats.coffee'), value: `${((personalInfo.statistics || {}).coffeeConsumed || '0')}` },
+  ];
+
+  const services = [
+    {
+      icon: Code,
+      title: t('about.services.frontend.title'),
+      description: t('about.services.frontend.description'),
+      accent: 'primary-glow'
+    },
+    {
+      icon: Database,
+      title: t('about.services.backend.title'),
+      description: t('about.services.backend.description'),
+      accent: 'secondary-glow'
+    },
+    {
+      icon: Cloud,
+      title: t('about.services.cloud.title'),
+      description: t('about.services.cloud.description'),
+      accent: 'tertiary-glow'
+    },
+    {
+      icon: Zap,
+      title: t('about.services.optimization.title'),
+      description: t('about.services.optimization.description'),
+      accent: 'slate-400'
+    }
+  ];
+
   const getSkillsByCategory = (category: string) => {
     return skills.filter(skill => skill.category === category);
   };
 
   const getSkillIcon = (iconName: string) => {
-    // Em um projeto real, você usaria um mapeamento de ícones
     return `https://skillicons.dev/icons?i=${iconName}`;
   };
+
+  const journeyData = isPt ? personalInfo.journeyPt : personalInfo.journey;
 
   return (
     <motion.section
       id="about"
-      className="py-20 bg-white dark:bg-gray-900"
+      className="py-24 bg-bg-base relative overflow-hidden"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            About Me
+          <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter">
+            {t('about.title')}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Passionate developer with a love for creating efficient, scalable solutions
+          <p className="text-lg text-slate-200 max-w-2xl mx-auto font-normal">
+            {t('about.subtitle')}
           </p>
         </motion.div>
 
         {/* Stats */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
@@ -67,15 +99,15 @@ export function About() {
         >
           {stats.map((stat, index) => (
             <motion.div key={index} variants={fadeInUp}>
-              <Card className="text-center h-full">
+              <Card className="text-center h-full border-white/10 bg-surface/30">
                 <CardContent className="p-6">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg mb-4">
-                    <stat.icon className="w-6 h-6 text-white" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 border border-primary-glow/30 bg-primary-glow/10 rounded-xl mb-4 text-primary-glow">
+                    <stat.icon size={24} />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                  <div className="text-3xl font-black mb-1 tracking-tight text-white">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-xs font-mono uppercase tracking-widest text-slate-300">
                     {stat.label}
                   </div>
                 </CardContent>
@@ -85,19 +117,20 @@ export function About() {
         </motion.div>
 
         {/* Bio Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
           <motion.div
             variants={slideInLeft}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              My Journey
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3 tracking-tight text-white">
+              <span className="h-1 w-8 bg-primary-glow rounded-full"></span>
+              {t('about.journey')}
             </h3>
-            <div className="space-y-4 text-gray-600 dark:text-gray-300">
-              {personalInfo.journey?.map((item, index) => (
-                <p key={index}>
+            <div className="space-y-6 text-slate-200 font-normal leading-relaxed">
+              {journeyData?.map((item, index) => (
+                <p key={index} className="text-lg">
                   {item}
                 </p>
               ))}
@@ -110,43 +143,23 @@ export function About() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              What I Do
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3 tracking-tight text-white">
+              <span className="h-1 w-8 bg-secondary-glow rounded-full"></span>
+              {t('about.whatIDo')}
             </h3>
-            <div className="space-y-4">
-              {[
-                {
-                  icon: Code,
-                  title: 'Frontend Development',
-                  description: 'Creating responsive, interactive user interfaces with React, Next.js, and modern CSS frameworks.'
-                },
-                {
-                  icon: Database,
-                  title: 'Backend Development',
-                  description: 'Building robust APIs and server-side applications with Node.js, Python, and Go.'
-                },
-                {
-                  icon: Cloud,
-                  title: 'Cloud & DevOps',
-                  description: 'Implementing scalable cloud solutions and CI/CD pipelines with AWS, Docker, and Kubernetes.'
-                },
-                {
-                  icon: Zap,
-                  title: 'Performance Optimization',
-                  description: 'Optimizing applications for speed, scalability, and excellent user experience.'
-                }
-              ].map((service, index) => (
-                <div key={index} className="flex gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+              {services.map((service, index) => (
+                <div key={index} className="flex gap-4 p-4 rounded-xl border border-white/10 bg-surface/20 group hover:border-white/20 transition-colors">
                   <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                      <service.icon className="w-5 h-5 text-white" />
+                    <div className={`w-10 h-10 border border-${service.accent}/30 bg-${service.accent}/10 rounded-lg flex items-center justify-center text-${service.accent}`}>
+                      <service.icon size={20} />
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                    <h4 className="font-bold mb-1 tracking-tight text-white">
                       {service.title}
                     </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <p className="text-xs text-slate-300 leading-relaxed font-normal">
                       {service.description}
                     </p>
                   </div>
@@ -162,11 +175,11 @@ export function About() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Technical Skills
+          <h3 className="text-3xl font-black mb-12 text-center tracking-tighter">
+            {t('about.techStack')}
           </h3>
           
-          <div className="space-y-8">
+          <div className="space-y-6">
             {skillCategories.map((category) => {
               const categorySkills = getSkillsByCategory(category.id);
               if (categorySkills.length === 0) return null;
@@ -181,46 +194,30 @@ export function About() {
                   whileInView="animate"
                   viewport={{ once: true }}
                 >
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-3">
-                        <div className={`w-8 h-8 bg-gradient-to-r ${category.color} rounded-lg flex items-center justify-center`}>
-                          <Icon className="w-4 h-4 text-white" />
-                        </div>
+                  <Card className="border-white/5 bg-surface/20">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="flex items-center gap-3 text-lg font-bold tracking-tight">
+                        <Icon className={`w-5 h-5 ${category.color}`} />
                         {category.label}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
                         {categorySkills.map((skill, index) => (
                           <motion.div
                             key={index}
-                            className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
-                            whileHover={{ scale: 1.05 }}
+                            className="flex flex-col items-center gap-2 p-3 rounded-lg border border-white/5 bg-surface/40 hover:border-primary-glow/30 transition-all duration-300 group"
+                            whileHover={{ y: -2 }}
                           >
                             {skill.icon && (
                               <img
                                 src={getSkillIcon(skill.icon)}
                                 alt={skill.name}
-                                className="w-6 h-6"
+                                className="w-8 h-8 grayscale group-hover:grayscale-0 transition-all"
                               />
                             )}
-                            <div className="flex-1">
-                              <div className="text-sm font-medium text-gray-900 dark:text-white">
-                                {skill.name}
-                              </div>
-                              <div className="flex gap-1 mt-1">
-                                {[...Array(5)].map((_, i) => (
-                                  <div
-                                    key={i}
-                                    className={`w-2 h-2 rounded-full ${
-                                      i < (skill.level || 0)
-                                        ? 'bg-gradient-to-r from-blue-500 to-purple-600'
-                                        : 'bg-gray-300 dark:bg-gray-600'
-                                    }`}
-                                  />
-                                ))}
-                              </div>
+                            <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 group-hover:text-slate-300 transition-colors">
+                              {skill.name}
                             </div>
                           </motion.div>
                         ))}

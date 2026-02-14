@@ -14,11 +14,11 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       <motion.div
         ref={ref}
         className={cn(
-          'rounded-xl bg-white dark:bg-gray-800 shadow-lg transition-all duration-300',
-          hover && 'hover:shadow-xl hover:-translate-y-1',
+          'rounded-xl bg-surface/50 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-300',
+          hover && 'hover:border-primary-glow/30 hover:shadow-primary-glow/5',
           className
         )}
-        whileHover={hover ? { y: -4, scale: 1.02 } : undefined}
+        whileHover={hover ? { y: -4, scale: 1.01 } : undefined}
         {...props}
       >
         {children}

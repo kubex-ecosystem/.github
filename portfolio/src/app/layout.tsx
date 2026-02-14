@@ -38,25 +38,16 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#ffffff" /> 
+        <meta name="theme-color" content="#020617" /> 
         
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  const theme = localStorage.getItem('theme');
-                  if (theme === 'dark' || theme === 'light') {
-                    document.documentElement.classList.add(theme);
-                  } else {
-                    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    const defaultTheme = systemPrefersDark ? 'dark' : 'light';
-                    document.documentElement.classList.add(defaultTheme);
-                    localStorage.setItem('theme', defaultTheme);
-                  }
-                } catch (e) {
-                  document.documentElement.classList.add('light');
-                }
+                  document.documentElement.classList.add('dark');
+                  localStorage.setItem('theme', 'dark');
+                } catch (e) {}
               })()
             `,
           }}

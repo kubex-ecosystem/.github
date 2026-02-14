@@ -9,27 +9,28 @@ export function LanguageToggle() {
 
   return (
     <motion.div
-      className="flex items-center gap-2 p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      className="flex items-center gap-1 p-1 rounded-lg border border-white/5 bg-surface/30 backdrop-blur-sm"
+      whileHover={{ scale: 1.02 }}
     >
-      <Globe className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+      <div className="px-2">
+        <Globe size={14} className="text-slate-500" />
+      </div>
       <button
         onClick={() => setLanguage('en')}
-        className={`px-3 py-1 rounded text-sm transition-all ${
+        className={`px-3 py-1 rounded text-[10px] font-mono uppercase tracking-widest transition-all ${
           language === 'en'
-            ? 'bg-blue-500 text-white'
-            : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+            ? 'bg-primary-glow text-white shadow-[0_0_10px_rgba(168,85,247,0.4)]'
+            : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
         }`}
       >
         EN
       </button>
       <button
         onClick={() => setLanguage('pt')}
-        className={`px-3 py-1 rounded text-sm transition-all ${
+        className={`px-3 py-1 rounded text-[10px] font-mono uppercase tracking-widest transition-all ${
           language === 'pt'
-            ? 'bg-blue-500 text-white'
-            : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+            ? 'bg-primary-glow text-white shadow-[0_0_10px_rgba(168,85,247,0.4)]'
+            : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
         }`}
       >
         PT

@@ -1,14 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MapPin, Mail, Phone, Github, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, Button, Input, Textarea } from '../../components/ui';
-import { ContactForm } from '../../types';
-import { emailService } from '../../lib/emailService';
-import { personalInfo } from '../../data/personal';
-import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../../lib/animations';
+import { AlertCircle, CheckCircle, Github, Linkedin, Mail, MapPin, Send } from 'lucide-react';
+import { useState } from 'react';
+import { Button, Card, CardContent, CardHeader, CardTitle, Input, Textarea } from '../../components/ui';
 import { useLanguage } from '../../context/LanguageContext';
+import { personalInfo } from '../../data/personal';
+import { slideInLeft, slideInRight } from '../../lib/animations';
+import { emailService } from '../../lib/emailService';
+import { ContactForm } from '../../types';
 
 export function Contact() {
   const { t, language } = useLanguage();
@@ -73,46 +73,52 @@ export function Contact() {
       label: t('contact.location'),
       value: personalInfo.location,
       href: `https://maps.google.com/?q=${encodeURIComponent(personalInfo.location || '')}`,
+      color: 'text-secondary-glow'
     },
     {
       icon: Mail,
       label: 'Email',
       value: personalInfo.email,
       href: `mailto:${personalInfo.email}`,
+      color: 'text-primary-glow'
     },
     {
       icon: Github,
       label: t('contact.github'),
       value: '@faelmori',
       href: personalInfo.social.github,
+      color: 'text-slate-300'
     },
     {
       icon: Linkedin,
       label: t('contact.linkedin'),
       value: 'Rafael Mori',
       href: personalInfo.social.linkedin,
+      color: 'text-tertiary-glow'
     },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 bg-bg-base relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter">
             {t('contact.title')}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-200 max-w-2xl mx-auto font-normal leading-relaxed">
             {t('contact.subtitle')}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Info */}
           <motion.div
             variants={slideInLeft}
@@ -120,12 +126,12 @@ export function Contact() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            <Card className="h-full">
+            <Card className="h-full border-white/10 bg-surface/20">
               <CardHeader>
-                <CardTitle className="text-2xl">{t('contact.getInTouch')}</CardTitle>
+                <CardTitle className="text-2xl font-bold tracking-tight text-white">{t('contact.getInTouch')}</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <p className="text-gray-600 dark:text-gray-300">
+              <CardContent className="space-y-8">
+                <p className="text-slate-300 font-normal leading-relaxed">
                   {t('contact.description')}
                 </p>
 
@@ -136,17 +142,17 @@ export function Contact() {
                       href={info.href}
                       target={info.href?.startsWith('http') ? '_blank' : undefined}
                       rel={info.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="flex items-center gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-200 group"
-                      whileHover={{ scale: 1.02 }}
+                      className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-surface/40 hover:border-white/20 transition-all duration-300 group"
+                      whileHover={{ x: 4 }}
                     >
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <info.icon className="w-5 h-5 text-white" />
+                      <div className={`w-10 h-10 border border-white/20 bg-white/5 rounded-lg flex items-center justify-center ${info.color}`}>
+                        <info.icon size={20} />
                       </div>
                       <div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">
+                        <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-0.5 font-bold">
                           {info.label}
                         </div>
-                        <div className="font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        <div className="font-semibold text-slate-200 group-hover:text-white transition-colors">
                           {info.value}
                         </div>
                       </div>
@@ -154,12 +160,13 @@ export function Contact() {
                   ))}
                 </div>
 
-                {/* CTA */}
-                <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                {/* Status Indicator / Quick Response */}
+                <div className="mt-8 p-6 border border-primary-glow/20 bg-primary-glow/5 rounded-xl">
+                  <h4 className="font-bold text-primary-glow mb-2 tracking-tight flex items-center gap-2">
+                    <span className="w-2 h-2 bg-primary-glow rounded-full animate-pulse"></span>
                     {t('contact.quickResponse')}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-xs text-slate-300 font-normal leading-relaxed">
                     {t('contact.quickResponseDesc')}
                   </p>
                 </div>
@@ -174,13 +181,13 @@ export function Contact() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            <Card>
+            <Card className="border-white/5 bg-surface/20">
               <CardHeader>
-                <CardTitle className="text-2xl">{t('contact.sendMessage')}</CardTitle>
+                <CardTitle className="text-2xl font-bold tracking-tight">{t('contact.sendMessage')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <Input
                       label={t('contact.form.name')}
                       name="name"
@@ -226,39 +233,39 @@ export function Contact() {
                   {/* Submit Status */}
                   {submitStatus.type && (
                     <motion.div
-                      className={`flex items-center gap-2 p-4 rounded-lg ${
+                      className={`flex items-center gap-3 p-4 rounded-lg font-mono text-xs uppercase tracking-wider ${
                         submitStatus.type === 'success'
-                          ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
-                          : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300'
+                          ? 'border border-secondary-glow/30 bg-secondary-glow/10 text-secondary-glow'
+                          : 'border border-red-500/30 bg-red-500/10 text-red-500'
                       }`}
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                     >
                       {submitStatus.type === 'success' ? (
-                        <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                        <CheckCircle size={16} className="flex-shrink-0" />
                       ) : (
-                        <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                        <AlertCircle size={16} className="flex-shrink-0" />
                       )}
-                      <span className="text-sm">{submitStatus.message}</span>
+                      <span>{submitStatus.message}</span>
                     </motion.div>
                   )}
 
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full"
+                    className="w-full bg-primary-glow hover:bg-primary-glow/90 text-white border-none py-6 font-mono uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all duration-500"
                     size="lg"
                   >
                     {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                      <div className="flex items-center gap-3">
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         {t('contact.form.sending')}
-                      </>
+                      </div>
                     ) : (
-                      <>
-                        <Send className="w-5 h-5 mr-2" />
+                      <div className="flex items-center gap-3">
+                        <Send size={18} />
                         {t('contact.form.send')}
-                      </>
+                      </div>
                     )}
                   </Button>
                 </form>

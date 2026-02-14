@@ -1,22 +1,60 @@
 @import "tailwindcss";
 
+@theme {
+  /* Core Colors */
+  --color-bg-base: #020617;
+  --color-surface: #0f172a;
+  --color-surface-hover: #1e293b;
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+  
+  /* Accent Glows */
+  --color-primary-glow: #a855f7;
+  --color-secondary-glow: #34d399;
+  --color-tertiary-glow: #3b82f6;
+
+  /* Typography */
+  --font-sans: var(--font-inter), "Inter", "Geist", "Satoshi", ui-sans-serif, system-ui;
+  --font-mono: "JetBrains Mono", "Fira Code", "Geist Mono", ui-monospace, SFMono-Regular;
+
+  /* Refined Slate Scale */
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+}
+
 /* Smooth theme transitions */
 * {
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Prevent flash of unstyled content */
+/* Dark-first approach */
 html {
-  color-scheme: light dark;
-}
-
-/* Dark mode improvements */
-.dark {
   color-scheme: dark;
+  scroll-behavior: smooth;
+  font-size: 90%;
 }
 
-/* Ensure proper contrast in dark mode */
-.dark body {
-  background-color: rgb(17 24 39);
-  color: rgb(243 244 246);
+body {
+  background-color: var(--color-bg-base);
+  color: var(--color-slate-300);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Custom Utilities for Glassmorphism */
+.glass-surface {
+  @apply bg-surface/50 backdrop-blur-md border border-border-subtle;
+}
+
+.text-mono {
+  font-family: var(--font-mono);
 }

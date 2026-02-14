@@ -2,7 +2,9 @@ export interface Project {
   id: number;
   title: string;
   description: string;
+  descriptionPt?: string;
   longDescription?: string;
+  longDescriptionPt?: string;
   category: ProjectCategory;
   technologies: string[];
   image?: string;
@@ -74,13 +76,16 @@ export interface SocialInfo {
 export interface PersonalInfo {
   name: string;
   title: string;
+  titlePt?: string;
   bio?: string;
+  bioPt?: string;
   location?: string;
   email?: string;
   phone?: string;
   social: SocialInfo;
   statistics?: Statistics;
   journey?: string[];
+  journeyPt?: string[];
 }
 
 export interface Role {
@@ -161,7 +166,7 @@ export interface ThemeProviderProps {
 }
 
 export interface Language {
-  code: string; // e.g., 'en', 'pt-BR'
+  code: string; // e.g., 'en', 'pt'
   name: string; // e.g., 'English', 'Português'
   nativeName?: string; // e.g., 'English', 'Português Brasileiro'
   rtl?: boolean; // Right-to-left language
@@ -196,6 +201,21 @@ export interface PaginationContextType {
 export interface PaginationProviderProps {
   children: React.ReactNode;
   initialPagination?: Pagination;
+}
+
+export interface Article {
+  id: number;
+  title: string;
+  description: string;
+  published_at: string;
+  tag_list: string[];
+  url: string;
+  canonical_url: string;
+  reading_time_minutes: number;
+  user: {
+    name: string;
+    username: string;
+  };
 }
 
 export interface ErrorBoundaryProps {

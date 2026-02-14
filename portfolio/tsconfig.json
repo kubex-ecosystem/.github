@@ -37,7 +37,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "out/types/**/*.ts"
-  ],
+, ".notes/tsconfig.json"  ],
   "exclude": [
     "node_modules",
     "build",

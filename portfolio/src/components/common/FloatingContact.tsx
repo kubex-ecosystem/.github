@@ -9,7 +9,7 @@ import { ContactForm } from '../../types';
 import { Button, Card, CardContent, Input, Textarea } from '../ui';
 
 export function FloatingContact() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const isInContactSection = useContactSectionVisibility();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -106,19 +106,28 @@ export function FloatingContact() {
           >
             <Button
               onClick={() => setIsExpanded(true)}
-              className="w-14 h-14 rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-2 border-white dark:border-gray-800"
+              className="
+                w-14
+                h-14
+                p-3 
+                rounded-full 
+                border-none
+                bg-primary-glow 
+                shadow-[0_0_20px_rgba(168,85,247,0.5)] 
+                text-white
+              "
             >
-              <MessageCircle className="w-6 h-6" />
+              <MessageCircle width={50} height={50} />
             </Button>
             
             {/* Tooltip */}
             <motion.div
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
-              className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-800 dark:bg-gray-700 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap shadow-lg"
+              className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-surface border border-white/10 text-white text-xs font-mono uppercase tracking-widest px-3 py-2 rounded-lg whitespace-nowrap shadow-2xl"
             >
               {t('contact.floating.workTogether')}
-              <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 dark:border-l-gray-700 border-y-4 border-y-transparent"></div>
+              <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-4 border-l-surface border-y-4 border-y-transparent"></div>
             </motion.div>
           </motion.div>
         ) : (
@@ -132,15 +141,15 @@ export function FloatingContact() {
             className="w-80"
             onMouseLeave={() => !isSubmitting && setIsExpanded(false)}
           >
-            <Card className="shadow-2xl border-2 border-blue-100 dark:border-blue-900">
+            <Card className="shadow-2xl border-primary-glow/20 bg-surface/95 backdrop-blur-xl">
               <CardContent className="p-4">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                      <Mail className="w-4 h-4 text-white" />
+                    <div className="w-8 h-8 border border-primary-glow/20 bg-primary-glow/10 rounded-full flex items-center justify-center text-primary-glow">
+                      <Mail size={16} />
                     </div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">
+                    <h3 className="font-bold tracking-tight text-white">
                       {t('contact.quickContact')}
                     </h3>
                   </div>
@@ -148,9 +157,9 @@ export function FloatingContact() {
                     variant="ghost"
                     size="sm"
                     onClick={() => setIsExpanded(false)}
-                    className="w-8 h-8 p-0"
+                    className="w-8 h-8 p-0 text-slate-500 hover:text-white"
                   >
-                    <X className="w-4 h-4" />
+                    <X size={16} />
                   </Button>
                 </div>
 
@@ -163,6 +172,7 @@ export function FloatingContact() {
                     error={errors.name}
                     placeholder={t('contact.form.namePlaceholder')}
                     required
+                    className="h-9 text-xs"
                   />
                   
                   <Input
@@ -173,6 +183,7 @@ export function FloatingContact() {
                     error={errors.email}
                     placeholder={t('contact.form.emailPlaceholder')}
                     required
+                    className="h-9 text-xs"
                   />
                   
                   <Input
@@ -182,6 +193,7 @@ export function FloatingContact() {
                     error={errors.subject}
                     placeholder={t('contact.form.subjectPlaceholder')}
                     required
+                    className="h-9 text-xs"
                   />
                   
                   <Textarea
@@ -192,15 +204,16 @@ export function FloatingContact() {
                     placeholder={t('contact.form.messagePlaceholder')}
                     rows={3}
                     required
+                    className="min-h-[80px] text-xs"
                   />
 
                   {/* Submit Status */}
                   {submitStatus.type && (
                     <motion.div
-                      className={`text-xs p-2 rounded ${
+                      className={`text-[10px] p-2 rounded font-mono uppercase tracking-tight ${
                         submitStatus.type === 'success'
-                          ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
-                          : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300'
+                          ? 'border border-secondary-glow/20 bg-secondary-glow/5 text-secondary-glow'
+                          : 'border border-red-500/20 bg-red-500/5 text-red-500'
                       }`}
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
@@ -212,28 +225,28 @@ export function FloatingContact() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full"
+                    className="w-full bg-primary-glow hover:bg-primary-glow/90 text-white shadow-lg"
                     size="sm"
                   >
                     {isSubmitting ? (
-                      <>
-                        <div className="w-3 h-3 border border-white border-t-transparent rounded-full animate-spin mr-2" />
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 border border-white/30 border-t-white rounded-full animate-spin" />
                         {t('contact.form.sending')}
-                      </>
+                      </div>
                     ) : (
-                      <>
-                        <Send className="w-3 h-3 mr-2" />
+                      <div className="flex items-center gap-2">
+                        <Send size={14} />
                         {t('contact.form.send')}
-                      </>
+                      </div>
                     )}
                   </Button>
                 </form>
 
                 {/* Footer */}
-                <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
+                <div className="mt-3 pt-3 border-t border-white/5">
+                  <p className="text-[10px] font-mono text-slate-600 text-center uppercase tracking-widest">
                     {t('contact.floating.scrollDown')}
-                    <ChevronUp className="w-3 h-3 inline ml-1" />
+                    <ChevronUp size={10} className="inline ml-1" />
                   </p>
                 </div>
               </CardContent>
