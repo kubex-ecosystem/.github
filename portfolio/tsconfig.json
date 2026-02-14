@@ -18,7 +18,7 @@
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "plugins": [
       {
         "name": "next"
@@ -36,8 +36,11 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "out/types/**/*.ts"
-, ".notes/tsconfig.json"  ],
+    "out/types/**/*.ts",
+    ".notes/tsconfig.json",
+    "next.config.js",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     "build",

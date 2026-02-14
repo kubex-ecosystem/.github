@@ -1,9 +1,9 @@
-import { Inter } from 'next/font/google';
+import { Inter } from '@next/font/google';
 import Script from 'next/script';
 import React from 'react';
 import { LanguageProvider } from '../context/LanguageContext';
 import { ThemeProvider } from '../context/ThemeContext';
-import './globals.css';
+// import './globals.css';
 
 // import { metadata } from '../data/metadata';
 

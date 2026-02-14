@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, Image, Brain, Camera, Zap, FileText, Star, Download, Copy, RotateCcw } from 'lucide-react';
+import { Brain, Camera, Copy, Download, FileText, Image, RotateCcw, Star, Upload, Zap } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 
 interface AnalysisResult {
   product: {

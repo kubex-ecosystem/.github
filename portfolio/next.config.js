@@ -1,12 +1,15 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+export default {
+  trailingSlash: true,
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // turbopack: {
+  // },
   typescript: {
     ignoreBuildErrors: true,
-  }
-}
-
-module.exports = nextConfig
+  },
+  images: {
+    unoptimized: true,
+  },
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
+};

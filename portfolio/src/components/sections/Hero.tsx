@@ -1,11 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, ExternalLink, Github, Linkedin } from 'lucide-react';
-import { Button } from '../ui';
-import { personalInfo } from '../../data/personal';
-import { fadeInUp, staggerContainer, scaleIn } from '../../lib/animations';
+import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { personalInfo } from '../../data/personal';
+import { fadeInUp, scaleIn, staggerContainer } from '../../lib/animations';
+import { Button } from '../ui';
 
 export function Hero() {
   const { t, language } = useLanguage();
@@ -42,12 +42,19 @@ export function Hero() {
             className="flex justify-center mb-8"
             variants={scaleIn}
           >
-            <div className="relative group">
+            <div className="
+              relative 
+              group 
+              transition-all 
+              hover:scale-105 
+              duration-1500
+              rounded-full
+            " >
               <div className="absolute -inset-1 bg-gradient-to-r from-primary-glow to-tertiary-glow rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
               <img
                 src="/profile/profile.png"
                 alt={personalInfo.name}
-                className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full object-cover border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
+                className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full object-cover border border-white/10 transition-all duration-500" /* grayscale hover:grayscale-0 */
               />
             </div>
           </motion.div>
