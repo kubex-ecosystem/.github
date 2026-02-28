@@ -142,18 +142,18 @@ export const projectCategories = [
   { id: 'featured', label: 'Featured', labelPt: 'Destaques', count: projects.filter(p => p.featured).length }
 ];
 
-export const projectStatuses = [
-  { id: 'all', label: 'All Statuses', labelPt: 'Todos os Status', count: projects.length },
-  { id: 'completed', label: 'Completed', labelPt: 'Concluído', count: projects.filter(p => p.status === 'completed').length },
-  { id: 'in-progress', label: 'In Progress', labelPt: 'Em Andamento', count: projects.filter(p => p.status === 'in-progress').length },
-  { id: 'planned', label: 'Planned', labelPt: 'Planejado', count: projects.filter(p => p.status === 'planned').length },
-  { id: 'archived', label: 'Archived', labelPt: 'Arquivado', count: projects.filter(p => p.status === 'archived').length },
-];
+// export const projectStatuses = [
+//   { id: 'all', label: 'All Statuses', labelPt: 'Todos os Status', count: projects.length },
+//   { id: 'completed', label: 'Completed', labelPt: 'Concluído', count: projects.filter(p => p.status === 'completed').length },
+//   { id: 'in-progress', label: 'In Progress', labelPt: 'Em Andamento', count: projects.filter(p => p.status === 'in-progress').length },
+//   { id: 'planned', label: 'Planned', labelPt: 'Planejado', count: projects.filter(p => p.status === 'planned').length },
+//   { id: 'archived', label: 'Archived', labelPt: 'Arquivado', count: projects.filter(p => p.status === 'archived').length },
+// ];
 
-export const projectTechnologies = Array.from(
-  new Set(projects.flatMap(p => p.technologies))
-).map(tech => ({
-  id: tech.toLowerCase(),
-  label: tech,
-  count: projects.filter(p => p.technologies.includes(tech)).length
-}));
+// export const projectTechnologies = Array.from(
+//   new Set(projects.flatMap(p => p.technologies))
+// ).map(tech => ({
+//   id: tech.toLowerCase(),
+//   label: tech,
+//   count: projects.filter(p => p.technologies.includes(tech)).length
+// }));

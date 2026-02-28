@@ -1,22 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "useUnknownInCatchVariables": false,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "incremental": true,
-    "module": "NodeNext",
     "esModuleInterop": true,
-    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "plugins": [
@@ -24,21 +19,20 @@
         "name": "next"
       }
     ],
-    "forceConsistentCasingInFileNames": true
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "next-env.d.ts",
-    "src/**/*.js",
-    "src/**/*.json",
-    "src/**/*.jsx",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "out/types/**/*.ts",
     ".notes/tsconfig.json",
     "next.config.js",
+    ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
@@ -48,6 +42,8 @@
     "out",
     "coverage",
     "public",
-    "next.config.js"
+    "next.config.js",
+    "tsconfig.json",
+    "tsconfig.node.json"
   ]
 }

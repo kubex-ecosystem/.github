@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { personalInfo } from '../../data/personal';
 import { fadeInUp, scaleIn, staggerContainer } from '../../lib/animations';
@@ -10,6 +11,17 @@ import { Button } from '../ui';
 export function Hero() {
   const { t, language } = useLanguage();
   const isPt = language === 'pt';
+  
+  const [index, setIndex] = useState(0);
+  const phrases = (t('hero.phrases') as unknown as string[]) || [];
+
+  useEffect(() => {
+    if (phrases.length === 0) return;
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [phrases.length]);
 
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
@@ -39,38 +51,73 @@ export function Hero() {
         >
           {/* Profile Image */}
           <motion.div
-            className="flex justify-center mb-8"
+            className="flex justify-center mb-4"
             variants={scaleIn}
           >
-            <div className="
-              relative 
-              group 
-              transition-all 
-              hover:scale-105 
-              duration-1500
-              rounded-full
-            " >
+            <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary-glow to-tertiary-glow rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
               <img
                 src="/profile/profile.png"
                 alt={personalInfo.name}
-                className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full object-cover border border-white/10 transition-all duration-500" /* grayscale hover:grayscale-0 */
+                className="relative w-50 h-50 md:w-50 md:h-50 lg:w-70 lg:h-70 rounded-full object-cover border border-white/10 grayscale hover:grayscale-0 transition-all duration-500 shadow-2xl"
               />
             </div>
           </motion.div>
 
-          {/* Name & Title */}
-          <motion.h1
-            className="text-5xl md:text-7xl lg:text-9xl font-black mb-6 tracking-tighter"
+          {/* Dynamic Title */}
+          <motion.div 
+            className="min-h-[100px] md:min-h-[130px] lg:min-h-[180px] flex flex-col items-center justify-center mb-2"
             variants={fadeInUp}
           >
-            <span className="bg-gradient-to-b from-white via-white to-slate-500 bg-clip-text text-transparent">
-              {personalInfo.name}
-            </span>
-          </motion.h1>
+            <h1 className="font-black tracking-tighter leading-tight text-center mb-2">
+              <span className="
+                text-white 
+                block 
+                md:inline 
+                bg-gradient-to-r 
+                from-primary-glow 
+                to-tertiary-glow 
+                bg-clip-text 
+                text-transparent
+
+                text-3xl 
+                md:text-5xl 
+                lg:text-6xl
+              ">
+                {t('hero.prefix')}
+              </span>
+              <div className="
+                relative 
+                h-[1.2em] 
+                md:h-auto 
+                overflow-hidden 
+                md:overflow-visible 
+                inline-block 
+                mt-2 
+                md:mt-0
+
+                text-3xl 
+                md:text-5xl 
+                lg:text-6xl 
+              ">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={index}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="bg-gradient-to-r from-primary-glow to-tertiary-glow bg-clip-text text-transparent block"
+                  >
+                    {phrases[index]}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+            </h1>
+          </motion.div>
 
           <motion.h2
-            className="text-2xl md:text-3xl lg:text-4xl text-slate-100 mb-8 font-semibold tracking-tight"
+            className="text-xl md:text-2xl lg:text-3xl text-slate-100 mb-10 font-semibold tracking-tight"
             variants={fadeInUp}
           >
             <span className="text-mono text-secondary-glow mr-2">[</span>
@@ -79,7 +126,7 @@ export function Hero() {
           </motion.h2>
 
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-slate-200 max-w-3xl mx-auto mb-12 leading-relaxed font-normal"
+            className="text-base md:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto mb-12 leading-relaxed font-normal"
             variants={fadeInUp}
           >
             {isPt ? personalInfo.bioPt : personalInfo.bio}
@@ -90,11 +137,11 @@ export function Hero() {
             className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
             variants={fadeInUp}
           >
-            <Button size="lg" onClick={scrollToProjects} className="group text-lg px-8 py-4 min-w-[200px] bg-primary-glow hover:bg-primary-glow/90 text-white border-none shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+            <Button size="lg" onClick={scrollToProjects} className="group text-lg px-8 py-4 min-w-[200px] bg-primary-glow hover:bg-primary-glow/90 text-white border-none shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-300">
               {t('hero.externalLink')}
               <ExternalLink className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg" onClick={scrollToContact} className="text-lg px-8 py-4 min-w-[200px] border-white/10 hover:bg-white/5 text-slate-300">
+            <Button variant="outline" size="lg" onClick={scrollToContact} className="text-lg px-8 py-4 min-w-[200px] border-white/10 hover:bg-white/5 text-slate-200 transition-all duration-300">
               {t('hero.contactLinkButton')}
               <Mail className="ml-2 w-5 h-5" />
             </Button>
@@ -102,7 +149,7 @@ export function Hero() {
 
           {/* Social Links */}
           <motion.div
-            className="flex justify-center space-x-8"
+            className="flex justify-center space-x-6"
             variants={fadeInUp}
           >
             {[
@@ -115,11 +162,11 @@ export function Hero() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-3 text-slate-500 ${social.color} transition-all duration-300 border border-white/5 rounded-xl bg-surface/30 backdrop-blur-sm`}
+                className={`p-3 text-slate-400 ${social.color} transition-all duration-300 border border-white/5 rounded-xl bg-surface/30 backdrop-blur-sm hover:border-white/20`}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <social.icon size={24} />
+                <social.icon size={22} />
               </motion.a>
             ))}
           </motion.div>

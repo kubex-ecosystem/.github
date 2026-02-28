@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -42,11 +42,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useTheme() {
-  const context = useContext(themeContext);
-  if (context === undefined) {
-    console.error('useTheme must be used within a ThemeProvider. Make sure your component is wrapped with ThemeProvider.');
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
-}
+// export function useTheme() {
+//   const context = useContext(themeContext);
+//   if (context === undefined) {
+//     console.error('useTheme must be used within a ThemeProvider. Make sure your component is wrapped with ThemeProvider.');
+//     throw new Error('useTheme must be used within a ThemeProvider');
+//   }
+//   return context;
+// }

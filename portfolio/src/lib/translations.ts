@@ -51,6 +51,13 @@ export const translations = {
       externalLinkButton: "View Projects",
       contactLink: "Get in Touch",
       contactLinkButton: "Get in Touch",
+      prefix: "Building ",
+      phrases: [
+        "scalable ecosystems.",
+        "independent tools.",
+        "multi-concept solutions.",
+        "AI-driven experiences."
+      ]
     },
     about: {
       title: "About Me",
@@ -152,6 +159,13 @@ export const translations = {
       externalLinkButton: "Ver Projetos",
       contactLink: "Entre em Contato",
       contactLinkButton: "Entre em Contato",
+      prefix: "Construindo ",
+      phrases: [
+        "ecossistemas escaláveis.",
+        "ferramentas independentes.",
+        "soluções multi-concept.",
+        "experiências com IA."
+      ]
     },
     about: {
       title: "Sobre Mim",
@@ -204,4 +218,4 @@ export const translations = {
 };
 
 export type Language = keyof typeof translations;
-export type TranslationKey = keyof typeof translations.en;
+// export type TranslationKey = keyof typeof translations.en;

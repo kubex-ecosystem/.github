@@ -1,5 +1,5 @@
+import { HTMLMotionProps, motion } from 'framer-motion';
 import React from 'react';
-import { motion, HTMLMotionProps } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 interface CardProps extends HTMLMotionProps<'div'> {
@@ -85,4 +85,5 @@ const CardFooter = React.forwardRef<
 ));
 CardFooter.displayName = 'CardFooter';
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
+export { Card, CardContent, CardHeader /* , CardFooter */, CardTitle /* , CardDescription */ };
+

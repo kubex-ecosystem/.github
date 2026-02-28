@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@config "../../tailwind.config.js";
+
+@theme {
+  /* Core Colors */
+  --color-bg-base: #020617;
+  --color-surface: #0f172a;
+  --color-surface-hover: #1e293b;
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+  
+  /* Accent Glows */
+  --color-primary-glow: #a855f7;
+  --color-secondary-glow: #34d399;
+  --color-tertiary-glow: #3b82f6;
+
+  /* Typography */
+  --font-sans: var(--font-inter), "Inter", "Geist", "Satoshi", ui-sans-serif, system-ui;
+  --font-mono: "JetBrains Mono", "Fira Code", "Geist Mono", ui-monospace, SFMono-Regular;
+
+  /* Refined Slate Scale */
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+  --animate-slide-down: slideDown 0.5s ease-out;
+  --animate-bounce-slow: bounce 2s infinite;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideDown {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Smooth theme transitions */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Dark-first approach */
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  font-size: 90%;
+}
+
+body {
+  background-color: var(--color-bg-base);
+  color: var(--color-slate-300);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Custom Utilities for Glassmorphism */
+.glass-surface {
+  @apply bg-surface/50 backdrop-blur-md border border-border-subtle;
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+@layer components {
+  .bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      linear-gradient(rgba(128, 128, 128, 0.1) 1px, transparent 1px),
+      linear-gradient(to right, rgba(128, 128, 128, 0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+    z-index: -10;
+  }
+
+  .bg-vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at center, transparent 40%, #030712 90%);
+    z-index: -9;
+  }
+}

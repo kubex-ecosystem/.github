@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Analytics } from "@vercel/analytics/next";
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../components/ui';
-import { LanguageToggle } from '../common';
-import { Analytics } from "@vercel/analytics/next"
 import { useLanguage } from '../../context/LanguageContext';
+import { LanguageToggle } from '../common';
 
 export function Header() {
   const { t } = useLanguage();
@@ -39,17 +39,18 @@ export function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+      <nav className="px-3 sm:px-6 lg:px-7 h-17 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
           {/* Logo */}
           <motion.div
-            className="flex-shrink-0"
+            className="text-xl md:text-2xl font-bold tracking-tighter bg-gradient-to-r from-primary-glow to-tertiary-glow bg-clip-text text-transparent font-mono"
             whileHover={{ scale: 1.05 }}
           >
-            <a href="#home" className="text-2xl font-black tracking-tighter bg-gradient-to-r from-primary-glow to-tertiary-glow bg-clip-text text-transparent">
-              Rafa Mori
+            <a href="#home" className="text-xl md:text-4xl font-black tracking-tighter bg-gradient-to-r from-primary-glow to-tertiary-glow bg-clip-text text-transparent font-mono">
+              rafa-mori.dev
             </a>
           </motion.div>
+          
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
@@ -57,7 +58,7 @@ export function Header() {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="text-slate-200 hover:text-primary-glow px-3 py-2 rounded-md text-base font-semibold transition-colors duration-200"
+                  className="text-slate-200 hover:text-primary-glow px-3 py-2 rounded-md text-base text-lg font-semibold transition-colors duration-200 border border-transparent hover:text-border"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

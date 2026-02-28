@@ -1,119 +1,93 @@
 {
   "name": "rafa-mori-portfolio",
-  "version": "0.1.0",
-  "description": "Rafa Mori's portfolio website built with Next.js and Tailwind CSS.",
-  "author": "Rafa Mori",
+  "type": "module",
   "license": "MIT",
+  "version": "0.1.0",
+  "author": "Rafa Mori",
+
+  "markdown": "github",
+  "readme": "README.md",
+
+  "icon": "./public/favicon.ico",
   "homepage": "https://rafa-mori.dev",
+  "displayName": "Rafa Mori - Portfolio",
+  "description": "Rafa Mori's portfolio website built with Next.js and Tailwind CSS.",
+
+  "packageManager": "pnpm@10.29.3",
+  "private": true,
+  "enginesStrict": true,
+
   "repository": {
     "type": "git",
     "url": "https://github.com/kubex-ecosystem/.github.git"
   },
+  "maintainers": [
+      {
+        "name": "Rafa Mori",
+        "email": "faelmori@gmail.com",
+        "url": "https://rafa-mori.dev"
+      }
+  ],
   "bugs": {
     "url": "https://github.com/kubex-ecosystem/.github/issues"
   },
+  "cpu": [
+    "x64",
+    "arm64"
+  ],
   "engines": {
-    "node": ">=22.x",
-    "npm": ">=10.0.0",
-    "yarn": ">=1.22.0"
+    "node": ">=24.x",
+    "npm": ">=11.0.0",
+    "yarn": ">=1.22.0",
+    "vscode": ">=1.80.0",
+    "pnpm": ">=10.0.0"
   },
-  "type": "module",
-  "enginesStrict": true,
-  "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
     "build": "next build",
-    "build:static": "next build",
+    "build:static": "next build --export",
+
+    "dev": "next dev --turbopack",
+    "dev:debug": "NODE_OPTIONS='--inspect' next dev --turbopack",
+    "dev:webpack": "next dev --webpack",
+    "dev:webpack-debug": "NODE_OPTIONS='--inspect' next dev --webpack",
+
     "start": "next start",
-    "lint": "next lint"
+    "start:debug": "NODE_OPTIONS='--inspect' next start",
+
+    "serve": "next build && next start",
+    "serve:debug": "NODE_OPTIONS='--inspect' next build -d && next start",
+    "serve:debug-prerender": "NODE_OPTIONS='--inspect' next build --debug-prerender && next start",
+    "serve:profile": "NODE_OPTIONS='--inspect' next build --profile && next start",
+
+    "lint": "next lint",
+
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "typecheck": "tsc --noEmit",
+    "analyze": "next build --analyze"
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.2.4",
-    "@codemirror/theme-one-dark": "^6.1.3",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
     "@heroicons/react": "^2.2.0",
-    "@mui/icons-material": "^7.3.8",
-    "@uiw/react-codemirror": "^4.25.4",
     "@vercel/analytics": "^1.6.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.0",
-    "i18next": "^25.8.7",
-    "i18next-browser-languagedetector": "^8.2.1",
     "jszip": "^3.10.1",
-    "lookatni-file-markers": "^1.2.0",
     "lucide-react": "^0.564.0",
     "next": "^16.1.6",
-    "next-font": "^1.2.0",
-    "next-themes": "^0.4.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-i18next": "^16.5.4",
-    "react-icons": "^5.5.0",
-    "react-intersection-observer": "^10.0.2",
     "react-toastify": "^11.0.5",
-    "resend": "^6.9.2",
-    "simple-icons": "^16.8.0"
+    "resend": "^6.9.2"
   },
   "devDependencies": {
-    "@types/babel__core": "^7.20.5",
-    "@types/babel__generator": "^7.27.0",
-    "@types/babel__template": "^7.4.4",
-    "@types/babel__traverse": "^7.28.0",
-    "@types/body-parser": "^1.19.6",
-    "@types/bonjour": "^3.5.13",
-    "@types/connect": "^3.4.38",
-    "@types/connect-history-api-fallback": "^1.5.4",
-    "@types/estree": "^1.0.8",
-    "@types/express": "^5.0.6",
-    "@types/express-serve-static-core": "^5.1.1",
-    "@types/graceful-fs": "^4.1.9",
-    "@types/html-minifier-terser": "^7.0.2",
-    "@types/http-errors": "^2.0.5",
-    "@types/http-proxy": "^1.17.17",
-    "@types/istanbul-lib-coverage": "^2.0.6",
-    "@types/istanbul-lib-report": "^3.0.3",
-    "@types/istanbul-reports": "^3.0.4",
-    "@types/jsdom": "^27.0.0",
-    "@types/json-schema": "^7.0.15",
+    "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^25.2.3",
-    "@types/node-forge": "^1.3.14",
-    "@types/q": "^1.5.8",
-    "@types/qs": "^6.14.0",
-    "@types/range-parser": "^1.2.7",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@types/resolve": "^1.20.6",
-    "@types/retry": "^0.12.5",
-    "@types/semver": "^7.7.1",
-    "@types/send": "^0.17.6",
-    "@types/serve-index": "^1.9.4",
-    "@types/serve-static": "^1.15.10",
-    "@types/sockjs": "^0.3.36",
-    "@types/stack-utils": "^2.0.3",
-    "@types/tough-cookie": "^4.0.5",
-    "@types/trusted-types": "^2.0.7",
-    "@types/ws": "^8.18.1",
-    "@types/yargs": "^17.0.35",
-    "@types/yargs-parser": "^21.0.3",
-    
-    "@types/eslint": "^9.6.1",
-    "@types/eslint-scope": "^8.4.0",
-    "eslint": "^9.39.0",
-    "eslint-config-next": "16.1.6",
-    "husky": "^9.1.7",
     "jest": "^30.2.0",
-    "jest-environment-jsdom": "^30.2.0",
-    "lint-staged": "^16.2.7",
-    "multer": "^2.0.2",
-    "serve": "^14.2.5",
-
-    "autoprefixer": "^10.4.24",
+    "postcss": "^8.4.38",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18",
-    "postcss": "^8.4.38",
-    "@tailwindcss/postcss": "^4.1.18",
-
     "typescript": "5.9.3"
   },
   "keywords": [
@@ -151,31 +125,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "resolutions": {
-    "next": "^16.1.6",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "semi": true,
-    "tabWidth": 2,
-    "printWidth": 80,
-    "bracketSpacing": true,
-    "arrowParens": "always",
-    "endOfLine": "lf",
-    "useTabs": false,
-    "quoteProps": "as-needed",
-    "jsxSingleQuote": false,
-    "jsxBracketSameLine": false,
-    "htmlWhitespaceSensitivity": "css",
-    "proseWrap": "preserve",
-    "embeddedLanguageFormatting": "auto",
-    "plugins": [
-      "prettier-plugin-tailwindcss"
     ]
   },
   "eslintConfig": {
@@ -220,91 +169,5 @@
     "scripts",
     "tests",
     "docs"
-  ],
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.json": [
-      "prettier --write"
-    ],
-    "*.css": [
-      "prettier --write"
-    ],
-    "*.md": [
-      "prettier --write"
-    ]
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "transform": {
-      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "ts",
-      "tsx",
-      "json",
-      "node"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/build/",
-      "/dist/",
-      "/out/",
-      "/coverage/",
-      "/public/",
-      "/next.config.js",
-      "/postcss.config.js",
-      "/tailwind.config.js",
-      "/babel.config.js",
-      "/jest.config.js",
-      "/cypress.config.js",
-      "/cypress/",
-      "/scripts/",
-      "/tests/",
-      "/docs/"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest.setup.js"
-    ],
-    "collectCoverage": true,
-    "coverageDirectory": "coverage",
-    "coverageReporters": [
-      "json",
-      "text",
-      "lcov",
-      "clover"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/build/",
-      "/dist/",
-      "/out/",
-      "/public/",
-      "/next.config.js",
-      "/postcss.config.js",
-      "/tailwind.config.js",
-      "/babel.config.js",
-      "/jest.config.js",
-      "/cypress.config.js",
-      "/cypress/",
-      "/scripts/",
-      "/tests/",
-      "/docs/"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.json"
-      }
-    },
-    "moduleNameMapper": {
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif|webp|svg)$": "<root_dir>/__mocks__/fileMock.js",
-      "\\.(mp4|webm|ogg)$": "<root_dir>/__mocks__/fileMock.js",
-      "\\.(woff|woff2|eot|ttf|otf|svg)$": "<root_dir>/__mocks__/fileMock.js"
-    }
-  }
+  ]
 }

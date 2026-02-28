@@ -1,15 +1,18 @@
-import { Inter } from 'next/font/google';
-import Script from 'next/script';
-import React from 'react';
-import { LanguageProvider } from '../context/LanguageContext';
-import { ThemeProvider } from '../context/ThemeContext';
-import './globals.css';
+import { Inter } from "next/font/google";
+import Script from "next/script";
+import React from "react";
+import { LanguageProvider } from "../context/LanguageContext";
+import { ThemeProvider } from "../context/ThemeContext";
 
-// import { metadata } from '../data/metadata';
+// Import CSS styles
+import "./globals.css";
+
+// Import metadata for SEO and social sharing
+import { metadata } from "../data/metadata";
 
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const font = inter.variable; // Export the Inter font variable for use in styles
@@ -33,13 +36,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  metadata; // This line is just to ensure the metadata is included in the bundle, it can be used in the head if needed
+
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#020617" /> 
-        
+        <meta name="theme-color" content="#020617" />
+
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -84,10 +89,10 @@ export default function RootLayout({
           `}
         </Script>
         <noscript>
-          <img 
-            height="1" 
-            width="1" 
-            style={{display: 'none'}}
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=715746831460950&ev=PageView&noscript=1"
           />
         </noscript>
@@ -101,20 +106,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-// Uncomment the following code if you want to use a different structure for the RootLayout
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   return (
-//     <html lang="pt-BR" suppressHydrationWarning>
-//         <body className={inter.className}>
-//             <ThemeProvider>
-//               {children}
-//             </ThemeProvider>
-//         </body>
-//     </html>
-//   );
-// }
