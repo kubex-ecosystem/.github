@@ -7,6 +7,12 @@ export const translations = {
       showcase: "LookAtni Showcase",
       contact: "Contact"
     },
+    showcase: {
+      title: "Lookatni Engine",
+      subtitle: "My autonomous web generation engine. Open the sandbox and give it a try.",
+      openEngine: "Boot Lookatni Engine",
+      closeEngine: "Close Sandbox"
+    },
     contact: {
       title: "Let's Work Together",
       subtitle: "Have a project in mind or just want to chat? I'd love to hear from you.",
@@ -114,6 +120,12 @@ export const translations = {
       projects: "Projetos",
       showcase: "Showcase LookAtni",
       contact: "Contato"
+    },
+    showcase: {
+      title: "Lookatni Engine",
+      subtitle: "Meu motor autônomo de geração web. Abra o sandbox e experimente agora.",
+      openEngine: "Iniciar Motor Lookatni",
+      closeEngine: "Fechar Sandbox"
     },
     contact: {
       title: "Vamos Trabalhar Juntos",

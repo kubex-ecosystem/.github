@@ -95,3 +95,7 @@ tools/**/.env*
 # Logs
 logs/
 *.log
+
+# Notes
+.notes/
+**/.notes

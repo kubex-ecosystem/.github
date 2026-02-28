@@ -17,7 +17,7 @@ export function Header() {
     { name: t('nav.home'), href: '#home' },
     { name: t('nav.about'), href: '#about' },
     { name: t('nav.projects'), href: '#projects' },
-    { name: t('nav.showcase'), href: '/lookatni-showcase' },
+    { name: t('nav.showcase'), href: '#lookatni-showcase' },
     { name: t('nav.contact'), href: '#contact' },
   ];
 
@@ -31,11 +31,10 @@ export function Header() {
 
   return (
     <motion.header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
           ? 'bg-surface/80 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20'
           : 'bg-transparent'
-      }`}
+        }`}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
@@ -50,7 +49,7 @@ export function Header() {
               rafa-mori.dev
             </a>
           </motion.div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
@@ -112,6 +111,6 @@ export function Header() {
       </nav>
       <Analytics />
     </motion.header>
-    
+
   );
 }

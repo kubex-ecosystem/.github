@@ -17,10 +17,10 @@ export default function Home() {
     <ClientPageLayout>
       <Header />
       <Hero />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full -mt-8 mb-12 relative z-10">
+      <About />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full mb-24 relative z-10">
         <LookatniShowcase />
       </div>
-      <About />
       <DevLogFeed />
       <Projects />
       <Contact />
