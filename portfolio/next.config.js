@@ -12,4 +12,7 @@ export default {
     unoptimized: true,
   },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  experimental: {
+    externalDir: true,
+  },
 };

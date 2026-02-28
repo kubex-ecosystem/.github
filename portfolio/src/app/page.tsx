@@ -7,6 +7,7 @@ import { Contact } from "../components/sections/Contact";
 import { DevLogFeed } from "../components/sections/DevLogFeed";
 import { Hero } from "../components/sections/Hero";
 import { Projects } from "../components/sections/Projects";
+import { LookatniShowcase } from "../components/LookatniShowcase";
 
 // Main page component
 // This is the entry point of the application, rendering the main sections of the portfolio.
@@ -16,6 +17,9 @@ export default function Home() {
     <ClientPageLayout>
       <Header />
       <Hero />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full -mt-8 mb-12 relative z-10">
+        <LookatniShowcase />
+      </div>
       <About />
       <DevLogFeed />
       <Projects />
