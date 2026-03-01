@@ -1,37 +1,71 @@
-import { ContactForm } from '../types';
-import { translations } from './translations';
+import { createClient } from "@supabase/supabase-js";
+import { ContactForm } from "../types";
+import { translations } from "./translations";
+
+// Inicializa o cliente Supabase com resiliência (fallback para string vazia se undefined).
+// Isso garante que o build não quebre mesmo sem as variáveis.
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ||
+  "";
+
+const supabase = supabaseUrl && supabaseKey
+  ? createClient(supabaseUrl, supabaseKey)
+  : null;
 
 export const emailService = {
-  async sendContactForm(formData: ContactForm, language: 'en' | 'pt' = 'en'): Promise<{ success: boolean; message: string }> {
+  async sendContactForm(
+    formData: ContactForm,
+    language: "en" | "pt" = "en",
+  ): Promise<{ success: boolean; message: string }> {
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ ...formData, language }),
-      });
+      if (!supabase) {
+        console.warn(
+          "Supabase URL or Key not defined. Checking environment variables.",
+        );
+        return {
+          success: false,
+          message:
+            "Backend settings missing. Please contact directly via email.",
+        };
+      }
 
-      const result = await response.json();
+      const { data, error } = await supabase!
+        .from("contacts")
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          },
+        ]);
 
-      if (!response.ok) {
-        throw new Error(result.message || 'Erro ao enviar mensagem');
+      if (error) {
+        console.error("Supabase contact submission error:", error);
+        throw new Error(error.message || "Erro ao salvar o contato.");
       }
 
       return {
         success: true,
-        message: result.message || 'Mensagem enviada com sucesso!',
+        message: language === "pt"
+          ? "Mensagem enviada com sucesso!"
+          : "Message sent successfully!",
       };
     } catch (error) {
-      console.error('Erro ao enviar email:', error);
+      console.error("Erro ao processar formulário:", error);
       return {
         success: false,
-        message: error instanceof Error ? error.message : 'Erro ao enviar mensagem. Tente novamente.',
+        message: error instanceof Error
+          ? error.message
+          : "Erro ao enviar mensagem. Tente novamente.",
       };
     }
   },
 
-  validateForm(formData: ContactForm, language: 'en' | 'pt' = 'en'): { isValid: boolean; errors: Partial<ContactForm> } {
+  validateForm(
+    formData: ContactForm,
+    language: "en" | "pt" = "en",
+  ): { isValid: boolean; errors: Partial<ContactForm> } {
     const errors: Partial<ContactForm> = {};
     const t = translations[language].contact.validation;
 
@@ -61,4 +95,3 @@ export const emailService = {
     };
   },
 };
-

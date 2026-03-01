@@ -7,9 +7,10 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useContactSectionVisibility } from '../../hooks/useContactSectionVisibility';
 import { ContactForm } from '../../types';
 import { Button, Card, CardContent, Input, Textarea } from '../ui';
+import { emailService } from '../../lib/emailService';
 
 export function FloatingContact() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const isInContactSection = useContactSectionVisibility();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,7 +41,7 @@ export function FloatingContact() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    
+
     if (errors[name as keyof ContactForm]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
@@ -48,14 +49,14 @@ export function FloatingContact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Simple validation
     const newErrors: Partial<ContactForm> = {};
     if (!formData.name.trim()) newErrors.name = t('contact.validation.nameRequired');
     if (!formData.email.trim()) newErrors.email = t('contact.validation.emailRequired');
     if (!formData.subject.trim()) newErrors.subject = t('contact.validation.subjectRequired');
     if (!formData.message.trim()) newErrors.message = t('contact.validation.messageRequired');
-    
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -65,11 +66,14 @@ export function FloatingContact() {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      setSubmitStatus({ type: 'success', message: t('contact.floating.successMessage') });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      const result = await emailService.sendContactForm(formData, language);
+
+      if (result.success) {
+        setSubmitStatus({ type: 'success', message: result.message });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus({ type: 'error', message: result.message });
+      }
       // Auto-collapse after successful submission
       setTimeout(() => {
         setIsExpanded(false);
@@ -119,7 +123,7 @@ export function FloatingContact() {
             >
               <MessageCircle width={50} height={50} />
             </Button>
-            
+
             {/* Tooltip */}
             <motion.div
               initial={{ opacity: 0, x: 10 }}
@@ -174,7 +178,7 @@ export function FloatingContact() {
                     required
                     className="h-9 text-xs"
                   />
-                  
+
                   <Input
                     type="email"
                     name="email"
@@ -185,7 +189,7 @@ export function FloatingContact() {
                     required
                     className="h-9 text-xs"
                   />
-                  
+
                   <Input
                     name="subject"
                     value={formData.subject}
@@ -195,7 +199,7 @@ export function FloatingContact() {
                     required
                     className="h-9 text-xs"
                   />
-                  
+
                   <Textarea
                     name="message"
                     value={formData.message}
@@ -210,11 +214,10 @@ export function FloatingContact() {
                   {/* Submit Status */}
                   {submitStatus.type && (
                     <motion.div
-                      className={`text-[10px] p-2 rounded font-mono uppercase tracking-tight ${
-                        submitStatus.type === 'success'
-                          ? 'border border-secondary-glow/20 bg-secondary-glow/5 text-secondary-glow'
-                          : 'border border-red-500/20 bg-red-500/5 text-red-500'
-                      }`}
+                      className={`text-[10px] p-2 rounded font-mono uppercase tracking-tight ${submitStatus.type === 'success'
+                        ? 'border border-secondary-glow/20 bg-secondary-glow/5 text-secondary-glow'
+                        : 'border border-red-500/20 bg-red-500/5 text-red-500'
+                        }`}
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                     >
