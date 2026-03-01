@@ -4,29 +4,25 @@
   "license": "MIT",
   "version": "0.1.0",
   "author": "Rafa Mori",
-
   "markdown": "github",
   "readme": "README.md",
-
   "icon": "./public/favicon.ico",
   "homepage": "https://rafa-mori.dev",
   "displayName": "Rafa Mori - Portfolio",
   "description": "Rafa Mori's portfolio website built with Next.js and Tailwind CSS.",
-
-  "packageManager": "pnpm@10.29.3",
+  "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017",
   "private": true,
   "enginesStrict": true,
-
   "repository": {
     "type": "git",
     "url": "https://github.com/kubex-ecosystem/.github.git"
   },
   "maintainers": [
-      {
-        "name": "Rafa Mori",
-        "email": "faelmori@gmail.com",
-        "url": "https://rafa-mori.dev"
-      }
+    {
+      "name": "Rafa Mori",
+      "email": "faelmori@gmail.com",
+      "url": "https://rafa-mori.dev"
+    }
   ],
   "bugs": {
     "url": "https://github.com/kubex-ecosystem/.github/issues"
@@ -45,22 +41,17 @@
   "scripts": {
     "build": "next build",
     "build:static": "next build --export",
-
     "dev": "next dev --turbopack",
     "dev:debug": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "dev:webpack": "next dev --webpack",
     "dev:webpack-debug": "NODE_OPTIONS='--inspect' next dev --webpack",
-
     "start": "next start",
     "start:debug": "NODE_OPTIONS='--inspect' next start",
-
     "serve": "next build && next start",
     "serve:debug": "NODE_OPTIONS='--inspect' next build -d && next start",
     "serve:debug-prerender": "NODE_OPTIONS='--inspect' next build --debug-prerender && next start",
     "serve:profile": "NODE_OPTIONS='--inspect' next build --profile && next start",
-
     "lint": "next lint",
-
     "test": "jest",
     "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit",
@@ -80,6 +71,7 @@
     "resend": "^6.9.2"
   },
   "devDependencies": {
+    "@supabase/supabase-js": "^2.98.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^25.2.3",
     "@types/react": "^19.2.14",
