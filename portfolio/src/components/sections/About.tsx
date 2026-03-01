@@ -3,23 +3,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Database, Cloud, Wrench, Award, Users, Coffee, Zap } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui';
-import { skills } from '../../data/skills';
+import { Card, CardContent } from '../../components/ui';
 import { personalInfo } from '../../data/personal';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../../lib/animations';
 import { useLanguage } from '../../context/LanguageContext';
+import { TechnicalStack } from '../TechnicalStack';
 
 export function About() {
   const { t, language } = useLanguage();
   const isPt = language === 'pt';
-
-  const skillCategories = [
-    { id: 'language', label: isPt ? 'Linguagens' : 'Languages', icon: Code, color: 'text-primary-glow' },
-    { id: 'framework', label: isPt ? 'Frameworks' : 'Frameworks', icon: Database, color: 'text-secondary-glow' },
-    { id: 'cloud', label: isPt ? 'Nuvem & DevOps' : 'Cloud & DevOps', icon: Cloud, color: 'text-tertiary-glow' },
-    { id: 'tool', label: isPt ? 'Ferramentas' : 'Tools', icon: Wrench, color: 'text-slate-400' },
-    { id: 'database', label: isPt ? 'Bancos de Dados' : 'Databases', icon: Database, color: 'text-secondary-glow' },
-  ];
 
   const stats = [
     { icon: Award, label: t('about.stats.experience'), value: `${((personalInfo.statistics || {}).yearsOfExperience || '0')}+` },
@@ -54,14 +46,6 @@ export function About() {
       accent: 'slate-400'
     }
   ];
-
-  const getSkillsByCategory = (category: string) => {
-    return skills.filter(skill => skill.category === category);
-  };
-
-  const getSkillIcon = (iconName: string) => {
-    return `https://skillicons.dev/icons?i=${iconName}`;
-  };
 
   const journeyData = isPt ? personalInfo.journeyPt : personalInfo.journey;
 
@@ -178,55 +162,9 @@ export function About() {
           <h3 className="text-3xl font-black mb-12 text-center tracking-tighter">
             {t('about.techStack')}
           </h3>
-          
-          <div className="space-y-6">
-            {skillCategories.map((category) => {
-              const categorySkills = getSkillsByCategory(category.id);
-              if (categorySkills.length === 0) return null;
 
-              const Icon = category.icon;
-
-              return (
-                <motion.div
-                  key={category.id}
-                  variants={fadeInUp}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true }}
-                >
-                  <Card className="border-white/5 bg-surface/20">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="flex items-center gap-3 text-lg font-bold tracking-tight">
-                        <Icon className={`w-5 h-5 ${category.color}`} />
-                        {category.label}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                        {categorySkills.map((skill, index) => (
-                          <motion.div
-                            key={index}
-                            className="flex flex-col items-center gap-2 p-3 rounded-lg border border-white/5 bg-surface/40 hover:border-primary-glow/30 transition-all duration-300 group"
-                            whileHover={{ y: -2 }}
-                          >
-                            {skill.icon && (
-                              <img
-                                src={getSkillIcon(skill.icon)}
-                                alt={skill.name}
-                                className="w-8 h-8 grayscale group-hover:grayscale-0 transition-all"
-                              />
-                            )}
-                            <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 group-hover:text-slate-300 transition-colors">
-                              {skill.name}
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
+          <div className="w-full max-w-5xl mx-auto flex justify-center">
+            <TechnicalStack />
           </div>
         </motion.div>
       </div>

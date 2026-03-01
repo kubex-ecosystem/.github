@@ -58,7 +58,9 @@
     "analyze": "next build --analyze"
   },
   "dependencies": {
+    "@emotion/styled": "^11.14.1",
     "@heroicons/react": "^2.2.0",
+    "@mui/icons-material": "^7.3.8",
     "@vercel/analytics": "^1.6.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.0",
@@ -68,7 +70,8 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-toastify": "^11.0.5",
-    "resend": "^6.9.2"
+    "resend": "^6.9.2",
+    "simple-icons": "^16.10.0"
   },
   "devDependencies": {
     "@supabase/supabase-js": "^2.98.0",
